@@ -23,7 +23,7 @@ notes="$(
         index($0, "## [" ver "]") == 1 { found = 1; next }
         found && index($0, "## [") == 1 { exit }
         found { print }
-    ' "$changelog"
+    ' "$changelog" | sed -E '/^\[[^]]+\]:[[:space:]]+https?:\/\//d'
 )"
 
 if [[ -z "${notes//[[:space:]]/}" ]]; then

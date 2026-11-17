@@ -413,6 +413,7 @@ These are maintenance intentions, not promises or dated commitments:
 - Add accessibility and localization review, starting with TalkBack labels and RTL layout.
 - Add import-validation fuzz tests for hostile or malformed backup files.
 - Keep dependency and GitHub Actions updates reviewed through Dependabot.
+- Evaluate an Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it; the current baseline remains AGP 8.7.3 / `compileSdk 35`.
 
 ## Contributing
 

@@ -13,6 +13,7 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - Genuine device screenshots and a full device acceptance pass.
 - Migration tests for future Room schema versions.
 - A signed release pipeline when signing credentials are available.
+- A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.
 - Accessibility and localization review.
 
 ## [4.1.1] - 2026-11-17

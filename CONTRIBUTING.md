@@ -90,6 +90,7 @@ Do not change reference values only to make a test pass. Explain why the old val
 
 - Prefer the AndroidX/Compose/Room/WorkManager stack already in use.
 - Pin versions in `app/build.gradle.kts`; Dependabot will propose updates.
+- Review each Dependabot pull request against the pinned toolchain. Some newer AndroidX releases require a newer Android Gradle Plugin and `compileSdk`; do not merge those until the toolchain migration is deliberate and tested.
 - Explain why a new dependency is necessary and its license.
 - Do not add a dependency that introduces network access, telemetry, or a proprietary backend.
 
