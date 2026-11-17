@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FleetPulse</string>
+    <string name="notif_channel_service">Service reminders</string>
+    <string name="notif_channel_service_desc">Upcoming, due and overdue vehicle service reminders</string>
+</resources>

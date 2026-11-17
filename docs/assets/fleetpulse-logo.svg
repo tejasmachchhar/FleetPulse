@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-labelledby="title desc">
+  <title id="title">FleetPulse</title>
+  <desc id="desc">A circular gauge with a lightning bolt, matching the FleetPulse launcher icon.</desc>
+  <rect width="108" height="108" rx="24" fill="#0F172A"/>
+  <g transform="translate(54 54) scale(0.72) translate(-54 -54)">
+    <path fill="#38BDF8" fill-opacity="0.18" d="M54,22A32,32 0,1 0,54 86A32,32 0,1 0,54 22Z"/>
+    <path fill="none" stroke="#38BDF8" stroke-width="3.6" stroke-linecap="round" d="M30,64A26,26 0,0 1,78 64"/>
+    <path fill="#E2E8F0" d="M51.5,34L42,56h8l-3.5,18L64,48h-9l3-14z"/>
+    <path fill="none" stroke="#38BDF8" stroke-width="3.2" stroke-linecap="round" d="M54,66L66,50"/>
+    <path fill="#38BDF8" d="M54,62A4,4 0,1 0,54 70A4,4 0,1 0,54 62Z"/>
+  </g>
+</svg>

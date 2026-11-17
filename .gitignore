@@ -1,0 +1,47 @@
+# Android Studio / IntelliJ
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Gradle and Kotlin build state
+.gradle/
+.kotlin/
+build/
+**/build/
+local.properties
+*.hprof
+
+# Generated binaries and distribution folders
+dist/
+app/release/
+release-notes.md
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Signing material and local secrets -- never commit these
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+keystore.properties
+signing.properties
+.env
+.env.*
+secrets.properties
+
+# Logs and OS/editor noise
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Room schema exports are source and must stay tracked.
+# Do not add app/schemas to this file.

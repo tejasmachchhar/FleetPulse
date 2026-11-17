@@ -1,0 +1,107 @@
+name: Bug report
+description: Report a reproducible problem in FleetPulse
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Use **synthetic data** only. Do not attach a real database, backup, CSV, registration number, address, token, or screenshot with personal information.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: Describe the problem and its impact.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact steps, with synthetic values where needed.
+      placeholder: |
+        1. Open ...
+        2. Tap ...
+        3. Enter ...
+        4. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      placeholder: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      placeholder: What happened instead?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: FleetPulse version
+      description: versionName and versionCode if known.
+      placeholder: "4.1.1 (versionCode 3)"
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version and device
+      placeholder: "Android 15, Pixel 8"
+    validations:
+      required: true
+  - type: dropdown
+    id: build_source
+    attributes:
+      label: Build source
+      options:
+        - Release APK
+        - Debug/development APK
+        - Built from source
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: dataset
+    attributes:
+      label: Dataset
+      description: Do not select a real personal dataset for a public report.
+      options:
+        - Synthetic demo dataset
+        - Clean data with synthetic entries
+        - Minimal synthetic reproduction
+        - Other (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction data
+      description: If the bug is calculation-related, list only the synthetic values needed to reproduce it. Do not attach a real backup.
+      placeholder: |
+        Vehicle: Demo EV 1
+        Usage entries: ...
+        Settings: ...
+        Expected: ...
+        Actual: ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Redact paths, names, registration numbers, and personal notes. Omit if not needed.
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I have removed real personal data, secrets, backups, and keystores from this report.
+          required: true
+        - label: I understand this is an offline app and I should not post a security vulnerability publicly.
+          required: true

@@ -1,0 +1,194 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to release, for example v4.1.1
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+
+    steps:
+      - name: Check out tagged revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Validate tag and version
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Tag '$TAG' is not a version tag such as v4.1.1 or v4.1.1-rc.1."
+            exit 1
+          fi
+          version_name="$(sed -n 's/^[[:space:]]*versionName = "\(.*\)"/\1/p' app/build.gradle.kts | head -n 1)"
+          if [[ "v$version_name" != "$TAG" && "$TAG" != "v$version_name"-* ]]; then
+            echo "::error::Tag '$TAG' does not match app versionName '$version_name'."
+            exit 1
+          fi
+          if ! git rev-parse --verify "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag '$TAG' does not exist in this repository."
+            exit 1
+          fi
+          echo "version=$version_name" >> "$GITHUB_OUTPUT"
+        id: meta
+
+      - name: Configure optional release signing
+        id: signing
+        shell: bash
+        env:
+          KEYSTORE_B64: ${{ secrets.FLEETPULSE_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.FLEETPULSE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.FLEETPULSE_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.FLEETPULSE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [[ -n "${KEYSTORE_B64:-}" && -n "${KEYSTORE_PASSWORD:-}" && -n "${KEY_ALIAS:-}" && -n "${KEY_PASSWORD:-}" ]]; then
+            keystore="$RUNNER_TEMP/fleetpulse-release.jks"
+            printf '%s' "$KEYSTORE_B64" | base64 --decode > "$keystore"
+            {
+              echo "FLEETPULSE_KEYSTORE_FILE=$keystore"
+              echo "FLEETPULSE_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
+              echo "FLEETPULSE_KEY_ALIAS=$KEY_ALIAS"
+              echo "FLEETPULSE_KEY_PASSWORD=$KEY_PASSWORD"
+            } >> "$GITHUB_ENV"
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+            echo "Release signing secrets are configured."
+          else
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::No complete FleetPulse signing secret set; publishing a clearly labelled debug development build."
+          fi
+
+      - name: Build and verify signed release
+        if: steps.signing.outputs.signed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon \
+            :app:testDebugUnitTest \
+            :app:lintRelease \
+            :app:assembleRelease \
+            :app:bundleRelease
+
+          build_tools="$(ls -d "${ANDROID_HOME}/build-tools/"* | sort -V | tail -n 1)"
+          "$build_tools/apksigner" verify --verbose --print-certs \
+            app/build/outputs/apk/release/app-release.apk
+
+      - name: Build and verify debug development artifact
+        if: steps.signing.outputs.signed != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon \
+            :app:testDebugUnitTest \
+            :app:lintDebug \
+            :app:assembleDebug
+
+          build_tools="$(ls -d "${ANDROID_HOME}/build-tools/"* | sort -V | tail -n 1)"
+          "$build_tools/apksigner" verify --verbose --print-certs \
+            app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Prepare release assets
+        shell: bash
+        env:
+          SIGNED: ${{ steps.signing.outputs.signed }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          if [[ "$SIGNED" == "true" ]]; then
+            cp app/build/outputs/apk/release/app-release.apk "dist/FleetPulse-${VERSION}-release.apk"
+            cp app/build/outputs/bundle/release/app-release.aab "dist/FleetPulse-${VERSION}-release.aab"
+          else
+            cp app/build/outputs/apk/debug/app-debug.apk "dist/FleetPulse-${VERSION}-debug.apk"
+          fi
+          (cd dist && sha256sum ./* > SHA256SUMS)
+          ls -lh dist
+
+      - name: Generate release notes
+        shell: bash
+        env:
+          SIGNED: ${{ steps.signing.outputs.signed }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          set -euo pipefail
+          {
+            echo "## FleetPulse $VERSION"
+            echo
+            if [[ "$SIGNED" == "true" ]]; then
+              echo "This is a **signed release build**. Verify the APK signature and compare the SHA-256 checksums before installing."
+            else
+              echo "> **Development debug build.** No release signing credentials were configured, so this artifact is debug-signed and is not a production/Play Store release. Install it only for testing."
+            fi
+            echo
+            scripts/release-notes.sh "$VERSION"
+            echo
+            echo "### Artifacts"
+            if [[ "$SIGNED" == "true" ]]; then
+              echo "- \`FleetPulse-${VERSION}-release.apk\` — signed APK"
+              echo "- \`FleetPulse-${VERSION}-release.aab\` — signed Android App Bundle"
+            else
+              echo "- \`FleetPulse-${VERSION}-debug.apk\` — debug development APK"
+            fi
+            echo "- \`SHA256SUMS\` — SHA-256 checksums for every asset"
+            echo
+            echo "Built from commit \`${GITHUB_SHA}\` by GitHub Actions."
+          } > release-notes.md
+          cat release-notes.md
+
+      - name: Publish GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SIGNED: ${{ steps.signing.outputs.signed }}
+        run: |
+          set -euo pipefail
+          args=(
+            --title "FleetPulse ${TAG#v}"
+            --notes-file release-notes.md
+            --verify-tag
+          )
+          if [[ "$SIGNED" == "true" ]]; then
+            args+=(--latest)
+          else
+            args+=(--prerelease)
+          fi
+          files=(dist/FleetPulse-* dist/SHA256SUMS)
+          gh release create "$TAG" "${files[@]}" "${args[@]}"

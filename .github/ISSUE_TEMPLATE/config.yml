@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the user guide
+    url: https://github.com/tejasmachchhar/FleetPulse/blob/main/docs/USER_GUIDE.md
+    about: Installation, onboarding, entry forms, backups, reminders, and troubleshooting.
+  - name: Support and privacy-safe reports
+    url: https://github.com/tejasmachchhar/FleetPulse/blob/main/SUPPORT.md
+    about: What to include, what never to post, and where to ask.
+  - name: Report a security vulnerability privately
+    url: https://github.com/tejasmachchhar/FleetPulse/security/policy
+    about: Do not open a public issue for a vulnerability. Use the private security policy.
