@@ -56,7 +56,7 @@ object BackupManager {
         root.put("format", FORMAT)
         root.put("version", VERSION)
         root.put("exportedAt", Instant.now().toString())
-        root.put("app", "FleetPulse Android 4.1.1")
+        root.put("app", "FleetPulse Android 4.2.0")
 
         val data = JSONObject()
         data.put("vehicles", JSONArray().apply { input.vehicles.forEach { put(vehicleJson(it)) } })

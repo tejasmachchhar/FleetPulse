@@ -1,17 +1,35 @@
 name: Bug report
 description: Report a reproducible problem in FleetPulse
 title: "[Bug]: "
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for reporting a problem. Use **synthetic data** only. Do not attach a real database, backup, CSV, registration number, address, token, or screenshot with personal information.
+
+        If you used **More → Feedback & Support → Report a Bug**, FleetPulse generated a report. Paste that text into the diagnostics field below after removing anything you do not want to share.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Pick the closest match. The in-app report uses the same categories.
+      options:
+        - App crashed or stopped responding
+        - Incorrect calculation or mileage
+        - Data missing or not saved
+        - UI or layout problem
+        - Navigation problem
+        - Performance problem
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: description
     attributes:
       label: What happened?
-      description: A clear description of the bug.
-      placeholder: Describe the problem and its impact.
+      description: A clear description of the bug and its impact.
+      placeholder: Describe the problem in a sentence or two.
     validations:
       required: true
   - type: textarea
@@ -45,7 +63,7 @@ body:
     attributes:
       label: FleetPulse version
       description: versionName and versionCode if known.
-      placeholder: "4.1.1 (versionCode 3)"
+      placeholder: "4.2.0 (versionCode 4)"
     validations:
       required: true
   - type: input
@@ -90,9 +108,18 @@ body:
         Expected: ...
         Actual: ...
   - type: textarea
+    id: diagnostics
+    attributes:
+      label: FleetPulse-generated diagnostics (optional)
+      description: Paste the previewed report from the app. It contains app/device/environment details and redacted local logs. Remove anything you do not want public.
+      placeholder: |
+        FleetPulse Bug Report
+        Category: ...
+        ...
+  - type: textarea
     id: logs
     attributes:
-      label: Logs or screenshots
+      label: Additional logs or screenshots (optional)
       description: Redact paths, names, registration numbers, and personal notes. Omit if not needed.
   - type: checkboxes
     id: confirmations

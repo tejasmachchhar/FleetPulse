@@ -15,6 +15,7 @@ The following are used by the application and are licensed under the **Apache Li
 - AndroidX WorkManager runtime-ktx
 - Kotlin standard library and Kotlin coroutines
 - Kotlin Coroutines Android and coroutines-test
+- **ZXing core 3.5.3** — Apache License 2.0, used only for local QR-code generation. <https://github.com/zxing/zxing>
 
 Project links:
 

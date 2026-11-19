@@ -1,31 +1,47 @@
 name: Feature request
 description: Suggest a focused improvement to FleetPulse
 title: "[Feature]: "
+labels: ["feature-request", "enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
         FleetPulse is intentionally offline-first. Please explain the user problem before proposing a solution. Do not include real vehicle records or personal data.
-  - type: textarea
-    id: problem
+
+        If you used **More → Feedback & Support → Suggest an Improvement**, paste the app-generated report where it helps; the app already includes the category, suggestion, optional context, and only the diagnostics you approved.
+  - type: dropdown
+    id: category
     attributes:
-      label: What problem does this solve?
-      description: Describe the user need or limitation, not just the requested UI.
-      placeholder: When tracking ..., I cannot ...
+      label: Category
+      description: The in-app report uses the same categories.
+      options:
+        - New feature
+        - Existing feature improvement
+        - UI/UX improvement
+        - Performance improvement
+        - Calculation improvement
+        - Other
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed solution
+      label: Your suggestion
+      description: A short, specific description of what you would like to see.
       placeholder: Describe the smallest useful change.
     validations:
       required: true
   - type: textarea
-    id: alternatives
+    id: problem
     attributes:
-      label: Alternatives considered
-      placeholder: What else could solve the problem?
+      label: Problem it solves (optional)
+      description: Describe the user need or limitation, not just the requested UI.
+      placeholder: When tracking ..., I cannot ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour (optional)
+      description: What should the app do instead?
   - type: dropdown
     id: area
     attributes:
@@ -40,6 +56,7 @@ body:
         - Calibration
         - Settings
         - Data management
+        - Feedback & Support
         - Documentation
         - Build/CI
         - Other
@@ -48,12 +65,12 @@ body:
   - type: textarea
     id: scope
     attributes:
-      label: Scope and risks
+      label: Scope and risks (optional)
       description: Does this change calculations, storage, permissions, or privacy? Would it affect existing data?
   - type: textarea
     id: context
     attributes:
-      label: Additional context
+      label: Additional context (optional)
       description: Mockups are welcome only if clearly labelled as mockups; do not present them as current app screenshots.
   - type: checkboxes
     id: confirmations

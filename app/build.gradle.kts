@@ -27,8 +27,8 @@ android {
         applicationId = "com.fleetpulse.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 3
-        versionName = "4.1.1"
+        versionCode = 4
+        versionName = "4.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -71,6 +71,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     packaging {
@@ -115,6 +116,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.work:work-runtime-ktx:2.10.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("com.google.zxing:core:3.5.3")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20260814")

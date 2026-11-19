@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.SupportAgent
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material3.Icon
@@ -51,6 +52,7 @@ fun MoreScreen(
     onData: () -> Unit,
     onGuide: () -> Unit,
     onVerification: () -> Unit,
+    onFeedback: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -112,6 +114,18 @@ fun MoreScreen(
                     subtitle = "Backups, CSV exports, sample data",
                     tint = FleetGreen,
                     onClick = onData,
+                )
+            }
+        }
+
+        item {
+            SectionCard(title = "Help & feedback") {
+                MenuRow(
+                    icon = Icons.Default.SupportAgent,
+                    title = "Feedback & Support",
+                    subtitle = "Report a bug, suggest an improvement, or support the project",
+                    tint = FleetBlue,
+                    onClick = onFeedback,
                 )
             }
         }

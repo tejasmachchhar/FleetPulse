@@ -3,6 +3,7 @@ package com.fleetpulse.app
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -85,14 +86,19 @@ import com.fleetpulse.app.data.prefs.AppPreferencesState
 import com.fleetpulse.app.ui.MainViewModel
 import com.fleetpulse.app.ui.UiSnapshot
 import com.fleetpulse.app.ui.screens.AnalysisScreen
+import com.fleetpulse.app.ui.screens.BugReportScreen
 import com.fleetpulse.app.ui.screens.CalibrationScreen
 import com.fleetpulse.app.ui.screens.DashboardScreen
 import com.fleetpulse.app.ui.screens.DataManagementScreen
+import com.fleetpulse.app.ui.screens.FeatureRequestScreen
+import com.fleetpulse.app.ui.screens.FeedbackHubScreen
+import com.fleetpulse.app.ui.screens.GeneralFeedbackScreen
 import com.fleetpulse.app.ui.screens.MaintenanceScreen
 import com.fleetpulse.app.ui.screens.MoreScreen
 import com.fleetpulse.app.ui.screens.OnboardingScreen
 import com.fleetpulse.app.ui.screens.QuickEntryScreen
 import com.fleetpulse.app.ui.screens.SettingsScreen
+import com.fleetpulse.app.ui.screens.SupportFleetPulseScreen
 import com.fleetpulse.app.ui.screens.UsageLogScreen
 import com.fleetpulse.app.ui.screens.UserGuideScreen
 import com.fleetpulse.app.ui.screens.VehiclesScreen
@@ -288,6 +294,10 @@ private fun MainScaffold(
         if (currentRoute != route) navController.navigate(route)
     }
 
+    fun openFeedbackDetail(detail: String, origin: String) {
+        navController.navigate("feedback/$detail?origin=${Uri.encode(origin)}")
+    }
+
     val state = snapshot.state
     val sampleTotal = state.usageEntries.count { it.isSample } +
         state.maintenanceEntries.count { it.isSample } +
@@ -365,6 +375,7 @@ private fun MainScaffold(
                     onOpenData = { openDetail("data") },
                     onOpenMaintenance = { navigateTopLevel("maintenance") },
                     onRemoveSamples = { vm.removeSampleData() },
+                    onReportProblem = { openFeedbackDetail("bug", "Dashboard") },
                 )
             }
             composable("vehicles") {
@@ -391,6 +402,7 @@ private fun MainScaffold(
                     onAdd = { vehicleId -> openEntry("quick", vehicleId) },
                     onEditEntry = { id -> openEntry("quick", null, id) },
                     onDeleteEntry = vm::deleteUsage,
+                    onReportProblem = { openFeedbackDetail("bug", "Usage log") },
                 )
             }
             composable("analysis") {
@@ -398,6 +410,7 @@ private fun MainScaffold(
                     snapshot = snapshot,
                     onVehicleFilter = vm::setVehicleFilter,
                     onPeriodFilter = vm::setPeriodFilter,
+                    onReportProblem = { context -> openFeedbackDetail("bug", context) },
                 )
             }
             composable("maintenance") {
@@ -412,6 +425,7 @@ private fun MainScaffold(
                     onConsumeAutoOpen = { autoOpenMaintenance = false },
                     onSave = vm::saveMaintenance,
                     onDelete = vm::deleteMaintenance,
+                    onReportProblem = { openFeedbackDetail("bug", "Maintenance") },
                 )
             }
             composable("more") {
@@ -423,6 +437,7 @@ private fun MainScaffold(
                     onData = { openDetail("data") },
                     onGuide = { openDetail("guide") },
                     onVerification = { openDetail("verification") },
+                    onFeedback = { openDetail("feedback") },
                 )
             }
             composable("calibration") {
@@ -459,6 +474,7 @@ private fun MainScaffold(
                     vehicleCount = state.vehicles.size,
                     usageCount = state.usageEntries.size,
                     onBack = { navController.popBackStack() },
+                    onReportProblem = { openFeedbackDetail("bug", "Data management · import error") },
                 )
             }
             composable("guide") {
@@ -469,6 +485,45 @@ private fun MainScaffold(
                 VerificationScreen(
                     results = results,
                     onRun = vm::runVerification,
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("feedback") {
+                FeedbackHubScreen(
+                    onBack = { navController.popBackStack() },
+                    onBugReport = { openFeedbackDetail("bug", "Feedback & Support") },
+                    onFeatureRequest = { openFeedbackDetail("feature", "Feedback & Support") },
+                    onGeneralFeedback = { openFeedbackDetail("general", "Feedback & Support") },
+                    onSupport = { openDetail("support") },
+                )
+            }
+            composable("support") {
+                SupportFleetPulseScreen(onBack = { navController.popBackStack() })
+            }
+            composable(
+                route = "feedback/bug?origin={origin}",
+                arguments = listOf(navArgument("origin") { type = NavType.StringType; defaultValue = "" }),
+            ) { entry ->
+                BugReportScreen(
+                    origin = entry.arguments?.getString("origin").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(
+                route = "feedback/feature?origin={origin}",
+                arguments = listOf(navArgument("origin") { type = NavType.StringType; defaultValue = "" }),
+            ) { entry ->
+                FeatureRequestScreen(
+                    origin = entry.arguments?.getString("origin").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(
+                route = "feedback/general?origin={origin}",
+                arguments = listOf(navArgument("origin") { type = NavType.StringType; defaultValue = "" }),
+            ) { entry ->
+                GeneralFeedbackScreen(
+                    origin = entry.arguments?.getString("origin").orEmpty(),
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -492,6 +547,15 @@ private fun MainScaffold(
                     onDone = { navController.popBackStack() },
                     onOpenVehicles = {
                         navigateTopLevel("vehicles")
+                    },
+                    onReportProblem = {
+                        val label = when (mode) {
+                            "ev_charge" -> "EV charge"
+                            "petrol_fill" -> "Petrol refill"
+                            "ride_only" -> "Ride only"
+                            else -> "Quick entry"
+                        }
+                        openFeedbackDetail("bug", "Usage entry · $label")
                     },
                 )
             }

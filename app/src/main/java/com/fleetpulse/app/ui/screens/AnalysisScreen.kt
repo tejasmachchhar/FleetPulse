@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -14,8 +15,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -56,6 +60,7 @@ fun AnalysisScreen(
     snapshot: UiSnapshot,
     onVehicleFilter: (String) -> Unit,
     onPeriodFilter: (String) -> Unit,
+    onReportProblem: (String) -> Unit,
 ) {
     val state = snapshot.state
     val eval = snapshot.evaluation
@@ -92,6 +97,16 @@ fun AnalysisScreen(
             ScreenHeader(
                 title = "Analysis",
                 subtitle = "Verified figures first, provisional clearly labelled",
+                actions = {
+                    IconButton(onClick = { onReportProblem("Analysis · $tab") }) {
+                        Icon(
+                            Icons.Default.BugReport,
+                            contentDescription = "Report a problem with Analysis",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(20.dp),
+                        )
+                    }
+                },
             )
         }
         item {

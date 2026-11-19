@@ -5,7 +5,10 @@ contact_links:
     about: Installation, onboarding, entry forms, backups, reminders, and troubleshooting.
   - name: Support and privacy-safe reports
     url: https://github.com/tejasmachchhar/FleetPulse/blob/main/SUPPORT.md
-    about: What to include, what never to post, and where to ask.
+    about: What to include, what never to post, diagnostics, and where to ask.
+  - name: Support FleetPulse
+    url: https://github.com/tejasmachchhar/FleetPulse/blob/main/SUPPORT.md#supporting-fleetpulse
+    about: Optional UPI and Buy Me a Coffee support. No feature is locked behind a donation.
   - name: Report a security vulnerability privately
     url: https://github.com/tejasmachchhar/FleetPulse/security/policy
     about: Do not open a public issue for a vulnerability. Use the private security policy.

@@ -9,6 +9,7 @@ import com.fleetpulse.app.data.db.FleetDatabase
 import com.fleetpulse.app.data.prefs.AppPreferences
 import com.fleetpulse.app.data.repo.FleetRepository
 import com.fleetpulse.app.notifications.ReminderWorker
+import com.fleetpulse.app.support.DiagnosticsLogger
 import java.util.concurrent.TimeUnit
 
 class FleetPulseApp : Application() {
@@ -22,6 +23,7 @@ class FleetPulseApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        DiagnosticsLogger.install(this)
         database = Room.databaseBuilder(this, FleetDatabase::class.java, FleetDatabase.NAME)
             .addMigrations(FleetDatabase.MIGRATION_1_2)
             .fallbackToDestructiveMigrationOnDowngrade()

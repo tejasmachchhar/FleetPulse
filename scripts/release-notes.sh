@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Extract the release section for a version from CHANGELOG.md.
-# Usage: scripts/release-notes.sh 4.1.1
+# Usage: scripts/release-notes.sh 4.2.0
 set -euo pipefail
 
 if [[ $# -ne 1 ]]; then

@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -91,6 +92,7 @@ fun MaintenanceScreen(
     onConsumeAutoOpen: () -> Unit,
     onSave: (MaintenanceEntry, Boolean) -> Unit,
     onDelete: (String) -> Unit,
+    onReportProblem: () -> Unit,
 ) {
     var editing by remember { mutableStateOf<MaintenanceEntry?>(null) }
     var creating by remember { mutableStateOf(false) }
@@ -127,6 +129,14 @@ fun MaintenanceScreen(
                 title = "Maintenance",
                 subtitle = "Reminders retire automatically when a newer record of the same category is logged",
                 actions = {
+                    IconButton(onClick = onReportProblem) {
+                        Icon(
+                            Icons.Default.BugReport,
+                            contentDescription = "Report a problem with Maintenance",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(20.dp),
+                        )
+                    }
                     Button(
                         onClick = { creating = true },
                         shape = RoundedCornerShape(12.dp),

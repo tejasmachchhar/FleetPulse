@@ -61,6 +61,7 @@ fun DataManagementScreen(
     vehicleCount: Int,
     usageCount: Int,
     onBack: () -> Unit,
+    onReportProblem: () -> Unit,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -404,7 +405,13 @@ fun DataManagementScreen(
                     )
                 }
             },
-            confirmButton = { TextButton(onClick = { importError = null }) { Text("Close") } },
+            confirmButton = {
+                TextButton(onClick = {
+                    importError = null
+                    onReportProblem()
+                }) { Text("Report problem") }
+            },
+            dismissButton = { TextButton(onClick = { importError = null }) { Text("Close") } },
         )
     }
 }

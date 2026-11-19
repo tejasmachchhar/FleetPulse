@@ -37,7 +37,7 @@ The bottom bar contains:
 - **Usage Log** — all usage records with status filters.
 - **Analysis** — mileage, cost, energy, and savings details.
 - **Maintenance** — service records and reminders.
-- **More** — Calibration, Settings, Data Management, User Guide, and Calculation Verification.
+- **More** — Feedback & Support, Calibration, Settings, Data Management, User Guide, and Calculation Verification.
 
 The floating **+** button opens the quick-entry sheet: EV charge, petrol refill, ride/odometer only, or maintenance.
 
@@ -299,6 +299,51 @@ CSV files are for spreadsheets and review. They are not a restore source.
 - **Load samples** adds the synthetic demo dataset without overwriting records with the same IDs.
 - **Remove samples** deletes only rows flagged `isSample`. Genuine usage, maintenance, and calibration remain. Demo vehicles are removed only when no genuine record references them. Sample tariffs remain while genuine usage still depends on them, so historical costs do not change.
 
+## Feedback and Support
+
+Open **More → Feedback & Support**. The centre has four actions plus project links:
+
+- **Report a Bug** — choose a category such as crash, incorrect calculation, missing data, UI, navigation, or performance; optionally add one sentence.
+- **Suggest an Improvement** — choose a category and write a short suggestion. Problem and expected-behaviour fields are optional.
+- **Send General Feedback** — a short note is enough.
+- **Support FleetPulse** — optional UPI, Buy Me a Coffee, and GitHub Sponsors when configured.
+
+### What the app fills in
+
+The report can include:
+
+- the screen name, such as `Dashboard` or `Usage entry · EV charge`;
+- FleetPulse version and version code;
+- Android version, device manufacturer and model;
+- screen size, density, language, and timestamp;
+- redacted recent diagnostics, exception type and stack frames for bug reports.
+
+It never includes vehicle names or registrations, odometer readings, fuel/charging records, expenses, notes, database contents, location, files, or credentials. The screen context is only a label; the actual values on the screen are not read into the report.
+
+### Preview and consent
+
+1. Tap **Review report**.
+2. Read the exact text in the preview.
+3. If needed, cancel and turn off app version, device/environment, or recent diagnostics on the form.
+4. Tick the consent checkbox.
+5. Choose one destination:
+   - **Open GitHub issue** — opens a prefilled issue page. GitHub may ask you to sign in. FleetPulse cannot press the submit button or confirm that an issue was posted.
+   - **Share** — opens the Android share sheet with the report text.
+   - **Copy** — copies the report to the clipboard.
+   - **Email report** — only appears when a verified support address is configured. It currently does not appear.
+
+Opening GitHub is not a submission. The app never says an issue was created just because a browser opened.
+
+Long reports are shortened locally so the prefilled GitHub link stays reliable. The preview shows the exact shortened text and a note that it was shortened; Share and Copy use the same text. Shorten the description or turn off recent diagnostics to keep more of the technical detail.
+
+### Contextual report buttons
+
+A small bug icon on Dashboard, Usage Log, Analysis, Maintenance, and Quick Entry opens the bug form with that screen already filled in. A failed backup import shows a **Report problem** action. These shortcuts do not add personal records to the report.
+
+### Local diagnostics
+
+FleetPulse keeps a small local diagnostics log for troubleshooting. It is stored in the app's private storage, capped at two rotated files of 64 KiB, and redacted before writing. It is read into a report only when **Recent diagnostics** is enabled. It is never uploaded automatically and there is no crash-reporting service.
+
 ## Calculation Verification
 
 Open **More → Calculation Verification** and tap **Run verification**. The screen runs the same reference suite as the JVM tests:
@@ -322,6 +367,9 @@ A failure means the engine does not match the expected reference values. Report 
 - The database and preferences are in the app's private storage.
 - Backups and CSV files go only where you choose through the system file picker.
 - Exported files are outside the app's protection once written. Store them securely.
+- The feedback preview shows the exact report before any external action; optional diagnostics can be disabled and consent is required.
+- The local diagnostics log is capped at two 64 KiB files and is read into a report only when you leave **Recent diagnostics** on.
+- UPI and Buy Me a Coffee are optional. FleetPulse does not verify payments or store payment credentials.
 - The app does not encrypt the database with a user password; it relies on the Android app sandbox and device encryption.
 - Deleting the app or clearing its storage deletes the local database. Export a backup first.
 

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Existing version tag to release, for example v4.1.1
+        description: Existing version tag to release, for example v4.2.0
         required: true
         type: string
 
@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
-            echo "::error::Tag '$TAG' is not a version tag such as v4.1.1 or v4.1.1-rc.1."
+            echo "::error::Tag '$TAG' is not a version tag such as v4.2.0 or v4.2.0-rc.1."
             exit 1
           fi
           version_name="$(sed -n 's/^[[:space:]]*versionName = "\(.*\)"/\1/p' app/build.gradle.kts | head -n 1)"

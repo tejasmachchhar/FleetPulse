@@ -41,6 +41,10 @@ capture_one "03-usage-log.png" "Usage Log"
 capture_one "04-analysis.png" "Analysis"
 capture_one "05-maintenance.png" "Maintenance"
 capture_one "06-settings.png" "Settings"
+capture_one "07-feedback-hub.png" "More → Feedback & Support"
+capture_one "08-bug-report.png" "Report a Bug with a category selected and the diagnostics card visible"
+capture_one "09-report-preview.png" "The report preview dialog with the consent checkbox"
+capture_one "10-support-fleetpulse.png" "Support FleetPulse with the UPI QR code"
 
 echo
 echo "Captured screenshots in $out_dir."

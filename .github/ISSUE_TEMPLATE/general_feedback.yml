@@ -1,0 +1,42 @@
+name: General feedback
+description: Share a short note about FleetPulse
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for a short note that is not a bug report or a feature request. For problems, use the bug form; for ideas, use the feature request form.
+
+        Do not include real vehicle records, registrations, odometer values, expenses, notes, backups, or secrets.
+  - type: textarea
+    id: message
+    attributes:
+      label: Your feedback
+      description: What would you like to share?
+      placeholder: A short note is enough.
+    validations:
+      required: true
+  - type: dropdown
+    id: context
+    attributes:
+      label: Context (optional)
+      options:
+        - General impression
+        - Documentation
+        - Accessibility
+        - Privacy
+        - Performance
+        - Something else
+  - type: input
+    id: version
+    attributes:
+      label: FleetPulse version (optional)
+      placeholder: "4.2.0 (versionCode 4)"
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have not included real personal data, vehicle records, or secrets.
+          required: true

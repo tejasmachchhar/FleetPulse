@@ -26,7 +26,7 @@ The app is deliberately local-first:
 - Data stays in a local Room database and DataStore preferences
 - Backups and CSV files leave the app only when the user chooses a destination through Android's system file picker
 
-> **Verification status:** version 4.1.1 is source-, unit-test-, lint-, and debug-build-verified. The build environment used for this publication has no Android emulator or connected device, so the UI has not been launched or captured here. See [Screenshots](#screenshots) for the honest status.
+> **Verification status:** version 4.2.0 is source-, unit-test-, lint-, and debug-build-verified. The build environment used for this publication has no Android emulator or connected device, so runtime UI, UPI hand-off, and notification behaviour have not been exercised here. See [Screenshots](#screenshots) and [Verification](#verification) for the honest status.
 
 ## Contents
 
@@ -38,6 +38,8 @@ The app is deliberately local-first:
 - [Build and test](#build-and-test)
 - [Project structure](#project-structure)
 - [Data, privacy, and backup](#data-privacy-and-backup)
+- [Feedback and diagnostics](#feedback-and-diagnostics)
+- [Support FleetPulse](#support-fleetpulse)
 - [Verification](#verification)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -45,7 +47,7 @@ The app is deliberately local-first:
 
 ## Screenshots
 
-**No runtime screenshots are committed yet.** This repository was prepared in a phone-hosted Linux environment with no emulator, no connected Android device, and no display. Publishing mockups, re-creations, or images from the legacy web prototype would misrepresent the Android app, so none are included.
+**No runtime screenshots are committed yet.** This repository was prepared in a phone-hosted Linux environment with no emulator, no connected Android device, and no display. A JVM/Robolectric screenshot attempt was abandoned because Robolectric's native runtime is not supported on Linux aarch64. Publishing mockups, re-creations, or images from the legacy web prototype would misrepresent the Android app, so none are included.
 
 To capture real screens after installing the app:
 
@@ -54,7 +56,7 @@ To capture real screens after installing the app:
 ./scripts/capture-screenshots.sh docs/screenshots
 ```
 
-The script captures the Dashboard, Vehicles, Usage Log, Analysis, Maintenance, and Settings screens. The screenshots can then be committed under `docs/screenshots/` and linked from this section. See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md#device-testing-and-screenshots) for the expected device checks.
+The script captures the Dashboard, Vehicles, Usage Log, Analysis, Maintenance, Settings, Feedback & Support hub, bug report, report preview, and Support FleetPulse screens. The screenshots can then be committed under `docs/screenshots/` and linked from this section. See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md#device-testing-and-screenshots) for the expected device checks.
 
 ## Features
 
@@ -130,6 +132,23 @@ The script captures the Dashboard, Vehicles, Usage Log, Analysis, Maintenance, a
 
 - In-app **Calculation Verification** screen runs the same reference suite as the JVM tests.
 - 30 executable cases cover workbook parity, full-to-full boundaries, partial fills, voltage interpolation, historical tariffs, battery wear, maintenance retirement, and edge cases.
+
+### Feedback & Support Centre
+
+- **More → Feedback & Support** provides Report a Bug, Suggest an Improvement, Send General Feedback, and Support FleetPulse in one native screen.
+- Bug reports use the same categories shown on GitHub, collect app/device/environment details automatically, and include redacted local error information only when the user leaves it enabled.
+- The exact report is shown in a preview before any external action. The user must review it and tick a consent box before opening GitHub, sharing through Android, copying, or emailing.
+- GitHub actions open a prefilled `issues/new` URL with title, body, and labels. The app never claims that an issue was submitted; GitHub sign-in and the final submit button remain with the user. Reports longer than a reliable prefilled link are shortened locally with an explicit note, and the preview shows the exact shortened text.
+- Android Sharesheet and clipboard alternatives work without a GitHub account. Email is hidden unless a monitored support address is configured.
+- Contextual report icons on Dashboard, Usage Log, Analysis, Maintenance, Quick Entry, and failed backup imports prefill only the screen name; vehicle names, registrations, odometer values, fuel/charging records, expenses, notes, database rows, location, and files are never included.
+- Local diagnostics are capped at two rotated files of 64 KiB, redacted before writing, and never uploaded automatically.
+
+### Support FleetPulse
+
+- Optional UPI support using the verified ID `tejasmachchhar1@axl`, with a matching QR code, copy button, and Android UPI chooser. No fixed amount is set.
+- The UPI return path shows a thank-you dialog that explicitly says FleetPulse cannot verify payment completion. It never marks a donation as received.
+- The verified Buy Me a Coffee page is linked when available. GitHub Sponsors is hidden until the maintainer has a public Sponsors profile; setting `GITHUB_SPONSORS_URL` in `SupportConfig.kt` enables it without a UI rewrite.
+- No payment SDK, banking access, SMS permission, or custom payment backend is included.
 
 ## How the calculations work
 
@@ -229,6 +248,7 @@ The demo dataset and verification suite reproduce the reference workbook values:
 | Architecture | Single-activity Compose shell, `AndroidViewModel`, `StateFlow` |
 | Persistence | Room 2.6.1 with KSP; DataStore Preferences |
 | Background work | WorkManager 2.10.0 |
+| QR codes | ZXing core 3.5.3 (local generation only) |
 | Build | Gradle 8.9, Android Gradle Plugin 8.7.3, JDK 17 |
 | SDK | `minSdk 26`, `compileSdk 35`, `targetSdk 35` |
 | Tests | JUnit 4, `kotlinx-coroutines-test`, `org.json` |
@@ -329,6 +349,7 @@ The project's `gradle.properties` limits Gradle to `-Xmx1536m`, one worker, and 
 │       │   │   │   ├── VerificationSuite.kt
 │       │   │   │   └── SampleData.kt    Synthetic demo dataset
 │       │   │   ├── notifications/       Daily reminder worker
+│       │   │   ├── support/             Central links, UPI, report builders, diagnostics
 │       │   │   └── ui/                  ViewModel, components, theme, screens
 │       │   └── res/
 │       └── test/                        JVM unit tests
@@ -355,6 +376,8 @@ The project's `gradle.properties` limits Gradle to `-Xmx1536m`, one worker, and 
 - WorkManager adds local scheduling permissions only (`WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `RECEIVE_BOOT_COMPLETED`, `FOREGROUND_SERVICE`). They do not transmit data.
 - Backups and CSV exports go only where the user points Android's system file picker.
 - Removing sample data deletes only rows flagged `isSample`; genuine records are preserved. Demo vehicles are removed only when no genuine record references them.
+- Feedback diagnostics are written only to the app's private `files/diagnostics` directory. The logger rotates two 64 KiB files, redacts common secrets and identifiers, and never uploads anything.
+- Opening GitHub, the share sheet, an email app, Buy Me a Coffee, or a UPI app hands an explicit intent to another Android app. FleetPulse itself still has no network permission and does not receive transaction confirmation.
 
 Backup format:
 
@@ -382,9 +405,34 @@ ALTER TABLE usage_entries ADD COLUMN includeInMileage INTEGER NOT NULL DEFAULT 1
 
 See [PRIVACY.md](PRIVACY.md) and [docs/DATABASE_SCHEMA.md](docs/DATABASE_SCHEMA.md).
 
+## Feedback and diagnostics
+
+The in-app feedback flow is intentionally privacy-first:
+
+1. Pick a category and optionally add a short description.
+2. Review the exact generated report.
+3. Uncheck app, device, or recent-diagnostics details you do not want to share.
+4. Tick the consent box, then choose GitHub, Android share, copy, or email (when configured).
+
+Reports never include vehicle names or registration numbers, odometer readings, fuel/charging records, maintenance expenses, user notes, database contents, files, location, or credentials. The local diagnostics log records only component names, timestamps, exception types, and stack frames; it does not record exception messages, which can contain parser input. It is capped and rotated, and it is read into a report only when the user leaves **Recent diagnostics** enabled.
+
+GitHub issue forms are available for manually created issues. The app opens the direct GitHub issue composer instead of the YAML form because GitHub issue forms do not accept a prefilled body. The app cannot create an issue for the user, and opening a browser is not treated as a successful submission.
+
+See [PRIVACY.md](PRIVACY.md), [SUPPORT.md](SUPPORT.md), and [docs/USER_GUIDE.md](docs/USER_GUIDE.md#feedback-and-support) for the user-facing policy and workflow.
+
+## Support FleetPulse
+
+FleetPulse remains fully usable without donating. Optional support methods are centralised in `SupportConfig.kt` and only verified destinations are displayed:
+
+- **UPI:** `tejasmachchhar1@axl` — copy the ID, scan the generated QR code, or open an installed UPI app. No amount is fixed and no payment is verified by FleetPulse.
+- **Buy Me a Coffee:** [buymeacoffee.com/tejasmachchhar](https://buymeacoffee.com/tejasmachchhar) — verified public page.
+- **GitHub Sponsors:** not enabled. `https://github.com/sponsors/tejasmachchhar` currently redirects to the normal profile and GitHub reports `hasSponsorsListing: false`. Create and publish a GitHub Sponsors profile, then set `SupportConfig.GITHUB_SPONSORS_URL` to the public sponsorship URL.
+- **Email:** no support mailbox is configured, so the email action stays hidden.
+- **Other providers:** Razorpay and similar services are not configured. Any future provider should be added only after its account, payment URL, fees, and payout requirements are verified; do not add a payment SDK or backend just for donations.
+
 ## Verification
 
-The repository's JVM suite contains **42 tests**:
+The repository's JVM suite contains **51 tests**:
 
 | Test suite | Tests | Focus |
 |---|---:|---|
@@ -393,21 +441,23 @@ The repository's JVM suite contains **42 tests**:
 | `NumberTextTest` | 3 | Editable-number parsing and formatting |
 | `PetrolPricingTest` | 4 | Two-of-three petrol formulas and zero-input handling |
 | `VerificationSuiteTest` | 1 | All in-app verification cases pass |
+| `FeedbackSupportTest` | 9 | Central links, UPI URI, report opt-outs, GitHub URL encoding and length guard, safe stack traces, redaction |
 
 Last verified locally:
 
-- `:app:testDebugUnitTest` — 42 tests, 0 failures
-- `:app:lintDebug` and `:app:lintRelease` — 0 errors, 18 non-blocking warnings each
+- `:app:testDebugUnitTest` — 51 tests, 0 failures
+- `:app:lintDebug` — 0 errors, 18 non-blocking warnings (the same dependency/legacy warnings as 4.1.1)
 - `:app:assembleDebug` — debug APK produced
-- `:app:assembleRelease` / `:app:bundleRelease` — unsigned APK without secrets, and a signed APK with a temporary local test key; the test key was deleted and no production signing secrets are configured or published
+- Feedback and UPI flows are compile-, lint-, and JVM-test-verified; actual GitHub, browser, share-sheet, email, and UPI app hand-offs require a device pass
 
-The debug APK was **not launched** in the publication environment because there is no emulator or connected device. Device acceptance (install, first-launch choice, form entry, notification delivery, SAF pickers, keyboard behaviour, and visual review) still needs one manual pass on the target phone. The keyboard/IME changes are compile- and lint-verified only.
+The debug APK is **not runtime-verified** in the publication environment because there is no emulator or connected device. Device acceptance (install, first-launch choice, form entry, notification delivery, SAF pickers, keyboard behaviour, GitHub/UPI hand-offs, and visual review) still needs one manual pass on the target phone. The feedback screens have no instrumented UI test in this environment.
 
 ## Roadmap
 
 These are maintenance intentions, not promises or dated commitments:
 
 - Complete a device acceptance pass and add genuine screenshots from the running app.
+- Add instrumented Compose tests for the feedback preview, consent gate, and UPI chooser once a device/emulator is available.
 - Add Room migration tests for future schema versions.
 - Add a signed release pipeline when the maintainer's signing keys and secrets are available.
 - Add accessibility and localization review, starting with TalkBack labels and RTL layout.

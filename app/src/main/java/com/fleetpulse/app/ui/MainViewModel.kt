@@ -25,6 +25,7 @@ import com.fleetpulse.app.domain.EvalResult
 import com.fleetpulse.app.domain.SampleData
 import com.fleetpulse.app.domain.VerificationResult
 import com.fleetpulse.app.domain.VerificationSuite
+import com.fleetpulse.app.support.DiagnosticsLogger
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -287,6 +288,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun previewImport(json: String): Result<BackupPayload> {
         val parsed = BackupManager.parse(json)
         parsed.onSuccess { _lastImportPreview.value = it }
+            .onFailure { DiagnosticsLogger.logError("BackupImport", it) }
         return parsed
     }
 
@@ -305,6 +307,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             filter.value = filter.value.copy(vehicleId = "ALL")
             toast("Backup restored: ${payload.vehicles.size} vehicles, ${payload.usage.size} usage entries.")
         }.onFailure {
+            DiagnosticsLogger.logError("BackupRestore", it)
             toast("Restore failed: ${it.message ?: "unknown error"}")
         }
     }

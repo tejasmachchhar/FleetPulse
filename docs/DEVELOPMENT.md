@@ -93,6 +93,7 @@ On a normal desktop, you can raise `-Xmx` and `org.gradle.workers.max` in your u
 | `app/src/main/java/com/fleetpulse/app/data/prefs/` | DataStore preferences |
 | `app/src/main/java/com/fleetpulse/app/domain/` | Pure calculation, parsing, verification, sample data |
 | `app/src/main/java/com/fleetpulse/app/notifications/` | Daily reminder worker |
+| `app/src/main/java/com/fleetpulse/app/support/` | Central links, UPI URI, report builders, diagnostics, redaction, external intents |
 | `app/src/main/java/com/fleetpulse/app/ui/` | ViewModel, components, theme, screens |
 | `app/src/test/java/` | JVM tests |
 | `app/schemas/` | Exported Room schemas; tracked |
@@ -106,7 +107,9 @@ On a normal desktop, you can raise `-Xmx` and `org.gradle.workers.max` in your u
 - Use Material 3 theme colours and existing components. Avoid hard-coded colours except the defined vehicle palette.
 - Keep user-facing strings explicit and honest. If a value is unavailable, show `—` or a labelled unavailable state, not `0`.
 - Do not introduce `INTERNET`, analytics, ads, or a network SDK.
+- Keep external destinations in `support/SupportConfig.kt`; never scatter unverified URLs, UPI IDs, or payment links through screens. Optional values stay null and the UI hides them.
 - Do not add a dependency for something the standard library or existing Compose/Room APIs can do.
+- Never add automatic diagnostic upload, a crash-reporting SDK, or payment verification logic. Reports must remain previewed and consent-gated.
 - Preserve the calculation engine's pure-Kotlin boundary. It must not import Android classes.
 - Add KDoc for non-obvious formulas and state-machine transitions.
 - Update the relevant docs when behaviour changes.
@@ -126,8 +129,11 @@ Test suites:
 - `NumberTextTest` — editable-number parsing/formatting.
 - `PetrolPricingTest` — two-of-three formulas and zero/non-finite input.
 - `VerificationSuiteTest` — all in-app verification cases pass.
+- `FeedbackSupportTest` — central link/UPI config, report opt-outs, GitHub URL encoding and length capping, categories, and redaction.
 
 When fixing a calculation bug, add a failing test first that uses a minimal synthetic state. Do not use real vehicle records in tests.
+
+When changing a feedback report, update `FeedbackSupportTest` and verify the preview still contains no vehicle/transaction fields. Do not embed a real GitHub token, email address, UPI PIN, or keystore in the app; external actions are intents only.
 
 When changing backup JSON, test both:
 
@@ -192,10 +198,19 @@ When a device or emulator is available:
 15. Run the in-app Calculation Verification screen.
 16. Open every long form with the keyboard and check the focused field remains visible.
 17. Check light/dark/system themes and a small screen.
+18. Open **More → Feedback & Support** and check every action and project link.
+19. Create a bug report with only a category; verify diagnostics are filled in automatically and no vehicle/odometer/expense values appear.
+20. Disable each diagnostic toggle and verify the preview omits that section.
+21. Verify the consent checkbox is required before GitHub/share/copy/email; cancel and confirm no external app opens.
+22. Open the GitHub URL and confirm it is prefilled; do not treat the browser opening as a submitted issue.
+23. Use Share and Copy; confirm the clipboard text matches the preview.
+24. Open contextual bug icons from Dashboard, Usage Log, Analysis, Maintenance, and Quick Entry; confirm only the screen label is prefilled.
+25. On **Support FleetPulse**, copy the UPI ID, scan the QR with another device, open the UPI chooser, and confirm the thank-you dialog does not claim payment success. Test on a device with no UPI app if possible.
+26. Verify Buy Me a Coffee opens externally, GitHub Sponsors is hidden while unconfigured, and no email button appears while `SUPPORT_EMAIL` is null.
 
 ## Device testing and screenshots
 
-Screenshots must come from the real app. Do not create mockups or label a web prototype screenshot as the Android UI.
+Screenshots must come from the real app. Do not create mockups or label a web prototype screenshot as the Android UI. A Robolectric/Compose JVM render is not available on the current Linux aarch64 host because Robolectric's native runtime does not support that platform; leave screenshots pending rather than substituting generated images.
 
 ```bash
 # Start the app on the connected device first
@@ -210,6 +225,10 @@ The helper uses `adb exec-out screencap -p` and writes:
 - `04-analysis.png`
 - `05-maintenance.png`
 - `06-settings.png`
+- `07-feedback-hub.png`
+- `08-bug-report.png`
+- `09-report-preview.png`
+- `10-support-fleetpulse.png`
 
 Navigate to each screen before capturing the corresponding file, or adapt the script for your device automation. Review the images for personal data before committing. Use the synthetic demo dataset.
 

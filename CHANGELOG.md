@@ -16,6 +16,46 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.
 - Accessibility and localization review.
 
+## [4.2.0] - 2026-11-19
+
+### Added
+
+- Native **Feedback & Support Centre** under More with Report a Bug, Suggest an Improvement, Send General Feedback, Support FleetPulse, and verified project links.
+- Structured bug, feature, and general-feedback reports with automatic app/device/environment details and optional redacted local diagnostics.
+- Exact report preview with per-section diagnostic opt-outs and an explicit consent checkbox before GitHub, share, copy, or email actions.
+- Prefilled GitHub issue URLs with category labels and honest handling: opening a browser is never reported as a submitted issue. Reports longer than the reliable prefilled-link size are shortened locally with an explicit note, and the preview shows that exact shortened text.
+- Android Sharesheet and clipboard alternatives that work without a GitHub account. Email remains hidden because no support mailbox is configured.
+- Contextual report actions on Dashboard, Usage Log, Analysis, Maintenance, Quick Entry, and failed backup imports.
+- Local diagnostics logger with rotation, a 64 KiB per-file cap, redaction of common secrets/URIs/paths/identifiers, safe exception type/stack-frame logging without exception messages, and an uncaught-exception hook that delegates to Android's normal crash handler.
+- Optional support screen with verified UPI ID `tejasmachchhar1@axl`, locally generated QR code, UPI chooser, copy button, and no fixed amount.
+- A non-verifying thank-you dialog after returning from a UPI app, plus explicit statements that FleetPulse cannot confirm payment.
+- Verified Buy Me a Coffee link. GitHub Sponsors stays hidden until a public Sponsors profile exists; the required configuration step is documented.
+- Central configuration for repository, documentation, privacy, releases, issue labels, UPI, Buy Me a Coffee, Sponsors, and optional support email.
+- New bug, feature-request, and general-feedback issue forms; category labels; README, user-guide, architecture, development, privacy, support, and release documentation updates.
+- `FeedbackSupportTest` coverage for central links, UPI URI, report opt-outs, GitHub URL encoding and length capping, safe stack traces, categories, and redaction.
+
+### Changed
+
+- Version name is `4.2.0` and versionCode is `4`. Backup app label matches the current version.
+- `buildConfig` generation is enabled for version/build metadata.
+- ZXing core 3.5.3 is used only for local QR rendering.
+- The More screen now exposes Feedback & Support and describes the expanded tools.
+
+### Security
+
+- No `INTERNET` permission, backend, analytics, crash-reporting SDK, payment SDK, or payment verification.
+- Diagnostics remain local unless the user reviews the report, ticks consent, and chooses an external destination.
+- No vehicle names/registrations, odometer values, fuel/charging records, expenses, notes, database contents, files, location, or credentials are included automatically.
+- The manifest adds a `<queries>` declaration for the `upi` scheme, not a runtime permission.
+- No tokens, payment secrets, or keystores are embedded in the APK.
+
+### Verification
+
+- `./gradlew :app:testDebugUnitTest` — 51 tests, 0 failures.
+- `./gradlew :app:lintDebug` — 0 errors, 18 non-blocking dependency/legacy warnings.
+- `./gradlew :app:assembleDebug` — debug APK produced with versionName 4.2.0 and versionCode 4.
+- Feedback reports, UPI URI, redaction, and URL encoding are JVM-tested. GitHub, browser, share-sheet, email, and UPI hand-offs still require a device pass because the publication environment has no Android runtime.
+
 ## [4.1.1] - 2026-11-17
 
 ### Added
@@ -62,5 +102,6 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - `./gradlew :app:assembleRelease` / `:app:bundleRelease` — unsigned without signing secrets; the conditional signing path was verified with a temporary local test key, which was deleted afterwards.
 - Device launch, screenshots, notification delivery, SAF pickers, and visual keyboard behaviour remain pending on a real Android runtime.
 
-[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.1.1...HEAD
+[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.2.0...HEAD
+[4.2.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.2.0
 [4.1.1]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.1.1

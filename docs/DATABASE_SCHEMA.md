@@ -263,7 +263,7 @@ JSON v2 (`format: "fleetpulse-backup"`, `version: 2`) maps to the tables as foll
 The backup writer identifies itself with:
 
 ```text
-"app": "FleetPulse Android 4.1.1"
+"app": "FleetPulse Android 4.2.0"
 ```
 
 That label is a format-level compatibility string. If the app version changes, update the string and its tests together so backups remain traceable.

@@ -8,7 +8,8 @@ FleetPulse is a single-activity Android app written in Kotlin with Jetpack Compo
 - Make every stored value traceable to a user-entered record.
 - Separate sample records from genuine records with `isSample`.
 - Never silently hide a missing value behind a zero or a fabricated result.
-- Keep data on the device unless the user explicitly exports it.
+- Keep data on the device unless the user explicitly exports it or chooses an external feedback/support action.
+- Make feedback low-effort without silently collecting vehicle or financial data.
 - Preserve the reference behaviour of the original FleetPulse v4 prototype while using native Android storage and UI.
 
 ## Layers
@@ -45,7 +46,7 @@ FleetPulse is a single-activity Android app written in Kotlin with Jetpack Compo
 
 - `MainActivity` is the only activity. It enables edge-to-edge drawing, collects preferences and the UI snapshot, and shows either onboarding, a loading state, or the main scaffold.
 - `MainScaffold` owns the `NavHost`, bottom navigation, FAB, and quick-entry bottom sheet.
-- Top-level destinations are Dashboard, Vehicles, Usage Log, Analysis, Maintenance, and More. Detail destinations are Calibration, Settings, Data Management, User Guide, Calculation Verification, and the entry form.
+- Top-level destinations are Dashboard, Vehicles, Usage Log, Analysis, Maintenance, and More. Detail destinations are Feedback & Support, bug/feature/general report forms, Support FleetPulse, Calibration, Settings, Data Management, User Guide, Calculation Verification, and the entry form.
 - `Scaffold` uses `WindowInsets.safeDrawing`; full-screen editors use the same inset policy. Editable fields request bring-into-view when the IME inset changes.
 - Screens receive immutable data and callbacks. They do not open the database directly.
 - `ui/components/` contains shared cards, fields, empty states, and Canvas charts. No chart library is used.
@@ -96,7 +97,7 @@ The engine returns immutable result types (`EvaluatedUsage`, `VehicleAllTimeStat
 
 ### Platform layer
 
-- `FleetPulseApp` creates the Room database, repository, and preferences, then creates the notification channel and schedules the unique periodic reminder work.
+- `FleetPulseApp` installs the local diagnostics logger, creates the Room database, repository, and preferences, then creates the notification channel and schedules the unique periodic reminder work.
 - `ReminderWorker` reads the database directly, evaluates maintenance with `CalcEngine`, and posts local notifications for overdue/due-soon reminders. It returns success even when notifications are disabled or permission is missing; the worker does not retry noisily.
 - Backup export/import and CSV export use Android's Storage Access Framework through `ActivityResultContracts.CreateDocument` and `OpenDocument`.
 - `FileProvider` is declared with a private cache path for any file sharing that needs a content URI. No files are shared automatically.
@@ -118,6 +119,38 @@ The engine returns immutable result types (`EvaluatedUsage`, `VehicleAllTimeStat
 - Entry navigation uses a route with encoded `mode`, `vehicleId`, and `entryId` arguments. `QuickEntryScreen` adapts its fields to the selected vehicle's energy source and to edit/new mode.
 - Vehicle and maintenance editors are full-screen dialogs with scrollable bodies. Settings, calibration, tariffs, and other forms use the shared keyboard-aware components.
 - Notifications can deep-link to the maintenance screen through the `navigate` intent extra.
+
+## Feedback and diagnostics flow
+
+- `support/SupportConfig.kt` is the single source of truth for repository, documentation, issue, UPI, Buy Me a Coffee, GitHub Sponsors, and support-email values. Optional destinations are nullable and hidden when unverified.
+- `support/DiagnosticReport.kt` holds pure report builders, category-to-label mappings, and GitHub URL encoding. It receives a `DiagnosticSnapshot`; it has no Android UI dependency except the snapshot collection helper.
+- `support/DiagnosticsLogger.kt` writes local, redacted, size-capped logs and installs an uncaught-exception handler that records exception types and stack frames without exception messages, then delegates to Android's normal crash handler. It never uploads data.
+- `support/DiagnosticsRedactor.kt` removes common emails, registration-like values, private file/content URIs and paths, long numbers, and secret-like assignments from diagnostic text.
+- `support/SupportActions.kt` performs permission-free intents for browser, share sheet, clipboard, email (only when configured), and the UPI chooser.
+- `ui/components/QrCode.kt` generates the UPI QR locally with ZXing; no image or payment data leaves the device.
+- `FeedbackHubScreen`, `BugReportScreen`, `FeatureRequestScreen`, `GeneralFeedbackScreen`, and `SupportFleetPulseScreen` own only ephemeral form state. Reports are built in memory and shown in `ReportPreviewDialog` before any external action.
+- The consent checkbox gates GitHub, share, copy, and email. The app does not set a success flag when an external activity returns. UPI's activity result opens a thank-you dialog that explicitly disclaims payment verification.
+- Contextual report icons pass only a screen label (`Dashboard`, `Analysis · costs`, `Usage entry · EV charge`, and similar). They do not read vehicle or transaction values into the report.
+
+```text
+screen context + optional description
+        │
+        ▼
+DiagnosticsCollector (app/device/environment + local log tail)
+        │
+        ▼
+FeedbackReportBuilder (pure formatting, opt-out flags)
+        │
+        ▼
+ReportPreviewDialog (exact text + consent)
+        │
+        ├── GitHub issues/new URL
+        ├── Android share sheet
+        ├── clipboard
+        └── email only if SupportConfig.SUPPORT_EMAIL is set
+
+No automatic upload, no backend, no INTERNET permission.
+```
 
 ## Data flow for a saved entry
 
@@ -194,7 +227,8 @@ Km-based reminders compare `nextDueKm` with the latest odometer in a non-error u
 - Backup tests use `org.json` on the JVM.
 - Petrol and number parsing tests are pure JVM.
 - `VerificationSuiteTest` executes the in-app suite so a UI parity failure also fails CI.
-- No instrumented tests are required for the CI build. Device/UI tests would need an emulator or physical device and are listed as a future improvement.
+- `FeedbackSupportTest` covers the central config, exact UPI URI, report opt-outs, GitHub URL encoding and length capping, category labels, and redaction on the JVM.
+- No instrumented tests are required for the CI build. Device/UI tests (including preview consent, GitHub hand-off, UPI chooser, share sheet, and email) would need an emulator or physical device and are listed as a future improvement.
 
 ## Deliberate non-goals
 

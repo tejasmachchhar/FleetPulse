@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.History
@@ -67,6 +68,7 @@ fun UsageLogScreen(
     onAdd: (String?) -> Unit,
     onEditEntry: (String) -> Unit,
     onDeleteEntry: (String) -> Unit,
+    onReportProblem: () -> Unit,
 ) {
     var statusFilter by remember { mutableStateOf("ALL") }
     var pendingDelete by remember { mutableStateOf<EvaluatedUsage?>(null) }
@@ -90,6 +92,14 @@ fun UsageLogScreen(
                 title = "Usage log",
                 subtitle = "${allForSelection.size} entries · full-to-full verification",
                 actions = {
+                    IconButton(onClick = onReportProblem) {
+                        Icon(
+                            Icons.Default.BugReport,
+                            contentDescription = "Report a problem with Usage log",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(20.dp),
+                        )
+                    }
                     TextButton(onClick = { onAdd(selectedVehicle.takeIf { it != "ALL" }) }) {
                         Icon(Icons.Default.Add, null, modifier = Modifier.size(16.dp))
                         Spacer(Modifier.width(4.dp))
