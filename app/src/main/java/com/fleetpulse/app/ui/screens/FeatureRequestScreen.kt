@@ -214,7 +214,7 @@ fun FeatureRequestScreen(
 
         item {
             Text(
-                "You can open a prefilled GitHub issue, share the text through Android, or copy it. " +
+                "You can open a prefilled GitHub issue, email the report, share the text through Android, or copy it. " +
                     "FleetPulse does not create a GitHub account or post on your behalf.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -227,7 +227,7 @@ fun FeatureRequestScreen(
             title = "Review suggestion",
             report = report,
             onDismiss = { showPreview = false },
-            onOpenGitHub = {
+            onPrimaryAction = {
                 val url = FeedbackReportBuilder.issueUrl(issue)
                 if (SupportActions.openUrl(context, url)) {
                     toast("Opening GitHub. FleetPulse cannot submit the issue for you.")
@@ -254,14 +254,12 @@ fun FeatureRequestScreen(
                     false
                 }
             },
-            onEmail = SupportConfig.SUPPORT_EMAIL?.let { address ->
-                {
-                    if (SupportActions.email(context, address, "FleetPulse feature request", report)) {
-                        true
-                    } else {
-                        toast("No email app is available.")
-                        false
-                    }
+            onEmail = {
+                if (SupportActions.email(context, SupportConfig.SUPPORT_EMAIL, "FleetPulse feature request", report)) {
+                    true
+                } else {
+                    toast("No email app is available.")
+                    false
                 }
             },
         )

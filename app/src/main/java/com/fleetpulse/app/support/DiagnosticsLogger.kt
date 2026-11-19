@@ -145,4 +145,7 @@ object BuildInfo {
 
     val BUILD_TYPE: String
         get() = com.fleetpulse.app.BuildConfig.BUILD_TYPE
+
+    val PACKAGE_NAME: String
+        get() = com.fleetpulse.app.BuildConfig.APPLICATION_ID
 }

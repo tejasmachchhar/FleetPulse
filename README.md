@@ -26,7 +26,7 @@ The app is deliberately local-first:
 - Data stays in a local Room database and DataStore preferences
 - Backups and CSV files leave the app only when the user chooses a destination through Android's system file picker
 
-> **Verification status:** version 4.2.0 is source-, unit-test-, lint-, and debug-build-verified. The build environment used for this publication has no Android emulator or connected device, so runtime UI, UPI hand-off, and notification behaviour have not been exercised here. See [Screenshots](#screenshots) and [Verification](#verification) for the honest status.
+> **Verification status:** version 4.3.0 is source-, unit-test-, lint-, and debug-build-verified. The build environment used for this publication has no Android emulator or connected device, so runtime UI, UPI hand-off, and notification behaviour have not been exercised here. See [Screenshots](#screenshots) and [Verification](#verification) for the honest status.
 
 ## Contents
 
@@ -39,6 +39,7 @@ The app is deliberately local-first:
 - [Project structure](#project-structure)
 - [Data, privacy, and backup](#data-privacy-and-backup)
 - [Feedback and diagnostics](#feedback-and-diagnostics)
+- [About and project links](#about-and-project-links)
 - [Support FleetPulse](#support-fleetpulse)
 - [Verification](#verification)
 - [Roadmap](#roadmap)
@@ -56,7 +57,7 @@ To capture real screens after installing the app:
 ./scripts/capture-screenshots.sh docs/screenshots
 ```
 
-The script captures the Dashboard, Vehicles, Usage Log, Analysis, Maintenance, Settings, Feedback & Support hub, bug report, report preview, and Support FleetPulse screens. The screenshots can then be committed under `docs/screenshots/` and linked from this section. See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md#device-testing-and-screenshots) for the expected device checks.
+The script captures the Dashboard, Vehicles, Usage Log, Analysis, Maintenance, Settings, Feedback & Support hub, bug report, report preview, Support FleetPulse, About, and Email Feedback screens. The screenshots can then be committed under `docs/screenshots/` and linked from this section. See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md#device-testing-and-screenshots) for the expected device checks.
 
 ## Features
 
@@ -135,17 +136,25 @@ The script captures the Dashboard, Vehicles, Usage Log, Analysis, Maintenance, S
 
 ### Feedback & Support Centre
 
-- **More → Feedback & Support** provides Report a Bug, Suggest an Improvement, Send General Feedback, and Support FleetPulse in one native screen.
+- **More → Feedback & Support** provides Report a Bug, Suggest an Improvement, Send General Feedback, Email Feedback & Support, and Support FleetPulse in one native screen.
 - Bug reports use the same categories shown on GitHub, collect app/device/environment details automatically, and include redacted local error information only when the user leaves it enabled.
-- The exact report is shown in a preview before any external action. The user must review it and tick a consent box before opening GitHub, sharing through Android, copying, or emailing.
+- The exact report or email draft is shown in a preview before any external action. The user must review it and tick a consent box before opening GitHub, opening an email app, sharing through Android, or copying.
 - GitHub actions open a prefilled `issues/new` URL with title, body, and labels. The app never claims that an issue was submitted; GitHub sign-in and the final submit button remain with the user. Reports longer than a reliable prefilled link are shortened locally with an explicit note, and the preview shows the exact shortened text.
-- Android Sharesheet and clipboard alternatives work without a GitHub account. Email is hidden unless a monitored support address is configured.
+- **Email Feedback & Support** uses `tejasmachchhar2019@gmail.com`. It offers Bug, Improvement, and General Feedback drafts, prefilled with the subject, body, app version, and only the device details the user approves. FleetPulse opens the user's email app; it never sends mail silently or confirms delivery. If no email app is installed, the draft can be copied or shared.
+- Android Sharesheet and clipboard alternatives work without a GitHub account.
 - Contextual report icons on Dashboard, Usage Log, Analysis, Maintenance, Quick Entry, and failed backup imports prefill only the screen name; vehicle names, registrations, odometer values, fuel/charging records, expenses, notes, database rows, location, and files are never included.
 - Local diagnostics are capped at two rotated files of 64 KiB, redacted before writing, and never uploaded automatically.
+
+### About screen
+
+- **More → About FleetPulse** contains the verified project destinations: GitHub repository, user guide, changelog, latest release, privacy policy, and support/reporting guide.
+- Feedback & Support stays focused on user actions rather than repeating a second list of project links.
+- The About screen also shows the current version, version code, build type, package name, and offline-only privacy summary.
 
 ### Support FleetPulse
 
 - Optional UPI support using the verified ID `tejasmachchhar1@axl`, with a matching QR code, copy button, and Android UPI chooser. No fixed amount is set.
+- The UPI URI includes `cu=INR`, uses safe query escaping, and resolves installed handlers with package visibility for Android 11+. If no compatible app is found, the screen offers the QR code, copy, and share fallbacks instead of leaving the button unresponsive.
 - The UPI return path shows a thank-you dialog that explicitly says FleetPulse cannot verify payment completion. It never marks a donation as received.
 - The verified Buy Me a Coffee page is linked when available. GitHub Sponsors is hidden until the maintainer has a public Sponsors profile; setting `GITHUB_SPONSORS_URL` in `SupportConfig.kt` enables it without a UI rewrite.
 - No payment SDK, banking access, SMS permission, or custom payment backend is included.
@@ -412,13 +421,24 @@ The in-app feedback flow is intentionally privacy-first:
 1. Pick a category and optionally add a short description.
 2. Review the exact generated report.
 3. Uncheck app, device, or recent-diagnostics details you do not want to share.
-4. Tick the consent box, then choose GitHub, Android share, copy, or email (when configured).
+4. Tick the consent box, then choose GitHub, email, Android share, or copy.
 
 Reports never include vehicle names or registration numbers, odometer readings, fuel/charging records, maintenance expenses, user notes, database contents, files, location, or credentials. The local diagnostics log records only component names, timestamps, exception types, and stack frames; it does not record exception messages, which can contain parser input. It is capped and rotated, and it is read into a report only when the user leaves **Recent diagnostics** enabled.
 
-GitHub issue forms are available for manually created issues. The app opens the direct GitHub issue composer instead of the YAML form because GitHub issue forms do not accept a prefilled body. The app cannot create an issue for the user, and opening a browser is not treated as a successful submission.
+Structured GitHub issue forms are available for bugs, feature requests, UI/UX improvements, and general feedback. The app opens the direct GitHub issue composer instead of the YAML form because GitHub issue forms do not accept a prefilled body. The app cannot create an issue for the user, and opening a browser is not treated as a successful submission. Users without a GitHub account can use the email flow instead.
 
 See [PRIVACY.md](PRIVACY.md), [SUPPORT.md](SUPPORT.md), and [docs/USER_GUIDE.md](docs/USER_GUIDE.md#feedback-and-support) for the user-facing policy and workflow.
+
+## About and project links
+
+Project destinations live in **More → About FleetPulse** so Feedback & Support stays focused on reporting and user assistance. The screen links only verified public URLs:
+
+- GitHub repository and source code
+- Documentation / User Guide
+- Changelog / release notes
+- Latest release and APK downloads
+- Privacy policy
+- Support and privacy-safe reporting guide
 
 ## Support FleetPulse
 
@@ -427,12 +447,12 @@ FleetPulse remains fully usable without donating. Optional support methods are c
 - **UPI:** `tejasmachchhar1@axl` — copy the ID, scan the generated QR code, or open an installed UPI app. No amount is fixed and no payment is verified by FleetPulse.
 - **Buy Me a Coffee:** [buymeacoffee.com/tejasmachchhar](https://buymeacoffee.com/tejasmachchhar) — verified public page.
 - **GitHub Sponsors:** not enabled. `https://github.com/sponsors/tejasmachchhar` currently redirects to the normal profile and GitHub reports `hasSponsorsListing: false`. Create and publish a GitHub Sponsors profile, then set `SupportConfig.GITHUB_SPONSORS_URL` to the public sponsorship URL.
-- **Email:** no support mailbox is configured, so the email action stays hidden.
+- **Email:** `tejasmachchhar2019@gmail.com` — used for feedback, bug reports, feature requests, and general questions. The app opens the user's email app with a reviewed draft; it cannot send or confirm delivery.
 - **Other providers:** Razorpay and similar services are not configured. Any future provider should be added only after its account, payment URL, fees, and payout requirements are verified; do not add a payment SDK or backend just for donations.
 
 ## Verification
 
-The repository's JVM suite contains **51 tests**:
+The repository's JVM suite contains **54 tests**:
 
 | Test suite | Tests | Focus |
 |---|---:|---|
@@ -441,14 +461,15 @@ The repository's JVM suite contains **51 tests**:
 | `NumberTextTest` | 3 | Editable-number parsing and formatting |
 | `PetrolPricingTest` | 4 | Two-of-three petrol formulas and zero-input handling |
 | `VerificationSuiteTest` | 1 | All in-app verification cases pass |
-| `FeedbackSupportTest` | 9 | Central links, UPI URI, report opt-outs, GitHub URL encoding and length guard, safe stack traces, redaction |
+| `FeedbackSupportTest` | 12 | Central links and email, UPI URI, report opt-outs, email drafts, GitHub URL encoding and length guard, safe stack traces, redaction |
 
 Last verified locally:
 
-- `:app:testDebugUnitTest` — 51 tests, 0 failures
-- `:app:lintDebug` — 0 errors, 18 non-blocking warnings (the same dependency/legacy warnings as 4.1.1)
-- `:app:assembleDebug` — debug APK produced
-- Feedback and UPI flows are compile-, lint-, and JVM-test-verified; actual GitHub, browser, share-sheet, email, and UPI app hand-offs require a device pass
+- `:app:testDebugUnitTest` — 54 tests, 0 failures
+- `:app:lintDebug` — 0 errors, 18 non-blocking dependency/legacy warnings
+- `:app:assembleDebug` — debug APK produced with versionName 4.3.0 and versionCode 5
+- `:app:assembleRelease` and `:app:bundleRelease` — succeeded; the release APK remains unsigned without signing secrets
+- Feedback, email, About, and UPI flows are compile-, lint-, and JVM-test-verified; actual GitHub, browser, share-sheet, email, and UPI app hand-offs require a device pass
 
 The debug APK is **not runtime-verified** in the publication environment because there is no emulator or connected device. Device acceptance (install, first-launch choice, form entry, notification delivery, SAF pickers, keyboard behaviour, GitHub/UPI hand-offs, and visual review) still needs one manual pass on the target phone. The feedback screens have no instrumented UI test in this environment.
 

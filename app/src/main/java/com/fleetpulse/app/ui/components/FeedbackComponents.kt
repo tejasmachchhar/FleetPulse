@@ -159,10 +159,13 @@ fun ReportPreviewDialog(
     title: String,
     report: String,
     onDismiss: () -> Unit,
-    onOpenGitHub: () -> Boolean,
+    onPrimaryAction: () -> Boolean,
     onShare: () -> Boolean,
     onCopy: () -> Boolean,
     onEmail: (() -> Boolean)? = null,
+    primaryActionLabel: String = "Open GitHub issue",
+    primaryActionHint: String = "GitHub may ask you to sign in. FleetPulse cannot submit an issue for you, " +
+        "and it never reports a submission as complete just because another app opened.",
 ) {
     var consent by remember { mutableStateOf(false) }
     Dialog(
@@ -233,20 +236,19 @@ fun ReportPreviewDialog(
                         }
                     }
                     Text(
-                        "GitHub may ask you to sign in. FleetPulse cannot submit an issue for you, " +
-                            "and it never reports a submission as complete just because another app opened.",
+                        primaryActionHint,
                         style = MaterialTheme.typography.labelSmall,
                         color = FleetAmber,
                     )
                     Spacer(Modifier.height(12.dp))
                     Button(
                         onClick = {
-                            if (onOpenGitHub()) onDismiss()
+                            if (onPrimaryAction()) onDismiss()
                         },
                         enabled = consent,
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(14.dp),
-                    ) { Text("Open GitHub issue") }
+                    ) { Text(primaryActionLabel) }
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -284,5 +286,46 @@ fun ReportPreviewDialog(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ProjectLinkRow(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    tint: Color,
+    onClick: () -> Unit,
+) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            Modifier
+                .size(36.dp)
+                .background(tint.copy(alpha = 0.13f), RoundedCornerShape(11.dp)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, null, tint = tint, modifier = Modifier.size(19.dp))
+        }
+        Spacer(Modifier.width(11.dp))
+        Column(Modifier.weight(1f)) {
+            Text(title, style = MaterialTheme.typography.bodyLarge)
+            Text(
+                subtitle,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        Icon(
+            Icons.Default.ChevronRight,
+            null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.size(19.dp),
+        )
     }
 }

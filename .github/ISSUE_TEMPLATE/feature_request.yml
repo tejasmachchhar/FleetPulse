@@ -1,14 +1,23 @@
 name: Feature request
 description: Suggest a focused improvement to FleetPulse
 title: "[Feature]: "
-labels: ["feature-request", "enhancement"]
+labels: ["feature-request", "enhancement", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        FleetPulse is intentionally offline-first. Please explain the user problem before proposing a solution. Do not include real vehicle records or personal data.
+        FleetPulse is intentionally offline-first. Explain the user problem before proposing a solution. Do not include real vehicle records, registration numbers, odometer values, expenses, notes, backups, or secrets.
 
-        If you used **More → Feedback & Support → Suggest an Improvement**, paste the app-generated report where it helps; the app already includes the category, suggestion, optional context, and only the diagnostics you approved.
+        For design, accessibility, navigation, or usability suggestions, use the **UI/UX improvement** form instead. For a bug, use **Bug report**.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before filing
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I have not included real personal data or secrets.
+          required: true
   - type: dropdown
     id: category
     attributes:
@@ -17,7 +26,6 @@ body:
       options:
         - New feature
         - Existing feature improvement
-        - UI/UX improvement
         - Performance improvement
         - Calculation improvement
         - Other
@@ -38,10 +46,10 @@ body:
       description: Describe the user need or limitation, not just the requested UI.
       placeholder: When tracking ..., I cannot ...
   - type: textarea
-    id: expected
+    id: benefit
     attributes:
-      label: Expected behaviour (optional)
-      description: What should the app do instead?
+      label: Expected user benefit (optional)
+      description: What becomes easier, faster, more accurate, or more private?
   - type: dropdown
     id: area
     attributes:
@@ -68,17 +76,15 @@ body:
       label: Scope and risks (optional)
       description: Does this change calculations, storage, permissions, or privacy? Would it affect existing data?
   - type: textarea
-    id: context
+    id: examples
     attributes:
-      label: Additional context (optional)
-      description: Mockups are welcome only if clearly labelled as mockups; do not present them as current app screenshots.
+      label: Examples, mockups, or screenshots (optional)
+      description: Label mockups clearly. Do not present a mockup as a current app screenshot, and do not include personal data.
   - type: checkboxes
     id: confirmations
     attributes:
       label: Confirmation
       options:
-        - label: I searched existing issues and this is not a duplicate.
-          required: true
         - label: This request preserves the offline-only, no-account privacy model.
           required: true
         - label: I have not included real personal data or secrets.

@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.LocalCafe
 import androidx.compose.material.icons.filled.OpenInNew
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -73,6 +74,19 @@ fun SupportFleetPulseScreen(
             Toast.makeText(context, "UPI ID copied.", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, "Could not copy the UPI ID.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun shareUpiDetails() {
+        val details = buildString {
+            appendLine("FleetPulse UPI support")
+            appendLine("UPI ID: ${SupportConfig.UPI_ID}")
+            appendLine("Payee: ${SupportConfig.UPI_PAYEE_NAME}")
+            appendLine("Note: ${SupportConfig.UPI_NOTE}")
+            appendLine("Amount: enter any amount in your UPI app; there is no fixed amount.")
+        }.trimEnd()
+        if (!SupportActions.shareText(context, details, "Share FleetPulse UPI details")) {
+            Toast.makeText(context, "No app is available to share these details.", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -161,12 +175,16 @@ fun SupportFleetPulseScreen(
                 }
                 Button(
                     onClick = {
-                        val intent = SupportActions.upiChooserIntent(context)
-                        if (intent == null) {
-                            showNoUpi = true
-                        } else {
-                            upiLauncher.launch(intent)
-                        }
+                        val launched = runCatching {
+                            val intent = SupportActions.upiChooserIntent(context)
+                            if (intent == null) {
+                                false
+                            } else {
+                                upiLauncher.launch(intent)
+                                true
+                            }
+                        }.getOrDefault(false)
+                        if (!launched) showNoUpi = true
                     },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(14.dp),
@@ -174,6 +192,15 @@ fun SupportFleetPulseScreen(
                     Icon(Icons.Default.OpenInNew, null, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(7.dp))
                     Text("Pay using UPI")
+                }
+                OutlinedButton(
+                    onClick = { shareUpiDetails() },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(14.dp),
+                ) {
+                    Icon(Icons.Default.Share, null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(7.dp))
+                    Text("Share payment details")
                 }
                 Text(
                     "No fixed amount. Enter any amount in your UPI app. FleetPulse does not see, store or verify " +
@@ -238,20 +265,24 @@ fun SupportFleetPulseScreen(
     if (showNoUpi) {
         AlertDialog(
             onDismissRequest = { showNoUpi = false },
-            title = { Text("No UPI app found") },
+            title = { Text("No compatible UPI app found") },
             text = {
-                Text(
-                    "Install or enable a UPI application, or ask someone to scan the QR code. " +
-                        "You can also copy the UPI ID below.",
-                )
+                Column {
+                    Text(
+                        "No compatible UPI app was found on your device. Install or configure a UPI application, " +
+                            "or use the QR code above. You can also copy the UPI ID or share the payment details.",
+                    )
+                    TextButton(onClick = {
+                        copyUpi()
+                        showNoUpi = false
+                    }) { Text("Copy UPI ID") }
+                    TextButton(onClick = {
+                        shareUpiDetails()
+                        showNoUpi = false
+                    }) { Text("Share payment details") }
+                }
             },
-            confirmButton = {
-                TextButton(onClick = {
-                    copyUpi()
-                    showNoUpi = false
-                }) { Text("Copy UPI ID") }
-            },
-            dismissButton = { TextButton(onClick = { showNoUpi = false }) { Text("Close") } },
+            confirmButton = { TextButton(onClick = { showNoUpi = false }) { Text("Close") } },
         )
     }
 

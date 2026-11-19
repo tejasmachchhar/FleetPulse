@@ -45,6 +45,8 @@ capture_one "07-feedback-hub.png" "More → Feedback & Support"
 capture_one "08-bug-report.png" "Report a Bug with a category selected and the diagnostics card visible"
 capture_one "09-report-preview.png" "The report preview dialog with the consent checkbox"
 capture_one "10-support-fleetpulse.png" "Support FleetPulse with the UPI QR code"
+capture_one "11-about.png" "More → About FleetPulse with the project links visible"
+capture_one "12-email-feedback.png" "Email Feedback & Support with a category selected and the consent card visible"
 
 echo
 echo "Captured screenshots in $out_dir."

@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Email FleetPulse support
+    url: https://github.com/tejasmachchhar/FleetPulse/blob/main/SUPPORT.md#email-reports
+    about: Support address, draft options, and privacy guidance. The in-app email flow can prepare the message; GitHub contact links cannot open mailto directly.
   - name: Read the user guide
     url: https://github.com/tejasmachchhar/FleetPulse/blob/main/docs/USER_GUIDE.md
     about: Installation, onboarding, entry forms, backups, reminders, and troubleshooting.

@@ -108,6 +108,20 @@ data class GeneralFeedbackDraft(
     val currentScreen: String,
 )
 
+data class EmailBugDraft(
+    val category: FeedbackCategory,
+    val description: String,
+    val steps: String,
+    val expected: String,
+    val actual: String,
+    val currentScreen: String,
+)
+
+data class EmailDraft(
+    val subject: String,
+    val body: String,
+)
+
 data class GitHubIssueDraft(
     val title: String,
     val body: String,
@@ -211,6 +225,112 @@ object FeedbackReportBuilder {
         appendPrivacyFooter("feedback")
     }
 
+    fun buildBugEmail(
+        draft: EmailBugDraft,
+        diagnostics: DiagnosticSnapshot,
+        includeAppInfo: Boolean,
+        includeEnvironment: Boolean,
+        includeLogs: Boolean,
+    ): EmailDraft {
+        val subject = "[FleetPulse Bug Report] - " +
+            (firstLine(draft.description) ?: draft.category.label)
+        val body = buildString {
+            appendLine("Hello FleetPulse Developer,")
+            appendLine()
+            appendLine("I would like to report a problem in FleetPulse.")
+            appendLine()
+            appendLine("Issue category:")
+            appendLine(draft.category.label)
+            appendLine()
+            appendLine("Description:")
+            appendLine(draft.description.ifBlank { "(not provided)" })
+            appendLine()
+            appendOptionalField("Steps to reproduce", draft.steps)
+            appendOptionalField("Expected behaviour", draft.expected)
+            appendOptionalField("Actual behaviour", draft.actual)
+            appendEmailDiagnostics(
+                diagnostics = diagnostics,
+                includeAppInfo = includeAppInfo,
+                includeEnvironment = includeEnvironment,
+                currentScreen = draft.currentScreen,
+            )
+            if (includeLogs) {
+                appendLine("Error Information:")
+                appendLine(diagnostics.errorInformation.ifBlank { "No recent error was recorded." })
+                appendLine()
+                appendLine("Additional Diagnostics:")
+                appendLine(diagnostics.recentDiagnostics.ifBlank { "No recent diagnostics were recorded." })
+                appendLine()
+            } else {
+                appendLine("Error Information and Additional Diagnostics: omitted at the user's request.")
+                appendLine()
+            }
+            appendPrivacyFooter("email bug report")
+            appendLine()
+            appendLine("Thank you.")
+        }
+        return EmailDraft(subject = subject.take(120), body = body)
+    }
+
+    fun buildFeatureEmail(
+        draft: FeatureRequestDraft,
+        diagnostics: DiagnosticSnapshot,
+        includeAppInfo: Boolean,
+        includeEnvironment: Boolean,
+    ): EmailDraft {
+        val subject = "[FleetPulse Feature Request] - " +
+            (firstLine(draft.suggestion) ?: draft.category.label)
+        val body = buildString {
+            appendLine("Hello FleetPulse Developer,")
+            appendLine()
+            appendLine("I would like to suggest an improvement for FleetPulse.")
+            appendLine()
+            appendLine("Category:")
+            appendLine(draft.category.label)
+            appendLine()
+            appendLine("My suggestion:")
+            appendLine(draft.suggestion.ifBlank { "(not provided)" })
+            appendLine()
+            appendOptionalField("Problem it solves", draft.problem)
+            appendOptionalField("Expected benefit or behaviour", draft.expected)
+            appendEmailDiagnostics(
+                diagnostics = diagnostics,
+                includeAppInfo = includeAppInfo,
+                includeEnvironment = includeEnvironment,
+                currentScreen = draft.currentScreen,
+            )
+            appendPrivacyFooter("email feature request")
+            appendLine()
+            appendLine("Thank you.")
+        }
+        return EmailDraft(subject = subject.take(120), body = body)
+    }
+
+    fun buildGeneralEmail(
+        draft: GeneralFeedbackDraft,
+        diagnostics: DiagnosticSnapshot,
+        includeAppInfo: Boolean,
+        includeEnvironment: Boolean,
+    ): EmailDraft {
+        val body = buildString {
+            appendLine("Hello FleetPulse Developer,")
+            appendLine()
+            appendLine("Message:")
+            appendLine(draft.message.ifBlank { "(not provided)" })
+            appendLine()
+            appendEmailDiagnostics(
+                diagnostics = diagnostics,
+                includeAppInfo = includeAppInfo,
+                includeEnvironment = includeEnvironment,
+                currentScreen = draft.currentScreen,
+            )
+            appendPrivacyFooter("email feedback")
+            appendLine()
+            appendLine("Thank you.")
+        }
+        return EmailDraft(subject = "[FleetPulse Feedback]", body = body)
+    }
+
     fun bugIssue(draft: BugReportDraft, report: String): GitHubIssueDraft {
         val summary = firstLine(draft.description)
             ?: draft.category.label
@@ -281,6 +401,55 @@ object FeedbackReportBuilder {
 
     private fun encode(value: String): String =
         URLEncoder.encode(value, Charsets.UTF_8.name()).replace("+", "%20")
+
+    private fun StringBuilder.appendOptionalField(label: String, value: String) {
+        if (value.isNotBlank()) {
+            appendLine("$label:")
+            appendLine(value)
+            appendLine()
+        }
+    }
+
+    private fun StringBuilder.appendEmailDiagnostics(
+        diagnostics: DiagnosticSnapshot,
+        includeAppInfo: Boolean,
+        includeEnvironment: Boolean,
+        currentScreen: String,
+    ) {
+        if (includeAppInfo) {
+            appendLine("Application Version:")
+            appendLine(
+                "${diagnostics.versionName} (versionCode ${diagnostics.versionCode}, " +
+                    "${diagnostics.buildType} build)",
+            )
+            appendLine()
+        } else {
+            appendLine("Application Version: omitted at the user's request.")
+            appendLine()
+        }
+
+        if (includeEnvironment) {
+            appendLine("Android Version:")
+            appendLine("${diagnostics.androidRelease} (API ${diagnostics.apiLevel})")
+            appendLine()
+            appendLine("Device:")
+            appendLine("${diagnostics.manufacturer} ${diagnostics.model}".trim())
+            appendLine()
+            appendLine("Screen:")
+            appendLine(currentScreen.ifBlank { diagnostics.currentScreen })
+            appendLine()
+            appendLine("Environment:")
+            appendLine(
+                "${diagnostics.screenWidthDp} × ${diagnostics.screenHeightDp} dp @ " +
+                    "${diagnostics.densityDpi} dpi · ${diagnostics.language}",
+            )
+            appendLine(diagnostics.timestamp)
+            appendLine()
+        } else {
+            appendLine("Device and Android version: omitted at the user's request.")
+            appendLine()
+        }
+    }
 
     private fun StringBuilder.appendCommonDiagnostics(
         diagnostics: DiagnosticSnapshot,

@@ -3,8 +3,8 @@
 FleetPulse uses Semantic Versioning for the public version name and a separate, monotonically increasing Android `versionCode`. The current baseline is:
 
 ```text
-versionName = "4.2.0"
-versionCode = 4
+versionName = "4.3.0"
+versionCode = 5
 ```
 
 The first public tag should be `v4.1.1`. Do not invent older release tags or back-date history that was not published.
@@ -15,7 +15,7 @@ The first public tag should be `v4.1.1`. Do not invent older release tags or bac
 - **MINOR** — new user-facing capability, backwards-compatible.
 - **PATCH** — bug fix, documentation-only release, or a rebuild with no breaking data change.
 - `versionCode` must increase by at least one for every published build. Never reuse a code.
-- The Git tag is `v` + `versionName`, for example `v4.2.0`.
+- The Git tag is `v` + `versionName`, for example `v4.3.0`.
 - Pre-release tags may use a suffix, for example `v4.3.0-rc.1`. The release workflow accepts a suffix on the current `versionName`.
 - A release tag is immutable. Never move, delete, or force-push a tag after publication. Ship a patch instead.
 
@@ -152,25 +152,25 @@ git switch main
 git pull --ff-only
 ./scripts/verify.sh
 
-git tag -a v4.2.0 -m "FleetPulse 4.2.0"
+git tag -a v4.3.0 -m "FleetPulse 4.3.0"
 git push origin main
-git push origin v4.2.0
+git push origin v4.3.0
 ```
 
 The tag push starts the release workflow. Do not force-push. If the workflow fails before publishing, fix the cause and push a new tag only if the old tag was never published. Once a GitHub Release exists, publish a patch version instead.
 
-Manual dispatch is available for an existing tag. Enter the tag exactly, for example `v4.2.0`; the workflow checks that it exists and matches the app version.
+Manual dispatch is available for an existing tag. Enter the tag exactly, for example `v4.3.0`; the workflow checks that it exists and matches the app version.
 
 ## Post-release verification
 
 ```bash
-gh release view v4.2.0
-gh release download v4.2.0 --dir /tmp/fleetpulse-release
+gh release view v4.3.0
+gh release download v4.3.0 --dir /tmp/fleetpulse-release
 cd /tmp/fleetpulse-release
 sha256sum -c SHA256SUMS
 
 "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs \
-  FleetPulse-4.2.0-release.apk
+  FleetPulse-4.3.0-release.apk
 ```
 
 Then install on a real device and complete the acceptance checklist in [DEVELOPMENT.md](DEVELOPMENT.md#manual-device-testing).

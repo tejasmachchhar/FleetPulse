@@ -8,6 +8,7 @@ import com.fleetpulse.app.data.db.SettingsEntity
 import com.fleetpulse.app.data.db.UsageEntry
 import com.fleetpulse.app.data.db.Vehicle
 import com.fleetpulse.app.domain.EvalResult
+import com.fleetpulse.app.support.BuildInfo
 import org.json.JSONArray
 import org.json.JSONObject
 import java.time.Instant
@@ -56,7 +57,7 @@ object BackupManager {
         root.put("format", FORMAT)
         root.put("version", VERSION)
         root.put("exportedAt", Instant.now().toString())
-        root.put("app", "FleetPulse Android 4.2.0")
+        root.put("app", "FleetPulse Android ${BuildInfo.VERSION_NAME}")
 
         val data = JSONObject()
         data.put("vehicles", JSONArray().apply { input.vehicles.forEach { put(vehicleJson(it)) } })

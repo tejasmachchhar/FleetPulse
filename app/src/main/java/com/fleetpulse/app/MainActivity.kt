@@ -86,10 +86,12 @@ import com.fleetpulse.app.data.prefs.AppPreferencesState
 import com.fleetpulse.app.ui.MainViewModel
 import com.fleetpulse.app.ui.UiSnapshot
 import com.fleetpulse.app.ui.screens.AnalysisScreen
+import com.fleetpulse.app.ui.screens.AboutScreen
 import com.fleetpulse.app.ui.screens.BugReportScreen
 import com.fleetpulse.app.ui.screens.CalibrationScreen
 import com.fleetpulse.app.ui.screens.DashboardScreen
 import com.fleetpulse.app.ui.screens.DataManagementScreen
+import com.fleetpulse.app.ui.screens.EmailFeedbackScreen
 import com.fleetpulse.app.ui.screens.FeatureRequestScreen
 import com.fleetpulse.app.ui.screens.FeedbackHubScreen
 import com.fleetpulse.app.ui.screens.GeneralFeedbackScreen
@@ -438,6 +440,7 @@ private fun MainScaffold(
                     onGuide = { openDetail("guide") },
                     onVerification = { openDetail("verification") },
                     onFeedback = { openDetail("feedback") },
+                    onAbout = { openDetail("about") },
                 )
             }
             composable("calibration") {
@@ -494,8 +497,18 @@ private fun MainScaffold(
                     onBugReport = { openFeedbackDetail("bug", "Feedback & Support") },
                     onFeatureRequest = { openFeedbackDetail("feature", "Feedback & Support") },
                     onGeneralFeedback = { openFeedbackDetail("general", "Feedback & Support") },
+                    onEmailFeedback = { openDetail("feedback/email") },
                     onSupport = { openDetail("support") },
                 )
+            }
+            composable("feedback/email") {
+                EmailFeedbackScreen(
+                    origin = "Feedback & Support",
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("about") {
+                AboutScreen(onBack = { navController.popBackStack() })
             }
             composable("support") {
                 SupportFleetPulseScreen(onBack = { navController.popBackStack() })

@@ -6,9 +6,18 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this for a short note that is not a bug report or a feature request. For problems, use the bug form; for ideas, use the feature request form.
+        Use this for a short note that is not a bug report or a feature request. For problems, use the **Bug report** form; for ideas, use **Feature request** or **UI/UX improvement**.
+
+        Don't have a GitHub account? Use **Email FleetPulse support** on the new-issue page for the address and privacy guidance, or open **More → Feedback & Support → Email Feedback & Support** in the app. The app can prepare the email for you.
 
         Do not include real vehicle records, registrations, odometer values, expenses, notes, backups, or secrets.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before filing
+      options:
+        - label: I have not included real personal data, vehicle records, or secrets.
+          required: true
   - type: textarea
     id: message
     attributes:
@@ -32,11 +41,4 @@ body:
     id: version
     attributes:
       label: FleetPulse version (optional)
-      placeholder: "4.2.0 (versionCode 4)"
-  - type: checkboxes
-    id: confirmations
-    attributes:
-      label: Confirmation
-      options:
-        - label: I have not included real personal data, vehicle records, or secrets.
-          required: true
+      placeholder: "4.3.0 (versionCode 5)"

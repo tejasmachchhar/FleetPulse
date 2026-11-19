@@ -201,7 +201,7 @@ fun BugReportScreen(
         item {
             Text(
                 "No account is required to prepare or share the report. GitHub requires an account to post an issue; " +
-                    "the Android share sheet and copy action work without one.",
+                    "the Android share sheet, copy action, and Email Feedback & Support flow work without one.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -213,7 +213,7 @@ fun BugReportScreen(
             title = "Review bug report",
             report = report,
             onDismiss = { showPreview = false },
-            onOpenGitHub = {
+            onPrimaryAction = {
                 val url = FeedbackReportBuilder.issueUrl(issue)
                 if (SupportActions.openUrl(context, url)) {
                     toast("Opening GitHub. FleetPulse cannot submit the issue for you.")
@@ -240,14 +240,12 @@ fun BugReportScreen(
                     false
                 }
             },
-            onEmail = SupportConfig.SUPPORT_EMAIL?.let { address ->
-                {
-                    if (SupportActions.email(context, address, "FleetPulse bug report", report)) {
-                        true
-                    } else {
-                        toast("No email app is available.")
-                        false
-                    }
+            onEmail = {
+                if (SupportActions.email(context, SupportConfig.SUPPORT_EMAIL, "FleetPulse bug report", report)) {
+                    true
+                } else {
+                    toast("No email app is available.")
+                    false
                 }
             },
         )

@@ -1,0 +1,96 @@
+name: UI/UX improvement
+description: Suggest a design, accessibility, navigation, or usability improvement
+title: "[UI/UX]: "
+labels: ["ui-ux", "enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for design, layout, accessibility, navigation, and usability suggestions. For a defect, use **Bug report**. For a new capability, use **Feature request**.
+
+        **Do not upload screenshots or logs containing real vehicle information, registration numbers, odometer values, expenses, personal notes, or secrets.**
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before filing
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I have removed real personal data and secrets from this report.
+          required: true
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Affected screen
+      options:
+        - Dashboard
+        - Vehicles
+        - Quick entry
+        - Usage log
+        - Analysis
+        - Maintenance
+        - Calibration
+        - Settings
+        - Data management
+        - Feedback & Support
+        - About
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current behaviour
+      description: What is confusing, inconsistent, inaccessible, or hard to use today?
+      placeholder: On this screen, I cannot ...
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: Describe the smallest change that would improve the experience.
+      placeholder: Make the primary action clearer by ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour or benefit
+      description: What should the user be able to do more easily?
+  - type: dropdown
+    id: area
+    attributes:
+      label: Improvement area
+      options:
+        - Visual design
+        - Layout and spacing
+        - Navigation
+        - Accessibility
+        - Readability
+        - Dark/light theme
+        - Small-screen layout
+        - Keyboard and input
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: FleetPulse version (optional)
+      placeholder: "4.3.0 (versionCode 5)"
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or mockup (optional)
+      description: Redact personal data. Label mockups clearly so they are not mistaken for current app screenshots.
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: This suggestion preserves the offline-only, no-account privacy model.
+          required: true
+        - label: I have not included real personal data or secrets.
+          required: true

@@ -5,7 +5,10 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.net.Uri
+import android.os.Build
 
 /**
  * Small, permission-free hand-offs to other Android apps.
@@ -42,24 +45,49 @@ object SupportActions {
         address: String,
         subject: String,
         body: String,
-    ): Boolean = runCatching {
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:")
+    ): Boolean = emailChooserIntent(context, address, subject, body)?.let {
+        runCatching {
+            start(context, it)
+            true
+        }.getOrDefault(false)
+    } ?: false
+
+    /**
+     * Builds a mailto: draft with the recipient, subject and body already
+     * filled in. The chooser lets the user pick any installed email app; the
+     * app never sends silently and cannot confirm delivery.
+     */
+    fun emailChooserIntent(
+        context: Context,
+        address: String,
+        subject: String,
+        body: String,
+    ): Intent? {
+        val mailto = Uri.parse("mailto:${Uri.encode(address, "@")}")
+            .buildUpon()
+            .appendQueryParameter("subject", subject)
+            .appendQueryParameter("body", body)
+            .build()
+        val intent = Intent(Intent.ACTION_SENDTO, mailto).apply {
             putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
             putExtra(Intent.EXTRA_SUBJECT, subject)
             putExtra(Intent.EXTRA_TEXT, body)
         }
-        start(context, intent)
-        true
-    }.getOrDefault(false)
+        return chooserIntent(context, intent, "Send email")
+    }
 
+    /**
+     * Resolves every installed UPI handler and builds a chooser from explicit
+     * package intents. Resolution uses queryIntentActivities rather than
+     * resolveActivity so a handler that is not registered as the default still
+     * appears. The UPI app receives no amount; the payer enters it there.
+     */
     fun upiChooserIntent(
         context: Context,
         uri: String = SupportConfig.UPI_PAYMENT_URI,
     ): Intent? {
         val payment = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-        if (payment.resolveActivity(context.packageManager) == null) return null
-        return Intent.createChooser(payment, "Pay with UPI")
+        return chooserIntent(context, payment, "Pay with UPI")
     }
 
     fun startUpi(context: Context, uri: String = SupportConfig.UPI_PAYMENT_URI): Boolean =
@@ -69,6 +97,39 @@ object SupportActions {
                 true
             }.getOrDefault(false)
         } ?: false
+
+    /**
+     * Uses explicit package targets so Android 11+ package-visibility rules do
+     * not silently hide an installed handler from the chooser. If only one
+     * handler exists, the chooser is skipped.
+     */
+    private fun chooserIntent(
+        context: Context,
+        base: Intent,
+        title: String,
+    ): Intent? {
+        val matches = queryActivities(context, base)
+            .distinctBy { it.activityInfo.packageName }
+        if (matches.isEmpty()) return null
+        if (matches.size == 1) {
+            return Intent(base).setPackage(matches.first().activityInfo.packageName)
+        }
+        val targets = matches.map { Intent(base).setPackage(it.activityInfo.packageName) }
+        return Intent.createChooser(targets.first(), title).apply {
+            putExtra(Intent.EXTRA_INITIAL_INTENTS, targets.drop(1).toTypedArray())
+        }
+    }
+
+    private fun queryActivities(context: Context, intent: Intent): List<ResolveInfo> =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.packageManager.queryIntentActivities(
+                intent,
+                PackageManager.ResolveInfoFlags.of(0),
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            context.packageManager.queryIntentActivities(intent, 0)
+        }
 
     private fun start(context: Context, intent: Intent) {
         if (context !is Activity) {

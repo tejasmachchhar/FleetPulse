@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.Folder
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SupportAgent
@@ -53,6 +54,7 @@ fun MoreScreen(
     onGuide: () -> Unit,
     onVerification: () -> Unit,
     onFeedback: () -> Unit,
+    onAbout: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -151,6 +153,13 @@ fun MoreScreen(
 
         item {
             SectionCard(title = "About FleetPulse") {
+                MenuRow(
+                    icon = Icons.Default.Info,
+                    title = "About FleetPulse",
+                    subtitle = "Version, project links, changelog and licence",
+                    tint = FleetBlue,
+                    onClick = onAbout,
+                )
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(
                         Modifier

@@ -159,7 +159,7 @@ fun GeneralFeedbackScreen(
             title = "Review feedback",
             report = report,
             onDismiss = { showPreview = false },
-            onOpenGitHub = {
+            onPrimaryAction = {
                 if (SupportActions.openUrl(context, FeedbackReportBuilder.issueUrl(issue))) {
                     toast("Opening GitHub. FleetPulse cannot submit the issue for you.")
                     true
@@ -185,14 +185,12 @@ fun GeneralFeedbackScreen(
                     false
                 }
             },
-            onEmail = SupportConfig.SUPPORT_EMAIL?.let { address ->
-                {
-                    if (SupportActions.email(context, address, "FleetPulse feedback", report)) {
-                        true
-                    } else {
-                        toast("No email app is available.")
-                        false
-                    }
+            onEmail = {
+                if (SupportActions.email(context, SupportConfig.SUPPORT_EMAIL, "FleetPulse feedback", report)) {
+                    true
+                } else {
+                    toast("No email app is available.")
+                    false
                 }
             },
         )

@@ -17,6 +17,7 @@ object SupportConfig {
     const val ISSUES_URL = "$REPOSITORY_URL/issues"
     const val NEW_ISSUE_URL = "$REPOSITORY_URL/issues/new"
     const val DOCUMENTATION_URL = "$REPOSITORY_URL/blob/main/docs/USER_GUIDE.md"
+    const val CHANGELOG_URL = "$REPOSITORY_URL/blob/main/CHANGELOG.md"
     const val PRIVACY_URL = "$REPOSITORY_URL/blob/main/PRIVACY.md"
     const val SUPPORT_URL = "$REPOSITORY_URL/blob/main/SUPPORT.md"
     const val SECURITY_URL = "$REPOSITORY_URL/security/policy"
@@ -48,11 +49,11 @@ object SupportConfig {
     val BUY_ME_A_COFFEE_URL: String? = "https://buymeacoffee.com/tejasmachchhar"
 
     /**
-     * No project support mailbox is configured. Do not invent one. When a
-     * monitored mailbox exists, add it here and the app will expose an email
-     * action after the same report-preview consent step.
+     * Public support mailbox verified for FleetPulse feedback. The app only
+     * opens the user's email app with a prefilled draft; it never sends mail
+     * silently and cannot confirm delivery.
      */
-    val SUPPORT_EMAIL: String? = null
+    const val SUPPORT_EMAIL = "tejasmachchhar2019@gmail.com"
 
     const val CONFIG_VERIFIED_ON = "2026-11-19"
 
@@ -62,9 +63,13 @@ object SupportConfig {
         upiId: String = UPI_ID,
         payeeName: String = UPI_PAYEE_NAME,
         note: String = UPI_NOTE,
+        currency: String = "INR",
     ): String {
+        // Build the query with the same escaping guarantees as Uri.Builder
+        // without depending on android.net.Uri in JVM tests. The amount is
+        // intentionally omitted so the payer chooses it inside their UPI app.
         fun enc(value: String): String =
             URLEncoder.encode(value, Charsets.UTF_8.name()).replace("+", "%20")
-        return "upi://pay?pa=${enc(upiId)}&pn=${enc(payeeName)}&tn=${enc(note)}"
+        return "upi://pay?pa=${enc(upiId)}&pn=${enc(payeeName)}&tn=${enc(note)}&cu=${enc(currency)}"
     }
 }

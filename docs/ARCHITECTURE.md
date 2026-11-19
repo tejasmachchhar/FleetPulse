@@ -122,14 +122,14 @@ The engine returns immutable result types (`EvaluatedUsage`, `VehicleAllTimeStat
 
 ## Feedback and diagnostics flow
 
-- `support/SupportConfig.kt` is the single source of truth for repository, documentation, issue, UPI, Buy Me a Coffee, GitHub Sponsors, and support-email values. Optional destinations are nullable and hidden when unverified.
-- `support/DiagnosticReport.kt` holds pure report builders, category-to-label mappings, and GitHub URL encoding. It receives a `DiagnosticSnapshot`; it has no Android UI dependency except the snapshot collection helper.
+- `support/SupportConfig.kt` is the single source of truth for repository, documentation, changelog, issue, UPI, Buy Me a Coffee, GitHub Sponsors, and the verified support email. Optional destinations are nullable and hidden when unverified; the support email is configured.
+- `support/DiagnosticReport.kt` holds pure GitHub report and email-draft builders, category-to-label mappings, and GitHub URL encoding. It receives a `DiagnosticSnapshot`; it has no Android UI dependency except the snapshot collection helper.
 - `support/DiagnosticsLogger.kt` writes local, redacted, size-capped logs and installs an uncaught-exception handler that records exception types and stack frames without exception messages, then delegates to Android's normal crash handler. It never uploads data.
 - `support/DiagnosticsRedactor.kt` removes common emails, registration-like values, private file/content URIs and paths, long numbers, and secret-like assignments from diagnostic text.
-- `support/SupportActions.kt` performs permission-free intents for browser, share sheet, clipboard, email (only when configured), and the UPI chooser.
+- `support/SupportActions.kt` performs permission-free intents for the browser, share sheet, clipboard, email, and UPI. The email and UPI helpers resolve handlers through `queryIntentActivities`, build explicit package targets for the chooser, and catch launch failures so the UI can show copy/share/QR fallbacks.
 - `ui/components/QrCode.kt` generates the UPI QR locally with ZXing; no image or payment data leaves the device.
-- `FeedbackHubScreen`, `BugReportScreen`, `FeatureRequestScreen`, `GeneralFeedbackScreen`, and `SupportFleetPulseScreen` own only ephemeral form state. Reports are built in memory and shown in `ReportPreviewDialog` before any external action.
-- The consent checkbox gates GitHub, share, copy, and email. The app does not set a success flag when an external activity returns. UPI's activity result opens a thank-you dialog that explicitly disclaims payment verification.
+- `FeedbackHubScreen`, `BugReportScreen`, `FeatureRequestScreen`, `GeneralFeedbackScreen`, `EmailFeedbackScreen`, and `SupportFleetPulseScreen` own only ephemeral form state. Reports and email drafts are built in memory and shown in `ReportPreviewDialog` before any external action. `AboutScreen` contains the verified project links, changelog, release, privacy, support, and build information.
+- The consent checkbox gates GitHub, email, share, and copy. The app does not set a success flag when an external activity returns. UPI's activity result opens a thank-you dialog that explicitly disclaims payment verification, and the email flow never claims delivery.
 - Contextual report icons pass only a screen label (`Dashboard`, `Analysis · costs`, `Usage entry · EV charge`, and similar). They do not read vehicle or transaction values into the report.
 
 ```text
@@ -147,7 +147,7 @@ ReportPreviewDialog (exact text + consent)
         ├── GitHub issues/new URL
         ├── Android share sheet
         ├── clipboard
-        └── email only if SupportConfig.SUPPORT_EMAIL is set
+        └── email draft (subject/body prefilled; user sends it in their email app)
 
 No automatic upload, no backend, no INTERNET permission.
 ```
@@ -227,8 +227,8 @@ Km-based reminders compare `nextDueKm` with the latest odometer in a non-error u
 - Backup tests use `org.json` on the JVM.
 - Petrol and number parsing tests are pure JVM.
 - `VerificationSuiteTest` executes the in-app suite so a UI parity failure also fails CI.
-- `FeedbackSupportTest` covers the central config, exact UPI URI, report opt-outs, GitHub URL encoding and length capping, category labels, and redaction on the JVM.
-- No instrumented tests are required for the CI build. Device/UI tests (including preview consent, GitHub hand-off, UPI chooser, share sheet, and email) would need an emulator or physical device and are listed as a future improvement.
+- `FeedbackSupportTest` covers the central config and support email, exact UPI URI with `cu=INR`, report and email opt-outs, email subjects/bodies, GitHub URL encoding and length capping, category labels, and redaction on the JVM. The suite has 54 JVM tests.
+- No instrumented tests are required for the CI build. Device/UI tests (including preview consent, GitHub hand-off, UPI chooser, email chooser, share sheet, and the About screen) would need an emulator or physical device and are listed as a future improvement.
 
 ## Deliberate non-goals
 

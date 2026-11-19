@@ -10,7 +10,7 @@ FleetPulse is an offline-first Android application. This policy describes what t
 - There is no account, sign-in, sync, cloud backend, analytics, advertising, or tracking SDK.
 - Vehicle, usage, maintenance, tariff, calibration, and settings data stay in the app's private local storage.
 - Backups and CSV exports leave the app only when **you** choose a destination through Android's system file picker.
-- Feedback reports are prepared locally. The exact text is previewed, optional diagnostics can be removed, and nothing is sent until you choose GitHub, the Android share sheet, copy, or a configured email app and confirm consent.
+- Feedback reports are prepared locally. The exact text is previewed, optional diagnostics can be removed, and nothing is sent until you choose GitHub, an email app, the Android share sheet, or copy and confirm consent.
 - Local diagnostics are capped, rotated, and never uploaded automatically.
 - Android auto-backup is disabled.
 
@@ -51,13 +51,13 @@ The Android app declares no `INTERNET` permission and makes no HTTP requests. It
 
 WorkManager contributes local scheduling permissions to the merged manifest (for example `WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `RECEIVE_BOOT_COMPLETED`, and `FOREGROUND_SERVICE`). They are used to run the daily local reminder check; FleetPulse does not transmit data over a network.
 
-The feedback and support screens use Android intents to hand an explicit action to another app: a browser for GitHub, the Android share sheet, a clipboard, an email app only when a support address is configured, a UPI app, or the Buy Me a Coffee page. Those apps may have network access and their own privacy policies. FleetPulse still has no `INTERNET` permission and does not receive the contents of a GitHub issue, a payment result, or a third-party page.
+The feedback and support screens use Android intents to hand an explicit action to another app: a browser for GitHub, an email app after the user reviews a draft, the Android share sheet, a clipboard, a UPI app, or the Buy Me a Coffee page. Those apps may have network access and their own privacy policies. FleetPulse still has no `INTERNET` permission and does not receive the contents of a GitHub issue, an email, a payment result, or a third-party page.
 
 ## Feedback, diagnostics, and support
 
 ### What a report can contain
 
-When you open **More → Feedback & Support → Report a Bug**, the app can prepare:
+When you open **More → Feedback & Support → Report a Bug**, the app can prepare a GitHub report. The separate **Email Feedback & Support** flow can prepare an email draft for a bug, improvement, or general note. Both previews can include:
 
 - the category and optional description you choose;
 - the screen or navigation context, such as `Dashboard` or `Usage entry · EV charge`;
@@ -66,7 +66,15 @@ When you open **More → Feedback & Support → Report a Bug**, the app can prep
 - screen size in dp, density, app language, and timestamp;
 - redacted error type, stack frames, and recent local diagnostics, only when that toggle remains on.
 
-The report does **not** include vehicle names or registration numbers, odometer readings, fuel/charging records, maintenance expenses, user-entered notes, database contents, personal files, location, account credentials, or advertising identifiers.
+The report or email draft does **not** include vehicle names or registration numbers, odometer readings, fuel/charging records, maintenance expenses, user-entered notes, database contents, personal files, location, account credentials, or advertising identifiers.
+
+### Email feedback
+
+- The email recipient is `tejasmachchhar2019@gmail.com`.
+- The app fills in the recipient, subject, and body, then opens the user's email app through an Android `mailto:` intent. The user can edit the draft and must send it manually.
+- FleetPulse does not embed SMTP credentials, operate a mail backend, send mail silently, or confirm delivery.
+- If no email app is installed, the draft can be copied or shared, and the support address can be copied separately.
+- Your email provider and the recipient's provider apply their own privacy policies. FleetPulse does not receive a copy of the email or delivery metadata.
 
 ### Local diagnostics log
 
@@ -79,7 +87,7 @@ The report does **not** include vehicle names or registration numbers, odometer 
 
 ### Your choices before sharing
 
-The review dialog shows the exact report. A checkbox must be ticked before the GitHub, share, copy, or email actions become available. You can cancel, go back, and remove app/device/log sections first. Opening GitHub does not create an issue; GitHub may require sign-in, and only you can press the final submit button. FleetPulse does not claim an issue was submitted just because a browser opened.
+The review dialog shows the exact report. A checkbox must be ticked before the GitHub, email, share, or copy actions become available. You can cancel, go back, and remove app/device/log sections first. Opening GitHub does not create an issue; GitHub may require sign-in, and only you can press the final submit button. Opening an email app does not send an email; only you can press Send. FleetPulse does not claim an issue or email was submitted just because another app opened.
 
 ### Donations
 
@@ -99,7 +107,7 @@ The review dialog shows the exact report. A checkbox must be ticked before the G
 
 The app does not request location, camera, microphone, contacts, SMS, call logs, or broad storage permissions. Backup/export uses Android's Storage Access Framework, which lets you choose a file and destination without granting broad storage access.
 
-The manifest contains a `<queries>` declaration for the `upi` scheme so the app can check whether a UPI app is available on Android 11+. This is a package-visibility declaration, not a runtime permission, and grants no access to payment data.
+The manifest contains `<queries>` declarations for the `upi` scheme and the `mailto` `SENDTO` action so the app can identify installed UPI and email handlers on Android 11+. These are package-visibility declarations, not runtime permissions, and grant no access to payment data or email contents.
 
 ## Exports and backups
 
@@ -148,4 +156,4 @@ Material changes will be documented in the repository and, where appropriate, in
 
 ## Contact
 
-For privacy questions that do not contain personal data, open a repository issue. For security-sensitive reports, use the private advisory flow described in [SECURITY.md](SECURITY.md). Never send a token, keystore, real backup, or registration number in a public issue.
+For privacy questions, email `tejasmachchhar2019@gmail.com` or open a repository issue if the question contains no personal data. For security-sensitive reports, use the private advisory flow described in [SECURITY.md](SECURITY.md). Never send a token, keystore, real backup, registration number, or other sensitive personal data in a public issue.

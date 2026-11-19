@@ -1,14 +1,29 @@
 name: Bug report
 description: Report a reproducible problem in FleetPulse
 title: "[Bug]: "
-labels: ["bug"]
+labels: ["bug", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a problem. Use **synthetic data** only. Do not attach a real database, backup, CSV, registration number, address, token, or screenshot with personal information.
+        Thanks for reporting a problem. FleetPulse is offline-first, so please use **synthetic data** only.
 
-        If you used **More → Feedback & Support → Report a Bug**, FleetPulse generated a report. Paste that text into the diagnostics field below after removing anything you do not want to share.
+        **Do not upload passwords, API keys, personal vehicle information, registration numbers, financial records, backups, or private logs.** Redact names, registration numbers, file paths, and any personal notes before posting.
+
+        If you used **More → Feedback & Support → Report a Bug**, FleetPulse can prepare a report for you. Paste that text into the diagnostics field after removing anything you do not want to share.
+
+        **Security vulnerabilities:** do not open a public issue. Use the private security link on the new-issue page.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before filing
+      options:
+        - label: I am using a current FleetPulse build or can reproduce this on one.
+          required: true
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I have removed real personal data, secrets, backups, and keystores from this report.
+          required: true
   - type: dropdown
     id: category
     attributes:
@@ -47,15 +62,27 @@ body:
   - type: textarea
     id: expected
     attributes:
-      label: Expected result
+      label: Expected behaviour
       placeholder: What should have happened?
     validations:
       required: true
   - type: textarea
     id: actual
     attributes:
-      label: Actual result
+      label: Actual behaviour
       placeholder: What happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does it happen?
+      options:
+        - Every time
+        - Often
+        - Sometimes
+        - Once
+        - Not sure
     validations:
       required: true
   - type: input
@@ -63,14 +90,21 @@ body:
     attributes:
       label: FleetPulse version
       description: versionName and versionCode if known.
-      placeholder: "4.2.0 (versionCode 4)"
+      placeholder: "4.3.0 (versionCode 5)"
     validations:
       required: true
   - type: input
-    id: android
+    id: android_version
     attributes:
-      label: Android version and device
-      placeholder: "Android 15, Pixel 8"
+      label: Android version
+      placeholder: "Android 15 (API 35)"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device manufacturer and model
+      placeholder: "Google Pixel 8"
     validations:
       required: true
   - type: dropdown
@@ -99,7 +133,7 @@ body:
   - type: textarea
     id: reproduction
     attributes:
-      label: Minimal reproduction data
+      label: Minimal reproduction data (optional)
       description: If the bug is calculation-related, list only the synthetic values needed to reproduce it. Do not attach a real backup.
       placeholder: |
         Vehicle: Demo EV 1
@@ -111,24 +145,22 @@ body:
     id: diagnostics
     attributes:
       label: FleetPulse-generated diagnostics (optional)
-      description: Paste the previewed report from the app. It contains app/device/environment details and redacted local logs. Remove anything you do not want public.
+      description: Paste the previewed report from the app. Remove anything you do not want public.
       placeholder: |
         FleetPulse Bug Report
         Category: ...
         ...
   - type: textarea
-    id: logs
+    id: screenshots
     attributes:
-      label: Additional logs or screenshots (optional)
-      description: Redact paths, names, registration numbers, and personal notes. Omit if not needed.
+      label: Screenshots or screen recording (optional)
+      description: Drag images here only after redacting names, registration numbers, odometer values, expenses, and personal notes.
   - type: checkboxes
     id: confirmations
     attributes:
       label: Confirmation
       options:
-        - label: I searched existing issues and this is not a duplicate.
+        - label: I understand opening a browser or email app is not the same as submitting a report.
           required: true
-        - label: I have removed real personal data, secrets, backups, and keystores from this report.
-          required: true
-        - label: I understand this is an offline app and I should not post a security vulnerability publicly.
+        - label: I have not included real personal data, secrets, backups, or keystores in this report.
           required: true

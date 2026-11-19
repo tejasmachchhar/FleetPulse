@@ -16,6 +16,44 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.
 - Accessibility and localization review.
 
+## [4.3.0] - 2026-11-19
+
+### Added
+
+- Dedicated **About FleetPulse** screen under More with verified project links for the GitHub repository, user guide, changelog, latest release, privacy policy, and support/reporting guide, plus version, versionCode, build type, and package details.
+- **Email Feedback & Support** flow with Bug, Improvement, and General Feedback drafts, prefilled recipient `tejasmachchhar2019@gmail.com`, generated subjects and bodies, optional app/device diagnostics, exact preview, consent gate, mailto chooser, and copy/share/copy-address fallbacks.
+- Structured **UI/UX improvement** GitHub issue form with affected screen, current behaviour, suggested improvement, expected benefit, improvement area, optional version/screenshot, and privacy confirmations.
+- Review-first email builder coverage for bug, feature, and general messages, including opt-outs for app, device, and recent diagnostics.
+- `mailto` package-visibility query so Android 11+ can identify installed email handlers.
+
+### Changed
+
+- Project links moved from Feedback & Support to **More → About FleetPulse**; Feedback & Support now focuses on reporting, email, and support actions without a duplicate link list.
+- Bug and feature GitHub issue forms now use clearer required/optional fields, frequency, separate Android/device inputs, optional screenshots, privacy reminders, and triage labels.
+- Issue template chooser links to email support, the user guide, support policy, UPI/Buy Me a Coffee support, and the private security policy. Blank issues remain disabled.
+- The support email is configured as a public FleetPulse feedback address; app and documentation no longer describe it as hidden.
+- Backup app metadata now uses the current build version instead of a hard-coded string.
+- Version name is `4.3.0` and versionCode is `5`.
+
+### Fixed
+
+- **Pay using UPI** now resolves handlers with `queryIntentActivities`, builds explicit package targets for the chooser, includes `cu=INR` in the URI, skips the chooser for a single handler, and catches launch failures. No amount is fixed.
+- UPI fallback now offers install/configure guidance, QR scanning, UPI ID copy, and payment-details sharing instead of leaving the button apparently unresponsive.
+- Email hand-offs use a proper `mailto:` URI instead of an empty `mailto` with extras, so more email clients receive the prefilled subject and body.
+
+### Security
+
+- No email is sent silently, no SMTP credentials or mail backend are included, and no delivery confirmation is claimed.
+- Email drafts never attach database files, backups, usage records, maintenance records, expenses, notes, location, or private logs automatically.
+- UPI remains amount-free and does not verify payment completion.
+
+### Verification
+
+- `./gradlew :app:testDebugUnitTest` — 54 tests, 0 failures.
+- `./gradlew :app:lintDebug` — 0 errors, 18 non-blocking dependency/legacy warnings.
+- `./gradlew :app:assembleDebug`, `:app:assembleRelease`, and `:app:bundleRelease` — all succeeded; debug APK is versionName 4.3.0 / versionCode 5. The release APK remains unsigned without signing secrets.
+- UPI and email intent construction, report/draft formatting, opt-outs, and fallback copy are JVM/compile-verified. Actual Google Pay, PhonePe, Paytm, BHIM, email-client, GitHub, and share-sheet hand-offs still require a device pass because the publication environment has no Android runtime.
+
 ## [4.2.0] - 2026-11-19
 
 ### Added
@@ -102,6 +140,7 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - `./gradlew :app:assembleRelease` / `:app:bundleRelease` — unsigned without signing secrets; the conditional signing path was verified with a temporary local test key, which was deleted afterwards.
 - Device launch, screenshots, notification delivery, SAF pickers, and visual keyboard behaviour remain pending on a real Android runtime.
 
-[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.2.0...HEAD
+[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.3.0...HEAD
+[4.3.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.3.0
 [4.2.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.2.0
 [4.1.1]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.1.1

@@ -4,11 +4,13 @@ FleetPulse is maintained as an open-source project. Support is best-effort; ther
 
 ## Where to ask
 
-- **From the app** — open **More → Feedback & Support**. Choose Report a Bug, Suggest an Improvement, or Send General Feedback. FleetPulse prepares the report, shows a preview, and lets you remove optional details before opening GitHub, the Android share sheet, or the clipboard. No account is required inside FleetPulse.
+- **From the app** — open **More → Feedback & Support**. Choose Report a Bug, Suggest an Improvement, Send General Feedback, or Email Feedback & Support. FleetPulse prepares the report, shows a preview, and lets you remove optional details before opening GitHub, opening an email app, using the Android share sheet, or copying. No GitHub account is required.
+- **Email** — `tejasmachchhar2019@gmail.com`. Use the in-app email flow to generate a bug, improvement, or general-feedback draft, or write directly. The app opens your email app; it cannot send or confirm delivery.
 - **Bug report** — open an issue using the bug report template.
 - **Feature request** — open an issue using the feature request template.
-- **General feedback** — use the general feedback template or the in-app action.
-- **Usage question** — read [docs/USER_GUIDE.md](docs/USER_GUIDE.md) first, then open a question issue if needed.
+- **UI/UX improvement** — use the UI/UX improvement template for design, accessibility, navigation, and usability suggestions.
+- **General feedback** — use the general feedback template, the in-app action, or email.
+- **Usage question** — read [docs/USER_GUIDE.md](docs/USER_GUIDE.md) first, then open a question issue or email if needed.
 - **Security issue** — do **not** open a public issue. Follow [SECURITY.md](SECURITY.md).
 
 ## Diagnostics and consent
@@ -17,10 +19,24 @@ The app can include app version, Android version, device model, screen size, lan
 
 - The exact report is shown before anything leaves FleetPulse.
 - App, device/environment, and recent-diagnostics sections can each be disabled.
-- A consent checkbox must be ticked before GitHub, share, copy, or email actions are enabled.
+- A consent checkbox must be ticked before GitHub, email, share, or copy actions are enabled.
 - Opening GitHub does not mean an issue was submitted. GitHub may require sign-in and you must press the final submit button.
+- Opening an email app does not mean an email was sent. FleetPulse cannot confirm delivery; check your email app's Sent folder.
 - Diagnostics are stored only in the app's private storage, capped at two 64 KiB rotated files, and never uploaded automatically.
-- Email is hidden because no support mailbox is currently configured. Do not send reports to an address you find elsewhere unless it is listed in this repository.
+- The support address above is the only FleetPulse feedback mailbox documented by this repository. Do not send reports to an address you find elsewhere.
+
+### Email reports
+
+The in-app email flow is a hand-off, not a mail server:
+
+- choose Bug, Improvement, or General Feedback;
+- the recipient, subject, and body are prefilled;
+- app version and Android/device details are included only while their toggles are on;
+- the exact draft is shown before it leaves FleetPulse;
+- your email app opens so you can edit and send it yourself;
+- if no email app is installed, the draft can be copied or shared, and the support address can be copied separately.
+
+FleetPulse does not embed SMTP credentials, run a mail backend, attach database/backup files, or send mail silently.
 
 ## Supporting FleetPulse
 

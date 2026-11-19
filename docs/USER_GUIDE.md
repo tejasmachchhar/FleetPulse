@@ -37,7 +37,7 @@ The bottom bar contains:
 - **Usage Log** — all usage records with status filters.
 - **Analysis** — mileage, cost, energy, and savings details.
 - **Maintenance** — service records and reminders.
-- **More** — Feedback & Support, Calibration, Settings, Data Management, User Guide, and Calculation Verification.
+- **More** — Feedback & Support, About FleetPulse, Calibration, Settings, Data Management, User Guide, and Calculation Verification.
 
 The floating **+** button opens the quick-entry sheet: EV charge, petrol refill, ride/odometer only, or maintenance.
 
@@ -301,11 +301,12 @@ CSV files are for spreadsheets and review. They are not a restore source.
 
 ## Feedback and Support
 
-Open **More → Feedback & Support**. The centre has four actions plus project links:
+Open **More → Feedback & Support**. The centre has five actions. Project links and build details are in **More → About FleetPulse**.
 
 - **Report a Bug** — choose a category such as crash, incorrect calculation, missing data, UI, navigation, or performance; optionally add one sentence.
 - **Suggest an Improvement** — choose a category and write a short suggestion. Problem and expected-behaviour fields are optional.
 - **Send General Feedback** — a short note is enough.
+- **Email Feedback & Support** — send a bug, improvement, or general note to the support address without a GitHub account.
 - **Support FleetPulse** — optional UPI, Buy Me a Coffee, and GitHub Sponsors when configured.
 
 ### What the app fills in
@@ -330,11 +331,24 @@ It never includes vehicle names or registrations, odometer readings, fuel/chargi
    - **Open GitHub issue** — opens a prefilled issue page. GitHub may ask you to sign in. FleetPulse cannot press the submit button or confirm that an issue was posted.
    - **Share** — opens the Android share sheet with the report text.
    - **Copy** — copies the report to the clipboard.
-   - **Email report** — only appears when a verified support address is configured. It currently does not appear.
+   - **Email report** — opens your email app with the report as a draft. This is available on the GitHub preview and from the dedicated email flow.
 
-Opening GitHub is not a submission. The app never says an issue was created just because a browser opened.
+Opening GitHub is not a submission. The app never says an issue was created just because a browser opened. Opening an email app does not send the email; you must press Send there.
 
 Long reports are shortened locally so the prefilled GitHub link stays reliable. The preview shows the exact shortened text and a note that it was shortened; Share and Copy use the same text. Shorten the description or turn off recent diagnostics to keep more of the technical detail.
+
+### Email feedback
+
+Open **More → Feedback & Support → Email Feedback & Support**:
+
+1. Choose **Report a Bug**, **Suggest an Improvement**, or **General Feedback**.
+2. Fill only the fields that help explain the issue. Bug steps and expected/actual behaviour are optional.
+3. Leave app version, Android/device details, and recent diagnostics on or turn them off.
+4. Tap **Review email draft** and read the exact subject and body.
+5. Tick the consent box, then tap **Open email app**. The recipient `tejasmachchhar2019@gmail.com`, subject, and body are prefilled; you can edit them before sending.
+6. If no email app is installed, use **Copy email**, **Share draft**, or **Copy support address** instead.
+
+FleetPulse cannot send email itself and cannot confirm delivery. The support address is shown on the screen and can be copied separately.
 
 ### Contextual report buttons
 
@@ -343,6 +357,19 @@ A small bug icon on Dashboard, Usage Log, Analysis, Maintenance, and Quick Entry
 ### Local diagnostics
 
 FleetPulse keeps a small local diagnostics log for troubleshooting. It is stored in the app's private storage, capped at two rotated files of 64 KiB, and redacted before writing. It is read into a report only when **Recent diagnostics** is enabled. It is never uploaded automatically and there is no crash-reporting service.
+
+## About and project links
+
+Open **More → About FleetPulse** for the verified project destinations:
+
+- GitHub repository;
+- documentation and user guide;
+- changelog and release notes;
+- latest release and APK downloads;
+- privacy information;
+- support and privacy-safe reporting guide.
+
+The screen also shows the current version, version code, build type, and package name. Feedback & Support stays focused on reporting and assistance instead of repeating the same link list.
 
 ## Calculation Verification
 
@@ -370,6 +397,7 @@ A failure means the engine does not match the expected reference values. Report 
 - The feedback preview shows the exact report before any external action; optional diagnostics can be disabled and consent is required.
 - The local diagnostics log is capped at two 64 KiB files and is read into a report only when you leave **Recent diagnostics** on.
 - UPI and Buy Me a Coffee are optional. FleetPulse does not verify payments or store payment credentials.
+- Email feedback opens your email app with a reviewed draft. FleetPulse does not send email silently or confirm delivery.
 - The app does not encrypt the database with a user password; it relies on the Android app sandbox and device encryption.
 - Deleting the app or clearing its storage deletes the local database. Export a backup first.
 

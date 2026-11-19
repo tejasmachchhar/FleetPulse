@@ -263,10 +263,10 @@ JSON v2 (`format: "fleetpulse-backup"`, `version: 2`) maps to the tables as foll
 The backup writer identifies itself with:
 
 ```text
-"app": "FleetPulse Android 4.2.0"
+"app": "FleetPulse Android 4.3.0"
 ```
 
-That label is a format-level compatibility string. If the app version changes, update the string and its tests together so backups remain traceable.
+The value is generated from `BuildInfo.VERSION_NAME`, so it follows the current app version automatically. The sample above shows the 4.3.0 build. Backups remain traceable to the version that wrote them.
 
 CSV exports are evaluated views, not backups. They contain computed fields and should not be imported as a restore source.
 
