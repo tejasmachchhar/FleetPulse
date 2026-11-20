@@ -1,0 +1,829 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fleetpulse.dev/schemas/vehicle-reference/v1.0.0/vehicle.schema.json",
+  "title": "FleetPulse Universal Vehicle Reference Record",
+  "description": "Normalized, source-verified technical specification record for FleetPulse Android onboarding and running-cost tracking.",
+  "type": "object",
+  "required": [
+    "id",
+    "schema_version",
+    "manufacturer",
+    "model",
+    "classification",
+    "powertrain",
+    "energy_storage",
+    "dimensions",
+    "efficiency",
+    "maintenance",
+    "aliases",
+    "sources",
+    "discrepancies",
+    "verification"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+      "description": "Stable deterministic slug: <manufacturer>_<model>_<variant>_<year>_<iso2_market>"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "manufacturer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "brand"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "brand": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "official_product_name",
+        "variant",
+        "year",
+        "market"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "official_product_name": {
+          "type": "string"
+        },
+        "variant": {
+          "type": "string"
+        },
+        "generation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2035
+        },
+        "model_years": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "market": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "market_name": {
+          "type": "string"
+        },
+        "manufacturer_model_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": [
+        "category",
+        "subcategory"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "two_wheeler",
+            "three_wheeler",
+            "passenger_vehicle",
+            "commercial_vehicle",
+            "agricultural",
+            "construction",
+            "public_transport",
+            "other"
+          ]
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "vehicle_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vehicle_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "powertrain": {
+      "type": "object",
+      "required": [
+        "propulsion",
+        "fuel_type",
+        "power_unit",
+        "torque_unit"
+      ],
+      "properties": {
+        "propulsion": {
+          "type": "string",
+          "enum": [
+            "ice",
+            "bev",
+            "mild_hybrid",
+            "strong_hybrid",
+            "phev",
+            "fcev",
+            "non_motorized"
+          ]
+        },
+        "fuel_type": {
+          "type": "string",
+          "enum": [
+            "petrol",
+            "diesel",
+            "cng",
+            "cng_petrol_bi_fuel",
+            "lpg",
+            "lpg_petrol_bi_fuel",
+            "electric",
+            "flex_fuel",
+            "hydrogen",
+            "none"
+          ]
+        },
+        "e20_compliant": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "engine_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "engine_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "engine_displacement_cc": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cylinder_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "engine_configuration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "power": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "power_unit": {
+          "type": "string",
+          "enum": [
+            "kW",
+            "hp",
+            "PS"
+          ]
+        },
+        "power_alt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "power_rpm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "torque": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "torque_unit": {
+          "type": "string",
+          "enum": [
+            "Nm"
+          ]
+        },
+        "torque_rpm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "torque_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transmission": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gear_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "drive_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "aftertreatment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "motor": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "hybrid_configuration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "battery": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "pto": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "energy_storage": {
+      "type": "object",
+      "properties": {
+        "fuel_tank_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "fuel_reserve_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cng_capacity_liters_water_eq": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cng_capacity_kg_approx": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lpg_capacity_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "def_capacity_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_capacity_kwh": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_usable_kwh": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_voltage_v": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_capacity_ah": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_chemistry": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "kerb_weight_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gross_weight_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "payload_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "seating_capacity": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "seating_layout": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cargo_capacity_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cargo_deck_mm": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "hydraulic_lift_capacity_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "wheel_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "axle_configuration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "wheelbase_mm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "length_mm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "width_mm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "height_mm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "ground_clearance_mm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "seat_height_mm": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "efficiency": {
+      "type": "object",
+      "required": [
+        "metrics"
+      ],
+      "properties": {
+        "certification_standard": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "metric_type",
+              "unit",
+              "source_type",
+              "source_url"
+            ],
+            "properties": {
+              "metric_type": {
+                "type": "string",
+                "enum": [
+                  "fuel_economy",
+                  "electric_range",
+                  "specific_fuel_consumption",
+                  "energy_consumption",
+                  "operating_hours_per_tank"
+                ]
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "value_min": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "value_max": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "unit": {
+                "type": "string",
+                "enum": [
+                  "km_per_liter",
+                  "km_per_kg",
+                  "km",
+                  "g_per_kwh",
+                  "l_per_hour",
+                  "l_per_100km",
+                  "kwh_per_100km",
+                  "km_per_kwh",
+                  "hours"
+                ]
+              },
+              "test_cycle": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_type": {
+                "type": "string",
+                "enum": [
+                  "officially_verified",
+                  "certified",
+                  "manufacturer_claimed",
+                  "independently_tested",
+                  "secondary_source",
+                  "estimated",
+                  "unknown"
+                ]
+              },
+              "conditions": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      }
+    },
+    "maintenance": {
+      "type": "object",
+      "properties": {
+        "engine_oil_grade": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "engine_oil_capacity_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "engine_oil_capacity_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "coolant_spec": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "coolant_capacity_liters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "filter_specs": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tire_size_front": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tire_size_rear": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tire_pressure_front_psi": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        },
+        "tire_pressure_rear_psi": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        },
+        "service_interval_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "service_interval_unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "km",
+            "hours",
+            "miles",
+            null
+          ]
+        },
+        "service_interval_months": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "service_schedule_summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "warranty": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "handbook_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "publisher",
+          "title",
+          "url",
+          "source_type",
+          "covers_fields"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "covers_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "discrepancies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "adopted_value",
+          "conflicting_value",
+          "adopted_source_url",
+          "conflicting_source_url",
+          "resolution_status",
+          "notes"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "adopted_value": {
+            "type": "string"
+          },
+          "conflicting_value": {
+            "type": "string"
+          },
+          "adopted_source_url": {
+            "type": "string"
+          },
+          "conflicting_source_url": {
+            "type": "string"
+          },
+          "resolution_status": {
+            "type": "string",
+            "enum": [
+              "resolved_primary",
+              "resolved_regulatory",
+              "unresolved",
+              "documented_unverified_oem",
+              "split_sku_recommended"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "status",
+        "confidence",
+        "last_verified"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "officially_verified",
+            "cross_verified",
+            "secondary_source",
+            "partially_verified",
+            "estimated",
+            "unverified"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "last_verified": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

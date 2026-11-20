@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0.0",
+  "categories": [
+    {
+      "id": "two_wheeler",
+      "slug": "two-wheelers",
+      "name": "Two-Wheelers",
+      "tracking_basis": "distance_km",
+      "subcategories": [
+        "petrol_scooter",
+        "electric_scooter",
+        "commuter_motorcycle",
+        "sports_motorcycle",
+        "touring_motorcycle",
+        "electric_motorcycle",
+        "moped",
+        "other_two_wheeler"
+      ]
+    },
+    {
+      "id": "three_wheeler",
+      "slug": "three-wheelers",
+      "name": "Three-Wheelers",
+      "tracking_basis": "distance_km",
+      "subcategories": [
+        "passenger_auto_rickshaw",
+        "cargo_auto_rickshaw",
+        "electric_three_wheeler",
+        "e_rickshaw",
+        "e_cargo",
+        "other_three_wheeler"
+      ]
+    },
+    {
+      "id": "passenger_vehicle",
+      "slug": "passenger-vehicles",
+      "name": "Passenger Vehicles",
+      "tracking_basis": "distance_km",
+      "subcategories": [
+        "hatchback",
+        "sedan",
+        "compact_suv",
+        "suv",
+        "mpv",
+        "van",
+        "other_passenger_vehicle"
+      ]
+    },
+    {
+      "id": "commercial_vehicle",
+      "slug": "commercial-vehicles",
+      "name": "Commercial Vehicles",
+      "tracking_basis": "distance_km",
+      "subcategories": [
+        "pickup_truck",
+        "mini_truck",
+        "small_commercial_vehicle",
+        "light_commercial_vehicle",
+        "medium_commercial_vehicle",
+        "heavy_commercial_vehicle",
+        "cargo_truck",
+        "tractor_trailer",
+        "tipper",
+        "tanker",
+        "refrigerated_truck",
+        "delivery_vehicle",
+        "specialized_commercial_vehicle"
+      ]
+    },
+    {
+      "id": "agricultural",
+      "slug": "agricultural",
+      "name": "Agricultural Vehicles & Machinery",
+      "tracking_basis": "operating_hours",
+      "subcategories": [
+        "agricultural_tractor",
+        "mini_tractor",
+        "compact_tractor",
+        "utility_tractor",
+        "orchard_tractor",
+        "power_tiller",
+        "combine_harvester",
+        "harvester",
+        "agricultural_utility_vehicle",
+        "specialized_farm_machinery"
+      ]
+    },
+    {
+      "id": "construction",
+      "slug": "construction",
+      "name": "Construction & Industrial Equipment",
+      "tracking_basis": "operating_hours",
+      "subcategories": [
+        "excavator",
+        "backhoe_loader",
+        "wheel_loader",
+        "bulldozer",
+        "forklift",
+        "crane",
+        "road_roller",
+        "grader",
+        "construction_equipment",
+        "industrial_vehicle"
+      ]
+    },
+    {
+      "id": "public_transport",
+      "slug": "public-transport",
+      "name": "Public Transport",
+      "tracking_basis": "distance_km",
+      "subcategories": [
+        "city_bus",
+        "intercity_bus",
+        "mini_bus",
+        "school_bus",
+        "electric_bus",
+        "other_public_transport"
+      ]
+    },
+    {
+      "id": "other",
+      "slug": "other",
+      "name": "Other Vehicles",
+      "tracking_basis": "both",
+      "subcategories": [
+        "trailer",
+        "recreational_vehicle",
+        "specialized_vehicle",
+        "public_non_sensitive_military",
+        "other_transport_vehicle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "id": "maruti_suzuki_ertiga_zxi_1_5_hybrid_5mt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "maruti_suzuki",
+    "name": "Maruti Suzuki India Limited",
+    "brand": "Maruti Suzuki"
+  },
+  "model": {
+    "id": "ertiga",
+    "name": "Ertiga",
+    "official_product_name": "Next-Gen Ertiga ZXi Smart Hybrid 5MT",
+    "variant": "ZXi 1.5L K15C Smart Hybrid Petrol 5MT",
+    "generation": "2nd Generation (NC, 2025/26 Update)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "NC"
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "mpv",
+    "vehicle_class": "M1 (Compact 3-Row MPV)",
+    "vehicle_type": "7-Seater MPV"
+  },
+  "powertrain": {
+    "propulsion": "mild_hybrid",
+    "fuel_type": "petrol",
+    "e20_compliant": true,
+    "engine_type": "K15C Smart Hybrid (Dual Jet, Dual VVT)",
+    "engine_code": "K15C",
+    "engine_displacement_cc": 1462.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4, 16V DOHC",
+    "power": 75.8,
+    "power_unit": "kW",
+    "power_alt": "103.06 PS (101.64 bhp)",
+    "power_rpm": 6000,
+    "torque": 139.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 4300,
+    "transmission": "5-speed Manual (5MT)",
+    "gear_count": 5,
+    "drive_type": "FWD",
+    "aftertreatment": null,
+    "motor": {
+      "type": "Integrated Starter Generator (ISG)",
+      "peak_power_kw": null,
+      "continuous_power_kw": null,
+      "peak_torque_nm": null
+    },
+    "hybrid_configuration": "12V Mild Hybrid (SHVS)",
+    "battery": {
+      "capacity_kwh": 0.072,
+      "usable_kwh": null,
+      "voltage_v": 12.0,
+      "capacity_ah": 6.0,
+      "chemistry": "Lithium-ion"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 45.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": 0.072,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": 12.0,
+    "battery_capacity_ah": 6.0,
+    "battery_chemistry": "Lithium-ion"
+  },
+  "dimensions": {
+    "kerb_weight_kg": 1175.0,
+    "gross_weight_kg": 1760.0,
+    "payload_kg": null,
+    "seating_capacity": 7,
+    "seating_layout": "7 seats (3 rows)",
+    "cargo_capacity_liters": 209.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2740,
+    "length_mm": 4435,
+    "width_mm": 1735,
+    "height_mm": 1690,
+    "ground_clearance_mm": 185,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS VI, E20)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 20.51,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI_CMVR_115",
+        "source_type": "certified",
+        "conditions": "5MT Smart Hybrid Petrol",
+        "source_url": "https://www.carwale.com/maruti-suzuki-cars/ertiga/zxi/"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 0W-16 (API SN/SP or ILSAC GF-6)",
+    "engine_oil_capacity_liters": 3.3,
+    "engine_oil_capacity_notes": "~3.3 L with filter",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "185/65 R15 (Alloy)",
+    "tire_size_rear": "185/65 R15 (Alloy)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 10000,
+    "service_interval_unit": "km",
+    "service_interval_months": 12,
+    "service_schedule_summary": "10,000 km / 12 months (free checks at 1,000, 5,000, 10,000 km).",
+    "warranty": null,
+    "handbook_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/ertiga/document/Arena-Ertiga-Brochure.pdf"
+  },
+  "aliases": [
+    "Maruti Ertiga",
+    "Ertiga SHVS",
+    "Ertiga Smart Hybrid"
+  ],
+  "sources": [
+    {
+      "publisher": "Maruti Suzuki Commercial",
+      "title": "Official Ertiga Tour M K15C Smart Hybrid Specs",
+      "url": "https://www.marutisuzukicommercial.com/ertiga-tour-m",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "powertrain",
+        "dimensions",
+        "fuel_tank_liters",
+        "seating_capacity"
+      ],
+      "source_id": "src_0074"
+    },
+    {
+      "publisher": "CarDekho",
+      "title": "Maruti Suzuki Ertiga 2026 Dimensions & Specifications",
+      "url": "https://www.cardekho.com/carmodels/Maruti/Maruti_Ertiga",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "kerb_weight_kg",
+        "gross_weight_kg",
+        "cargo_capacity_liters",
+        "ground_clearance_mm",
+        "length_mm"
+      ],
+      "source_id": "src_0075"
+    },
+    {
+      "publisher": "CarWale",
+      "title": "Maruti Suzuki Ertiga ZXi Specifications",
+      "url": "https://www.carwale.com/maruti-suzuki-cars/ertiga/zxi/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency",
+        "tire_size_front",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0076"
+    },
+    {
+      "publisher": "MotorBabu",
+      "title": "Maruti Ertiga K15C Service Schedule & Oil Spec",
+      "url": "https://motorbabu.com/service-schedule/maruti-suzuki-ertiga",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_grade",
+        "engine_oil_capacity_liters",
+        "service_interval"
+      ],
+      "source_id": "src_0077"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "dimensions.length_mm_and_torque",
+      "adopted_value": "4435 mm length & 139.0 Nm @ 4300 rpm (2025/2026 OEM Tour M & CarDekho 2026)",
+      "conflicting_value": "4395 mm length & 136.8 Nm @ 4400 rpm (pre-2025 CarWale page)",
+      "adopted_source_url": "https://www.marutisuzukicommercial.com/ertiga-tour-m",
+      "conflicting_source_url": "https://www.carwale.com/maruti-suzuki-cars/ertiga/zxi/",
+      "resolution_status": "resolved_primary",
+      "notes": "Adopted 2025/2026 updated length and torque figures."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Kerb weight range across petrol trims is 1175-1225 kg (GVW 1760-1785 kg); boot expands to 803 L with 3rd row folded."
+  }
+}

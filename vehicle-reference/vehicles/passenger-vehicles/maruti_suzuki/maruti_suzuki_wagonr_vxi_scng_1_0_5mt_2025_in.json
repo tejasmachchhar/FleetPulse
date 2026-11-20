@@ -1,0 +1,187 @@
+{
+  "id": "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "maruti_suzuki",
+    "name": "Maruti Suzuki India Limited",
+    "brand": "Maruti Suzuki"
+  },
+  "model": {
+    "id": "wagonr",
+    "name": "WagonR",
+    "official_product_name": "Maruti Suzuki WagonR VXi S-CNG",
+    "variant": "VXi S-CNG 5MT (1.0L K10C)",
+    "generation": "3rd Generation (MT81S, 2025 6-Airbag Update)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "MT81S"
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "hatchback",
+    "vehicle_class": "M1 (Compact Hatchback Sub-4m)",
+    "vehicle_type": "Tall-Boy Compact Hatchback"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "cng_petrol_bi_fuel",
+    "e20_compliant": null,
+    "engine_type": "K10C (Dual Jet, Dual VVT)",
+    "engine_code": "K10C",
+    "engine_displacement_cc": 998.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3, 12V DOHC",
+    "power": 41.7,
+    "power_unit": "kW",
+    "power_alt": "56.6 PS (CNG) / 49.8 kW (67.7 PS) Petrol",
+    "power_rpm": 5300,
+    "torque": 82.1,
+    "torque_unit": "Nm",
+    "torque_rpm": 3400,
+    "torque_notes": "82.1 Nm @ 3400 rpm (CNG) / 91.1 Nm @ 3400 rpm (Petrol)",
+    "transmission": "5-speed Manual (5MT)",
+    "gear_count": 5,
+    "drive_type": "FWD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 32.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": 60.0,
+    "cng_capacity_kg_approx": 8.5,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 935.0,
+    "gross_weight_kg": 1340.0,
+    "payload_kg": null,
+    "seating_capacity": 5,
+    "seating_layout": "5 seats",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2435,
+    "length_mm": 3655,
+    "width_mm": 1620,
+    "height_mm": 1675,
+    "ground_clearance_mm": null,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS VI incl. OBD-II)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 33.47,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_kg",
+        "test_cycle": "ARAI_CMVR_115G",
+        "source_type": "certified",
+        "conditions": "CNG mode, April 2025 6-airbag Maruti brochure PDF",
+        "source_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/wagonr/documents/Arena-Wagon-r-Brochure.pdf"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "165/70 R14 (Steel)",
+    "tire_size_rear": "165/70 R14 (Steel)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": null,
+    "handbook_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/wagonr/documents/Arena-Wagon-r-Brochure.pdf"
+  },
+  "aliases": [
+    "Wagon R CNG",
+    "WagonR 1.0 CNG",
+    "Tall-Boy WagonR"
+  ],
+  "sources": [
+    {
+      "publisher": "Maruti Suzuki India",
+      "title": "Official WagonR Brochure PDF (24 Apr 2025)",
+      "url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/wagonr/documents/Arena-Wagon-r-Brochure.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "power",
+        "torque",
+        "kerb_weight_kg",
+        "efficiency"
+      ],
+      "source_id": "src_0071"
+    },
+    {
+      "publisher": "CarWale",
+      "title": "2025 Maruti Suzuki WagonR VXi CNG 1.0L Technical Specs",
+      "url": "https://www.carwale.com/used/ahmedabad/maruti-suzuki-wagon-r/hy6i83cc/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "engine_code",
+        "engine_displacement_cc",
+        "dimensions",
+        "gross_weight_kg",
+        "fuel_tank_liters",
+        "cng_capacity_liters_water_eq",
+        "tire_size_front"
+      ],
+      "source_id": "src_0072"
+    },
+    {
+      "publisher": "CarDekho",
+      "title": "Maruti Suzuki WagonR VXi CNG Specifications",
+      "url": "https://www.cardekho.com/overview/Maruti_Wagon_R/Maruti_Wagon_R_VXI_CNG.htm",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "dimensions",
+        "cng_capacity_liters_water_eq",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0073"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency.fuel_economy",
+      "adopted_value": "33.47 km/kg (April 2025 6-airbag OEM brochure)",
+      "conflicting_value": "34.05 km/kg (older 2-airbag BS6.1 CarDekho listings)",
+      "adopted_source_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/wagonr/documents/Arena-Wagon-r-Brochure.pdf",
+      "conflicting_source_url": "https://www.cardekho.com/overview/Maruti_Wagon_R/Maruti_Wagon_R_VXI_CNG_BSVI.htm",
+      "resolution_status": "resolved_primary",
+      "notes": "Adopted April 2025 Maruti brochure figure reflecting 6-airbag update and 935 kg kerb weight."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from April 2025 OEM brochure + CarWale/CarDekho; boot volume and ground clearance kept null (CNG cylinder occupies boot; GC omitted in brochure)."
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0.0",
+  "database_version": "1.0.0-batch1",
+  "category_slug": "commercial-vehicles",
+  "record_count": 5,
+  "records": [
+    {
+      "id": "ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in",
+      "manufacturer_id": "ashok_leyland",
+      "manufacturer_name": "Ashok Leyland Limited",
+      "brand": "Ashok Leyland",
+      "model": "Bada Dost i4 with LNT",
+      "variant": "FSD LS (2590 WB Fixed Side Deck, LNT)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "commercial_vehicle",
+      "subcategory": "pickup_truck",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Bada Dost i4 LNT",
+        "Bada Dost i4 DEF-Free",
+        "Ashok Leyland Bada Dost"
+      ],
+      "search_tokens": [
+        "2025",
+        "2590",
+        "ashok",
+        "bada",
+        "deck",
+        "def",
+        "diesel",
+        "dost",
+        "fixed",
+        "free",
+        "fsd",
+        "i4",
+        "leyland",
+        "lnt",
+        "ls",
+        "pickup",
+        "side",
+        "truck",
+        "wb",
+        "with"
+      ],
+      "record_path": "vehicles/commercial-vehicles/ashok_leyland/ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+      "manufacturer_id": "mahindra_auto",
+      "manufacturer_name": "Mahindra & Mahindra Limited",
+      "brand": "Mahindra",
+      "model": "Bolero MaXX Pik-Up HD",
+      "variant": "HD 1.7L LX (10 ft Load Body, Power Steering)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "commercial_vehicle",
+      "subcategory": "pickup_truck",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Bolero Maxx HD 1.7L",
+        "Bolero Pickup 1.7 Long",
+        "Mahindra Bolero Pickup"
+      ],
+      "search_tokens": [
+        "10",
+        "2025",
+        "7l",
+        "body",
+        "bolero",
+        "diesel",
+        "ft",
+        "hd",
+        "load",
+        "long",
+        "lx",
+        "mahindra",
+        "maxx",
+        "pickup",
+        "pik",
+        "power",
+        "steering",
+        "truck",
+        "up"
+      ],
+      "record_path": "vehicles/commercial-vehicles/mahindra_auto/mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in.json",
+      "verification_status": "partially_verified"
+    },
+    {
+      "id": "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+      "manufacturer_id": "maruti_suzuki",
+      "manufacturer_name": "Maruti Suzuki India Limited",
+      "brand": "Maruti Suzuki",
+      "model": "Super Carry",
+      "variant": "CNG STD (2110/CNG Standard Deck, 2025 ESP)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "commercial_vehicle",
+      "subcategory": "mini_truck",
+      "propulsion": "ice",
+      "fuel_type": "cng_petrol_bi_fuel",
+      "aliases": [
+        "Super Carry S-CNG",
+        "Super Carry CNG Deck",
+        "Super Carry 2110 CNG"
+      ],
+      "search_tokens": [
+        "2025",
+        "2110",
+        "bi",
+        "carry",
+        "cng",
+        "deck",
+        "esp",
+        "fuel",
+        "maruti",
+        "mini",
+        "petrol",
+        "standard",
+        "std",
+        "super",
+        "suzuki",
+        "truck"
+      ],
+      "record_path": "vehicles/commercial-vehicles/maruti_suzuki/maruti_suzuki_super_carry_scng_std_esp_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+      "manufacturer_id": "tata_motors_cv",
+      "manufacturer_name": "Tata Motors Limited",
+      "brand": "Tata",
+      "model": "Ace Gold",
+      "variant": "Ace Gold+ (2100/Diesel Deck, LNT)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "commercial_vehicle",
+      "subcategory": "mini_truck",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Chhota Hathi",
+        "Ace Gold Plus Diesel",
+        "Ace Gold+ LNT"
+      ],
+      "search_tokens": [
+        "2025",
+        "2100",
+        "ace",
+        "chhota",
+        "deck",
+        "diesel",
+        "gold",
+        "hathi",
+        "lnt",
+        "mini",
+        "plus",
+        "tata",
+        "truck"
+      ],
+      "record_path": "vehicles/commercial-vehicles/tata_motors_cv/tata_ace_gold_plus_2100_diesel_lnt_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+      "manufacturer_id": "tata_motors_cv",
+      "manufacturer_name": "Tata Motors Limited",
+      "brand": "Tata",
+      "model": "Intra V30 Gold",
+      "variant": "Intra V30 Gold LX (2450 WB CLB Deck)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "commercial_vehicle",
+      "subcategory": "pickup_truck",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Intra V30 Gold",
+        "V30 Gold Pickup",
+        "Tata Intra V30"
+      ],
+      "search_tokens": [
+        "2025",
+        "2450",
+        "clb",
+        "deck",
+        "diesel",
+        "gold",
+        "intra",
+        "lx",
+        "pickup",
+        "tata",
+        "truck",
+        "v30",
+        "wb"
+      ],
+      "record_path": "vehicles/commercial-vehicles/tata_motors_cv/tata_intra_v30_gold_lx_2450_diesel_2025_in.json",
+      "verification_status": "officially_verified"
+    }
+  ]
+}

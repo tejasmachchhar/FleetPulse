@@ -1,0 +1,208 @@
+{
+  "id": "toyota_innova_hycross_zx_2_0_hybrid_ecvt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "toyota_kirloskar",
+    "name": "Toyota Kirloskar Motor Pvt. Ltd. (TKM)",
+    "brand": "Toyota"
+  },
+  "model": {
+    "id": "innova_hycross",
+    "name": "Innova Hycross",
+    "official_product_name": "Toyota Innova HyCross ZX (Self-Charging Hybrid Electric)",
+    "variant": "ZX 2.0L Strong Hybrid e-CVT (7-Seater)",
+    "generation": "3rd Generation Innova (AG10, 2022-present)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "AG10"
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "mpv",
+    "vehicle_class": "M1 (D-Segment Crossover MPV)",
+    "vehicle_type": "Full-Size Strong Hybrid MPV"
+  },
+  "powertrain": {
+    "propulsion": "strong_hybrid",
+    "fuel_type": "petrol",
+    "e20_compliant": true,
+    "engine_type": "TNGA 5th-Gen Hybrid Atkinson-Cycle Petrol",
+    "engine_code": "M20A-FXS",
+    "engine_displacement_cc": 1987.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4, 16V DOHC VVT-i",
+    "power": 139.0,
+    "power_unit": "kW",
+    "power_alt": "183.7 HP combined (ICE net: 112 kW @ 6000 rpm)",
+    "power_rpm": 6600,
+    "torque": 191.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 4400,
+    "torque_notes": "191 Nm @ 4400-5200 rpm (ICE) / 206 Nm (Electric Motor)",
+    "transmission": "e-Drive (e-CVT) with Sequential Shift & Paddles",
+    "gear_count": null,
+    "drive_type": "FWD",
+    "aftertreatment": null,
+    "motor": {
+      "type": "Permanent Magnet Synchronous Motor (PMSM)",
+      "peak_power_kw": 83.0,
+      "continuous_power_kw": null,
+      "peak_torque_nm": 206.0
+    },
+    "hybrid_configuration": "Series-Parallel Strong Hybrid (Toyota THS-II 5th Gen)",
+    "battery": {
+      "capacity_kwh": null,
+      "usable_kwh": null,
+      "voltage_v": 201.6,
+      "capacity_ah": 6.5,
+      "chemistry": "Ni-MH (28 modules x 7.2V, 168 cells)"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 52.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": 201.6,
+    "battery_capacity_ah": 6.5,
+    "battery_chemistry": "Ni-MH"
+  },
+  "dimensions": {
+    "kerb_weight_kg": null,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 7,
+    "seating_layout": "7 seats (2+2+3 Captain Ottoman)",
+    "cargo_capacity_liters": 300.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2850,
+    "length_mm": 4755,
+    "width_mm": 1850,
+    "height_mm": 1790,
+    "ground_clearance_mm": 185,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (E20, BNCAP 5-Star)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 22.16,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI_CMVR_115",
+        "source_type": "certified",
+        "conditions": "2025 official Toyota Innova HyCross brochure PDF",
+        "source_url": "https://www.toyotabharat.com/documents/brochures/e-brochure-hycross.pdf"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 0W-16 (API SN/SP RC or ILSAC GF-6B)",
+    "engine_oil_capacity_liters": 4.6,
+    "engine_oil_capacity_notes": "4.6 L with filter (4.3 L without); e-Transaxle Fluid TE: 3.7 L",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "225/50 R18 (Gunmetal Alloy; Spare: Space Saver)",
+    "tire_size_rear": "225/50 R18",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 10000,
+    "service_interval_unit": "km",
+    "service_interval_months": 12,
+    "service_schedule_summary": "10,000 km / 12 months.",
+    "warranty": null,
+    "handbook_url": "https://www.toyotabharat.com/documents/brochures/e-brochure-hycross.pdf"
+  },
+  "aliases": [
+    "Innova HyCross",
+    "Hycross Hybrid",
+    "Innova Zenix"
+  ],
+  "sources": [
+    {
+      "publisher": "Toyota Kirloskar Motor",
+      "title": "Official Innova HyCross Brochure PDF (2025 Edition)",
+      "url": "https://www.toyotabharat.com/documents/brochures/e-brochure-hycross.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "efficiency",
+        "tire_size_front"
+      ],
+      "source_id": "src_0089"
+    },
+    {
+      "publisher": "Toyota Kirloskar Motor (via Team-BHP)",
+      "title": "Innova Hycross Owner's Manual Vehicle Specifications PDF",
+      "url": "https://www.team-bhp.com/forum/attachments/official-new-car-reviews/2606134d1715752384-toyota-innova-hycross-review-specifications.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "engine_code",
+        "motor",
+        "battery_voltage_v",
+        "battery_capacity_ah",
+        "engine_oil_grade",
+        "engine_oil_capacity_liters"
+      ],
+      "source_id": "src_0090"
+    },
+    {
+      "publisher": "Autocar India",
+      "title": "Toyota Innova HyCross Specifications (Nov 2026)",
+      "url": "https://www.autocarindia.com/cars/toyota/innova-hycross/specifications",
+      "source_type": "automotive_publication",
+      "covers_fields": [
+        "ground_clearance_mm",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0091"
+    },
+    {
+      "publisher": "CarDekho",
+      "title": "Toyota Innova Hycross Specifications",
+      "url": "https://www.cardekho.com/toyota/innova-hycross/specs",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "cargo_capacity_liters",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0092"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency_and_ice_torque",
+      "adopted_value": "22.16 km/L & 191 Nm ICE torque (2025 Official Toyota Brochure)",
+      "conflicting_value": "23.24 km/L & 188 Nm ICE torque (2023 launch manual, Autocar India & CarDekho)",
+      "adopted_source_url": "https://www.toyotabharat.com/documents/brochures/e-brochure-hycross.pdf",
+      "conflicting_source_url": "https://www.autocarindia.com/cars/toyota/innova-hycross/specifications",
+      "resolution_status": "resolved_primary",
+      "notes": "2025 official Toyota brochure supersedes launch-era 2023 mileage and ICE torque specs."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from 2025 Toyota brochure PDF and Owner's Manual PDF; HV battery kWh left null (OEM prints 201.6 V / 6.5 Ah, not kWh) and kerb/GVW kept null."
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "schema_version": "1.0.0",
+  "database_version": "1.0.0-batch1",
+  "category_slug": "three-wheelers",
+  "record_count": 5,
+  "records": [
+    {
+      "id": "bajaj_re_cng_236cc_2025_in",
+      "manufacturer_id": "bajaj_auto",
+      "manufacturer_name": "Bajaj Auto Limited",
+      "brand": "Bajaj",
+      "model": "RE",
+      "variant": "RE CNG (3-Seater/CNG, 236.2 cc Bi-Fuel)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "three_wheeler",
+      "subcategory": "passenger_auto_rickshaw",
+      "propulsion": "ice",
+      "fuel_type": "cng_petrol_bi_fuel",
+      "aliases": [
+        "Bajaj RE Compact",
+        "Bajaj RE Compact 4S CNG",
+        "Bajaj RE 3-Seater CNG"
+      ],
+      "search_tokens": [
+        "2025",
+        "236",
+        "4s",
+        "auto",
+        "bajaj",
+        "bi",
+        "cc",
+        "cng",
+        "compact",
+        "fuel",
+        "passenger",
+        "petrol",
+        "re",
+        "rickshaw",
+        "seater"
+      ],
+      "record_path": "vehicles/three-wheelers/bajaj_auto/bajaj_re_cng_236cc_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "euler_hiload_ev_gen3_tr_dv120_2025_in",
+      "manufacturer_id": "euler_motors",
+      "manufacturer_name": "Euler Motors Pvt. Ltd.",
+      "brand": "Euler Motors",
+      "model": "HiLoad EV",
+      "variant": "HiLoad+ TR (DV 120 cu ft Delivery Van)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "three_wheeler",
+      "subcategory": "e_cargo",
+      "propulsion": "bev",
+      "fuel_type": "electric",
+      "aliases": [
+        "Euler HiLoad TR",
+        "Euler HiLoad DV 120",
+        "Euler HiLoad EV Cargo"
+      ],
+      "search_tokens": [
+        "120",
+        "2025",
+        "cargo",
+        "cu",
+        "delivery",
+        "dv",
+        "electric",
+        "euler",
+        "ev",
+        "ft",
+        "hiload",
+        "motors",
+        "tr",
+        "van"
+      ],
+      "record_path": "vehicles/three-wheelers/euler_motors/euler_hiload_ev_gen3_tr_dv120_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "mahindra_treo_sft_7_37_kwh_2025_in",
+      "manufacturer_id": "mahindra_mlmm",
+      "manufacturer_name": "Mahindra Last Mile Mobility Limited",
+      "brand": "Mahindra",
+      "model": "Treo",
+      "variant": "Mahindra Treo - SFT (Soft Top, 7.37 kWh Li-ion)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "three_wheeler",
+      "subcategory": "electric_three_wheeler",
+      "propulsion": "bev",
+      "fuel_type": "electric",
+      "aliases": [
+        "Mahindra Treo Soft Top",
+        "Mahindra Treo 2073/SFT",
+        "Mahindra Treo Auto"
+      ],
+      "search_tokens": [
+        "2025",
+        "2073",
+        "37",
+        "auto",
+        "electric",
+        "ion",
+        "kwh",
+        "li",
+        "mahindra",
+        "sft",
+        "soft",
+        "three",
+        "top",
+        "treo",
+        "wheeler"
+      ],
+      "record_path": "vehicles/three-wheelers/mahindra_mlmm/mahindra_treo_sft_7_37_kwh_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+      "manufacturer_id": "piaggio_india",
+      "manufacturer_name": "Piaggio Vehicles Pvt. Ltd. (India)",
+      "brand": "Piaggio",
+      "model": "Apé Xtra LDX",
+      "variant": "Apé Xtra LDX 2100/Diesel (599 cc BS6 Deck Body)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "three_wheeler",
+      "subcategory": "cargo_auto_rickshaw",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Piaggio Ape Xtra LDX BS6 Diesel",
+        "Ape Xtra LDX 599cc",
+        "Ape Diesel Loader"
+      ],
+      "search_tokens": [
+        "2025",
+        "2100",
+        "599",
+        "599cc",
+        "ap",
+        "ape",
+        "auto",
+        "body",
+        "bs6",
+        "cargo",
+        "cc",
+        "deck",
+        "diesel",
+        "ldx",
+        "loader",
+        "piaggio",
+        "rickshaw",
+        "xtra"
+      ],
+      "record_path": "vehicles/three-wheelers/piaggio_india/piaggio_ape_xtra_ldx_2100_diesel_2025_in.json",
+      "verification_status": "secondary_source"
+    },
+    {
+      "id": "yc_electric_yatri_super_4_seater_2025_in",
+      "manufacturer_id": "yc_electric",
+      "manufacturer_name": "Y.C. Electric Vehicle",
+      "brand": "YC Electric",
+      "model": "Yatri Super",
+      "variant": "Yatri Super (4-Seater / Electric)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "three_wheeler",
+      "subcategory": "e_rickshaw",
+      "propulsion": "bev",
+      "fuel_type": "electric",
+      "aliases": [
+        "YC Yatri Super",
+        "Yatri Super E-Rickshaw",
+        "YC Electric Yatri Super 4-Seater"
+      ],
+      "search_tokens": [
+        "2025",
+        "electric",
+        "rickshaw",
+        "seater",
+        "super",
+        "yatri",
+        "yc"
+      ],
+      "record_path": "vehicles/three-wheelers/yc_electric/yc_electric_yatri_super_4_seater_2025_in.json",
+      "verification_status": "cross_verified"
+    }
+  ]
+}

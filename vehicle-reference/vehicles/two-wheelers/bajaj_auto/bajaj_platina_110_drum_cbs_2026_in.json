@@ -1,0 +1,218 @@
+{
+  "id": "bajaj_platina_110_drum_cbs_2026_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "bajaj_auto",
+    "name": "Bajaj Auto Limited",
+    "brand": "Bajaj"
+  },
+  "model": {
+    "id": "platina_110",
+    "name": "Platina 110",
+    "official_product_name": "Bajaj Platina 110 Drum",
+    "variant": "Platina 110 Drum (CBS)",
+    "generation": "2026 Updated Platina 110",
+    "year": 2026,
+    "model_years": [
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "JK38/39/42/43"
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "commuter_motorcycle",
+    "vehicle_class": "L2",
+    "vehicle_type": "Commuter Motorcycle"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "petrol",
+    "e20_compliant": null,
+    "engine_type": "4-stroke, single-cylinder, air-cooled, Electronic Injection",
+    "engine_code": null,
+    "engine_displacement_cc": 115.06,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 6.99,
+    "power_unit": "kW",
+    "power_alt": "9.5 PS",
+    "power_rpm": 7500,
+    "torque": 9.9,
+    "torque_unit": "Nm",
+    "torque_rpm": 5500,
+    "transmission": "4-speed All-Down-Shift Manual",
+    "gear_count": 4,
+    "drive_type": "Chain Drive",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 11.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 116.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1255,
+    "length_mm": 2006,
+    "width_mm": 729,
+    "height_mm": 1100,
+    "ground_clearance_mm": 200,
+    "seat_height_mm": 807
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (OBD2B)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 70.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI",
+        "source_type": "secondary_source",
+        "conditions": "ARAI claimed figure on ZigWheels & BikeDekho",
+        "source_url": "https://www.zigwheels.com/bajaj-bikes/platina/mileage/"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 10W-30 BS6 Compliant, JASO MA2, API SN",
+    "engine_oil_capacity_liters": 1.0,
+    "engine_oil_capacity_notes": "1.0 L via MotorBabu secondary schedule",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "80/100-17 46P Tubeless",
+    "tire_size_rear": "80/100-17 53P Tubeless",
+    "tire_pressure_front_psi": 25.0,
+    "tire_pressure_rear_psi": "28 solo (secondary via BikeDekho)",
+    "service_interval_value": 5000,
+    "service_interval_unit": "km",
+    "service_interval_months": null,
+    "service_schedule_summary": "Periodic service every 5,000 km; engine oil replacement at 1st service then every 10,000 km.",
+    "warranty": null,
+    "handbook_url": "https://cdn.bajajauto.com/-/media/assets/bajajauto/customer-service/owners-manual/owners-manual-pdf/owner-manual-pdf-2026/platina-100_jk39-42.pdf"
+  },
+  "aliases": [
+    "Platina 110 CBS",
+    "Platina 110 Comfortec",
+    "Bajaj Platina 110"
+  ],
+  "sources": [
+    {
+      "publisher": "Bajaj Auto Limited",
+      "title": "Platina 110 Drum 2026 Official India Page",
+      "url": "https://www.bajajauto.com/bikes/platina/platina-110",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0024"
+    },
+    {
+      "publisher": "Bajaj Auto Limited",
+      "title": "Platina 100/110 2026 Owner's Manual PDF",
+      "url": "https://cdn.bajajauto.com/-/media/assets/bajajauto/customer-service/owners-manual/owners-manual-pdf/owner-manual-pdf-2026/platina-100_jk39-42.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "engine_oil_grade",
+        "service_interval"
+      ],
+      "source_id": "src_0025"
+    },
+    {
+      "publisher": "ZigWheels",
+      "title": "Bajaj Platina Mileage",
+      "url": "https://www.zigwheels.com/bajaj-bikes/platina/mileage/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0026"
+    },
+    {
+      "publisher": "BikeWale",
+      "title": "Bajaj Platina 110 Specifications",
+      "url": "https://www.bikewale.com/bajaj-bikes/platina-110/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0027"
+    },
+    {
+      "publisher": "Lowzo",
+      "title": "Bajaj Platina 110 2026 Specs",
+      "url": "https://lowzo.in/specs/bajaj-platina-110/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "kerb_weight_kg"
+      ],
+      "source_id": "src_0028"
+    },
+    {
+      "publisher": "MotorBabu",
+      "title": "Bajaj Platina 110 Service Schedule",
+      "url": "https://motorbabu.com/service-schedule/bajaj-platina-110",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_capacity_liters"
+      ],
+      "source_id": "src_0029"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.engine_and_gearbox",
+      "adopted_value": "115.06 cc, 6.99 kW (9.5 PS) @ 7,500 rpm, 9.9 Nm @ 5,500 rpm, 4-speed all-down-shift (2026 Bajaj India official)",
+      "conflicting_value": "115.45 cc, 8.6 PS @ 7,000 rpm, 9.81 Nm @ 5,000 rpm, 5-speed, 119 kg (BikeWale & BikeDekho)",
+      "adopted_source_url": "https://www.bajajauto.com/bikes/platina/platina-110",
+      "conflicting_source_url": "https://www.bikewale.com/bajaj-bikes/platina-110/",
+      "resolution_status": "resolved_primary",
+      "notes": "Major 2026 mid-cycle revision on Bajaj Auto India website; FleetPulse should keep a separate SKU if supporting legacy pre-2026 5-speed Platina 110 units."
+    },
+    {
+      "field": "dimensions.kerb_weight_kg",
+      "adopted_value": "116 kg (2026 Lowzo)",
+      "conflicting_value": "119 kg (BikeWale / BikeDekho legacy 5-speed)",
+      "adopted_source_url": "https://lowzo.in/specs/bajaj-platina-110/",
+      "conflicting_source_url": "https://www.bikewale.com/bajaj-bikes/platina-110/",
+      "resolution_status": "unresolved",
+      "notes": "Official Bajaj webpage omits kerb weight; secondary portals diverge between 116 kg and 119 kg."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "medium",
+    "last_verified": "2026-11-20",
+    "notes": "2026 OEM powertrain & manual verified; flagged active 4-speed vs 5-speed SKU split against Indian portals."
+  }
+}

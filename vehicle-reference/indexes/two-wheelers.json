@@ -1,0 +1,311 @@
+{
+  "schema_version": "1.0.0",
+  "database_version": "1.0.0-batch1",
+  "category_slug": "two-wheelers",
+  "record_count": 8,
+  "records": [
+    {
+      "id": "ather_450x_3_7_kwh_2025_in",
+      "manufacturer_id": "ather_energy",
+      "manufacturer_name": "Ather Energy Limited",
+      "brand": "Ather",
+      "model": "450X",
+      "variant": "Ather 450X 3.7 kWh (Pre-July 2026)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "electric_scooter",
+      "propulsion": "bev",
+      "fuel_type": "electric",
+      "aliases": [
+        "450X 3.7",
+        "Ather 450X Pro Pack 3.7 kWh",
+        "Ather 450X"
+      ],
+      "search_tokens": [
+        "2025",
+        "2026",
+        "450x",
+        "ather",
+        "electric",
+        "july",
+        "kwh",
+        "pack",
+        "pre",
+        "pro",
+        "scooter"
+      ],
+      "record_path": "vehicles/two-wheelers/ather_energy/ather_450x_3_7_kwh_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "bajaj_platina_110_drum_cbs_2026_in",
+      "manufacturer_id": "bajaj_auto",
+      "manufacturer_name": "Bajaj Auto Limited",
+      "brand": "Bajaj",
+      "model": "Platina 110",
+      "variant": "Platina 110 Drum (CBS)",
+      "year": 2026,
+      "model_years": [
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "commuter_motorcycle",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Platina 110 CBS",
+        "Platina 110 Comfortec",
+        "Bajaj Platina 110"
+      ],
+      "search_tokens": [
+        "110",
+        "2026",
+        "bajaj",
+        "cbs",
+        "comfortec",
+        "commuter",
+        "drum",
+        "motorcycle",
+        "petrol",
+        "platina"
+      ],
+      "record_path": "vehicles/two-wheelers/bajaj_auto/bajaj_platina_110_drum_cbs_2026_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "hero_splendor_plus_i3s_drum_obd2b_2025_in",
+      "manufacturer_id": "hero_motocorp",
+      "manufacturer_name": "Hero MotoCorp Ltd.",
+      "brand": "Hero",
+      "model": "Splendor+",
+      "variant": "Splendor+ i3S Drum Brake (OBD2B)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "commuter_motorcycle",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Splendor Plus i3S",
+        "Hero Splendor 100",
+        "Splendor Plus"
+      ],
+      "search_tokens": [
+        "100",
+        "2025",
+        "brake",
+        "commuter",
+        "drum",
+        "hero",
+        "i3s",
+        "motorcycle",
+        "obd2b",
+        "petrol",
+        "plus",
+        "splendor"
+      ],
+      "record_path": "vehicles/two-wheelers/hero_motocorp/hero_splendor_plus_i3s_drum_obd2b_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "honda_activa_110_dlx_obd2b_2025_in",
+      "manufacturer_id": "honda_hmsi",
+      "manufacturer_name": "Honda Motorcycle & Scooter India Pvt. Ltd. (HMSI)",
+      "brand": "Honda",
+      "model": "Activa 110",
+      "variant": "Activa 110 DLX (OBD2B)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "petrol_scooter",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Activa 6G",
+        "Activa 110 DLX OBD2B",
+        "Honda Activa"
+      ],
+      "search_tokens": [
+        "110",
+        "2025",
+        "6g",
+        "activa",
+        "dlx",
+        "honda",
+        "obd2b",
+        "petrol",
+        "scooter"
+      ],
+      "record_path": "vehicles/two-wheelers/honda_hmsi/honda_activa_110_dlx_obd2b_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "royal_enfield_classic_350_heritage_j_series_2025_in",
+      "manufacturer_id": "royal_enfield",
+      "manufacturer_name": "Royal Enfield (Eicher Motors Ltd.)",
+      "brand": "Royal Enfield",
+      "model": "Classic 350",
+      "variant": "Classic 350 Heritage (Dual-Channel ABS)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "touring_motorcycle",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Classic 350 J-Series",
+        "New Classic 350",
+        "RE Classic 350"
+      ],
+      "search_tokens": [
+        "2025",
+        "350",
+        "abs",
+        "channel",
+        "classic",
+        "dual",
+        "enfield",
+        "heritage",
+        "motorcycle",
+        "new",
+        "petrol",
+        "re",
+        "royal",
+        "series",
+        "touring"
+      ],
+      "record_path": "vehicles/two-wheelers/royal_enfield/royal_enfield_classic_350_heritage_j_series_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "suzuki_access_125_ride_connect_obd2b_2025_in",
+      "manufacturer_id": "suzuki_smipl",
+      "manufacturer_name": "Suzuki Motorcycle India Pvt. Ltd. (SMIPL)",
+      "brand": "Suzuki",
+      "model": "Access 125",
+      "variant": "Access 125 Ride Connect Edition (OBD2B)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "petrol_scooter",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Access 125 Bluetooth",
+        "New Access 125",
+        "Suzuki Access 125"
+      ],
+      "search_tokens": [
+        "125",
+        "2025",
+        "access",
+        "bluetooth",
+        "connect",
+        "edition",
+        "new",
+        "obd2b",
+        "petrol",
+        "ride",
+        "scooter",
+        "suzuki"
+      ],
+      "record_path": "vehicles/two-wheelers/suzuki_smipl/suzuki_access_125_ride_connect_obd2b_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "tvs_iqube_3_5_kwh_2025_in",
+      "manufacturer_id": "tvs_motor",
+      "manufacturer_name": "TVS Motor Company Ltd.",
+      "brand": "TVS",
+      "model": "iQube",
+      "variant": "TVS iQube 3.5 kWh (Post-April 2025)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "electric_scooter",
+      "propulsion": "bev",
+      "fuel_type": "electric",
+      "aliases": [
+        "iQube 3.5",
+        "TVS iQube Electric 3.5 kWh",
+        "TVS iQube"
+      ],
+      "search_tokens": [
+        "2025",
+        "april",
+        "electric",
+        "iqube",
+        "kwh",
+        "post",
+        "scooter",
+        "tvs"
+      ],
+      "record_path": "vehicles/two-wheelers/tvs_motor/tvs_iqube_3_5_kwh_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "tvs_jupiter_110_disc_smartxonnect_obd2b_2025_in",
+      "manufacturer_id": "tvs_motor",
+      "manufacturer_name": "TVS Motor Company Ltd.",
+      "brand": "TVS",
+      "model": "Jupiter 110",
+      "variant": "Jupiter 110 Disc SmartXonnect (OBD2B)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "two_wheeler",
+      "subcategory": "petrol_scooter",
+      "propulsion": "mild_hybrid",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Jupiter 110 SXC Disc",
+        "New Jupiter 110",
+        "TVS Jupiter 110"
+      ],
+      "search_tokens": [
+        "110",
+        "2025",
+        "disc",
+        "jupiter",
+        "new",
+        "obd2b",
+        "petrol",
+        "scooter",
+        "smartxonnect",
+        "sxc",
+        "tvs"
+      ],
+      "record_path": "vehicles/two-wheelers/tvs_motor/tvs_jupiter_110_disc_smartxonnect_obd2b_2025_in.json",
+      "verification_status": "cross_verified"
+    }
+  ]
+}

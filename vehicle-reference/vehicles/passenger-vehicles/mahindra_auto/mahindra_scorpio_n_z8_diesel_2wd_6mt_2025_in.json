@@ -1,0 +1,197 @@
+{
+  "id": "mahindra_scorpio_n_z8_diesel_2wd_6mt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "mahindra_auto",
+    "name": "Mahindra & Mahindra Limited",
+    "brand": "Mahindra"
+  },
+  "model": {
+    "id": "scorpio_n",
+    "name": "Scorpio-N",
+    "official_product_name": "Mahindra Scorpio-N Z8 Diesel 2WD MT",
+    "variant": "Z8 2.2L mHawk Diesel 2WD 6MT (High-Power 128.6 kW Tune)",
+    "generation": "1st Generation Scorpio-N (2022-present)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "SCN"
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "suv",
+    "vehicle_class": "M1 (Body-on-Frame 3-Row SUV)",
+    "vehicle_type": "Mid-Size 3-Row SUV"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "2.2L mHawk All-Aluminium CRDi Turbo-Diesel (high-power tune)",
+    "engine_code": "mHawk 2.2",
+    "engine_displacement_cc": 2184.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4, Turbocharged CRDi",
+    "power": 128.6,
+    "power_unit": "kW",
+    "power_alt": "~175 PS (172.45 bhp)",
+    "power_rpm": 3500,
+    "torque": 370.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 1500,
+    "torque_notes": "370 Nm @ 1500-3000 rpm (MT)",
+    "transmission": "6-speed Manual (6MT, shift-by-cable)",
+    "gear_count": 6,
+    "drive_type": "RWD (2WD)",
+    "aftertreatment": "DPF + SCR (AdBlue/DEF)",
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 57.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": 20.0,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": null,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 7,
+    "seating_layout": "7 seats (3 rows)",
+    "cargo_capacity_liters": 460.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2750,
+    "length_mm": 4662,
+    "width_mm": 1917,
+    "height_mm": 1857,
+    "ground_clearance_mm": 187,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS VI 2.0, DPF + SCR)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 15.42,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI",
+        "source_type": "certified",
+        "conditions": "Z8 Diesel 2WD MT (distinct from 15.94 km/L Z2/Z4 lower-tune)",
+        "source_url": "https://www.cardekho.com/overview/Mahindra_Scorpio_N_2022-2026/Mahindra_Scorpio_N_2022-2026_Z8_Diesel.htm"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "Mahindra Maximile Ultra V4 (Low-SAPS CJ-4/CK-4)",
+    "engine_oil_capacity_liters": 6.0,
+    "engine_oil_capacity_notes": "6.0 L per Cars24 maintenance guide",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "245/65 R17 (Diamond-Cut Alloy; Spare: 235/65 R17)",
+    "tire_size_rear": "245/65 R17",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 10000,
+    "service_interval_unit": "km",
+    "service_interval_months": 12,
+    "service_schedule_summary": "10,000 km / 12 months.",
+    "warranty": null,
+    "handbook_url": "https://auto.mahindra.com/on/demandware.static/-/Sites-amc-Library/default/dw6e995936/brochures/SCN/SCN_brochure.pdf"
+  },
+  "aliases": [
+    "Scorpio N",
+    "Scorpio-N Z8 D MT",
+    "Mahindra Scorpio N"
+  ],
+  "sources": [
+    {
+      "publisher": "Mahindra & Mahindra",
+      "title": "Official Scorpio-N Brochure PDF",
+      "url": "https://auto.mahindra.com/on/demandware.static/-/Sites-amc-Library/default/dw6e995936/brochures/SCN/SCN_brochure.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "power",
+        "torque",
+        "transmission",
+        "drive_type",
+        "fuel_tank_liters",
+        "dimensions",
+        "tire_size_front"
+      ],
+      "source_id": "src_0085"
+    },
+    {
+      "publisher": "Mahindra & Mahindra",
+      "title": "Scorpio BS6 Owner's Manual (DEF Tank Spec)",
+      "url": "https://mvault-cloudfront.mahindra.com/2025/08/26/Owners-Manuals/Scorpio-BS6/scorpio-BS6-owner-manual.html",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "def_capacity_liters"
+      ],
+      "source_id": "src_0086"
+    },
+    {
+      "publisher": "CarDekho",
+      "title": "Mahindra Scorpio-N Z8 Diesel Specifications",
+      "url": "https://www.cardekho.com/overview/Mahindra_Scorpio_N_2022-2026/Mahindra_Scorpio_N_2022-2026_Z8_Diesel.htm",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "efficiency",
+        "ground_clearance_mm",
+        "cargo_capacity_liters"
+      ],
+      "source_id": "src_0087"
+    },
+    {
+      "publisher": "Cars24",
+      "title": "Mahindra Scorpio-N Maintenance & Running Cost",
+      "url": "https://www.cars24.com/article/mahindra-scorpio-n-running-cost/",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_grade",
+        "engine_oil_capacity_liters",
+        "service_interval"
+      ],
+      "source_id": "src_0088"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.engine_displacement_cc",
+      "adopted_value": "2184 cc (CarDekho Z8 sheet; Mahindra brochure states '2.2 L')",
+      "conflicting_value": "2198 cc (CarDekho Z4 / overview page)",
+      "adopted_source_url": "https://www.cardekho.com/overview/Mahindra_Scorpio_N_2022-2026/Mahindra_Scorpio_N_2022-2026_Z8_Diesel.htm",
+      "conflicting_source_url": "https://www.cardekho.com/mahindra/scorpio-n",
+      "resolution_status": "unresolved",
+      "notes": "Mahindra brochure prints only '2.2 L' without exact cc; portals vary between 2184 cc and 2198 cc."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Locked to high-power 128.6 kW Z8 2WD MT tune (distinct from 97 kW Z2/Z4); boot 786 L with 3rd row folded; kerb/GVW omitted by OEM."
+  }
+}

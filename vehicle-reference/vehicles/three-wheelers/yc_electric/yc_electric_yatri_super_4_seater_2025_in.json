@@ -1,0 +1,210 @@
+{
+  "id": "yc_electric_yatri_super_4_seater_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "yc_electric",
+    "name": "Y.C. Electric Vehicle",
+    "brand": "YC Electric"
+  },
+  "model": {
+    "id": "yatri_super",
+    "name": "Yatri Super",
+    "official_product_name": "Yatri Super",
+    "variant": "Yatri Super (4-Seater / Electric)",
+    "generation": "Current Production",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "three_wheeler",
+    "subcategory": "e_rickshaw",
+    "vehicle_class": "L3M",
+    "vehicle_type": "Low-Speed Passenger E-Rickshaw"
+  },
+  "powertrain": {
+    "propulsion": "bev",
+    "fuel_type": "electric",
+    "e20_compliant": null,
+    "engine_type": null,
+    "engine_code": null,
+    "engine_displacement_cc": null,
+    "cylinder_count": null,
+    "engine_configuration": null,
+    "power": 1.505,
+    "power_unit": "kW",
+    "power_alt": "1505 W (~2 hp)",
+    "power_rpm": null,
+    "torque": null,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Automatic (1 Forward + 1 Reverse)",
+    "gear_count": 1,
+    "drive_type": null,
+    "aftertreatment": null,
+    "motor": {
+      "type": "BLDC Motor",
+      "peak_power_kw": 1.505,
+      "continuous_power_kw": null,
+      "peak_torque_nm": null
+    },
+    "hybrid_configuration": null,
+    "battery": {
+      "capacity_kwh": null,
+      "usable_kwh": null,
+      "voltage_v": 48.0,
+      "capacity_ah": 41.7,
+      "chemistry": "Lithium-ion (portal; dealer Lead-Acid variant also sold)"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": 48.0,
+    "battery_capacity_ah": 41.7,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 313.0,
+    "gross_weight_kg": 693.0,
+    "payload_kg": null,
+    "seating_capacity": 5,
+    "seating_layout": "D+4",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 3,
+    "axle_configuration": "3-wheel",
+    "wheelbase_mm": 1668,
+    "length_mm": 2780,
+    "width_mm": 995,
+    "height_mm": 1755,
+    "ground_clearance_mm": 150,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "L3M Low-Speed (25 km/h cap)",
+    "metrics": [
+      {
+        "metric_type": "electric_range",
+        "value": null,
+        "value_min": 75.0,
+        "value_max": 90.0,
+        "unit": "km",
+        "test_cycle": null,
+        "source_type": "manufacturer_claimed",
+        "conditions": "OEM claimed 75-90 km per charge; test cycle not specified",
+        "source_url": "https://www.ycevehicles.com/super"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Not applicable (BEV)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "3.00-12 Tube-type",
+    "tire_size_rear": "3.00-12 Tube-type",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": null,
+    "handbook_url": "https://www.ycevehicles.com/super"
+  },
+  "aliases": [
+    "YC Yatri Super",
+    "Yatri Super E-Rickshaw",
+    "YC Electric Yatri Super 4-Seater"
+  ],
+  "sources": [
+    {
+      "publisher": "YC Electric Vehicles",
+      "title": "Official Yatri Super Product Page",
+      "url": "https://www.ycevehicles.com/super",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "power",
+        "efficiency",
+        "dimensions",
+        "kerb_weight_kg",
+        "gross_weight_kg"
+      ],
+      "source_id": "src_0064"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "YC Electric Yatri Super Full Specifications",
+      "url": "https://trucks.cardekho.com/en/trucks/yc-electric/yatri-super/specifications",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "vehicle_class",
+        "transmission",
+        "battery_voltage_v",
+        "battery_capacity_ah",
+        "seating_capacity",
+        "wheelbase_mm",
+        "ground_clearance_mm",
+        "tire_size_front"
+      ],
+      "source_id": "src_0065"
+    },
+    {
+      "publisher": "91Trucks",
+      "title": "YC Electric Yatri Super 4-Seater/Electric Specs",
+      "url": "https://www.91trucks.com/auto-rickshaws/yc-electric/yatri-super/4-seaterelectric",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "wheelbase_mm",
+        "ground_clearance_mm",
+        "battery_capacity_ah",
+        "seating_capacity"
+      ],
+      "source_id": "src_0066"
+    },
+    {
+      "publisher": "Yatri E-Rickshaw Portal",
+      "title": "Yatri Super Overview",
+      "url": "https://yatrierickshaw.com/",
+      "source_type": "secondary_portal",
+      "covers_fields": [
+        "certification_standard"
+      ],
+      "source_id": "src_0067"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "energy_storage.battery_chemistry",
+      "adopted_value": "null in energy_storage (dealer-configurable)",
+      "conflicting_value": "48 V / 41.7 Ah Li-ion (TrucksDekho) vs 4x12V Lead-Acid packs (regional IndiaMART dealers)",
+      "adopted_source_url": "https://www.ycevehicles.com/super",
+      "conflicting_source_url": "https://trucks.cardekho.com/en/trucks/yc-electric/yatri-super/specifications",
+      "resolution_status": "unresolved",
+      "notes": "YC Electric official page omits battery chemistry and kWh; FleetPulse should let e-rickshaw owners select Li-ion vs Lead-Acid during onboarding."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "medium",
+    "last_verified": "2026-11-20",
+    "notes": "Core motor wattage, range, weight, and LxWxH verified on OEM page; battery kWh and chemistry kept null because OEM omits them and dealers supply both Li-ion and Lead-Acid."
+  }
+}

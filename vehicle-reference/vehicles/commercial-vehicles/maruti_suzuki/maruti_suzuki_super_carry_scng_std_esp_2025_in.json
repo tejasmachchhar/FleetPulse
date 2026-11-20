@@ -1,0 +1,197 @@
+{
+  "id": "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "maruti_suzuki",
+    "name": "Maruti Suzuki India Limited",
+    "brand": "Maruti Suzuki"
+  },
+  "model": {
+    "id": "super_carry",
+    "name": "Super Carry",
+    "official_product_name": "Maruti Suzuki Super Carry CNG STD",
+    "variant": "CNG STD (2110/CNG Standard Deck, 2025 ESP)",
+    "generation": "BS6 Phase 2 K-Series + 2025 ESP Update",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "commercial_vehicle",
+    "subcategory": "mini_truck",
+    "vehicle_class": "N1",
+    "vehicle_type": "Small Commercial Vehicle (Mini Truck)"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "cng_petrol_bi_fuel",
+    "e20_compliant": null,
+    "engine_type": "1.2L Advanced K-Series Dual Jet, Dual VVT",
+    "engine_code": "K12N",
+    "engine_displacement_cc": 1197.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4",
+    "power": 52.7,
+    "power_unit": "kW",
+    "power_alt": "71.6 PS (CNG mode)",
+    "power_rpm": 6000,
+    "torque": 95.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 2800,
+    "transmission": "5-speed Manual (5MT, 5F + 1R)",
+    "gear_count": 5,
+    "drive_type": "RWD (4x2)",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 5.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": 70.0,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 990.0,
+    "gross_weight_kg": 1620.0,
+    "payload_kg": 630.0,
+    "seating_capacity": 2,
+    "seating_layout": "D+1",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": {
+      "length": 2183,
+      "width": 1488,
+      "height": 300
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2110,
+    "length_mm": 3800,
+    "width_mm": 1562,
+    "height_mm": 1883,
+    "ground_clearance_mm": 175,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS-VI)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 23.24,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_kg",
+        "test_cycle": "ARAI_CMVR_115",
+        "source_type": "certified",
+        "conditions": "CNG mode, certified under Rule 115 of CMVR 1989",
+        "source_url": "https://www.scribd.com/document/650992523/CNG-Brochure"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "155 R13 LT 8PR",
+    "tire_size_rear": "155 R13 LT 8PR",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "3 years / 1,00,000 km (2025 ESP Leaflet)",
+    "handbook_url": "https://www.marutisuzukicommercial.com/content/dam/msil/commercial/in/en/assets/documents/ESPSuperCarryLeafletA4-Eng.pdf"
+  },
+  "aliases": [
+    "Super Carry S-CNG",
+    "Super Carry CNG Deck",
+    "Super Carry 2110 CNG"
+  ],
+  "sources": [
+    {
+      "publisher": "Maruti Suzuki Commercial",
+      "title": "Super Carry CNG Official Specifications",
+      "url": "https://www.marutisuzukicommercial.com/super-carry-cng",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "cng_capacity_liters_water_eq",
+        "payload_kg",
+        "dimensions"
+      ],
+      "source_id": "src_0096"
+    },
+    {
+      "publisher": "Maruti Suzuki Commercial",
+      "title": "New Super Carry with ESP Official Leaflet PDF",
+      "url": "https://www.marutisuzukicommercial.com/content/dam/msil/commercial/in/en/assets/documents/ESPSuperCarryLeafletA4-Eng.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "warranty"
+      ],
+      "source_id": "src_0097"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Maruti Suzuki Super Carry 2110/CNG Standard Specs",
+      "url": "https://trucks.cardekho.com/en/trucks/maruti-suzuki/super-carry/cng-standard",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "kerb_weight_kg",
+        "gross_weight_kg",
+        "cargo_deck_mm",
+        "ground_clearance_mm",
+        "tire_size_front"
+      ],
+      "source_id": "src_0098"
+    },
+    {
+      "publisher": "Maruti Suzuki (Brochure Archive)",
+      "title": "Super Carry CNG Brochure (CMVR Rule 115 Mileage)",
+      "url": "https://www.scribd.com/document/650992523/CNG-Brochure",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0099"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency.unit",
+      "adopted_value": "23.24 km/kg (CNG mode per CMVR brochure)",
+      "conflicting_value": "23.24 kmpl (TrucksDekho unit mislabeling)",
+      "adopted_source_url": "https://www.scribd.com/document/650992523/CNG-Brochure",
+      "conflicting_source_url": "https://trucks.cardekho.com/en/trucks/maruti-suzuki/super-carry/cng-standard",
+      "resolution_status": "resolved_primary",
+      "notes": "Enforced km_per_kg unit; twin 35 L (70 L water-eq) CNG cylinders + 5 L emergency petrol tank."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from Maruti Suzuki Commercial official page and 2025 ESP Leaflet; engine oil & service interval kept null."
+  }
+}

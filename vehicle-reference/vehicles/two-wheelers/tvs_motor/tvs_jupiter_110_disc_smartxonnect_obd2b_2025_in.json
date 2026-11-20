@@ -1,0 +1,237 @@
+{
+  "id": "tvs_jupiter_110_disc_smartxonnect_obd2b_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "tvs_motor",
+    "name": "TVS Motor Company Ltd.",
+    "brand": "TVS"
+  },
+  "model": {
+    "id": "jupiter_110",
+    "name": "Jupiter 110",
+    "official_product_name": "TVS Jupiter Disc SmartXonnect",
+    "variant": "Jupiter 110 Disc SmartXonnect (OBD2B)",
+    "generation": "2nd Gen (All-New 2024-2026)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "petrol_scooter",
+    "vehicle_class": "L2",
+    "vehicle_type": "Gearless Commuter Scooter"
+  },
+  "powertrain": {
+    "propulsion": "mild_hybrid",
+    "fuel_type": "petrol",
+    "e20_compliant": null,
+    "engine_type": "Single-cylinder, 4-stroke, air-cooled, 2-valve, FI with iGO micro-hybrid assist",
+    "engine_code": null,
+    "engine_displacement_cc": 113.3,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 5.9,
+    "power_unit": "kW",
+    "power_alt": "8.02 PS (7.91 bhp)",
+    "power_rpm": 6500,
+    "torque": 9.8,
+    "torque_unit": "Nm",
+    "torque_rpm": 5000,
+    "torque_notes": "9.8 Nm with iGO Assist / 9.2 Nm without assist",
+    "transmission": "Automatic CVT",
+    "gear_count": null,
+    "drive_type": "Belt Drive",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": "iGO micro-hybrid torque assist",
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 5.1,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 105.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": 33.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1275,
+    "length_mm": 1848,
+    "width_mm": 665,
+    "height_mm": 1158,
+    "ground_clearance_mm": 163,
+    "seat_height_mm": 770
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (OBD2B)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 53.84,
+        "value_min": 53.84,
+        "value_max": 61.2,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI",
+        "source_type": "secondary_source",
+        "conditions": "Conflict across portals: BikeWale reports 53.84 km/L ARAI vs BikeDekho 61.2 km/L",
+        "source_url": "https://www.bikewale.com/tvs-bikes/jupiter/"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 10W-30 JASO MB",
+    "engine_oil_capacity_liters": 0.7,
+    "engine_oil_capacity_notes": "700 ml at regular service (secondary ref citing TVS 2024+ manual)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "90/90-12 54J Tubeless",
+    "tire_size_rear": "90/90-12 54J Tubeless",
+    "tire_pressure_front_psi": 24.0,
+    "tire_pressure_rear_psi": "32 solo / 36 pillion",
+    "service_interval_value": 6000,
+    "service_interval_unit": "km",
+    "service_interval_months": 6,
+    "service_schedule_summary": "Free: 500-750 km, 5,500-6,000 km, 11,500-12,000 km; paid every 6,000 km or 6 months.",
+    "warranty": null,
+    "handbook_url": "https://www.tvsmotor.com/-/media/Feature/AfterAprilPdf/TVS-Jupiter-110--SmartXonnect-Disc--Drum-OBD-IIB.pdf"
+  },
+  "aliases": [
+    "Jupiter 110 SXC Disc",
+    "New Jupiter 110",
+    "TVS Jupiter 110"
+  ],
+  "sources": [
+    {
+      "publisher": "TVS Motor Company",
+      "title": "TVS Jupiter Disc SmartXonnect Official Product Page",
+      "url": "https://www.tvsmotor.com/tvs-jupiter/jupiter-disc-smartxonnect",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain"
+      ],
+      "source_id": "src_0006"
+    },
+    {
+      "publisher": "TVS Motor Company",
+      "title": "TVS Jupiter 110 Technical Specifications",
+      "url": "https://www.tvsmotor.com/en/lk/our-products/tvs-jupiter-110",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "power",
+        "torque",
+        "fuel_tank_liters",
+        "kerb_weight_kg",
+        "wheelbase_mm",
+        "ground_clearance_mm",
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0007"
+    },
+    {
+      "publisher": "TVS Motor Company",
+      "title": "2026 TVS Jupiter 110 Specifications Blog",
+      "url": "https://www.tvsmotor.com/media/blog/tvs-jupiter-110-specifications-and-features-explained",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "cargo_capacity_liters"
+      ],
+      "source_id": "src_0008"
+    },
+    {
+      "publisher": "TVS Motor Company",
+      "title": "TVS Jupiter 110 SXC OBD-IIB Owner's Manual PDF",
+      "url": "https://www.tvsmotor.com/-/media/Feature/AfterAprilPdf/TVS-Jupiter-110--SmartXonnect-Disc--Drum-OBD-IIB.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "handbook_url"
+      ],
+      "source_id": "src_0009"
+    },
+    {
+      "publisher": "BikeWale",
+      "title": "TVS Jupiter 110 Specifications & ARAI Mileage",
+      "url": "https://www.bikewale.com/tvs-bikes/jupiter/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency",
+        "tire_pressure"
+      ],
+      "source_id": "src_0010"
+    },
+    {
+      "publisher": "BikeDekho",
+      "title": "TVS Jupiter SmartXonnect Disc Specifications",
+      "url": "https://www.bikedekho.com/tvs/jupiter/smartxonnect-disc",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "height_mm",
+        "efficiency"
+      ],
+      "source_id": "src_0011"
+    },
+    {
+      "publisher": "BikeFix Pune",
+      "title": "TVS Jupiter 110 (2024+) Service Schedule",
+      "url": "https://www.bikefixpune.in/blog/tvs-jupiter-service-cost-pune",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_grade",
+        "engine_oil_capacity_liters",
+        "service_interval"
+      ],
+      "source_id": "src_0012"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency.fuel_economy",
+      "adopted_value": "53.84-61.2 km/L (flagged range)",
+      "conflicting_value": "53.84 km/L ARAI (BikeWale) vs 61.2 km/L (BikeDekho)",
+      "adopted_source_url": "https://www.bikewale.com/tvs-bikes/jupiter/",
+      "conflicting_source_url": "https://www.bikedekho.com/tvs/jupiter/smartxonnect-disc",
+      "resolution_status": "unresolved",
+      "notes": "Two major Indian portals cite divergent ARAI figures; verify against ARAI certificate."
+    },
+    {
+      "field": "dimensions.height_mm",
+      "adopted_value": "1158 mm (BikeDekho India)",
+      "conflicting_value": "1258 mm (TVS Sri Lanka export table)",
+      "adopted_source_url": "https://www.bikedekho.com/tvs/jupiter/smartxonnect-disc",
+      "conflicting_source_url": "https://www.tvsmotor.com/en/lk/our-products/tvs-jupiter-110",
+      "resolution_status": "unresolved",
+      "notes": "100 mm height mismatch between TVS LK spec sheet and India portal listing."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Powertrain, dimensions, tank, tyres, and 33 L boot verified from TVS official sources; ARAI mileage conflict across portals flagged."
+  }
+}

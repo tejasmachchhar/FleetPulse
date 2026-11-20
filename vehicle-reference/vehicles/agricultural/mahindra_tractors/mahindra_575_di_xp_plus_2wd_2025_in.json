@@ -1,0 +1,220 @@
+{
+  "id": "mahindra_575_di_xp_plus_2wd_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "mahindra_tractors",
+    "name": "Mahindra & Mahindra Ltd. (Farm Equipment Sector)",
+    "brand": "Mahindra Tractors"
+  },
+  "model": {
+    "id": "575_di_xp_plus",
+    "name": "575 DI XP Plus",
+    "official_product_name": "Mahindra 575 DI XP PLUS Tractor",
+    "variant": "Mahindra 575 DI XP Plus (2WD)",
+    "generation": "XP Plus Series",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "agricultural",
+    "subcategory": "agricultural_tractor",
+    "vehicle_class": "Agricultural Tractor (45-50 HP)",
+    "vehicle_type": "2WD Agricultural Tractor"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "4-Stroke ELS DI, Water-Cooled, Inline FIP",
+    "engine_code": null,
+    "engine_displacement_cc": 2979.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4 Diesel",
+    "power": 35.0,
+    "power_unit": "kW",
+    "power_alt": "46.9 HP",
+    "power_rpm": 2000,
+    "torque": 207.0,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Partial Constant Mesh (Center Shift, 8F + 2R)",
+    "gear_count": 8,
+    "drive_type": "2WD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": {
+      "power_hp": 42.0,
+      "power_kw": 31.2,
+      "rpm_modes": "540 / 4SPTO"
+    }
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 1890.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 1,
+    "seating_layout": "Operator Seat (1)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": 1500.0,
+    "wheel_count": 4,
+    "axle_configuration": "4x2 (2WD)",
+    "wheelbase_mm": 1960,
+    "length_mm": null,
+    "width_mm": null,
+    "height_mm": null,
+    "ground_clearance_mm": null,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": null,
+    "metrics": [
+      {
+        "metric_type": "specific_fuel_consumption",
+        "value": 248.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "g_per_kwh",
+        "test_cycle": "CFMTTI_Budni",
+        "source_type": "certified",
+        "conditions": "CFMTTI Budni Specific Fuel Consumption at max PTO power",
+        "source_url": "https://www.scribd.com/document/685156900/7-MAHINDRA-575-DI-XP-PLUS"
+      },
+      {
+        "metric_type": "operating_hours_per_tank",
+        "value": null,
+        "value_min": null,
+        "value_max": null,
+        "unit": "hours",
+        "test_cycle": null,
+        "source_type": "unknown",
+        "conditions": "Not documented by OEM; varies by implement draft load",
+        "source_url": "https://www.mahindratractor.com/tractors/mahindra-575-di-xp-plus"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "6.00 x 16",
+    "tire_size_rear": "14.9 x 28 (opt 13.6 x 28)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 250,
+    "service_interval_unit": "hours",
+    "service_interval_months": null,
+    "service_schedule_summary": "250 operating hours (official Mahindra Tractors page).",
+    "warranty": "6 years (2+4 yr) / 6,000 hours",
+    "handbook_url": "https://www.mahindratractor.com/tractors/mahindra-575-di-xp-plus"
+  },
+  "aliases": [
+    "575 XP Plus",
+    "575 DI XP+",
+    "575 XP+ 2WD"
+  ],
+  "sources": [
+    {
+      "publisher": "Mahindra Tractors",
+      "title": "Official Mahindra 575 DI XP Plus (2WD) Specifications",
+      "url": "https://www.mahindratractor.com/tractors/mahindra-575-di-xp-plus",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "power",
+        "torque",
+        "pto",
+        "transmission",
+        "hydraulic_lift_capacity_kg",
+        "tire_size_rear",
+        "service_interval",
+        "warranty"
+      ],
+      "source_id": "src_0113"
+    },
+    {
+      "publisher": "CFMTTI Budni (Archive)",
+      "title": "Mahindra 575 DI XP Plus Commercial Test Report",
+      "url": "https://www.scribd.com/document/685156900/7-MAHINDRA-575-DI-XP-PLUS",
+      "source_type": "government_certification",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0114"
+    },
+    {
+      "publisher": "TractorJunction",
+      "title": "Mahindra 575 DI XP Plus Specifications",
+      "url": "https://www.tractorjunction.com/mahindra-tractor/575-di-xp-plus/",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "kerb_weight_kg",
+        "wheelbase_mm",
+        "tire_size_front"
+      ],
+      "source_id": "src_0115"
+    },
+    {
+      "publisher": "TractorKarvan",
+      "title": "Mahindra 575 DI XP Plus Specs & CFMTTI SFC",
+      "url": "https://tractorkarvan.com/tractor/mahindra-575-di-xp-plus",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "efficiency",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0116"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "energy_storage.fuel_tank_liters",
+      "adopted_value": "null (omitted by Mahindra official page)",
+      "conflicting_value": "65 L (KhetiGaadi) vs 48-50 L (other portals)",
+      "adopted_source_url": "https://www.mahindratractor.com/tractors/mahindra-575-di-xp-plus",
+      "conflicting_source_url": "https://www.khetigaadi.com/new-tractor-model/mahindra-575-di-xp-plus/en",
+      "resolution_status": "unresolved",
+      "notes": "Kept null because Mahindra omits tank capacity online and portals disagree sharply."
+    },
+    {
+      "field": "powertrain.torque",
+      "adopted_value": "207 Nm (2026 Mahindra official spec table)",
+      "conflicting_value": "178.6-179 Nm (TractorKarvan) / 192 Nm (TractorJunction prose)",
+      "adopted_source_url": "https://www.mahindratractor.com/tractors/mahindra-575-di-xp-plus",
+      "conflicting_source_url": "https://tractorkarvan.com/tractor/mahindra-575-di-xp-plus",
+      "resolution_status": "resolved_primary",
+      "notes": "Official Mahindra spec table governs (also note OEM FAQ typo saying '37 HP / 3 cyl' contradicts its own 4-cyl 46.9 HP spec table)."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Core power, PTO, torque, lift, and 250-hour service interval verified via Mahindra official page; fuel tank and overall L/W/GC kept null."
+  }
+}

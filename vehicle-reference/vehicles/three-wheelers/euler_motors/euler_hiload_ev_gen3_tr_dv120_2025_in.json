@@ -1,0 +1,223 @@
+{
+  "id": "euler_hiload_ev_gen3_tr_dv120_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "euler_motors",
+    "name": "Euler Motors Pvt. Ltd.",
+    "brand": "Euler Motors"
+  },
+  "model": {
+    "id": "hiload_ev",
+    "name": "HiLoad EV",
+    "official_product_name": "Euler HiLoad EV Generation 3 — HiLoad+ TR",
+    "variant": "HiLoad+ TR (DV 120 cu ft Delivery Van)",
+    "generation": "Generation 3 (Arc Reactor)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "three_wheeler",
+    "subcategory": "e_cargo",
+    "vehicle_class": "L5N",
+    "vehicle_type": "Electric Cargo Three-Wheeler"
+  },
+  "powertrain": {
+    "propulsion": "bev",
+    "fuel_type": "electric",
+    "e20_compliant": null,
+    "engine_type": null,
+    "engine_code": null,
+    "engine_displacement_cc": null,
+    "cylinder_count": null,
+    "engine_configuration": null,
+    "power": 11.7,
+    "power_unit": "kW",
+    "power_alt": "11.7 kW peak",
+    "power_rpm": null,
+    "torque": 88.55,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Automatic (Range & Thunder modes)",
+    "gear_count": null,
+    "drive_type": null,
+    "aftertreatment": null,
+    "motor": {
+      "type": "LV AC PMSM (IP67)",
+      "peak_power_kw": 11.7,
+      "continuous_power_kw": null,
+      "peak_torque_nm": 88.55
+    },
+    "hybrid_configuration": null,
+    "battery": {
+      "capacity_kwh": 11.5,
+      "usable_kwh": null,
+      "voltage_v": 58.0,
+      "capacity_ah": 200.0,
+      "chemistry": "Lithium-ion (IP67, liquid-cooled BTMS)"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": 11.5,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": 58.0,
+    "battery_capacity_ah": 200.0,
+    "battery_chemistry": "Lithium-ion"
+  },
+  "dimensions": {
+    "kerb_weight_kg": 744.0,
+    "gross_weight_kg": 1495.0,
+    "payload_kg": 768.0,
+    "seating_capacity": 1,
+    "seating_layout": "D + Cargo (1)",
+    "cargo_capacity_liters": 3398.0,
+    "cargo_deck_mm": {
+      "length": 1859,
+      "width": 1463,
+      "height": 1372
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 3,
+    "axle_configuration": "3-wheel",
+    "wheelbase_mm": 2200,
+    "length_mm": 3400,
+    "width_mm": 1460,
+    "height_mm": 2100,
+    "ground_clearance_mm": 300,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "Zero Tailpipe Emission",
+    "metrics": [
+      {
+        "metric_type": "electric_range",
+        "value": 164.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km",
+        "test_cycle": "ARAI_IDC",
+        "source_type": "certified",
+        "conditions": "Gen 3 HiLoad+ TR brochure ARAI/IDC certified range",
+        "source_url": "http://5.imimg.com/data5/SELLER/Doc/2025/12/570206670/KJ/MA/JB/237264453/euler-hiload-ev.pdf"
+      },
+      {
+        "metric_type": "electric_range",
+        "value": 120.0,
+        "value_min": 110.0,
+        "value_max": 130.0,
+        "unit": "km",
+        "test_cycle": "OEM_RealRange",
+        "source_type": "manufacturer_claimed",
+        "conditions": "RealRange 120 +/- 10 km fully loaded",
+        "source_url": "http://5.imimg.com/data5/SELLER/Doc/2025/12/570206670/KJ/MA/JB/237264453/euler-hiload-ev.pdf"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Not applicable (BEV)",
+    "coolant_spec": "Liquid-cooled BTMS (spec not published)",
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "5.5-12 / 145 R12 Radial Tubeless",
+    "tire_size_rear": "5.5-12 / 145 R12 Radial Tubeless",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "5 years / 1,50,000 km battery warranty (charger: 3 years)",
+    "handbook_url": "http://5.imimg.com/data5/SELLER/Doc/2025/12/570206670/KJ/MA/JB/237264453/euler-hiload-ev.pdf"
+  },
+  "aliases": [
+    "Euler HiLoad TR",
+    "Euler HiLoad DV 120",
+    "Euler HiLoad EV Cargo"
+  ],
+  "sources": [
+    {
+      "publisher": "Euler Motors",
+      "title": "Official HiLoad EV Generation 3 Brochure PDF",
+      "url": "http://5.imimg.com/data5/SELLER/Doc/2025/12/570206670/KJ/MA/JB/237264453/euler-hiload-ev.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "vehicle_class",
+        "powertrain",
+        "energy_storage",
+        "dimensions",
+        "efficiency",
+        "tire_size_front",
+        "warranty"
+      ],
+      "source_id": "src_0060"
+    },
+    {
+      "publisher": "Euler Motors",
+      "title": "Official HiLoad EV Product Page",
+      "url": "https://www.eulermotors.com/en/hiload/",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "torque",
+        "dimensions"
+      ],
+      "source_id": "src_0061"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Euler Motors HiLoad EV 2026 Specifications",
+      "url": "https://trucks.cardekho.com/en/trucks/euler/hi-load",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "vehicle_class",
+        "power",
+        "battery_capacity_ah",
+        "gross_weight_kg",
+        "payload_kg",
+        "wheelbase_mm"
+      ],
+      "source_id": "src_0062"
+    },
+    {
+      "publisher": "91Trucks",
+      "title": "Euler Motors HiLoad DV (Gen 2 Legacy Reference)",
+      "url": "https://www.91trucks.com/auto-rickshaws/euler-motors/hi-load/dv-120-cft",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0063"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "generation_specs",
+      "adopted_value": "Gen 3 HiLoad+ TR: 11.5 kWh, 11.7 kW PMSM, 1495 kg GVW, 768 kg payload, 164 km ARAI",
+      "conflicting_value": "Legacy Gen 2 listings on 91Trucks: 13 kWh, 10.96 kW induction, 1413 kg GVW, 688 kg payload",
+      "adopted_source_url": "http://5.imimg.com/data5/SELLER/Doc/2025/12/570206670/KJ/MA/JB/237264453/euler-hiload-ev.pdf",
+      "conflicting_source_url": "https://www.91trucks.com/auto-rickshaws/euler-motors/hi-load/dv-120-cft",
+      "resolution_status": "resolved_primary",
+      "notes": "Strictly locked to Gen 3 HiLoad+ TR brochure; do not merge with legacy Gen 2 or HiLoad XR specs."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from Gen 3 official brochure PDF (Page 11 technical table) and Euler official site; cargo box 120 cu ft (~3,398 L) and 6.1x4.8x4.5 ft."
+  }
+}

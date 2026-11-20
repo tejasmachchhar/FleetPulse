@@ -1,0 +1,216 @@
+{
+  "generated_at": "2026-11-20",
+  "policy": "Zero fabrication — unavailable or conflicting OEM fields are explicitly stored as null.",
+  "total_records": 30,
+  "field_completeness": {
+    "model.manufacturer_model_code": {
+      "missing_count": 19,
+      "populated_count": 11,
+      "completeness_pct": 36.7,
+      "missing_vehicle_ids": [
+        "honda_activa_110_dlx_obd2b_2025_in",
+        "tvs_jupiter_110_disc_smartxonnect_obd2b_2025_in",
+        "suzuki_access_125_ride_connect_obd2b_2025_in",
+        "hero_splendor_plus_i3s_drum_obd2b_2025_in",
+        "ather_450x_3_7_kwh_2025_in",
+        "tvs_iqube_3_5_kwh_2025_in",
+        "bajaj_re_cng_236cc_2025_in",
+        "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+        "euler_hiload_ev_gen3_tr_dv120_2025_in",
+        "yc_electric_yatri_super_4_seater_2025_in",
+        "maruti_suzuki_swift_zxi_1_2_petrol_5mt_2025_in",
+        "tata_nexon_ev_empowered_45_2025_in",
+        "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+        "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+        "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+        "ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in",
+        "swaraj_744_fe_2wd_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in"
+      ]
+    },
+    "powertrain.power": {
+      "missing_count": 0,
+      "populated_count": 30,
+      "completeness_pct": 100.0,
+      "missing_vehicle_ids": []
+    },
+    "powertrain.torque": {
+      "missing_count": 4,
+      "populated_count": 26,
+      "completeness_pct": 86.7,
+      "missing_vehicle_ids": [
+        "yc_electric_yatri_super_4_seater_2025_in",
+        "swaraj_744_fe_2wd_2025_in",
+        "john_deere_5050d_2wd_8f4r_2025_in",
+        "massey_ferguson_241_di_dynatrack_2wd_2025_in"
+      ]
+    },
+    "powertrain.drive_type": {
+      "missing_count": 5,
+      "populated_count": 25,
+      "completeness_pct": 83.3,
+      "missing_vehicle_ids": [
+        "bajaj_re_cng_236cc_2025_in",
+        "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+        "mahindra_treo_sft_7_37_kwh_2025_in",
+        "euler_hiload_ev_gen3_tr_dv120_2025_in",
+        "yc_electric_yatri_super_4_seater_2025_in"
+      ]
+    },
+    "energy_storage.primary_energy": {
+      "missing_count": 2,
+      "populated_count": 28,
+      "completeness_pct": 93.3,
+      "missing_vehicle_ids": [
+        "yc_electric_yatri_super_4_seater_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in"
+      ]
+    },
+    "dimensions.kerb_weight_kg": {
+      "missing_count": 6,
+      "populated_count": 24,
+      "completeness_pct": 80.0,
+      "missing_vehicle_ids": [
+        "tata_nexon_ev_empowered_45_2025_in",
+        "hyundai_creta_sx_1_5_mpi_petrol_6mt_2025_in",
+        "mahindra_scorpio_n_z8_diesel_2wd_6mt_2025_in",
+        "toyota_innova_hycross_zx_2_0_hybrid_ecvt_2025_in",
+        "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in"
+      ]
+    },
+    "dimensions.gross_weight_kg": {
+      "missing_count": 18,
+      "populated_count": 12,
+      "completeness_pct": 40.0,
+      "missing_vehicle_ids": [
+        "honda_activa_110_dlx_obd2b_2025_in",
+        "tvs_jupiter_110_disc_smartxonnect_obd2b_2025_in",
+        "suzuki_access_125_ride_connect_obd2b_2025_in",
+        "hero_splendor_plus_i3s_drum_obd2b_2025_in",
+        "bajaj_platina_110_drum_cbs_2026_in",
+        "royal_enfield_classic_350_heritage_j_series_2025_in",
+        "ather_450x_3_7_kwh_2025_in",
+        "tvs_iqube_3_5_kwh_2025_in",
+        "mahindra_treo_sft_7_37_kwh_2025_in",
+        "tata_nexon_ev_empowered_45_2025_in",
+        "hyundai_creta_sx_1_5_mpi_petrol_6mt_2025_in",
+        "mahindra_scorpio_n_z8_diesel_2wd_6mt_2025_in",
+        "toyota_innova_hycross_zx_2_0_hybrid_ecvt_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in",
+        "swaraj_744_fe_2wd_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+        "john_deere_5050d_2wd_8f4r_2025_in",
+        "massey_ferguson_241_di_dynatrack_2wd_2025_in"
+      ]
+    },
+    "dimensions.ground_clearance_mm": {
+      "missing_count": 3,
+      "populated_count": 27,
+      "completeness_pct": 90.0,
+      "missing_vehicle_ids": [
+        "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in"
+      ]
+    },
+    "maintenance.engine_oil_grade": {
+      "missing_count": 12,
+      "populated_count": 18,
+      "completeness_pct": 60.0,
+      "missing_vehicle_ids": [
+        "bajaj_re_cng_236cc_2025_in",
+        "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+        "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+        "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+        "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+        "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+        "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+        "ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in",
+        "swaraj_744_fe_2wd_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+        "massey_ferguson_241_di_dynatrack_2wd_2025_in"
+      ]
+    },
+    "maintenance.engine_oil_capacity_liters": {
+      "missing_count": 13,
+      "populated_count": 17,
+      "completeness_pct": 56.7,
+      "missing_vehicle_ids": [
+        "hero_splendor_plus_i3s_drum_obd2b_2025_in",
+        "bajaj_re_cng_236cc_2025_in",
+        "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+        "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+        "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+        "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+        "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+        "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+        "ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in",
+        "swaraj_744_fe_2wd_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+        "massey_ferguson_241_di_dynatrack_2wd_2025_in"
+      ]
+    },
+    "maintenance.tire_size_front": {
+      "missing_count": 1,
+      "populated_count": 29,
+      "completeness_pct": 96.7,
+      "missing_vehicle_ids": [
+        "suzuki_access_125_ride_connect_obd2b_2025_in"
+      ]
+    },
+    "maintenance.tire_pressure_front_psi": {
+      "missing_count": 24,
+      "populated_count": 6,
+      "completeness_pct": 20.0,
+      "missing_vehicle_ids": [
+        "hero_splendor_plus_i3s_drum_obd2b_2025_in",
+        "ather_450x_3_7_kwh_2025_in",
+        "bajaj_re_cng_236cc_2025_in",
+        "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+        "mahindra_treo_sft_7_37_kwh_2025_in",
+        "euler_hiload_ev_gen3_tr_dv120_2025_in",
+        "yc_electric_yatri_super_4_seater_2025_in",
+        "maruti_suzuki_swift_zxi_1_2_petrol_5mt_2025_in",
+        "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+        "maruti_suzuki_ertiga_zxi_1_5_hybrid_5mt_2025_in",
+        "tata_nexon_ev_empowered_45_2025_in",
+        "hyundai_creta_sx_1_5_mpi_petrol_6mt_2025_in",
+        "mahindra_scorpio_n_z8_diesel_2wd_6mt_2025_in",
+        "toyota_innova_hycross_zx_2_0_hybrid_ecvt_2025_in",
+        "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+        "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+        "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+        "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+        "ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in",
+        "mahindra_575_di_xp_plus_2wd_2025_in",
+        "swaraj_744_fe_2wd_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+        "john_deere_5050d_2wd_8f4r_2025_in",
+        "massey_ferguson_241_di_dynatrack_2wd_2025_in"
+      ]
+    },
+    "maintenance.service_interval_value": {
+      "missing_count": 12,
+      "populated_count": 18,
+      "completeness_pct": 60.0,
+      "missing_vehicle_ids": [
+        "ather_450x_3_7_kwh_2025_in",
+        "bajaj_re_cng_236cc_2025_in",
+        "mahindra_treo_sft_7_37_kwh_2025_in",
+        "euler_hiload_ev_gen3_tr_dv120_2025_in",
+        "yc_electric_yatri_super_4_seater_2025_in",
+        "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+        "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+        "maruti_suzuki_super_carry_scng_std_esp_2025_in",
+        "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+        "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+        "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+        "massey_ferguson_241_di_dynatrack_2wd_2025_in"
+      ]
+    }
+  }
+}

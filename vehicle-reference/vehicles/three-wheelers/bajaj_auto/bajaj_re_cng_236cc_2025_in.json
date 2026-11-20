@@ -1,0 +1,217 @@
+{
+  "id": "bajaj_re_cng_236cc_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "bajaj_auto",
+    "name": "Bajaj Auto Limited",
+    "brand": "Bajaj"
+  },
+  "model": {
+    "id": "re",
+    "name": "RE",
+    "official_product_name": "Bajaj RE (RE CNG)",
+    "variant": "RE CNG (3-Seater/CNG, 236.2 cc Bi-Fuel)",
+    "generation": "BS6 / OBD2B 4-Stroke",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "three_wheeler",
+    "subcategory": "passenger_auto_rickshaw",
+    "vehicle_class": "L5M",
+    "vehicle_type": "High-Speed Passenger Auto-Rickshaw"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "cng_petrol_bi_fuel",
+    "e20_compliant": null,
+    "engine_type": "Four-stroke, forced air-cooled, S.I. engine; pressurized oil-pump lubrication",
+    "engine_code": null,
+    "engine_displacement_cc": 236.2,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 7.35,
+    "power_unit": "kW",
+    "power_alt": null,
+    "power_rpm": 5000,
+    "torque": 17.66,
+    "torque_unit": "Nm",
+    "torque_rpm": 3500,
+    "transmission": "Manual, wet multiplate clutch (4 Forward + 1 Reverse, in-hand reverse)",
+    "gear_count": 4,
+    "drive_type": null,
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": 30.0,
+    "cng_capacity_kg_approx": 4.0,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 403.0,
+    "gross_weight_kg": 713.0,
+    "payload_kg": null,
+    "seating_capacity": 4,
+    "seating_layout": "D+3",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 3,
+    "axle_configuration": "3-wheel",
+    "wheelbase_mm": 2000,
+    "length_mm": 2635,
+    "width_mm": 1300,
+    "height_mm": 1700,
+    "ground_clearance_mm": 170,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (OBD2B)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 27.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_kg",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "27 km/kg on TrucksDekho & Bajaj Auto Credit (Truck Junction lists 27.25 km/kg)",
+        "source_url": "https://trucks.cardekho.com/en/trucks/bajaj/compact-4s"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "4.00-8",
+    "tire_size_rear": "4.00-8",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "3 years / 1,00,000 km",
+    "handbook_url": "https://www.bajajauto.com/three-wheelers/re"
+  },
+  "aliases": [
+    "Bajaj RE Compact",
+    "Bajaj RE Compact 4S CNG",
+    "Bajaj RE 3-Seater CNG"
+  ],
+  "sources": [
+    {
+      "publisher": "Bajaj Auto Limited",
+      "title": "Official Bajaj RE Product & Specifications Page",
+      "url": "https://www.bajajauto.com/three-wheelers/re",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "engine_type",
+        "power",
+        "torque",
+        "transmission",
+        "seating_capacity",
+        "warranty"
+      ],
+      "source_id": "src_0046"
+    },
+    {
+      "publisher": "Bajaj Auto Credit",
+      "title": "Bajaj RE Compact 4S CNG BS6 Specs & Mileage",
+      "url": "https://www.bajajautocredit.com/three-wheeler-loan/bajaj-re-cng",
+      "source_type": "lender_portal",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "efficiency"
+      ],
+      "source_id": "src_0047"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Bajaj RE 2026 Specifications & Variants",
+      "url": "https://trucks.cardekho.com/en/trucks/bajaj/compact-4s",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "vehicle_class",
+        "cng_capacity_liters_water_eq",
+        "dimensions",
+        "efficiency"
+      ],
+      "source_id": "src_0048"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Bajaj RE CNG Kerb Weight, Dimensions & Tyres",
+      "url": "https://trucks.cardekho.com/en/compare/bajaj-compact-4s-and-jsa-nv-cng-passenger",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "kerb_weight_kg",
+        "gross_weight_kg",
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0049"
+    },
+    {
+      "publisher": "Truck Junction",
+      "title": "Bajaj RE Auto 2026 Variants & GVW",
+      "url": "https://trucks.tractorjunction.com/en/bajaj-truck/compact-re",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "gross_weight_kg",
+        "efficiency"
+      ],
+      "source_id": "src_0050"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.power_and_torque",
+      "adopted_value": "7.35 kW @ 5000 rpm / 17.66 Nm @ 3500 rpm (current Bajaj Auto spec table)",
+      "conflicting_value": "6.90 kW @ 4750 rpm / 16.18 Nm @ 3000 rpm (Bajaj Auto FAQ & Bajaj Auto Credit)",
+      "adopted_source_url": "https://www.bajajauto.com/three-wheelers/re",
+      "conflicting_source_url": "https://www.bajajautocredit.com/three-wheeler-loan/bajaj-re-cng",
+      "resolution_status": "resolved_primary",
+      "notes": "Adopted current OBD2B official spec table on Bajaj Auto website over legacy BS6 FAQ text."
+    },
+    {
+      "field": "dimensions.gross_weight_kg",
+      "adopted_value": "713 kg (structured variant tables on TrucksDekho & Truck Junction)",
+      "conflicting_value": "708 kg (editorial summaries)",
+      "adopted_source_url": "https://trucks.cardekho.com/en/trucks/bajaj/compact-4s",
+      "conflicting_source_url": "https://trucks.tractorjunction.com/en/bajaj-truck/compact-re",
+      "resolution_status": "resolved_primary",
+      "notes": "Structured specification tables consistently report 713 kg GVW."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Engine output, transmission, seating, and warranty verified via Bajaj Auto official page; petrol emergency reserve volume omitted on OEM page and kept null."
+  }
+}

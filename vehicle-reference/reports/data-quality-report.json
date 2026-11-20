@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-11-20",
+  "schema_version": "1.0.0",
+  "schema_validation_engine": "jsonschema (Draft 2020-12)",
+  "schema_errors_count": 0,
+  "schema_errors": [],
+  "verification_status_breakdown": {
+    "cross_verified": 11,
+    "officially_verified": 17,
+    "secondary_source": 1,
+    "partially_verified": 1
+  },
+  "source_reliability_breakdown": {
+    "tier_1_official": 62,
+    "tier_2_database_portal": 55,
+    "tier_3_service_reference": 13,
+    "tier_2_reputable_media": 3
+  },
+  "records_with_official_primary_source": 30
+}

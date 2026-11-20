@@ -1,0 +1,198 @@
+{
+  "id": "tata_ace_gold_plus_2100_diesel_lnt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "tata_motors_cv",
+    "name": "Tata Motors Limited",
+    "brand": "Tata"
+  },
+  "model": {
+    "id": "ace_gold",
+    "name": "Ace Gold",
+    "official_product_name": "Tata ACE Gold+",
+    "variant": "Ace Gold+ (2100/Diesel Deck, LNT)",
+    "generation": "BS6 Phase 2 LNT Update",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "commercial_vehicle",
+    "subcategory": "mini_truck",
+    "vehicle_class": "N1",
+    "vehicle_type": "Small Commercial Vehicle (Mini Truck)"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "4-Stroke, Turbocharged Intercooled, Direct Injection Common Rail Diesel (LNT)",
+    "engine_code": null,
+    "engine_displacement_cc": 702.0,
+    "cylinder_count": 2,
+    "engine_configuration": "Inline-2 TCIC CRDI",
+    "power": 16.2,
+    "power_unit": "kW",
+    "power_alt": "22 PS Power Mode / 12.8 kW (17 PS) Eco Mode",
+    "power_rpm": 3600,
+    "torque": 55.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 2000,
+    "torque_notes": "55 Nm @ 2000-2600 rpm Power Mode / 40 Nm Eco Mode",
+    "transmission": "Manual Direct Drive (GBS G65-5/6.31), 5F + 1R",
+    "gear_count": 5,
+    "drive_type": "RWD (4x2)",
+    "aftertreatment": "Lean NOx Trap (LNT) — DEF-Free",
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 30.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": 0.0,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 915.0,
+    "gross_weight_kg": 1815.0,
+    "payload_kg": 900.0,
+    "seating_capacity": 2,
+    "seating_layout": "D+1",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": {
+      "length": 2140,
+      "width": 1430,
+      "height": 300
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2100,
+    "length_mm": 3800,
+    "width_mm": 1500,
+    "height_mm": 1845,
+    "ground_clearance_mm": 160,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS-VI)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 22.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "Portal-reported on TractorKarvan; OEM omits numeric km/L",
+        "source_url": "https://tractorkarvan.com/commercial-vehicle/tata/mini-truck/ace-gold/plus-diesel"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "145R12 LT 8PR Radial Tubeless",
+    "tire_size_rear": "145R12 LT 8PR Radial Tubeless",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "3 years / 1,00,000 km",
+    "handbook_url": "https://smalltrucks.tatamotors.com/ace-gold-plus"
+  },
+  "aliases": [
+    "Chhota Hathi",
+    "Ace Gold Plus Diesel",
+    "Ace Gold+ LNT"
+  ],
+  "sources": [
+    {
+      "publisher": "Tata Motors Small Trucks",
+      "title": "Tata ACE Gold+ Official Specifications",
+      "url": "https://smalltrucks.tatamotors.com/ace-gold-plus",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "def_capacity_liters",
+        "gross_weight_kg",
+        "payload_kg",
+        "dimensions",
+        "tire_size_front",
+        "warranty"
+      ],
+      "source_id": "src_0093"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Tata Ace Gold Plus Technical Specifications",
+      "url": "https://trucks.cardekho.com/en/trucks/tata/ace-gold-plus/specifications",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "kerb_weight_kg",
+        "cargo_deck_mm",
+        "seating_capacity"
+      ],
+      "source_id": "src_0094"
+    },
+    {
+      "publisher": "TractorKarvan",
+      "title": "Tata ACE Gold Plus Diesel Specs & Mileage",
+      "url": "https://tractorkarvan.com/commercial-vehicle/tata/mini-truck/ace-gold/plus-diesel",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0095"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.power",
+      "adopted_value": "16.2 kW (22 PS) Power Mode (Tata Motors official)",
+      "conflicting_value": "20 HP (91Trucks)",
+      "adopted_source_url": "https://smalltrucks.tatamotors.com/ace-gold-plus",
+      "conflicting_source_url": "https://www.91trucks.com/trucks/tata/ace-gold-diesel-plus",
+      "resolution_status": "resolved_primary",
+      "notes": "Official Tata Motors spec page governs."
+    },
+    {
+      "field": "classification.vehicle_class",
+      "adopted_value": "N1 (CMVR 4-wheel goods carrier <= 3.5T)",
+      "conflicting_value": "L5N (TrucksDekho tag)",
+      "adopted_source_url": "https://smalltrucks.tatamotors.com/ace-gold-plus",
+      "conflicting_source_url": "https://trucks.cardekho.com/en/trucks/tata/ace-gold-plus/specifications",
+      "resolution_status": "resolved_regulatory",
+      "notes": "4-wheel goods carrier is CMVR N1, not 3-wheel L5N."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Explicitly DEF-free via LNT (def_capacity_liters = 0.0); engine oil and exact km service interval omitted on OEM page and kept null."
+  }
+}

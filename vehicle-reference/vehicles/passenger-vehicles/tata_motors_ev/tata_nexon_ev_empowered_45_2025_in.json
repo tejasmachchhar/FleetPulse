@@ -1,0 +1,212 @@
+{
+  "id": "tata_nexon_ev_empowered_45_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "tata_motors_ev",
+    "name": "Tata Passenger Electric Mobility Limited (Tata Motors)",
+    "brand": "TATA.ev"
+  },
+  "model": {
+    "id": "nexon_ev",
+    "name": "Nexon.ev",
+    "official_product_name": "Tata Nexon.ev Empowered 45",
+    "variant": "Empowered 45 (45 kWh Battery Pack)",
+    "generation": "1st Gen Facelift (45 kWh / 2025 ADAS Update)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "compact_suv",
+    "vehicle_class": "M1 (Sub-4m Electric Compact SUV)",
+    "vehicle_type": "Electric Compact SUV"
+  },
+  "powertrain": {
+    "propulsion": "bev",
+    "fuel_type": "electric",
+    "e20_compliant": null,
+    "engine_type": null,
+    "engine_code": null,
+    "engine_displacement_cc": null,
+    "cylinder_count": null,
+    "engine_configuration": null,
+    "power": 110.0,
+    "power_unit": "kW",
+    "power_alt": "~147.5 bhp (149.6 PS)",
+    "power_rpm": null,
+    "torque": 215.0,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Single-speed reduction automatic (4-level regen paddles)",
+    "gear_count": 1,
+    "drive_type": "FWD",
+    "aftertreatment": null,
+    "motor": {
+      "type": "Gen-2 Permanent Magnet Synchronous AC Motor (PMSM)",
+      "peak_power_kw": 110.0,
+      "continuous_power_kw": null,
+      "peak_torque_nm": 215.0
+    },
+    "hybrid_configuration": null,
+    "battery": {
+      "capacity_kwh": 46.08,
+      "usable_kwh": null,
+      "voltage_v": null,
+      "capacity_ah": null,
+      "chemistry": "Lithium Iron Phosphate (LFP) prismatic, liquid-cooled, IP67"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": 46.08,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": "LFP"
+  },
+  "dimensions": {
+    "kerb_weight_kg": null,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 5,
+    "seating_layout": "5 seats",
+    "cargo_capacity_liters": 350.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2498,
+    "length_mm": 3994,
+    "width_mm": 1811,
+    "height_mm": 1616,
+    "ground_clearance_mm": 190,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "Zero Tailpipe Emission (BNCAP 5-Star)",
+    "metrics": [
+      {
+        "metric_type": "electric_range",
+        "value": 489.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km",
+        "test_cycle": "ARAI_MIDC_P1_P2",
+        "source_type": "certified",
+        "conditions": "Official Tata Nexon.ev 45 Brochure (MIDC Part 1 + Part 2)",
+        "source_url": "https://stc.aeplcdn.com/f/brochure/16/2503/a16fk5i.pdf"
+      },
+      {
+        "metric_type": "electric_range",
+        "value": null,
+        "value_min": 350.0,
+        "value_max": 375.0,
+        "unit": "km",
+        "test_cycle": "Tata_C75",
+        "source_type": "manufacturer_claimed",
+        "conditions": "Tata C75 real-world range estimate",
+        "source_url": "https://stc.aeplcdn.com/f/brochure/16/2503/a16fk5i.pdf"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Not applicable (BEV)",
+    "coolant_spec": "Liquid-cooled battery pack (spec not published)",
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "215/60 R16 (Low Rolling Resistance, Aero Alloy)",
+    "tire_size_rear": "215/60 R16",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 10000,
+    "service_interval_unit": "km",
+    "service_interval_months": 12,
+    "service_schedule_summary": "10,000 km / 12 months (first 3 annual services labour-free).",
+    "warranty": "Lifetime first-owner private HV battery warranty (Jul 2025 PR)",
+    "handbook_url": "https://stc.aeplcdn.com/f/brochure/16/2503/a16fk5i.pdf"
+  },
+  "aliases": [
+    "Nexon EV 45",
+    "Nexon.ev 45 kWh",
+    "Nexon EV Long Range 45"
+  ],
+  "sources": [
+    {
+      "publisher": "Tata Motors (via CarWale CDN)",
+      "title": "Official Tata Nexon.ev 45 Brochure PDF",
+      "url": "https://stc.aeplcdn.com/f/brochure/16/2503/a16fk5i.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "energy_storage",
+        "dimensions",
+        "efficiency",
+        "tire_size_front"
+      ],
+      "source_id": "src_0078"
+    },
+    {
+      "publisher": "Tata Motors",
+      "title": "Lifetime HV Battery Warranty Press Release (Jul 2025)",
+      "url": "https://www.tatamotors.com/wp-content/uploads/2025/07/PR-Tata-Motors-Lifetime-Hv-Battery-Curvv.ev-Nexon.ev-45-Kwh.pdf",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "warranty",
+        "battery_chemistry"
+      ],
+      "source_id": "src_0079"
+    },
+    {
+      "publisher": "CarDekho",
+      "title": "Tata Nexon EV 45 Specifications",
+      "url": "https://www.cardekho.com/tata/nexon-ev",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "service_interval",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0080"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.power_and_battery",
+      "adopted_value": "110 kW motor & 46.08 kWh gross (marketed as 45 kWh) per official brochure",
+      "conflicting_value": "106 kW (142-143 bhp) & 45 kWh on CarDekho/CarWale (legacy 40.5 kWh LR carryover)",
+      "adopted_source_url": "https://stc.aeplcdn.com/f/brochure/16/2503/a16fk5i.pdf",
+      "conflicting_source_url": "https://www.cardekho.com/tata/nexon-ev",
+      "resolution_status": "resolved_primary",
+      "notes": "Official Tata brochure confirms 110 kW and 46.08 kWh gross capacity."
+    },
+    {
+      "field": "dimensions_and_gc",
+      "adopted_value": "3994x1811x1616 mm & 190 mm unladen GC (official brochure)",
+      "conflicting_value": "3995x1802x1625 mm & 205 mm GC (CarWale — 30 kWh MR figure)",
+      "adopted_source_url": "https://stc.aeplcdn.com/f/brochure/16/2503/a16fk5i.pdf",
+      "conflicting_source_url": "https://www.cardekho.com/tata/nexon-ev",
+      "resolution_status": "resolved_primary",
+      "notes": "205 mm ground clearance belongs to the 30 kWh MR variant, not the 45 kWh pack."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from official Tata Nexon.ev 45 brochure PDF; kerb weight, GVW, and battery voltage omitted by Tata Motors and kept null."
+  }
+}

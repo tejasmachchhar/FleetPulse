@@ -1,0 +1,208 @@
+{
+  "id": "massey_ferguson_241_di_dynatrack_2wd_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "tafe_massey_ferguson",
+    "name": "Tractors and Farm Equipment Ltd. (TAFE)",
+    "brand": "Massey Ferguson"
+  },
+  "model": {
+    "id": "241_di",
+    "name": "241 DI",
+    "official_product_name": "MF 241 DI DYNATRACK",
+    "variant": "MF 241 DI DynaTrack (2WD)",
+    "generation": "DynaTrack Series",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "MF-241-DYNATRACK"
+  },
+  "classification": {
+    "category": "agricultural",
+    "subcategory": "agricultural_tractor",
+    "vehicle_class": "Agricultural Tractor (42 HP)",
+    "vehicle_type": "2WD Agricultural Tractor"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "SIMPSONS S325.1 TIII A, Water-Cooled, Inline FIP",
+    "engine_code": "SIMPSONS S325.1 TIII A",
+    "engine_displacement_cc": 2500.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3 Diesel",
+    "power": 31.33,
+    "power_unit": "kW",
+    "power_alt": "42.0 HP",
+    "power_rpm": null,
+    "torque": null,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Fully Constant Mesh (Super Shuttle, 12F + 12R)",
+    "gear_count": 12,
+    "drive_type": "2WD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": {
+      "power_hp": 38.0,
+      "power_kw": null,
+      "rpm_modes": "Quadra PTO 540 @ 1789 ERPM"
+    }
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 55.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 1880.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 1,
+    "seating_layout": "Operator Seat (1)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": 2050.0,
+    "wheel_count": 4,
+    "axle_configuration": "4x2 (2WD)",
+    "wheelbase_mm": 1935,
+    "length_mm": 3560,
+    "width_mm": 1650,
+    "height_mm": 2400,
+    "ground_clearance_mm": 420,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "Bharat TREM IIIA",
+    "metrics": [
+      {
+        "metric_type": "specific_fuel_consumption",
+        "value": 265.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "g_per_kwh",
+        "test_cycle": "CFMTTI_Budni",
+        "source_type": "certified",
+        "conditions": "CFMTTI Budni test report SFC",
+        "source_url": "https://www.scribd.com/document/671636274/Massey-Ferguson-241-tractor"
+      },
+      {
+        "metric_type": "operating_hours_per_tank",
+        "value": null,
+        "value_min": null,
+        "value_max": null,
+        "unit": "hours",
+        "test_cycle": null,
+        "source_type": "unknown",
+        "conditions": "Not documented by OEM",
+        "source_url": "https://masseyfergusonindia.com/massey-ferguson/MF-241-DYNATRACK"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "6.00 x 16",
+    "tire_size_rear": "13.6 x 28",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "2 years / 2,100 hours",
+    "handbook_url": "https://masseyfergusonindia.com/massey-ferguson/MF-241-DYNATRACK"
+  },
+  "aliases": [
+    "MF 241 DynaTrack",
+    "Massey 241 DynaTrack",
+    "Massey Ferguson 241 DI"
+  ],
+  "sources": [
+    {
+      "publisher": "TAFE / Massey Ferguson India",
+      "title": "Official MF 241 DI DynaTrack Specifications",
+      "url": "https://masseyfergusonindia.com/massey-ferguson/MF-241-DYNATRACK",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "kerb_weight_kg",
+        "hydraulic_lift_capacity_kg",
+        "tire_size_front"
+      ],
+      "source_id": "src_0130"
+    },
+    {
+      "publisher": "CFMTTI Budni (Archive)",
+      "title": "TAFE MF 241 DI Commercial Test Report",
+      "url": "https://www.scribd.com/document/671636274/Massey-Ferguson-241-tractor",
+      "source_type": "government_certification",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0131"
+    },
+    {
+      "publisher": "TractorJunction",
+      "title": "Massey Ferguson 241 DI DynaTrack Specifications",
+      "url": "https://www.tractorjunction.com/massey-ferguson-tractor/241-di-dynatrack/",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "pto",
+        "ground_clearance_mm",
+        "warranty",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0132"
+    },
+    {
+      "publisher": "TractorKarvan",
+      "title": "Massey Ferguson 241 DI DynaTrack Specs & CFMTTI SFC",
+      "url": "https://tractorkarvan.com/tractor/massey-ferguson-241-di-dynatrack",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0133"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "maintenance.tire_size_front_and_battery",
+      "adopted_value": "6.00x16 front tyres & 12V 80Ah battery (Official TAFE/MF page)",
+      "conflicting_value": "6.50x16 front tyres & 12V 75Ah battery (TractorJunction)",
+      "adopted_source_url": "https://masseyfergusonindia.com/massey-ferguson/MF-241-DYNATRACK",
+      "conflicting_source_url": "https://www.tractorjunction.com/massey-ferguson-tractor/241-di-dynatrack/",
+      "resolution_status": "resolved_primary",
+      "notes": "Official TAFE/Massey Ferguson page governs; VersaTech wheelbase is adjustable 1935 mm (field) / 2035 mm (haulage)."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from official TAFE/MF India page; rated engine RPM, max torque, oil spec, and service interval kept null."
+  }
+}

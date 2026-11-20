@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "propulsion_types": [
+    {
+      "id": "ice",
+      "name": "Internal Combustion Engine (ICE)"
+    },
+    {
+      "id": "bev",
+      "name": "Battery Electric Vehicle (BEV)"
+    },
+    {
+      "id": "mild_hybrid",
+      "name": "Mild Hybrid (MHEV / ISG / Micro-Hybrid)"
+    },
+    {
+      "id": "strong_hybrid",
+      "name": "Strong / Full Hybrid (HEV)"
+    },
+    {
+      "id": "phev",
+      "name": "Plug-in Hybrid Electric Vehicle (PHEV)"
+    },
+    {
+      "id": "fcev",
+      "name": "Fuel Cell Electric Vehicle (FCEV)"
+    },
+    {
+      "id": "non_motorized",
+      "name": "Non-Motorized / Towed"
+    }
+  ]
+}
