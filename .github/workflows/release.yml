@@ -191,4 +191,8 @@ jobs:
             args+=(--prerelease)
           fi
           files=(dist/FleetPulse-* dist/SHA256SUMS)
-          gh release create "$TAG" "${files[@]}" "${args[@]}"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; not recreating it."
+          else
+            gh release create "$TAG" "${files[@]}" "${args[@]}"
+          fi
