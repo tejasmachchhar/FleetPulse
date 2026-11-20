@@ -468,7 +468,8 @@ Last verified locally:
 - `:app:testDebugUnitTest` — 54 tests, 0 failures
 - `:app:lintDebug` — 0 errors, 18 non-blocking dependency/legacy warnings
 - `:app:assembleDebug` — debug APK produced with versionName 4.3.0 and versionCode 5
-- `:app:assembleRelease` and `:app:bundleRelease` — succeeded; the release APK remains unsigned without signing secrets
+- `:app:assembleRelease` and `:app:bundleRelease` — succeeded; release APK signed with a newly generated local release key and published as the stable GitHub Release `v4.3.0`
+- Stable release APK: `FleetPulse-4.3.0-release.apk`, SHA-256 `8574be61d9760ff31a94a8ed927a7931ed3d2f4f6a959ea0ead5cdf343b2a970`
 - Feedback, email, About, and UPI flows are compile-, lint-, and JVM-test-verified; actual GitHub, browser, share-sheet, email, and UPI app hand-offs require a device pass
 
 The debug APK is **not runtime-verified** in the publication environment because there is no emulator or connected device. Device acceptance (install, first-launch choice, form entry, notification delivery, SAF pickers, keyboard behaviour, GitHub/UPI hand-offs, and visual review) still needs one manual pass on the target phone. The feedback screens have no instrumented UI test in this environment.

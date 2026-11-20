@@ -51,7 +51,7 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 
 - `./gradlew :app:testDebugUnitTest` — 54 tests, 0 failures.
 - `./gradlew :app:lintDebug` — 0 errors, 18 non-blocking dependency/legacy warnings.
-- `./gradlew :app:assembleDebug`, `:app:assembleRelease`, and `:app:bundleRelease` — all succeeded; debug APK is versionName 4.3.0 / versionCode 5. The release APK remains unsigned without signing secrets.
+- `./gradlew :app:assembleDebug`, `:app:assembleRelease`, and `:app:bundleRelease` — all succeeded; debug APK is versionName 4.3.0 / versionCode 5. The release APK is signed with a newly generated local release key and published as stable GitHub Release `v4.3.0`.
 - UPI and email intent construction, report/draft formatting, opt-outs, and fallback copy are JVM/compile-verified. Actual Google Pay, PhonePe, Paytm, BHIM, email-client, GitHub, and share-sheet hand-offs still require a device pass because the publication environment has no Android runtime.
 
 ## [4.2.0] - 2026-11-19
