@@ -26,7 +26,7 @@ The app is deliberately local-first:
 - Data stays in a local Room database and DataStore preferences
 - Backups and CSV files leave the app only when the user chooses a destination through Android's system file picker
 
-> **Verification status:** version 4.4.0 is source-, unit-test-, lint-, and debug-build-verified. The build environment used for this publication has no Android emulator or connected device, so runtime UI, UPI hand-off, and notification behaviour have not been exercised here. See [Screenshots](#screenshots) and [Verification](#verification) for the honest status.
+> **Verification status:** version 4.5.0 is source-, unit-test-, lint-, and debug-build-verified. The build environment used for this publication has no Android emulator or connected device, so runtime UI, UPI hand-off, and notification behaviour have not been exercised here. See [Screenshots](#screenshots) and [Verification](#verification) for the honest status.
 
 ## Contents
 
@@ -467,9 +467,9 @@ Last verified locally:
 
 - `:app:testDebugUnitTest` — 54 tests, 0 failures
 - `:app:lintDebug` — 0 errors, 18 non-blocking dependency/legacy warnings
-- `:app:assembleDebug` — debug APK produced with versionName 4.4.0 and versionCode 6
-- `:app:assembleRelease` and `:app:bundleRelease` — succeeded; release APK signed with a newly generated local release key and published as the stable GitHub Release `v4.4.0`
-- Stable release APK: `FleetPulse-4.4.0-release.apk`, SHA-256 to be generated for the final build
+- `:app:assembleDebug` — debug APK produced with versionName 4.5.0 and versionCode 7
+- `:app:assembleRelease` and `:app:bundleRelease` — succeeded; release APK signed with a newly generated local release key and published as the stable GitHub Release `v4.5.0`
+- Stable release APK: `FleetPulse-4.5.0-release.apk`, SHA-256 `4d1df5ff068f171eb2160c330a712086cc5632b954a5876cc7329b40a0f06408`
 - Feedback, email, About, and UPI flows are compile-, lint-, and JVM-test-verified; actual GitHub, browser, share-sheet, email, and UPI app hand-offs require a device pass
 
 The debug APK is **not runtime-verified** in the publication environment because there is no emulator or connected device. Device acceptance (install, first-launch choice, form entry, notification delivery, SAF pickers, keyboard behaviour, GitHub/UPI hand-offs, and visual review) still needs one manual pass on the target phone. The feedback screens have no instrumented UI test in this environment.

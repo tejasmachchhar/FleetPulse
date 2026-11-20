@@ -16,6 +16,27 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.
 - Accessibility and localization review.
 
+## [4.5.0] - 2026-11-20
+
+### Added
+
+- Persistent floating onboarding companion: when the user starts vehicle setup, onboarding minimizes into a dismissible, draggable pill while the user completes the vehicle creation flow.
+- Tapping the pill restores onboarding at the saved step and progress.
+- Completion state is based on a successful new-vehicle save; the bubble updates to show “Vehicle added”.
+- Setup progress, animation, and restoration survive screen transitions and configuration changes.
+
+### Changed
+
+- Vehicle creation from onboarding now opens the real Vehicles screen, then minimizes onboarding.
+- Existing users are not forced into onboarding if vehicle/usage data is already present.
+
+### Verification
+
+- `./gradlew :app:testDebugUnitTest` — 54 tests, 0 failures.
+- `./gradlew :app:lintDebug` — 0 errors, 18 non-blocking warnings.
+- `./gradlew :app:assembleRelease` — signed release APK produced with versionName 4.5.0 and versionCode 7.
+- APK verified with `apksigner`: valid signature, not debuggable, package `com.fleetpulse.app`, SHA-256 `4d1df5ff068f171eb2160c330a712086cc5632b954a5876cc7329b40a0f06408`.
+
 ## [4.4.0] - 2026-11-20
 
 ### Added
@@ -164,7 +185,8 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - `./gradlew :app:assembleRelease` / `:app:bundleRelease` — unsigned without signing secrets; the conditional signing path was verified with a temporary local test key, which was deleted afterwards.
 - Device launch, screenshots, notification delivery, SAF pickers, and visual keyboard behaviour remain pending on a real Android runtime.
 
-[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.4.0...HEAD
+[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.5.0...HEAD
+[4.5.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.5.0
 [4.4.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.4.0
 [4.3.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.3.0
 [4.2.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.2.0

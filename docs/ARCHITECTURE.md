@@ -116,6 +116,8 @@ The engine returns immutable result types (`EvaluatedUsage`, `VehicleAllTimeStat
    - **You're ready** — shortcuts to add vehicle, record usage, explore dashboard, and view maintenance.
 
    The user can skip, go back, or finish. Existing installations with vehicle/usage data are marked onboarded automatically so upgrades do not force the tutorial.
+
+   If the user taps **Add My First Vehicle**, the onboarding screen minimizes into a draggable floating companion while the real Vehicles screen opens. Tapping the companion restores the saved onboarding step. A successful new-vehicle save marks the vehicle-setup step as completed.
 4. After onboarding, the main scaffold observes the snapshot. Until the first Room emission arrives, a loading screen remains visible.
 5. On Android 13+, notification permission is requested once after onboarding. Denial switches the notification preference off.
 

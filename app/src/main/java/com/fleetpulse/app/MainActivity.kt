@@ -97,7 +97,9 @@ import com.fleetpulse.app.ui.screens.FeedbackHubScreen
 import com.fleetpulse.app.ui.screens.GeneralFeedbackScreen
 import com.fleetpulse.app.ui.screens.MaintenanceScreen
 import com.fleetpulse.app.ui.screens.MoreScreen
+import com.fleetpulse.app.ui.screens.OnboardingFloatingCompanion
 import com.fleetpulse.app.ui.screens.OnboardingScreen
+import com.fleetpulse.app.ui.screens.OnboardingState
 import com.fleetpulse.app.ui.screens.QuickEntryScreen
 import com.fleetpulse.app.ui.screens.SettingsScreen
 import com.fleetpulse.app.ui.screens.SupportFleetPulseScreen
@@ -175,7 +177,9 @@ private fun AppRoot(
     }
     var askedForNotifications by rememberSaveable { mutableStateOf(false) }
     var onboardingPendingRoute by rememberSaveable { mutableStateOf<String?>(null) }
+    var onboardingState by remember { mutableStateOf(OnboardingState()) }
     LaunchedEffect(prefs.onboardingComplete) {
+        if (prefs.onboardingComplete) onboardingState = OnboardingState()
         if (prefs.onboardingComplete && !askedForNotifications && Build.VERSION.SDK_INT >= 33 &&
             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
             PackageManager.PERMISSION_GRANTED
@@ -195,24 +199,58 @@ private fun AppRoot(
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             when {
                 !prefs.loaded -> LoadingScreen()
-                !prefs.onboardingComplete -> OnboardingScreen(
-                    onAddVehicle = {
-                        vm.completeOnboarding(false)
-                        onboardingPendingRoute = "vehicles"
-                    },
-                    onRecordUsage = {
-                        vm.completeOnboarding(false)
-                        onboardingPendingRoute = "vehicles"
-                    },
-                    onExploreDashboard = { vm.completeOnboarding(false) },
-                    onViewMaintenance = {
-                        vm.completeOnboarding(false)
-                        onboardingPendingRoute = "maintenance"
-                    },
-                    onLoadDemo = { vm.completeOnboarding(true) },
-                    onSkip = { vm.completeOnboarding(false) },
-                    onFinish = { vm.completeOnboarding(false) },
-                )
+                !prefs.onboardingComplete -> {
+                    if (onboardingState.minimized) {
+                        val snap = snapshot
+                        if (snap != null) {
+                            MainScaffold(
+                                vm = vm,
+                                snapshot = snap,
+                                prefs = prefs,
+                                pendingRoute = pendingRoute ?: onboardingPendingRoute,
+                                onPendingRouteConsumed = {
+                                    onPendingRouteConsumed()
+                                    onboardingPendingRoute = null
+                                },
+                                onVehicleAdded = {
+                                    onboardingState = onboardingState.copy(vehicleAdded = true)
+                                },
+                            )
+                        }
+                        OnboardingFloatingCompanion(
+                            state = onboardingState,
+                            onRestore = { onboardingState = onboardingState.copy(minimized = false) },
+                            hint = when {
+                                onboardingState.vehicleAdded -> "Vehicle added — tap to resume onboarding"
+                                onboardingPendingRoute == "vehicles" -> "Tap to resume: add a vehicle"
+                                onboardingPendingRoute == "maintenance" -> "Tap to resume: track maintenance"
+                                else -> "Tap to resume onboarding"
+                            },
+                        )
+                    } else {
+                        OnboardingScreen(
+                            state = onboardingState,
+                            onSetState = { onboardingState = it },
+                            onAddVehicle = {
+                                onboardingState = onboardingState.copy(minimized = true)
+                                onboardingPendingRoute = "vehicles"
+                            },
+                            onRecordUsage = {
+                                onboardingState = onboardingState.copy(minimized = true)
+                                onboardingPendingRoute = "vehicles"
+                            },
+                            onExploreDashboard = { vm.completeOnboarding(false) },
+                            onViewMaintenance = {
+                                onboardingState = onboardingState.copy(minimized = true)
+                                onboardingPendingRoute = "maintenance"
+                            },
+                            onLoadDemo = { vm.completeOnboarding(true) },
+                            onSkip = { vm.completeOnboarding(false) },
+                            onFinish = { vm.completeOnboarding(false) },
+                            onMinimize = { onboardingState = onboardingState.copy(minimized = true) },
+                        )
+                    }
+                }
                 else -> {
                     val snap = snapshot
                     if (snap == null) {
@@ -226,6 +264,9 @@ private fun AppRoot(
                             onPendingRouteConsumed = {
                                 onPendingRouteConsumed()
                                 onboardingPendingRoute = null
+                            },
+                            onVehicleAdded = {
+                                onboardingState = onboardingState.copy(vehicleAdded = true)
                             },
                         )
                     }
@@ -269,6 +310,7 @@ private fun MainScaffold(
     prefs: AppPreferencesState,
     pendingRoute: String?,
     onPendingRouteConsumed: () -> Unit,
+    onVehicleAdded: () -> Unit = {},
 ) {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -403,7 +445,11 @@ private fun MainScaffold(
                     vehicles = state.vehicles,
                     evaluation = snapshot.evaluation,
                     nextId = vm::nextVehicleId,
-                    onSave = vm::saveVehicle,
+                    onSave = { vehicle, isNew ->
+                        val saved = vm.saveVehicle(vehicle, isNew)
+                        if (saved && isNew) onVehicleAdded()
+                        saved
+                    },
                     onArchive = vm::setVehicleArchived,
                     onDelete = vm::deleteVehicleCascade,
                     onAddEntry = { vehicleId ->

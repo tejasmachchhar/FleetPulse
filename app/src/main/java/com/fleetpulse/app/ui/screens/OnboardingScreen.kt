@@ -1,6 +1,10 @@
 package com.fleetpulse.app.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +14,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
@@ -20,14 +25,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.filled.Bolt
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.automirrored.filled.DirectionsBike
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Science
-import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Storage
 import androidx.compose.material3.Button
@@ -40,25 +42,30 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import com.fleetpulse.app.ui.theme.FleetAmber
-import com.fleetpulse.app.ui.theme.FleetBlue
-import com.fleetpulse.app.ui.theme.FleetGreen
-import com.fleetpulse.app.ui.theme.FleetOrange
-import com.fleetpulse.app.ui.theme.FleetViolet
+
+data class OnboardingState(
+    val page: Int = 0,
+    val minimized: Boolean = false,
+    val vehicleAdded: Boolean = false,
+    val usageRecorded: Boolean = false,
+)
 
 @Composable
 fun OnboardingScreen(
+    state: OnboardingState,
+    onSetState: (OnboardingState) -> Unit,
     onAddVehicle: () -> Unit,
     onRecordUsage: () -> Unit,
     onExploreDashboard: () -> Unit,
@@ -66,8 +73,9 @@ fun OnboardingScreen(
     onLoadDemo: () -> Unit,
     onSkip: () -> Unit,
     onFinish: () -> Unit,
+    onMinimize: () -> Unit,
 ) {
-    var page by rememberSaveable { mutableIntStateOf(0) }
+    val page = state.page
     val pageCount = 7
 
     Column(
@@ -100,14 +108,17 @@ fun OnboardingScreen(
         ) {
             when (page) {
                 0 -> WelcomePage(onLoadDemo = onLoadDemo)
-                1 -> AddVehiclePage(onAddVehicle = onAddVehicle)
-                2 -> UsagePage(onRecordUsage = onRecordUsage)
+                1 -> AddVehiclePage(
+                    vehicleAdded = state.vehicleAdded,
+                    onAddVehicle = { onMinimize(); onAddVehicle() },
+                )
+                2 -> UsagePage(onRecordUsage = { onMinimize(); onRecordUsage() })
                 3 -> AnalyticsPage()
                 4 -> MaintenancePage(onViewMaintenance = onViewMaintenance)
                 5 -> BackupPage()
                 else -> ReadyPage(
                     onAddVehicle = onAddVehicle,
-                    onRecordUsage = onRecordUsage,
+                    onRecordUsage = { onMinimize(); onRecordUsage() },
                     onExploreDashboard = onExploreDashboard,
                     onViewMaintenance = onViewMaintenance,
                 )
@@ -122,20 +133,18 @@ fun OnboardingScreen(
         ) {
             if (page > 0) {
                 OutlinedButton(
-                    onClick = { page -= 1 },
+                    onClick = { onSetState(state.copy(page = page - 1)) },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(14.dp),
                 ) { Text("Back") }
             }
             Button(
                 onClick = {
-                    if (page == pageCount - 1) onFinish() else page += 1
+                    if (page == pageCount - 1) onFinish() else onSetState(state.copy(page = page + 1))
                 },
                 modifier = Modifier.weight(1f),
                 shape = RoundedCornerShape(14.dp),
-            ) {
-                Text(if (page == pageCount - 1) "Finish" else "Next")
-            }
+            ) { Text(if (page == pageCount - 1) "Finish" else "Next") }
         }
     }
 }
@@ -180,7 +189,7 @@ private fun WelcomePage(onLoadDemo: () -> Unit) {
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(14.dp),
     ) {
-        Icon(Icons.Default.Science, null, modifier = Modifier.size(18.dp))
+        Icon(Icons.Default.CloudOff, null, modifier = Modifier.size(18.dp))
         Spacer(Modifier.width(8.dp))
         Text("Explore with sample data")
     }
@@ -195,11 +204,12 @@ private fun WelcomePage(onLoadDemo: () -> Unit) {
 }
 
 @Composable
-private fun AddVehiclePage(onAddVehicle: () -> Unit) {
+private fun AddVehiclePage(vehicleAdded: Boolean, onAddVehicle: () -> Unit) {
     OnboardingHero(
         icon = Icons.AutoMirrored.Filled.DirectionsBike,
         title = "Add your first vehicle",
-        body = "Create a vehicle profile so FleetPulse knows what you drive and how it is powered.",
+        body = if (vehicleAdded) "Good start — you can review or add more vehicles now." else
+            "Create a vehicle profile so FleetPulse knows what you drive and how it is powered.",
     )
     Spacer(Modifier.height(18.dp))
     Bullet("Required: vehicle name, type, energy source, and current odometer.")
@@ -214,16 +224,8 @@ private fun AddVehiclePage(onAddVehicle: () -> Unit) {
     ) {
         Icon(Icons.AutoMirrored.Filled.DirectionsBike, null, modifier = Modifier.size(18.dp))
         Spacer(Modifier.width(8.dp))
-        Text("Add my first vehicle")
+        Text(if (vehicleAdded) "View my vehicle" else "Add my first vehicle")
     }
-    Spacer(Modifier.height(8.dp))
-    Text(
-        "You can also skip this step and add a vehicle later from the Vehicles tab.",
-        style = MaterialTheme.typography.labelSmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth(),
-    )
 }
 
 @Composable
@@ -237,7 +239,6 @@ private fun UsagePage(onRecordUsage: () -> Unit) {
     Bullet("Use a full tank or full charge when you want a verified mileage result.")
     Bullet("Partial refills are still recorded for cost and history.")
     Bullet("Duplicate or implausible odometer readings are flagged for review.")
-    Bullet("Excluded entries stay in history but do not affect mileage.")
     Spacer(Modifier.height(18.dp))
     Button(
         onClick = onRecordUsage,
@@ -261,7 +262,7 @@ private fun AnalyticsPage() {
     Bullet("Verified mileage comes from full-to-full intervals.")
     Bullet("Provisional estimates are shown separately, not mixed silently.")
     Bullet("Cost per kilometre, EV battery wear, and running-cost splits are available.")
-    Bullet("Charts and comparisons improve as more complete entries are added.")
+    Spacer(Modifier.height(18.dp))
 }
 
 @Composable
@@ -275,7 +276,6 @@ private fun MaintenancePage(onViewMaintenance: () -> Unit) {
     Bullet("Add maintenance entries with category, cost, date, and odometer.")
     Bullet("Track upcoming and overdue service by date or distance.")
     Bullet("Maintenance cost is included in running-cost analysis.")
-    Bullet("Local reminders can notify you when service is due.")
     Spacer(Modifier.height(18.dp))
     Button(
         onClick = onViewMaintenance,
@@ -291,7 +291,7 @@ private fun MaintenancePage(onViewMaintenance: () -> Unit) {
 @Composable
 private fun BackupPage() {
     OnboardingHero(
-        icon = Icons.Default.Shield,
+        icon = Icons.Default.Storage,
         title = "Keep your data safe",
         body = "FleetPulse stores data locally on this phone. There is no cloud account or automatic sync.",
     )
@@ -319,32 +319,16 @@ private fun ReadyPage(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        OutlinedButton(
-            onClick = onAddVehicle,
-            modifier = Modifier.weight(1f),
-            shape = RoundedCornerShape(14.dp),
-        ) { Text("Add vehicle") }
-        OutlinedButton(
-            onClick = onRecordUsage,
-            modifier = Modifier.weight(1f),
-            shape = RoundedCornerShape(14.dp),
-        ) { Text("Record usage") }
+        OutlinedButton(onClick = onAddVehicle, modifier = Modifier.weight(1f)) { Text("Add vehicle") }
+        OutlinedButton(onClick = onRecordUsage, modifier = Modifier.weight(1f)) { Text("Record usage") }
     }
     Spacer(Modifier.height(10.dp))
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        OutlinedButton(
-            onClick = onExploreDashboard,
-            modifier = Modifier.weight(1f),
-            shape = RoundedCornerShape(14.dp),
-        ) { Text("Dashboard") }
-        OutlinedButton(
-            onClick = onViewMaintenance,
-            modifier = Modifier.weight(1f),
-            shape = RoundedCornerShape(14.dp),
-        ) { Text("Maintenance") }
+        OutlinedButton(onClick = onExploreDashboard, modifier = Modifier.weight(1f)) { Text("Dashboard") }
+        OutlinedButton(onClick = onViewMaintenance, modifier = Modifier.weight(1f)) { Text("Maintenance") }
     }
     Spacer(Modifier.height(12.dp))
     Text(
@@ -358,7 +342,7 @@ private fun ReadyPage(
 
 @Composable
 private fun OnboardingHero(
-    icon: ImageVector,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
     title: String,
     body: String,
 ) {
@@ -413,5 +397,79 @@ private fun Bullet(text: String) {
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+    }
+}
+
+@Composable
+fun OnboardingFloatingCompanion(
+    state: OnboardingState,
+    onRestore: () -> Unit,
+    hint: String,
+) {
+    val configuration = LocalConfiguration.current
+    val screenWidthDp = configuration.screenWidthDp.dp
+    val dragMaxX = (screenWidthDp - 260.dp).coerceAtLeast(0.dp)
+    var dragOffset by remember { mutableStateOf(Offset.Zero) }
+
+    AnimatedVisibility(
+        visible = true,
+        enter = androidx.compose.animation.fadeIn(tween(220)) +
+            androidx.compose.animation.slideInVertically(tween(220), initialOffsetY = { 80 }) +
+            androidx.compose.animation.expandVertically(tween(220)),
+        exit = androidx.compose.animation.fadeOut(tween(180)) +
+            androidx.compose.animation.slideOutVertically(tween(180), targetOffsetY = { 80 }) +
+            androidx.compose.animation.shrinkVertically(tween(180)),
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 18.dp, start = 20.dp, end = 20.dp, top = 16.dp),
+            contentAlignment = Alignment.BottomCenter,
+        ) {
+            Card(
+                modifier = Modifier
+                    .clickable(onClick = onRestore)
+                    .pointerInput(Unit) {
+                        detectDragGestures { _, dragAmount ->
+                            val current = dragOffset
+                            dragOffset = Offset(
+                                (current.x + dragAmount.x).coerceIn(0f, dragMaxX.value),
+                                (current.y + dragAmount.y).coerceIn(-80f, 110f),
+                            )
+                        }
+                    }
+                    .offset { IntOffset(dragOffset.x.toInt(), dragOffset.y.toInt()) },
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                shape = RoundedCornerShape(20.dp),
+            ) {
+                Box(
+                    Modifier
+                        .background(
+                            MaterialTheme.colorScheme.primaryContainer,
+                            RoundedCornerShape(14.dp),
+                        )
+                        .clickable(onClick = onRestore)
+                        .padding(horizontal = 18.dp, vertical = 14.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.DirectionsBike,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(22.dp),
+                        )
+                        Text(
+                            "Setup · ${state.page + 1}/7${if (state.vehicleAdded) " · Vehicle added" else ""} · $hint",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+            }
+        }
     }
 }
