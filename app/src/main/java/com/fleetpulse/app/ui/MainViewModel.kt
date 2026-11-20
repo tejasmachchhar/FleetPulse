@@ -32,6 +32,8 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -81,6 +83,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val rawState: StateFlow<EngineState?> = repo.state
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
+    init {
+        viewModelScope.launch {
+            val state = repo.state.filterNotNull().first()
+            if ((state.vehicles.isNotEmpty() || state.usageEntries.isNotEmpty()) &&
+                !app.preferences.state.first().onboardingComplete
+            ) {
+                app.preferences.setOnboardingComplete(true)
+            }
+        }
+    }
+
     private val _verification = MutableStateFlow<List<VerificationResult>>(emptyList())
     val verification: StateFlow<List<VerificationResult>> = _verification
 
@@ -115,6 +128,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
             app.preferences.setOnboardingComplete(true)
         }
+    }
+
+    fun replayOnboarding() = viewModelScope.launch {
+        app.preferences.setOnboardingComplete(false)
     }
 
     // Theme / notifications --------------------------------------------

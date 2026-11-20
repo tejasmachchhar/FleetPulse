@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -21,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilterChip
@@ -76,6 +78,7 @@ fun SettingsScreen(
     onTheme: (String) -> Unit,
     onNotifications: (Boolean) -> Unit,
     onBack: () -> Unit,
+    onReplayOnboarding: () -> Unit = {},
 ) {
     var efficiency by remember(settings) { mutableStateOf(NumberText.plain(settings.chargerEfficiency)) }
     var maxDistance by remember(settings) { mutableStateOf(NumberText.plain(settings.maxPlausibleDistance)) }
@@ -289,6 +292,25 @@ fun SettingsScreen(
                             label = { Text(label) },
                         )
                     }
+                }
+            }
+
+            SectionCard(title = "Help & onboarding", subtitle = "Replay the getting-started tutorial") {
+                Text(
+                    "FleetPulse includes a short tutorial for adding vehicles, recording usage, reading mileage " +
+                        "and costs, tracking maintenance, and keeping backups.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(8.dp))
+                OutlinedButton(
+                    onClick = onReplayOnboarding,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(14.dp),
+                ) {
+                    Icon(Icons.Default.Info, null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text("Replay getting started")
                 }
             }
         }

@@ -182,7 +182,7 @@ The current environment has no Android runtime, so IME changes are compile- and 
 When a device or emulator is available:
 
 1. Install the debug APK: `adb install -r app/build/outputs/apk/debug/app-debug.apk`.
-2. Complete onboarding twice: once clean, once with sample data.
+2. Complete onboarding once clean; replay it from Settings and complete it again with sample data if needed.
 3. Check Dashboard filters and period changes.
 4. Add an EV charge in meter mode and voltage mode.
 5. Add a petrol refill with each pair of the two-of-three inputs.

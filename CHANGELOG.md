@@ -16,6 +16,30 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.
 - Accessibility and localization review.
 
+## [4.4.0] - 2026-11-20
+
+### Added
+
+- Self-guided first-time onboarding with Welcome, Add Vehicle, Usage Tracking, Mileage & Analytics, Maintenance, Backup & Data Safety, and Ready screens.
+- Replayable onboarding from Settings and More → Getting Started.
+- Automatic completion for existing installations that already contain vehicle or usage data, so upgrades do not force onboarding.
+
+### Changed
+
+- Production release is now signed with the dedicated FleetPulse release key instead of being published as an unsigned/debug-signed artifact.
+- Onboarding completion persists in app preferences and survives process recreation.
+
+### Fixed
+
+- Release signing setup now uses the verified keystore at `~/.fleetpulse-release/fleetpulse-release.jks`.
+
+### Verification
+
+- `./gradlew :app:testDebugUnitTest` — 54 tests, 0 failures.
+- `./gradlew :app:lintDebug` — 0 errors, 18 non-blocking warnings.
+- `./gradlew :app:assembleRelease` — signed release APK produced with versionName 4.4.0 and versionCode 6.
+- APK verified with `apksigner`: valid signature, not debuggable, package `com.fleetpulse.app`.
+
 ## [4.3.0] - 2026-11-19
 
 ### Added
@@ -140,7 +164,8 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - `./gradlew :app:assembleRelease` / `:app:bundleRelease` — unsigned without signing secrets; the conditional signing path was verified with a temporary local test key, which was deleted afterwards.
 - Device launch, screenshots, notification delivery, SAF pickers, and visual keyboard behaviour remain pending on a real Android runtime.
 
-[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.3.0...HEAD
+[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.4.0...HEAD
+[4.4.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.4.0
 [4.3.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.3.0
 [4.2.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.2.0
 [4.1.1]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.1.1

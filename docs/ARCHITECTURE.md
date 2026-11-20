@@ -106,9 +106,16 @@ The engine returns immutable result types (`EvaluatedUsage`, `VehicleAllTimeStat
 
 1. `Application.onCreate()` builds the database, repository, and preferences; creates the notification channel; schedules the daily worker.
 2. `MainActivity` collects `AppPreferencesState`. Until DataStore has loaded, a loading screen is shown.
-3. If onboarding is incomplete, the onboarding screen offers:
-   - **Start clean** — creates default settings with the current chart month.
-   - **Load the sample dataset** — creates demo settings and inserts the marked reference records.
+3. If onboarding is incomplete, the onboarding screen shows the seven-page tutorial:
+   - **Welcome** — what FleetPulse does and what to expect.
+   - **Add your first vehicle** — required/optional vehicle fields.
+   - **Record usage** — odometer, fuel/charging, and expense entry guidance.
+   - **Understand mileage and costs** — efficiency, cost, and analysis basics.
+   - **Track maintenance** — maintenance records and reminders.
+   - **Keep your data safe** — local storage, backups, and restore behaviour.
+   - **You're ready** — shortcuts to add vehicle, record usage, explore dashboard, and view maintenance.
+
+   The user can skip, go back, or finish. Existing installations with vehicle/usage data are marked onboarded automatically so upgrades do not force the tutorial.
 4. After onboarding, the main scaffold observes the snapshot. Until the first Room emission arrives, a loading screen remains visible.
 5. On Android 13+, notification permission is requested once after onboarding. Denial switches the notification preference off.
 

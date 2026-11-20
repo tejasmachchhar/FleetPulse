@@ -52,6 +52,7 @@ fun MoreScreen(
     onSettings: () -> Unit,
     onData: () -> Unit,
     onGuide: () -> Unit,
+    onGettingStarted: () -> Unit = {},
     onVerification: () -> Unit,
     onFeedback: () -> Unit,
     onAbout: () -> Unit,
@@ -122,6 +123,13 @@ fun MoreScreen(
 
         item {
             SectionCard(title = "Help & feedback") {
+                MenuRow(
+                    icon = Icons.Default.Info,
+                    title = "Getting Started",
+                    subtitle = "Replay the first-time tutorial",
+                    tint = FleetBlue,
+                    onClick = onGettingStarted,
+                )
                 MenuRow(
                     icon = Icons.Default.SupportAgent,
                     title = "Feedback & Support",

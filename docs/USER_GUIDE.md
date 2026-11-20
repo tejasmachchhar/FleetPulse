@@ -442,7 +442,7 @@ Uninstalling removes the local database. Android auto-backup is disabled, so res
 
 1. Export a JSON backup on the old phone.
 2. Install FleetPulse on the new phone.
-3. Complete or skip onboarding.
+3. Complete, skip, or replay the onboarding from Settings → Help & Onboarding.
 4. Import the backup and confirm.
 
 ### A screenshot contains my registration number

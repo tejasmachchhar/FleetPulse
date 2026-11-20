@@ -174,6 +174,7 @@ private fun AppRoot(
         if (!granted) vm.setNotificationsEnabled(false)
     }
     var askedForNotifications by rememberSaveable { mutableStateOf(false) }
+    var onboardingPendingRoute by rememberSaveable { mutableStateOf<String?>(null) }
     LaunchedEffect(prefs.onboardingComplete) {
         if (prefs.onboardingComplete && !askedForNotifications && Build.VERSION.SDK_INT >= 33 &&
             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
@@ -195,8 +196,22 @@ private fun AppRoot(
             when {
                 !prefs.loaded -> LoadingScreen()
                 !prefs.onboardingComplete -> OnboardingScreen(
-                    onStartClean = { vm.completeOnboarding(false) },
+                    onAddVehicle = {
+                        vm.completeOnboarding(false)
+                        onboardingPendingRoute = "vehicles"
+                    },
+                    onRecordUsage = {
+                        vm.completeOnboarding(false)
+                        onboardingPendingRoute = "vehicles"
+                    },
+                    onExploreDashboard = { vm.completeOnboarding(false) },
+                    onViewMaintenance = {
+                        vm.completeOnboarding(false)
+                        onboardingPendingRoute = "maintenance"
+                    },
                     onLoadDemo = { vm.completeOnboarding(true) },
+                    onSkip = { vm.completeOnboarding(false) },
+                    onFinish = { vm.completeOnboarding(false) },
                 )
                 else -> {
                     val snap = snapshot
@@ -207,8 +222,11 @@ private fun AppRoot(
                             vm = vm,
                             snapshot = snap,
                             prefs = prefs,
-                            pendingRoute = pendingRoute,
-                            onPendingRouteConsumed = onPendingRouteConsumed,
+                            pendingRoute = pendingRoute ?: onboardingPendingRoute,
+                            onPendingRouteConsumed = {
+                                onPendingRouteConsumed()
+                                onboardingPendingRoute = null
+                            },
                         )
                     }
                 }
@@ -438,6 +456,7 @@ private fun MainScaffold(
                     onSettings = { openDetail("settings") },
                     onData = { openDetail("data") },
                     onGuide = { openDetail("guide") },
+                    onGettingStarted = vm::replayOnboarding,
                     onVerification = { openDetail("verification") },
                     onFeedback = { openDetail("feedback") },
                     onAbout = { openDetail("about") },
@@ -465,6 +484,7 @@ private fun MainScaffold(
                     onDeletePrice = vm::deletePrice,
                     onTheme = vm::setThemeMode,
                     onNotifications = vm::setNotificationsEnabled,
+                    onReplayOnboarding = vm::replayOnboarding,
                     onBack = { navController.popBackStack() },
                 )
             }
