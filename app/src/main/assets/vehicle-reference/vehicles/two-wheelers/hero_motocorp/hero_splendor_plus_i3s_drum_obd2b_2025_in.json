@@ -1,0 +1,200 @@
+{
+  "id": "hero_splendor_plus_i3s_drum_obd2b_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "hero_motocorp",
+    "name": "Hero MotoCorp Ltd.",
+    "brand": "Hero"
+  },
+  "model": {
+    "id": "splendor_plus",
+    "name": "Splendor+",
+    "official_product_name": "Hero Splendor+ (i3S)",
+    "variant": "Splendor+ i3S Drum Brake (OBD2B)",
+    "generation": "BS6 Phase 2 OBD2B",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "commuter_motorcycle",
+    "vehicle_class": "L2",
+    "vehicle_type": "Commuter Motorcycle"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "petrol",
+    "e20_compliant": true,
+    "engine_type": "Air-cooled, 4-stroke, single-cylinder, OHC, PGM-FI",
+    "engine_code": null,
+    "engine_displacement_cc": 97.2,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 5.91,
+    "power_unit": "kW",
+    "power_alt": "8.02 PS (7.91 bhp)",
+    "power_rpm": 8000,
+    "torque": 8.05,
+    "torque_unit": "Nm",
+    "torque_rpm": 6000,
+    "transmission": "4-speed Constant Mesh Manual (wet multi-plate)",
+    "gear_count": 4,
+    "drive_type": "Chain Drive",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 9.8,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 112.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1236,
+    "length_mm": 2000,
+    "width_mm": 720,
+    "height_mm": 1052,
+    "ground_clearance_mm": 165,
+    "seat_height_mm": 785
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (OBD2B)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 70.0,
+        "value_min": 62.0,
+        "value_max": 70.0,
+        "unit": "km_per_liter",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "BikeDekho lists 70 km/L; BikeWale 63 km/L; ACKO Drive 62 km/L",
+        "source_url": "https://www.bikedekho.com/hero/splendor-plus-i3s-obd-2b.html"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "Hero 4T Plus SAE 10W-30 SL (JASO MA2)",
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Capacity not verified from retrieved manual snippet",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "80/100-18 M/C 47P Tubeless",
+    "tire_size_rear": "80/100-18 M/C 54P Tubeless",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 3000,
+    "service_interval_unit": "km",
+    "service_interval_months": 3,
+    "service_schedule_summary": "Paid service every 3,000 km or 90 days; engine oil replacement at 1st service then every 6,000 km with 3,000 km top-up.",
+    "warranty": null,
+    "handbook_url": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/service-owner-manual/splendor-plus-01-edition-sep-2023.pdf"
+  },
+  "aliases": [
+    "Splendor Plus i3S",
+    "Hero Splendor 100",
+    "Splendor Plus"
+  ],
+  "sources": [
+    {
+      "publisher": "Hero MotoCorp",
+      "title": "Hero Splendor+ Official Product Page",
+      "url": "https://www.heromotocorp.com/en-in/motorcycles/splendor-plus.html?tab=splendor-plus",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "kerb_weight_kg"
+      ],
+      "source_id": "src_0019"
+    },
+    {
+      "publisher": "Hero MotoCorp",
+      "title": "Hero Splendor+ Official Owner's Manual PDF",
+      "url": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/service-owner-manual/splendor-plus-01-edition-sep-2023.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "engine_oil_grade",
+        "service_interval"
+      ],
+      "source_id": "src_0020"
+    },
+    {
+      "publisher": "Hero MotoCorp",
+      "title": "Hero Splendor+ XTEC Manual PDF (Tyre Reference)",
+      "url": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/service-owner-manual/splendor_plus_xtec_may_2024.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0021"
+    },
+    {
+      "publisher": "BikeDekho",
+      "title": "Hero Splendor+ i3S OBD2B Specifications",
+      "url": "https://www.bikedekho.com/hero/splendor-plus-i3s-obd-2b.html",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0022"
+    },
+    {
+      "publisher": "BikeWale",
+      "title": "Hero Splendor Plus Specifications & Mileage",
+      "url": "https://www.bikewale.com/hero-bikes/splendor-plus/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0023"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency.fuel_economy",
+      "adopted_value": "62-70 km/L (secondary range)",
+      "conflicting_value": "70 km/L (BikeDekho) vs 63 km/L (BikeWale) vs 62 km/L (ACKO Drive)",
+      "adopted_source_url": "https://www.bikedekho.com/hero/splendor-plus-i3s-obd-2b.html",
+      "conflicting_source_url": "https://www.bikewale.com/hero-bikes/splendor-plus/",
+      "resolution_status": "unresolved",
+      "notes": "Hero MotoCorp does not publish an official ARAI km/L figure on the product page; portal estimates vary."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from Hero MotoCorp India page and official Owner's Manual PDF; oil capacity and cold tyre pressures kept null."
+  }
+}

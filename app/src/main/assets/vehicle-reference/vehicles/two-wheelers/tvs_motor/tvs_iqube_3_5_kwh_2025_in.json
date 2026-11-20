@@ -1,0 +1,215 @@
+{
+  "id": "tvs_iqube_3_5_kwh_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "tvs_motor",
+    "name": "TVS Motor Company Ltd.",
+    "brand": "TVS"
+  },
+  "model": {
+    "id": "iqube",
+    "name": "iQube",
+    "official_product_name": "TVS iQube 3.5 kWh",
+    "variant": "TVS iQube 3.5 kWh (Post-April 2025)",
+    "generation": "2025/2026 Updated Battery Gen",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "electric_scooter",
+    "vehicle_class": "L2",
+    "vehicle_type": "Electric Family Scooter"
+  },
+  "powertrain": {
+    "propulsion": "bev",
+    "fuel_type": "electric",
+    "e20_compliant": null,
+    "engine_type": null,
+    "engine_code": null,
+    "engine_displacement_cc": null,
+    "cylinder_count": null,
+    "engine_configuration": null,
+    "power": 4.4,
+    "power_unit": "kW",
+    "power_alt": "4.4 kW peak / 3.0 kW rated",
+    "power_rpm": null,
+    "torque": 140.0,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "torque_notes": "140 Nm peak at wheel / 33 Nm rated",
+    "transmission": "Direct-drive Automatic",
+    "gear_count": 1,
+    "drive_type": "Hub Motor",
+    "aftertreatment": null,
+    "motor": {
+      "type": "BLDC Hub-Mounted Motor (IP67)",
+      "peak_power_kw": 4.4,
+      "continuous_power_kw": 3.0,
+      "peak_torque_nm": 140.0
+    },
+    "hybrid_configuration": null,
+    "battery": {
+      "capacity_kwh": 3.5,
+      "usable_kwh": null,
+      "voltage_v": 51.7,
+      "capacity_ah": null,
+      "chemistry": "Lithium-ion"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": 3.5,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": 51.7,
+    "battery_capacity_ah": null,
+    "battery_chemistry": "Lithium-ion"
+  },
+  "dimensions": {
+    "kerb_weight_kg": 118.6,
+    "gross_weight_kg": null,
+    "payload_kg": 130.0,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": 32.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1301,
+    "length_mm": 1805,
+    "width_mm": 645,
+    "height_mm": 1140,
+    "ground_clearance_mm": 157,
+    "seat_height_mm": 770
+  },
+  "efficiency": {
+    "certification_standard": "AIS 156 Certified",
+    "metrics": [
+      {
+        "metric_type": "electric_range",
+        "value": 145.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km",
+        "test_cycle": "IDC",
+        "source_type": "certified",
+        "conditions": "Official TVS India IDC range",
+        "source_url": "https://www.tvsmotor.com/electric-scooters/tvs-iqube/tvs-iqube-3-5-kwh-variant-details"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Not applicable (BEV)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "90/90-12 Tubeless",
+    "tire_size_rear": "90/90-12 Tubeless",
+    "tire_pressure_front_psi": 24.0,
+    "tire_pressure_rear_psi": "32 solo / 36 pillion (TyrePlex; 2026 iQube S 4.7 kWh manual specifies 26/34)",
+    "service_interval_value": 4000,
+    "service_interval_unit": "km",
+    "service_interval_months": 4,
+    "service_schedule_summary": "Every 4,000 km or 4 months per TVS Official Maintenance Blog.",
+    "warranty": null,
+    "handbook_url": "https://www.tvsmotor.com/-/media/Feature/Owners/04-06-26/TVS-iQube-35-kWh-for-vehicles-produced-after-21042025.pdf"
+  },
+  "aliases": [
+    "iQube 3.5",
+    "TVS iQube Electric 3.5 kWh",
+    "TVS iQube"
+  ],
+  "sources": [
+    {
+      "publisher": "TVS Motor Company",
+      "title": "TVS iQube 3.5 kWh Official India Variant Page",
+      "url": "https://www.tvsmotor.com/electric-scooters/tvs-iqube/tvs-iqube-3-5-kwh-variant-details",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "energy_storage",
+        "cargo_capacity_liters",
+        "efficiency",
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0041"
+    },
+    {
+      "publisher": "TVS Motor Company",
+      "title": "TVS iQube 3.5 kWh Owner's Manual PDF (Post-21/04/2025)",
+      "url": "https://www.tvsmotor.com/-/media/Feature/Owners/04-06-26/TVS-iQube-35-kWh-for-vehicles-produced-after-21042025.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "battery_voltage_v",
+        "handbook_url"
+      ],
+      "source_id": "src_0042"
+    },
+    {
+      "publisher": "TVS Motor Company",
+      "title": "TVS iQube Maintenance Blog",
+      "url": "https://www.tvsmotor.com/media/blog/tvs-iqube-s-how-tvs-iqube-s-owners-maintain-their-rides",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "service_interval"
+      ],
+      "source_id": "src_0043"
+    },
+    {
+      "publisher": "BikeWale",
+      "title": "TVS iQube Specifications",
+      "url": "https://www.bikewale.com/tvs-bikes/iqube/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "kerb_weight_kg",
+        "payload_kg",
+        "dimensions"
+      ],
+      "source_id": "src_0044"
+    },
+    {
+      "publisher": "TyrePlex",
+      "title": "TVS iQube Electric Tyre Pressure",
+      "url": "https://www.tyreplex.com/tyre-pressure/tvs-scooter/iqube-electric-",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "tire_pressure"
+      ],
+      "source_id": "src_0045"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain_and_dimensions",
+      "adopted_value": "4.4 kW / 3.0 kW, 1805x645x1140 mm, 118.6 kg (India domestic spec)",
+      "conflicting_value": "4.6 kW / 3.34 kW, 1835x690x1195 mm, 119 kg (TVS Kenya export 3.5 kWh page)",
+      "adopted_source_url": "https://www.tvsmotor.com/electric-scooters/tvs-iqube/tvs-iqube-3-5-kwh-variant-details",
+      "conflicting_source_url": "https://www.tvsmotor.com/electric-scooters/tvs-iqube/tvs-iqube-3-5-kwh-variant-details",
+      "resolution_status": "resolved_primary",
+      "notes": "India domestic market specs govern this IN record; Kenya export variant differs in motor tune and body dimensions."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from TVS India official page and post-April 2025 Owner's Manual PDF (51.7 V nominal; 1,810 Wh installed / 1,590 Wh usable per module)."
+  }
+}

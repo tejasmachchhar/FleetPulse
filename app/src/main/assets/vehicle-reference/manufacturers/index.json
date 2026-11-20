@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0.0",
+  "database_version": "1.0.0-batch1",
+  "manufacturer_count": 23,
+  "manufacturers": [
+    {
+      "id": "ashok_leyland",
+      "name": "Ashok Leyland Limited",
+      "brand": "Ashok Leyland",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.ashokleyland.com/",
+      "categories": [
+        "commercial_vehicle"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "ather_energy",
+      "name": "Ather Energy Limited",
+      "brand": "Ather",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.atherenergy.com/",
+      "categories": [
+        "two_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "bajaj_auto",
+      "name": "Bajaj Auto Limited",
+      "brand": "Bajaj",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.bajajauto.com/",
+      "categories": [
+        "three_wheeler",
+        "two_wheeler"
+      ],
+      "record_count": 2
+    },
+    {
+      "id": "euler_motors",
+      "name": "Euler Motors Pvt. Ltd.",
+      "brand": "Euler Motors",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.eulermotors.com/",
+      "categories": [
+        "three_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "hero_motocorp",
+      "name": "Hero MotoCorp Ltd.",
+      "brand": "Hero",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.heromotocorp.com/",
+      "categories": [
+        "two_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "honda_hmsi",
+      "name": "Honda Motorcycle & Scooter India Pvt. Ltd. (HMSI)",
+      "brand": "Honda",
+      "country_of_origin": "JP",
+      "india_market_active": true,
+      "official_website": "https://www.honda2wheelersindia.com/",
+      "categories": [
+        "two_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "hyundai_india",
+      "name": "Hyundai Motor India Limited (HMIL)",
+      "brand": "Hyundai",
+      "country_of_origin": "KR",
+      "india_market_active": true,
+      "official_website": "https://www.hyundai.com/in/en",
+      "categories": [
+        "passenger_vehicle"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "john_deere_india",
+      "name": "John Deere India Pvt. Ltd.",
+      "brand": "John Deere",
+      "country_of_origin": "US",
+      "india_market_active": true,
+      "official_website": "https://www.deere.co.in/",
+      "categories": [
+        "agricultural"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "mahindra_auto",
+      "name": "Mahindra & Mahindra Limited",
+      "brand": "Mahindra",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://auto.mahindra.com/",
+      "categories": [
+        "commercial_vehicle",
+        "passenger_vehicle"
+      ],
+      "record_count": 2
+    },
+    {
+      "id": "mahindra_mlmm",
+      "name": "Mahindra Last Mile Mobility Limited",
+      "brand": "Mahindra",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://mahindralastmilemobility.com/",
+      "categories": [
+        "three_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "mahindra_tractors",
+      "name": "Mahindra & Mahindra Ltd. (Farm Equipment Sector)",
+      "brand": "Mahindra Tractors",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.mahindratractor.com/",
+      "categories": [
+        "agricultural"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "maruti_suzuki",
+      "name": "Maruti Suzuki India Limited",
+      "brand": "Maruti Suzuki",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.marutisuzuki.com/",
+      "categories": [
+        "commercial_vehicle",
+        "passenger_vehicle"
+      ],
+      "record_count": 4
+    },
+    {
+      "id": "piaggio_india",
+      "name": "Piaggio Vehicles Pvt. Ltd. (India)",
+      "brand": "Piaggio",
+      "country_of_origin": "IT",
+      "india_market_active": true,
+      "official_website": "https://piaggio-cv.co.in/",
+      "categories": [
+        "three_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "royal_enfield",
+      "name": "Royal Enfield (Eicher Motors Ltd.)",
+      "brand": "Royal Enfield",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.royalenfield.com/",
+      "categories": [
+        "two_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "sonalika_itl",
+      "name": "International Tractors Limited (ITL)",
+      "brand": "Sonalika Tractors",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.sonalika.com/",
+      "categories": [
+        "agricultural"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "suzuki_smipl",
+      "name": "Suzuki Motorcycle India Pvt. Ltd. (SMIPL)",
+      "brand": "Suzuki",
+      "country_of_origin": "JP",
+      "india_market_active": true,
+      "official_website": "https://www.suzukimotorcycle.co.in/",
+      "categories": [
+        "two_wheeler"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "swaraj_tractors",
+      "name": "Mahindra & Mahindra Ltd. (Swaraj Division)",
+      "brand": "Swaraj Tractors",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.swarajtractors.com/",
+      "categories": [
+        "agricultural"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "tafe_massey_ferguson",
+      "name": "Tractors and Farm Equipment Ltd. (TAFE)",
+      "brand": "Massey Ferguson",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://masseyfergusonindia.com/",
+      "categories": [
+        "agricultural"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "tata_motors_cv",
+      "name": "Tata Motors Limited",
+      "brand": "Tata",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://smalltrucks.tatamotors.com/",
+      "categories": [
+        "commercial_vehicle"
+      ],
+      "record_count": 2
+    },
+    {
+      "id": "tata_motors_ev",
+      "name": "Tata Passenger Electric Mobility Limited (Tata Motors)",
+      "brand": "TATA.ev",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://ev.tatamotors.com/",
+      "categories": [
+        "passenger_vehicle"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "toyota_kirloskar",
+      "name": "Toyota Kirloskar Motor Pvt. Ltd. (TKM)",
+      "brand": "Toyota",
+      "country_of_origin": "JP",
+      "india_market_active": true,
+      "official_website": "https://www.toyotabharat.com/",
+      "categories": [
+        "passenger_vehicle"
+      ],
+      "record_count": 1
+    },
+    {
+      "id": "tvs_motor",
+      "name": "TVS Motor Company Ltd.",
+      "brand": "TVS",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.tvsmotor.com/",
+      "categories": [
+        "two_wheeler"
+      ],
+      "record_count": 2
+    },
+    {
+      "id": "yc_electric",
+      "name": "Y.C. Electric Vehicle",
+      "brand": "YC Electric",
+      "country_of_origin": "IN",
+      "india_market_active": true,
+      "official_website": "https://www.ycevehicles.com/",
+      "categories": [
+        "three_wheeler"
+      ],
+      "record_count": 1
+    }
+  ]
+}

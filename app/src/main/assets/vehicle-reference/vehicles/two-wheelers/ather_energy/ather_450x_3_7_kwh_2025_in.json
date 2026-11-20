@@ -1,0 +1,216 @@
+{
+  "id": "ather_450x_3_7_kwh_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "ather_energy",
+    "name": "Ather Energy Limited",
+    "brand": "Ather"
+  },
+  "model": {
+    "id": "450x",
+    "name": "450X",
+    "official_product_name": "Ather 450X (3.7 kWh)",
+    "variant": "Ather 450X 3.7 kWh (Pre-July 2026)",
+    "generation": "Gen 3 (2025 Refresh)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "electric_scooter",
+    "vehicle_class": "L2",
+    "vehicle_type": "Electric Performance Scooter"
+  },
+  "powertrain": {
+    "propulsion": "bev",
+    "fuel_type": "electric",
+    "e20_compliant": null,
+    "engine_type": null,
+    "engine_code": null,
+    "engine_displacement_cc": null,
+    "cylinder_count": null,
+    "engine_configuration": null,
+    "power": 6.4,
+    "power_unit": "kW",
+    "power_alt": "6.4 kW peak / 3.3 kW continuous",
+    "power_rpm": null,
+    "torque": 26.0,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Single-speed Automatic",
+    "gear_count": 1,
+    "drive_type": "Belt Drive",
+    "aftertreatment": null,
+    "motor": {
+      "type": "PMSM (Permanent Magnet Synchronous Motor, IP66)",
+      "peak_power_kw": 6.4,
+      "continuous_power_kw": 3.3,
+      "peak_torque_nm": 26.0
+    },
+    "hybrid_configuration": null,
+    "battery": {
+      "capacity_kwh": 3.7,
+      "usable_kwh": null,
+      "voltage_v": null,
+      "capacity_ah": null,
+      "chemistry": "Lithium-ion NMC"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": 3.7,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": "Lithium-ion NMC"
+  },
+  "dimensions": {
+    "kerb_weight_kg": 111.6,
+    "gross_weight_kg": null,
+    "payload_kg": 175.0,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": 22.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1296,
+    "length_mm": 1891,
+    "width_mm": 739,
+    "height_mm": 1114,
+    "ground_clearance_mm": 170,
+    "seat_height_mm": 780
+  },
+  "efficiency": {
+    "certification_standard": "Zero Tailpipe Emission",
+    "metrics": [
+      {
+        "metric_type": "electric_range",
+        "value": 161.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km",
+        "test_cycle": "IDC",
+        "source_type": "certified",
+        "conditions": "2025/2026 official IDC range (2024 Gen 3 was 150 km)",
+        "source_url": "https://www.atherenergy.com/450"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Not applicable (BEV)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "90/90-12 Tubeless",
+    "tire_size_rear": "100/80-12 Tubeless",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "3 years / 30,000 km standard battery warranty",
+    "handbook_url": "https://www.atherenergy.com/450"
+  },
+  "aliases": [
+    "450X 3.7",
+    "Ather 450X Pro Pack 3.7 kWh",
+    "Ather 450X"
+  ],
+  "sources": [
+    {
+      "publisher": "Ather Energy",
+      "title": "Ather 450X Official Page",
+      "url": "https://www.atherenergy.com/450",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "power",
+        "torque",
+        "efficiency",
+        "warranty"
+      ],
+      "source_id": "src_0036"
+    },
+    {
+      "publisher": "BikeDekho",
+      "title": "Ather 450X Specifications & July 2026 Pack Update",
+      "url": "https://www.bikedekho.com/ather-energy/450x",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "cargo_capacity_liters",
+        "battery_chemistry",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0037"
+    },
+    {
+      "publisher": "Autocar India",
+      "title": "Ather 450X 3.5 kWh Update Coverage",
+      "url": "https://www.autocarindia.com/bikes/ather/450/x-35-kwh",
+      "source_type": "automotive_publication",
+      "covers_fields": [
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0038"
+    },
+    {
+      "publisher": "BikeWale",
+      "title": "Ather 450X 3.7 kWh Spec Archive",
+      "url": "https://www.bikewale.com/used/ather-450-bikes-in-hyderabad/9zpq23p5/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "motor",
+        "kerb_weight_kg",
+        "payload_kg"
+      ],
+      "source_id": "src_0039"
+    },
+    {
+      "publisher": "ZigWheels",
+      "title": "Ather 450X 3.7 kWh Gen 3 Specifications",
+      "url": "https://www.zigwheels.com/ather-energy-bikes/450x-2020-2024/3.7-kwh-gen-3",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "dimensions",
+        "tire_size_front",
+        "tire_size_rear",
+        "drive_type"
+      ],
+      "source_id": "src_0040"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "energy_storage.battery_capacity_kwh",
+      "adopted_value": "3.7 kWh NMC (2025 / Pre-July 2026 SKU)",
+      "conflicting_value": "3.5 kWh NMC (Post-July 17, 2026 production revision retaining 161 km IDC)",
+      "adopted_source_url": "https://www.atherenergy.com/450",
+      "conflicting_source_url": "https://www.autocarindia.com/bikes/ather/450/x-35-kwh",
+      "resolution_status": "split_sku_recommended",
+      "notes": "On July 17, 2026, Ather revised the top 450X battery pack from 3.7 kWh to 3.5 kWh NMC. Add a separate post-July 2026 3.5 kWh SKU in Batch 2 rather than overwriting pre-July 2026 units."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Locked strictly to pre-July 2026 3.7 kWh variant; battery voltage, tyre pressure, and service interval kept null."
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "id": "royal_enfield_classic_350_heritage_j_series_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "royal_enfield",
+    "name": "Royal Enfield (Eicher Motors Ltd.)",
+    "brand": "Royal Enfield"
+  },
+  "model": {
+    "id": "classic_350",
+    "name": "Classic 350",
+    "official_product_name": "Royal Enfield Classic 350 Heritage",
+    "variant": "Classic 350 Heritage (Dual-Channel ABS)",
+    "generation": "J-Series (2024-2026 Refresh)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "J1A"
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "touring_motorcycle",
+    "vehicle_class": "L2",
+    "vehicle_type": "Modern-Classic Cruiser"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "petrol",
+    "e20_compliant": null,
+    "engine_type": "Single-cylinder, 4-stroke, air-oil cooled, SOHC, EFI",
+    "engine_code": "J1A",
+    "engine_displacement_cc": 349.0,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 14.87,
+    "power_unit": "kW",
+    "power_alt": "20.2 bhp (20.21 PS)",
+    "power_rpm": 6100,
+    "torque": 27.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 4000,
+    "transmission": "5-speed Constant Mesh (assist & slipper clutch)",
+    "gear_count": 5,
+    "drive_type": "Chain Drive",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 13.0,
+    "fuel_reserve_liters": 2.6,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 195.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1390,
+    "length_mm": 2145,
+    "width_mm": 785,
+    "height_mm": 1090,
+    "ground_clearance_mm": 170,
+    "seat_height_mm": 805
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (OBD2B)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 41.55,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI",
+        "source_type": "secondary_source",
+        "conditions": "ARAI mileage corroborated across ZigWheels, BikeDekho, and BikeWale",
+        "source_url": "https://www.zigwheels.com/royal-enfield-bikes/classic-350/"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 15W-50 API SL, JASO MA2 Semi-Synthetic",
+    "engine_oil_capacity_liters": 1.7,
+    "engine_oil_capacity_notes": "~1.7 L at oil change / 2.2 L dry (MotorBabu)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "100/90-19 57P (Tube-type spoke on Heritage)",
+    "tire_size_rear": "120/80-18 62P (Tube-type spoke on Heritage)",
+    "tire_pressure_front_psi": 32.0,
+    "tire_pressure_rear_psi": "32 solo / 36 pillion",
+    "service_interval_value": 5000,
+    "service_interval_unit": "km",
+    "service_interval_months": 6,
+    "service_schedule_summary": "1st service at 500 km / 45 days; inspections every 5,000 km / 6 months; mandatory engine oil & filter change every 10,000 km or 12 months.",
+    "warranty": null,
+    "handbook_url": "https://www.royalenfield.com/content/dam/royal-enfield/ownersManual/Classic350_Owners_Manual_Domestic.pdf"
+  },
+  "aliases": [
+    "Classic 350 J-Series",
+    "New Classic 350",
+    "RE Classic 350"
+  ],
+  "sources": [
+    {
+      "publisher": "Royal Enfield",
+      "title": "Classic 350 Official India Page",
+      "url": "https://www.royalenfield.com/in/en/motorcycles/classic-350/",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "engine_oil_grade"
+      ],
+      "source_id": "src_0030"
+    },
+    {
+      "publisher": "Royal Enfield",
+      "title": "Classic 350 Technical Specifications PDF",
+      "url": "https://www.royalenfield.com/content/dam/open-pdf/royal-enfield-classic-350-technical-specifications-english.pdf",
+      "source_type": "official_spec_sheet",
+      "covers_fields": [
+        "manufacturer_model_code",
+        "dimensions",
+        "kerb_weight_kg",
+        "fuel_tank_liters",
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0031"
+    },
+    {
+      "publisher": "Royal Enfield",
+      "title": "Classic 350 Owner's Manual PDF",
+      "url": "https://www.royalenfield.com/content/dam/open-pdf/royal-enfield_classic-350-owners-manual-english.pdf",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "tire_pressure"
+      ],
+      "source_id": "src_0032"
+    },
+    {
+      "publisher": "Royal Enfield",
+      "title": "New Classic 350 Maintenance Guide",
+      "url": "https://www.royalenfield.com/in/en/support/digital-quickstart/new-classic-350/maintenancetips/",
+      "source_type": "official_manual",
+      "covers_fields": [
+        "service_interval"
+      ],
+      "source_id": "src_0033"
+    },
+    {
+      "publisher": "ZigWheels",
+      "title": "Royal Enfield Classic 350 Specifications & Mileage",
+      "url": "https://www.zigwheels.com/royal-enfield-bikes/classic-350/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0034"
+    },
+    {
+      "publisher": "MotorBabu",
+      "title": "Royal Enfield Classic 350 Service Schedule",
+      "url": "https://motorbabu.com/service-schedule/royal-enfield-classic-350",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_capacity_liters"
+      ],
+      "source_id": "src_0035"
+    }
+  ],
+  "discrepancies": [],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified directly against Royal Enfield official technical spec PDF and Owner's Manual; GVW omitted on Classic 350 official sheet and kept null."
+  }
+}

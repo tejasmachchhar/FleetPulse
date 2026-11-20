@@ -1,0 +1,218 @@
+{
+  "id": "honda_activa_110_dlx_obd2b_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "honda_hmsi",
+    "name": "Honda Motorcycle & Scooter India Pvt. Ltd. (HMSI)",
+    "brand": "Honda"
+  },
+  "model": {
+    "id": "activa_110",
+    "name": "Activa 110",
+    "official_product_name": "Honda Activa 110 (DLX)",
+    "variant": "Activa 110 DLX (OBD2B)",
+    "generation": "6G (2025 OBD2B Update)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "two_wheeler",
+    "subcategory": "petrol_scooter",
+    "vehicle_class": "L2",
+    "vehicle_type": "Gearless Commuter Scooter"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "petrol",
+    "e20_compliant": true,
+    "engine_type": "4-stroke, SI, fan-cooled, single-cylinder, PGM-FI (eSP)",
+    "engine_code": null,
+    "engine_displacement_cc": 109.51,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 5.88,
+    "power_unit": "kW",
+    "power_alt": "7.99 PS (7.88 bhp)",
+    "power_rpm": 8000,
+    "torque": 9.05,
+    "torque_unit": "Nm",
+    "torque_rpm": 5500,
+    "transmission": "Automatic CVT (V-Matic)",
+    "gear_count": null,
+    "drive_type": "Belt Drive",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 5.3,
+    "fuel_reserve_liters": 1.3,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 106.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 2,
+    "seating_layout": "2 seats",
+    "cargo_capacity_liters": 18.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 2,
+    "axle_configuration": "2x1",
+    "wheelbase_mm": 1260,
+    "length_mm": 1833,
+    "width_mm": 677,
+    "height_mm": 1165,
+    "ground_clearance_mm": 162,
+    "seat_height_mm": 764
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (OBD2B)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 59.5,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "Claimed figure on BikeDekho; omitted on HMSI official site",
+        "source_url": "https://www.bikedekho.com/honda/activa-110-dlx.html"
+      },
+      {
+        "metric_type": "fuel_economy",
+        "value": 47.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "owner_reported",
+        "source_type": "independently_tested",
+        "conditions": "Owner-reported average on BikeWale",
+        "source_url": "https://www.bikewale.com/honda-bikes/activa-6g/"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 10W-30",
+    "engine_oil_capacity_liters": 0.55,
+    "engine_oil_capacity_notes": "0.55 L drain / 0.60 L strainer clean / 0.75 L dry (secondary manual ref)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "90/90-12 54J Tubeless",
+    "tire_size_rear": "90/100-10 Tubeless",
+    "tire_pressure_front_psi": 22.0,
+    "tire_pressure_rear_psi": "29 solo / 36 pillion",
+    "service_interval_value": 6000,
+    "service_interval_unit": "km",
+    "service_interval_months": 6,
+    "service_schedule_summary": "Free: 750-1,000 km (15-30d), 5,500-6,000 km (165-180d), 11,500-12,000 km (350-365d). Paid: every 6,000 km or 6 months.",
+    "warranty": null,
+    "handbook_url": "https://www.honda2wheelersindia.com/resources/owners-manual"
+  },
+  "aliases": [
+    "Activa 6G",
+    "Activa 110 DLX OBD2B",
+    "Honda Activa"
+  ],
+  "sources": [
+    {
+      "publisher": "Honda Motorcycle & Scooter India",
+      "title": "Activa 110 Official Product Page",
+      "url": "https://www.honda2wheelersindia.com/scooter/activa110",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "engine_displacement_cc",
+        "torque",
+        "fuel_tank_liters",
+        "dimensions",
+        "kerb_weight_kg",
+        "engine_oil_grade",
+        "service_interval"
+      ],
+      "source_id": "src_0001"
+    },
+    {
+      "publisher": "Haiku Honda (Official Brochure PDF)",
+      "title": "Activa 110 OBD2B Official Brochure",
+      "url": "https://haikuhonda.com/wp-content/uploads/2025/05/Activa-110-OBD2BBrochure.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0002"
+    },
+    {
+      "publisher": "BikeDekho",
+      "title": "Honda Activa 110 DLX Specifications",
+      "url": "https://www.bikedekho.com/honda/activa-110-dlx.html",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "power",
+        "cargo_capacity_liters",
+        "efficiency"
+      ],
+      "source_id": "src_0003"
+    },
+    {
+      "publisher": "BikeWale",
+      "title": "Honda Activa 6G / 110 Specifications & Mileage",
+      "url": "https://www.bikewale.com/honda-bikes/activa-6g/",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "fuel_reserve_liters",
+        "tire_pressure",
+        "efficiency"
+      ],
+      "source_id": "src_0004"
+    },
+    {
+      "publisher": "BikeFix Pune",
+      "title": "Honda Activa 2026 Service Schedule & Oil Capacity",
+      "url": "https://www.bikefixpune.in/blog/honda-activa-service-cost-pune",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_capacity_liters",
+        "tire_pressure"
+      ],
+      "source_id": "src_0005"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency.fuel_economy",
+      "adopted_value": "59.5 km/L (claimed, BikeDekho) & 47.0 km/L (owner avg, BikeWale)",
+      "conflicting_value": "Omitted on HMSI official site",
+      "adopted_source_url": "https://www.bikedekho.com/honda/activa-110-dlx.html",
+      "conflicting_source_url": "https://www.honda2wheelersindia.com/scooter/activa110",
+      "resolution_status": "documented_unverified_oem",
+      "notes": "HMSI does not publish ARAI mileage on the official Activa 110 page; both portal claimed and owner-reported figures are retained with explicit source_type."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Core mechanical, dimension, oil grade, and service schedule verified via HMSI official page & brochure; GVW/payload omitted by OEM and left null."
+  }
+}

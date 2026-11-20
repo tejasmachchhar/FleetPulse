@@ -61,6 +61,7 @@ data class EvaluatedUsage(
     val pctBefore: Double?,
     val pctAfter: Double?,
     val distance: Double,
+    val trackingHours: Double = 0.0,
     val energyUsed: Double,
     val basis: String?,
     val applicablePrice: Double?,
@@ -105,6 +106,7 @@ data class PeriodStats(
     val vehicle: Vehicle,
     val entriesCount: Int,
     val distance: Double,
+    val trackingHours: Double = 0.0,
     val energyAdded: Double,
     val measuredEnergy: Double,
     val estimatedEnergy: Double,
@@ -283,6 +285,8 @@ object CalcEngine {
 
         for ((vehicleId, list) in byVehicle.entries) {
             val vehicle = vehicleMap[vehicleId]
+            val usesHours = vehicle != null && vehicle.isOperatingHoursBasis
+            val usesDistance = vehicle != null && vehicle.isDistanceBasis
             list.sortWith(compareBy({ it.first.date }, { it.second }))
 
             var prevOdo = vehicle?.initialOdometer ?: 0.0
@@ -298,40 +302,60 @@ object CalcEngine {
                 val errors = mutableListOf<String>()
                 val checks = mutableListOf<String>()
                 var distance = 0.0
+                var trackingHours = 0.0
                 val odoNum = e.odometer
+                val explicitDistance = e.distanceKm
+                val hoursUsed = e.hoursUsed
 
-                if (e.date.isBlank() || vehicle == null || odoNum == null || odoNum.isNaN()) {
-                    errors.add("Missing mandatory fields (Date, Vehicle, or Odometer)")
-                } else if (i == 0) {
-                    val diff = odoNum - (vehicle.initialOdometer)
-                    if (diff < 0) {
-                        errors.add("Odometer (${fmt1(odoNum)}) is below Initial Odometer (${fmt(vehicle.initialOdometer)})")
-                    } else if (diff > settings.maxPlausibleDistance) {
-                        distance = 0.0
+                if (e.date.isBlank() || vehicle == null) {
+                    errors.add("Missing mandatory fields (Date or Vehicle)")
+                } else if (usesHours && usesDistance.not() && (explicitDistance == null && hoursUsed == null)) {
+                    errors.add("Missing mandatory fields (Odometer or Operating Hours)")
+                } else if (explicitDistance != null && usesDistance) {
+                    distance = explicitDistance
+                    if (i == 0 && distance > settings.maxPlausibleDistance) {
                         checks.add(
-                            "First entry is far above the Initial Odometer - used as the starting reading (0 km). " +
-                                "Set Initial Odometer in Vehicle Setup to the reading when tracking began",
+                            "First distance entry is far above the initial odometer - used as the starting reading (0 km).",
                         )
-                    } else {
-                        distance = diff
+                        distance = 0.0
                     }
-                } else {
-                    val diff = odoNum - prevOdo
-                    if (diff < 0) {
-                        errors.add("Odometer (${fmt1(odoNum)}) is lower than previous reading (${fmt1(prevOdo)})")
-                    } else {
-                        distance = diff
-                        if (diff == 0.0) checks.add("Duplicate odometer reading (0 km since previous entry)")
-                        if (diff > settings.maxPlausibleDistance) {
+                    if (distance < 0) errors.add("Distance is negative.")
+                } else if (odoNum != null && !odoNum.isNaN() && usesDistance) {
+                    if (i == 0) {
+                        val diff = odoNum - (vehicle.initialOdometer)
+                        if (diff < 0) {
+                            errors.add("Odometer (${fmt1(odoNum)}) is below Initial Odometer (${fmt(vehicle.initialOdometer)})")
+                        } else if (diff > settings.maxPlausibleDistance) {
                             checks.add(
-                                "Distance gap (${fmt1(diff)} km) exceeds max plausible distance " +
-                                    "(${fmt(settings.maxPlausibleDistance)} km)",
+                                "First entry is far above the Initial Odometer - used as the starting reading (0 km). " +
+                                    "Set Initial Odometer in Vehicle Setup to the reading when tracking began",
                             )
+                            distance = 0.0
+                        } else {
+                            distance = diff
+                        }
+                    } else {
+                        val diff = odoNum - prevOdo
+                        if (diff < 0) {
+                            errors.add("Odometer (${fmt1(odoNum)}) is lower than previous reading (${fmt1(prevOdo)})")
+                        } else {
+                            distance = diff
+                            if (diff == 0.0) checks.add("Duplicate odometer reading (0 km since previous entry)")
+                            if (diff > settings.maxPlausibleDistance) {
+                                checks.add(
+                                    "Distance gap (${fmt1(diff)} km) exceeds max plausible distance " +
+                                        "(${fmt(settings.maxPlausibleDistance)} km)",
+                                )
+                            }
                         }
                     }
+                } else if (odoNum == null && !usesHours && !usesDistance) {
+                    errors.add("Missing mandatory fields (Odometer)")
                 }
 
-                if (errors.isEmpty() && odoNum != null && !odoNum.isNaN()) {
+                if (hoursUsed != null && hoursUsed >= 0) trackingHours = hoursUsed
+
+                if (errors.isEmpty() && odoNum != null && !odoNum.isNaN() && usesDistance) {
                     prevOdo = odoNum
                     if (odoNum > (currentOdoByVehicle[vehicleId] ?: 0.0)) {
                         currentOdoByVehicle[vehicleId] = odoNum
@@ -517,6 +541,7 @@ object CalcEngine {
                     pctBefore = pctBefore,
                     pctAfter = pctAfter,
                     distance = distance,
+                    trackingHours = trackingHours,
                     energyUsed = energyUsed,
                     basis = basis,
                     applicablePrice = applicablePrice,
@@ -774,6 +799,7 @@ object CalcEngine {
                 vehicle = v,
                 entriesCount = pLogs.size,
                 distance = distance,
+                trackingHours = pLogs.sumOf { it.trackingHours },
                 energyAdded = energyAdded,
                 measuredEnergy = measuredEnergy,
                 estimatedEnergy = estimatedEnergy,

@@ -1,0 +1,216 @@
+{
+  "id": "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "sonalika_itl",
+    "name": "International Tractors Limited (ITL)",
+    "brand": "Sonalika Tractors"
+  },
+  "model": {
+    "id": "di_745_iii",
+    "name": "DI 745 III",
+    "official_product_name": "Sonalika DI 745 III Sikander DLX",
+    "variant": "Sonalika DI 745 III Sikander DLX (2WD)",
+    "generation": "Sikander DLX / HDM Series",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "agricultural",
+    "subcategory": "agricultural_tractor",
+    "vehicle_class": "Agricultural Tractor (50 HP Category)",
+    "vehicle_type": "2WD Agricultural Tractor"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "4-Stroke DI, Water-Cooled HDM Diesel",
+    "engine_code": null,
+    "engine_displacement_cc": 3065.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3 Diesel",
+    "power": 37.28,
+    "power_unit": "kW",
+    "power_alt": "50 HP Category",
+    "power_rpm": 1900,
+    "torque": 210.0,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Constant Mesh (Side Shift, 16F + 4R / 8F + 2R)",
+    "gear_count": 16,
+    "drive_type": "2WD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": {
+      "power_hp": 40.8,
+      "power_kw": null,
+      "rpm_modes": "540 / RPTO (PTO HP range 40.8-43.0 HP across portals)"
+    }
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 55.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": null,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 1,
+    "seating_layout": "Operator Seat (1)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": 2000.0,
+    "wheel_count": 4,
+    "axle_configuration": "4x2 (2WD)",
+    "wheelbase_mm": 2080,
+    "length_mm": null,
+    "width_mm": null,
+    "height_mm": null,
+    "ground_clearance_mm": null,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": null,
+    "metrics": [
+      {
+        "metric_type": "specific_fuel_consumption",
+        "value": 250.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "g_per_kwh",
+        "test_cycle": "CFMTTI_Budni",
+        "source_type": "secondary_source",
+        "conditions": "CFMTTI Budni SFC reported via TractorKarvan/TractorGuru",
+        "source_url": "https://tractorkarvan.com/tractor/sonalika-sikander-di-745-iii"
+      },
+      {
+        "metric_type": "operating_hours_per_tank",
+        "value": null,
+        "value_min": null,
+        "value_max": null,
+        "unit": "hours",
+        "test_cycle": null,
+        "source_type": "unknown",
+        "conditions": "Not documented by OEM",
+        "source_url": "https://www.sonalika.com/tractor/di-745-iii.html"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": "95% DM water + 5% Ethylene Glycol (CFMTTI 2025 HDM+ Report)",
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "6.00 x 16 (opt 7.50 x 16)",
+    "tire_size_rear": "13.6 x 28 (opt 14.9 x 28)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": "50-hr initial engine oil change (CFMTTI report); 1,800-hr gear oil change (OEM); regular engine service interval not published.",
+    "warranty": "5 years / 5,000 hours (2+3 yr)",
+    "handbook_url": "https://www.sonalika.com/media/product-brochure/di-745-iii-1710852063.pdf"
+  },
+  "aliases": [
+    "Sonalika 745 Sikander",
+    "DI-745 III HDM",
+    "745 DLX"
+  ],
+  "sources": [
+    {
+      "publisher": "Sonalika Tractors (ITL)",
+      "title": "Official Sonalika DI 745 III Sikander DLX Specifications",
+      "url": "https://www.sonalika.com/tractor/di-745-iii.html",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "torque",
+        "hydraulic_lift_capacity_kg",
+        "tire_size_front"
+      ],
+      "source_id": "src_0120"
+    },
+    {
+      "publisher": "International Tractors Limited",
+      "title": "Official Sonalika DI-745 III HDM Sikander Brochure PDF",
+      "url": "https://www.sonalika.com/media/product-brochure/di-745-iii-1710852063.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "fuel_tank_liters",
+        "wheelbase_mm",
+        "service_schedule_summary"
+      ],
+      "source_id": "src_0121"
+    },
+    {
+      "publisher": "CFMTTI Budni (Archive)",
+      "title": "Sonalika DI-745 III HDM+ 2025 Test Report",
+      "url": "https://www.scribd.com/document/860502733/FINAL-TEST-REPORT-DI-745-III-hdm-compressed",
+      "source_type": "government_certification",
+      "covers_fields": [
+        "coolant_spec",
+        "service_schedule_summary"
+      ],
+      "source_id": "src_0122"
+    },
+    {
+      "publisher": "TractorKarvan",
+      "title": "Sonalika Sikander DI 745 III Specs & CFMTTI SFC",
+      "url": "https://tractorkarvan.com/tractor/sonalika-sikander-di-745-iii",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "efficiency",
+        "warranty"
+      ],
+      "source_id": "src_0123"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.torque_and_lift",
+      "adopted_value": "210 Nm torque & 2,000 kg lift (2026 Sonalika DLX official page)",
+      "conflicting_value": "205 Nm (HDM brochure PDF); 1,800 kg lift (TractorJunction/TractorGuru)",
+      "adopted_source_url": "https://www.sonalika.com/tractor/di-745-iii.html",
+      "conflicting_source_url": "https://www.sonalika.com/media/product-brochure/di-745-iii-1710852063.pdf",
+      "resolution_status": "resolved_primary",
+      "notes": "2026 DLX official page supersedes older HDM brochure and portals."
+    },
+    {
+      "field": "powertrain.pto.power_hp",
+      "adopted_value": "40.8 HP (range 40.0-43.0 HP across portals; omitted on OEM page)",
+      "conflicting_value": "40.0 HP (TractorKarvan) vs 40.8 HP (TractorGuru) vs 43.0 HP (TractorJunction)",
+      "adopted_source_url": "https://tractorguru.in/tractor/sonalika-di-745-iii-sikander",
+      "conflicting_source_url": "https://www.tractorjunction.com/sonalika-tractor/745-di-iii-sikander/",
+      "resolution_status": "unresolved",
+      "notes": "PTO HP is omitted on Sonalika's official page; secondary aggregators disagree."
+    }
+  ],
+  "verification": {
+    "status": "cross_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Engine, 210 Nm torque, 2,000 kg lift, 55 L tank, and 2,080 mm wheelbase verified via Sonalika OEM page & PDF; kerb weight and L/W/GC kept null."
+  }
+}

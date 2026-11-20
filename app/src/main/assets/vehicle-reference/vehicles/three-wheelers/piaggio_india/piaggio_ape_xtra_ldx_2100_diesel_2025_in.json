@@ -1,0 +1,209 @@
+{
+  "id": "piaggio_ape_xtra_ldx_2100_diesel_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "piaggio_india",
+    "name": "Piaggio Vehicles Pvt. Ltd. (India)",
+    "brand": "Piaggio"
+  },
+  "model": {
+    "id": "ape_xtra_ldx",
+    "name": "Apé Xtra LDX",
+    "official_product_name": "Piaggio Apé Xtra LDX (Diesel)",
+    "variant": "Apé Xtra LDX 2100/Diesel (599 cc BS6 Deck Body)",
+    "generation": "BS6 (599 cc DI Water-Cooled)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "three_wheeler",
+    "subcategory": "cargo_auto_rickshaw",
+    "vehicle_class": "L5N",
+    "vehicle_type": "Diesel Three-Wheeler Goods Carrier"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "Single-cylinder, naturally aspirated, water-cooled, electronic fuel-injection diesel",
+    "engine_code": null,
+    "engine_displacement_cc": 599.0,
+    "cylinder_count": 1,
+    "engine_configuration": "Single-cylinder",
+    "power": 7.0,
+    "power_unit": "kW",
+    "power_alt": "9.4 hp",
+    "power_rpm": 3600,
+    "torque": 23.5,
+    "torque_unit": "Nm",
+    "torque_rpm": 2200,
+    "transmission": "Manual Constant Mesh (5 Forward + 1 Reverse)",
+    "gear_count": 5,
+    "drive_type": null,
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 10.5,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 479.0,
+    "gross_weight_kg": 975.0,
+    "payload_kg": 496.0,
+    "seating_capacity": 1,
+    "seating_layout": "Driver Only (1)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": {
+      "length": 1660,
+      "width": 1400,
+      "height": 285
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 3,
+    "axle_configuration": "3-wheel",
+    "wheelbase_mm": 2100,
+    "length_mm": 3145,
+    "width_mm": 1490,
+    "height_mm": 1770,
+    "ground_clearance_mm": 245,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 22.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "TrucksDekho listing; older dealer listings cite up to 32 km/L",
+        "source_url": "https://trucks.cardekho.com/en/trucks/piaggio/ape-xtra-ldx-bs6"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": "Fuel filter interval: 30,000 km (TrucksDekho)",
+    "tire_size_front": "4.50-10, 8 PR",
+    "tire_size_rear": "4.50-10, 8 PR",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 15000,
+    "service_interval_unit": "km",
+    "service_interval_months": null,
+    "service_schedule_summary": "Engine oil interval 15,000 km; fuel filter 30,000 km (TrucksDekho).",
+    "warranty": null,
+    "handbook_url": "https://piaggio-cv.co.in/cargo/ape-xtra-600/"
+  },
+  "aliases": [
+    "Piaggio Ape Xtra LDX BS6 Diesel",
+    "Ape Xtra LDX 599cc",
+    "Ape Diesel Loader"
+  ],
+  "sources": [
+    {
+      "publisher": "TrucksDekho",
+      "title": "Piaggio Apé Xtra LDX BS6 Diesel Specifications",
+      "url": "https://trucks.cardekho.com/en/trucks/piaggio/ape-xtra-ldx-bs6",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "efficiency",
+        "service_interval"
+      ],
+      "source_id": "src_0051"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Piaggio Apé Xtra LDX Kerb Weight & Tyre Specs",
+      "url": "https://trucks.cardekho.com/en/compare/piaggio-ape-dxl-and-piaggio-ape-xtra-ldx-bs6",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "kerb_weight_kg",
+        "gross_weight_kg",
+        "payload_kg",
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0052"
+    },
+    {
+      "publisher": "Piaggio CV India",
+      "title": "Official Apé Xtra 600 Diesel (DI G600 Sibling Corroboration)",
+      "url": "https://piaggio-cv.co.in/cargo/ape-xtra-600/",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "torque",
+        "wheelbase_mm",
+        "ground_clearance_mm",
+        "tire_size_front"
+      ],
+      "source_id": "src_0053"
+    },
+    {
+      "publisher": "Truck Junction",
+      "title": "Piaggio Apé Xtra LDX BS6 Overview",
+      "url": "https://trucks.tractorjunction.com/en/piaggio-truck/ape-xtra-ldx",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "engine_displacement_cc"
+      ],
+      "source_id": "src_0054"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "classification.vehicle_class",
+      "adopted_value": "L5N (CMVR 3-wheel goods carrier >25 km/h)",
+      "conflicting_value": "L3N (TrucksDekho summary card tag)",
+      "adopted_source_url": "https://piaggio-cv.co.in/cargo/ape-xtra-600/",
+      "conflicting_source_url": "https://trucks.cardekho.com/en/trucks/piaggio/ape-xtra-ldx-bs6",
+      "resolution_status": "resolved_regulatory",
+      "notes": "599 cc / 9.4 hp diesel goods carrier is legally CMVR L5N; L3N applies only to <=25 km/h e-carts."
+    },
+    {
+      "field": "efficiency_and_payload",
+      "adopted_value": "22 km/L & 496 kg payload (TrucksDekho BS6)",
+      "conflicting_value": "Up to 32 km/L & 510-520 kg payload (older dealer listings)",
+      "adopted_source_url": "https://trucks.cardekho.com/en/trucks/piaggio/ape-xtra-ldx-bs6",
+      "conflicting_source_url": "https://trucks.tractorjunction.com/en/piaggio-truck/ape-xtra-ldx",
+      "resolution_status": "unresolved",
+      "notes": "Piaggio India's current site features sibling Apé Xtra 600 Diesel rather than LDX 599cc; LDX Diesel relies primarily on secondary portal verification."
+    }
+  ],
+  "verification": {
+    "status": "secondary_source",
+    "confidence": "medium",
+    "last_verified": "2026-11-20",
+    "notes": "Core 599 cc LDX Diesel specs verified via TrucksDekho & Truck Junction, with torque/wheelbase/GC/tyres corroborated against Piaggio's sibling Apé Xtra 600 Diesel page."
+  }
+}

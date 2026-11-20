@@ -16,6 +16,30 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.
 - Accessibility and localization review.
 
+## [5.0.0] - 2026-11-20
+
+### Added
+
+- Universal vehicle support: two-wheelers, three-wheelers, cars, pickups, tractors, trucks, buses, and construction equipment can be managed without a separate app.
+- Flexible vehicle taxonomy with future-extensible categories and subcategories.
+- Batch 1 vehicle reference database integration with `database_version: 1.0.0-batch1`: 30 verified records, 23 manufacturers, 133 citations, complete specification data, source provenance, and discrepancy reports.
+- Remote reference retrieval with local DataStore/Room caching, offline fallback, and manual-entry fallback.
+- Guided 7-step vehicle setup wizard: category, subtype, propulsion, manufacturer search, model search, reference-spec review, and personalisation.
+- Universal calculations with distance for road vehicles and operating hours for agricultural/construction machinery.
+- Dashboard, usage log, and quick-entry support for operating-hours tracking.
+
+### Changed
+
+- Existing EV/bike behaviour remains backward compatible.
+- Database version is now 3 with additive migrations.
+
+### Verification
+
+- `./gradlew :app:testDebugUnitTest` — 54 tests, 0 failures.
+- `./gradlew :app:lintDebug` — 0 errors.
+- `./gradlew :app:assembleRelease` — signed release APK produced with versionName 5.0.0 and versionCode 8, SHA-256 `e0fdb364cb4bed3e8ed8d2f67e102ddf785179472707ddf7e3748b3dcde0b936`.
+- `vehicle-reference/scripts/validate_database.py` — 30 records, 133 sources, 0 errors.
+
 ## [4.5.0] - 2026-11-20
 
 ### Added
@@ -185,7 +209,8 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 - `./gradlew :app:assembleRelease` / `:app:bundleRelease` — unsigned without signing secrets; the conditional signing path was verified with a temporary local test key, which was deleted afterwards.
 - Device launch, screenshots, notification delivery, SAF pickers, and visual keyboard behaviour remain pending on a real Android runtime.
 
-[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v4.5.0...HEAD
+[Unreleased]: https://github.com/tejasmachchhar/FleetPulse/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v5.0.0
 [4.5.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.5.0
 [4.4.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.4.0
 [4.3.0]: https://github.com/tejasmachchhar/FleetPulse/releases/tag/v4.3.0

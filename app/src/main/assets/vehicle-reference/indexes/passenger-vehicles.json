@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0.0",
+  "database_version": "1.0.0-batch1",
+  "category_slug": "passenger-vehicles",
+  "record_count": 7,
+  "records": [
+    {
+      "id": "hyundai_creta_sx_1_5_mpi_petrol_6mt_2025_in",
+      "manufacturer_id": "hyundai_india",
+      "manufacturer_name": "Hyundai Motor India Limited (HMIL)",
+      "brand": "Hyundai",
+      "model": "Creta",
+      "variant": "SX 1.5L MPi Petrol 6MT",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "compact_suv",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Creta 1.5 Petrol",
+        "New Creta",
+        "Creta Facelift"
+      ],
+      "search_tokens": [
+        "2025",
+        "5l",
+        "6mt",
+        "compact",
+        "creta",
+        "facelift",
+        "hyundai",
+        "mpi",
+        "new",
+        "petrol",
+        "suv",
+        "sx"
+      ],
+      "record_path": "vehicles/passenger-vehicles/hyundai_india/hyundai_creta_sx_1_5_mpi_petrol_6mt_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "mahindra_scorpio_n_z8_diesel_2wd_6mt_2025_in",
+      "manufacturer_id": "mahindra_auto",
+      "manufacturer_name": "Mahindra & Mahindra Limited",
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "variant": "Z8 2.2L mHawk Diesel 2WD 6MT (High-Power 128.6 kW Tune)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "suv",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Scorpio N",
+        "Scorpio-N Z8 D MT",
+        "Mahindra Scorpio N"
+      ],
+      "search_tokens": [
+        "128",
+        "2025",
+        "2l",
+        "2wd",
+        "6mt",
+        "diesel",
+        "high",
+        "kw",
+        "mahindra",
+        "mhawk",
+        "mt",
+        "power",
+        "scorpio",
+        "suv",
+        "tune",
+        "z8"
+      ],
+      "record_path": "vehicles/passenger-vehicles/mahindra_auto/mahindra_scorpio_n_z8_diesel_2wd_6mt_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "maruti_suzuki_ertiga_zxi_1_5_hybrid_5mt_2025_in",
+      "manufacturer_id": "maruti_suzuki",
+      "manufacturer_name": "Maruti Suzuki India Limited",
+      "brand": "Maruti Suzuki",
+      "model": "Ertiga",
+      "variant": "ZXi 1.5L K15C Smart Hybrid Petrol 5MT",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "mpv",
+      "propulsion": "mild_hybrid",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Maruti Ertiga",
+        "Ertiga SHVS",
+        "Ertiga Smart Hybrid"
+      ],
+      "search_tokens": [
+        "2025",
+        "5l",
+        "5mt",
+        "ertiga",
+        "hybrid",
+        "k15c",
+        "maruti",
+        "mpv",
+        "petrol",
+        "shvs",
+        "smart",
+        "suzuki",
+        "zxi"
+      ],
+      "record_path": "vehicles/passenger-vehicles/maruti_suzuki/maruti_suzuki_ertiga_zxi_1_5_hybrid_5mt_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "maruti_suzuki_swift_zxi_1_2_petrol_5mt_2025_in",
+      "manufacturer_id": "maruti_suzuki",
+      "manufacturer_name": "Maruti Suzuki India Limited",
+      "brand": "Maruti Suzuki",
+      "model": "Swift",
+      "variant": "ZXi 1.2L Z12E Petrol 5MT",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "hatchback",
+      "propulsion": "ice",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Maruti Swift",
+        "Swift 4th Gen",
+        "Swift Z12E",
+        "New Swift"
+      ],
+      "search_tokens": [
+        "2025",
+        "2l",
+        "4th",
+        "5mt",
+        "gen",
+        "hatchback",
+        "maruti",
+        "new",
+        "petrol",
+        "suzuki",
+        "swift",
+        "z12e",
+        "zxi"
+      ],
+      "record_path": "vehicles/passenger-vehicles/maruti_suzuki/maruti_suzuki_swift_zxi_1_2_petrol_5mt_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in",
+      "manufacturer_id": "maruti_suzuki",
+      "manufacturer_name": "Maruti Suzuki India Limited",
+      "brand": "Maruti Suzuki",
+      "model": "WagonR",
+      "variant": "VXi S-CNG 5MT (1.0L K10C)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "hatchback",
+      "propulsion": "ice",
+      "fuel_type": "cng_petrol_bi_fuel",
+      "aliases": [
+        "Wagon R CNG",
+        "WagonR 1.0 CNG",
+        "Tall-Boy WagonR"
+      ],
+      "search_tokens": [
+        "0l",
+        "2025",
+        "5mt",
+        "bi",
+        "boy",
+        "cng",
+        "fuel",
+        "hatchback",
+        "k10c",
+        "maruti",
+        "petrol",
+        "suzuki",
+        "tall",
+        "vxi",
+        "wagon",
+        "wagonr"
+      ],
+      "record_path": "vehicles/passenger-vehicles/maruti_suzuki/maruti_suzuki_wagonr_vxi_scng_1_0_5mt_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "tata_nexon_ev_empowered_45_2025_in",
+      "manufacturer_id": "tata_motors_ev",
+      "manufacturer_name": "Tata Passenger Electric Mobility Limited (Tata Motors)",
+      "brand": "TATA.ev",
+      "model": "Nexon.ev",
+      "variant": "Empowered 45 (45 kWh Battery Pack)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "compact_suv",
+      "propulsion": "bev",
+      "fuel_type": "electric",
+      "aliases": [
+        "Nexon EV 45",
+        "Nexon.ev 45 kWh",
+        "Nexon EV Long Range 45"
+      ],
+      "search_tokens": [
+        "2025",
+        "45",
+        "battery",
+        "compact",
+        "electric",
+        "empowered",
+        "ev",
+        "kwh",
+        "long",
+        "nexon",
+        "pack",
+        "range",
+        "suv",
+        "tata"
+      ],
+      "record_path": "vehicles/passenger-vehicles/tata_motors_ev/tata_nexon_ev_empowered_45_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "toyota_innova_hycross_zx_2_0_hybrid_ecvt_2025_in",
+      "manufacturer_id": "toyota_kirloskar",
+      "manufacturer_name": "Toyota Kirloskar Motor Pvt. Ltd. (TKM)",
+      "brand": "Toyota",
+      "model": "Innova Hycross",
+      "variant": "ZX 2.0L Strong Hybrid e-CVT (7-Seater)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "passenger_vehicle",
+      "subcategory": "mpv",
+      "propulsion": "strong_hybrid",
+      "fuel_type": "petrol",
+      "aliases": [
+        "Innova HyCross",
+        "Hycross Hybrid",
+        "Innova Zenix"
+      ],
+      "search_tokens": [
+        "0l",
+        "2025",
+        "cvt",
+        "hybrid",
+        "hycross",
+        "innova",
+        "mpv",
+        "petrol",
+        "seater",
+        "strong",
+        "toyota",
+        "zenix",
+        "zx"
+      ],
+      "record_path": "vehicles/passenger-vehicles/toyota_kirloskar/toyota_innova_hycross_zx_2_0_hybrid_ecvt_2025_in.json",
+      "verification_status": "officially_verified"
+    }
+  ]
+}

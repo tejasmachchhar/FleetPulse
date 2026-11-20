@@ -1,0 +1,208 @@
+{
+  "id": "mahindra_bolero_maxx_pikup_hd_1_7l_lx_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "mahindra_auto",
+    "name": "Mahindra & Mahindra Limited",
+    "brand": "Mahindra"
+  },
+  "model": {
+    "id": "bolero_maxx_pikup_hd",
+    "name": "Bolero MaXX Pik-Up HD",
+    "official_product_name": "Mahindra Bolero MaXX Pik-Up HD 1.7L LX",
+    "variant": "HD 1.7L LX (10 ft Load Body, Power Steering)",
+    "generation": "All-New Bolero MaXX Platform",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "MXHD"
+  },
+  "classification": {
+    "category": "commercial_vehicle",
+    "subcategory": "pickup_truck",
+    "vehicle_class": "N1",
+    "vehicle_type": "Heavy-Duty Commercial Pickup Truck"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "Mahindra m2Di 4-Cylinder Diesel",
+    "engine_code": "m2Di",
+    "engine_displacement_cc": 2523.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4 Diesel",
+    "power": 59.7,
+    "power_unit": "kW",
+    "power_alt": "80 hp",
+    "power_rpm": 3200,
+    "torque": 220.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 1400,
+    "torque_notes": "220 Nm @ 1400-2200 rpm",
+    "transmission": "Manual Synchromesh (5F + 1R, Single Plate Dry Clutch)",
+    "gear_count": 5,
+    "drive_type": "RWD (4x2)",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 60.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": null,
+    "gross_weight_kg": 3480.0,
+    "payload_kg": 1700.0,
+    "seating_capacity": 3,
+    "seating_layout": "D+2",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": {
+      "length": 3050,
+      "width": 1800,
+      "height": 650
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 3290,
+    "length_mm": 5345,
+    "width_mm": 1800,
+    "height_mm": 1895,
+    "ground_clearance_mm": 200,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS6 OBD2)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 17.2,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI",
+        "source_type": "secondary_source",
+        "conditions": "Portal-reported ARAI figure (CarAndBike 17.2 km/L; TrucksFloor 17 km/L)",
+        "source_url": "https://www.carandbike.com/mahindra-cars/bolero-pik-up/maxx-pup-hd-17-lx-cbc-variant"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "7R15 LT",
+    "tire_size_rear": "7R15 LT",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "3 years / 1,00,000 km",
+    "handbook_url": "https://auto.mahindra.com/on/demandware.static/-/Sites-amc-Library/en_IN/-/media/project/mahindra/dotcom/mahindra/bolero-maxx-hd/brochure/24_FEB_AUTO_BOLERO_12106523_SM_A4_HD_8%20PAGE_BROCH_R1_CS6.pdf"
+  },
+  "aliases": [
+    "Bolero Maxx HD 1.7L",
+    "Bolero Pickup 1.7 Long",
+    "Mahindra Bolero Pickup"
+  ],
+  "sources": [
+    {
+      "publisher": "Mahindra Auto",
+      "title": "Bolero MaXX Pik-Up HD Official Page",
+      "url": "https://auto.mahindra.com/pick-up-trucks/maxx-hd/MXHD.html",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "manufacturer_model_code"
+      ],
+      "source_id": "src_0103"
+    },
+    {
+      "publisher": "Mahindra Auto",
+      "title": "Bolero MaXX Pik-Up HD Official 8-Page Brochure PDF",
+      "url": "https://auto.mahindra.com/on/demandware.static/-/Sites-amc-Library/en_IN/-/media/project/mahindra/dotcom/mahindra/bolero-maxx-hd/brochure/24_FEB_AUTO_BOLERO_12106523_SM_A4_HD_8%20PAGE_BROCH_R1_CS6.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "torque",
+        "seating_capacity",
+        "warranty"
+      ],
+      "source_id": "src_0104"
+    },
+    {
+      "publisher": "TrucksFloor",
+      "title": "Mahindra Bolero MaXX Pik-Up HD 1.7L LX Specs",
+      "url": "https://trucksfloor.com/en/mahindra-truck/bolero-maxx-pik-up-hd/17l-lx",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "fuel_tank_liters",
+        "wheelbase_mm",
+        "dimensions",
+        "ground_clearance_mm",
+        "tire_size_front"
+      ],
+      "source_id": "src_0105"
+    },
+    {
+      "publisher": "TruckJunction",
+      "title": "Mahindra Bolero MaXX Pik-Up HD 1.7L LX GVW",
+      "url": "https://trucks.tractorjunction.com/en/mahindra-truck/bolero-maxx-pik-up-hd-17l-lx/price/nadia",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "gross_weight_kg",
+        "payload_kg",
+        "wheelbase_mm"
+      ],
+      "source_id": "src_0106"
+    },
+    {
+      "publisher": "CarAndBike",
+      "title": "Mahindra Bolero MaXX HD 1.7 ARAI Mileage",
+      "url": "https://www.carandbike.com/mahindra-cars/bolero-pik-up/maxx-pup-hd-17-lx-cbc-variant",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0107"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "dimensions.kerb_weight_kg_and_gvw",
+      "adopted_value": "GVW 3,480 kg (10 ft HD 1.7L); Kerb weight = null",
+      "conflicting_value": "3,460 kg GVW / 1,760 kg kerb (TrucksFloor, 9 ft HD 1.7 conflation) vs 1,895 kg kerb (HT Auto)",
+      "adopted_source_url": "https://trucks.tractorjunction.com/en/mahindra-truck/bolero-maxx-pik-up-hd-17l-lx/price/nadia",
+      "conflicting_source_url": "https://trucksfloor.com/en/mahindra-truck/bolero-maxx-pik-up-hd/17l-lx",
+      "resolution_status": "unresolved",
+      "notes": "Portals frequently blur 9 ft HD 1.7 with 10 ft HD 1.7L; kerb weight and DEF tank capacity kept null until OEM manual verification."
+    }
+  ],
+  "verification": {
+    "status": "partially_verified",
+    "confidence": "medium",
+    "last_verified": "2026-11-20",
+    "notes": "Locked to 10 ft HD 1.7L LX variant; kerb weight, DEF capacity, oil spec, and service interval kept null."
+  }
+}

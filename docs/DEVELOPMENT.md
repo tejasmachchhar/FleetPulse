@@ -281,3 +281,10 @@ Also:
 - Update tests and docs.
 - Keep the change focused.
 - Follow [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+## Vehicle Reference Database
+
+- The dataset lives in `vehicle-reference/`.
+- Run `python3 vehicle-reference/scripts/validate_database.py` after adding a batch.
+- The app reads `SupportConfig.VEHICLE_REFERENCE_BASE_URL`; do not hardcode URLs in screens.
+- Add new vehicles by adding JSON records to the appropriate `indexes/` and `vehicles/` files, then updating `manifest.json` and validation if needed.

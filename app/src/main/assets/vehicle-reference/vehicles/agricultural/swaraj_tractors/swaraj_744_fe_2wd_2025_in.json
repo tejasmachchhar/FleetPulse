@@ -1,0 +1,208 @@
+{
+  "id": "swaraj_744_fe_2wd_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "swaraj_tractors",
+    "name": "Mahindra & Mahindra Ltd. (Swaraj Division)",
+    "brand": "Swaraj Tractors"
+  },
+  "model": {
+    "id": "744_fe",
+    "name": "744 FE",
+    "official_product_name": "Swaraj 744 FE",
+    "variant": "Swaraj 744 FE (2WD)",
+    "generation": "5-Star / Current 2025-2026",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "agricultural",
+    "subcategory": "agricultural_tractor",
+    "vehicle_class": "Agricultural Tractor (46-50 HP)",
+    "vehicle_type": "2WD Agricultural Tractor"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "RB-30 TR, 4-Stroke DI, Liquid-Cooled",
+    "engine_code": "RB-30 TR",
+    "engine_displacement_cc": 3307.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3 Diesel",
+    "power": 35.42,
+    "power_unit": "kW",
+    "power_alt": "46-50 HP (33.56-37.28 kW)",
+    "power_rpm": 2000,
+    "torque": null,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Sliding Mesh / Partial Constant Mesh (8F + 2R; opt 12F + 3R)",
+    "gear_count": 8,
+    "drive_type": "2WD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": {
+      "power_hp": 41.8,
+      "power_kw": null,
+      "rpm_modes": "540 / 4-MS + 1R"
+    }
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 62.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 2060.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 1,
+    "seating_layout": "Operator Seat (1)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": 2000.0,
+    "wheel_count": 4,
+    "axle_configuration": "4x2 (2WD)",
+    "wheelbase_mm": 2095,
+    "length_mm": 3455,
+    "width_mm": 1830,
+    "height_mm": 2250,
+    "ground_clearance_mm": 435,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "Bharat TREM IIIA",
+    "metrics": [
+      {
+        "metric_type": "specific_fuel_consumption",
+        "value": 257.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "g_per_kwh",
+        "test_cycle": "CFMTTI_Budni",
+        "source_type": "certified",
+        "conditions": "2024 CFMTTI Budni N1 test report",
+        "source_url": "https://www.scribd.com/document/823835671/3-SWARAJ-744-FE-4x4-N1-1"
+      },
+      {
+        "metric_type": "operating_hours_per_tank",
+        "value": null,
+        "value_min": null,
+        "value_max": null,
+        "unit": "hours",
+        "test_cycle": null,
+        "source_type": "unknown",
+        "conditions": "Not documented by OEM",
+        "source_url": "https://www.swarajtractors.com/swaraj-744-fe-tractor"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "6.00 x 16 (opt 7.50 x 16)",
+    "tire_size_rear": "13.6 x 28 (opt 14.9 x 28)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 400,
+    "service_interval_unit": "hours",
+    "service_interval_months": null,
+    "service_schedule_summary": "400 operating hours (official Swaraj Tractors page).",
+    "warranty": "6 years / 6,000 hours",
+    "handbook_url": "https://www.swarajtractors.com/swaraj-744-fe-tractor"
+  },
+  "aliases": [
+    "Swaraj 744",
+    "744 FE 2WD",
+    "744 FE 5-Star"
+  ],
+  "sources": [
+    {
+      "publisher": "Swaraj Tractors",
+      "title": "Official Swaraj 744 FE (2WD) Model Features & Specifications",
+      "url": "https://www.swarajtractors.com/swaraj-744-fe-tractor",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "kerb_weight_kg",
+        "hydraulic_lift_capacity_kg",
+        "tire_size_front",
+        "service_interval"
+      ],
+      "source_id": "src_0117"
+    },
+    {
+      "publisher": "CFMTTI Budni (Archive)",
+      "title": "Swaraj 744 FE N1 Test Report (2024)",
+      "url": "https://www.scribd.com/document/823835671/3-SWARAJ-744-FE-4x4-N1-1",
+      "source_type": "government_certification",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0118"
+    },
+    {
+      "publisher": "TractorJunction",
+      "title": "Swaraj 744 FE Specifications",
+      "url": "https://www.tractorjunction.com/swaraj-tractor/744-fe/",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "pto",
+        "engine_code",
+        "certification_standard",
+        "warranty"
+      ],
+      "source_id": "src_0119"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "energy_storage.fuel_tank_liters",
+      "adopted_value": "62 L (2026 Swaraj official page)",
+      "conflicting_value": "56 L (TractorJunction, TractorKarvan, KhetiGaadi legacy figure)",
+      "adopted_source_url": "https://www.swarajtractors.com/swaraj-744-fe-tractor",
+      "conflicting_source_url": "https://www.tractorjunction.com/swaraj-tractor/744-fe/",
+      "resolution_status": "resolved_primary",
+      "notes": "2026 Swaraj official page confirms updated 62 L tank."
+    },
+    {
+      "field": "efficiency.specific_fuel_consumption",
+      "adopted_value": "257 g/kWh (2024 CFMTTI Budni test report)",
+      "conflicting_value": "238 g/kWh (TractorGyan) / 251 g/kWh (2012 Xtra)",
+      "adopted_source_url": "https://www.scribd.com/document/823835671/3-SWARAJ-744-FE-4x4-N1-1",
+      "conflicting_source_url": "https://tractorkarvan.com/tractor/swaraj-744-fe",
+      "resolution_status": "resolved_primary",
+      "notes": "Adopted latest CFMTTI Budni certified SFC."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Complete dimensions, 62 L tank, 2060 kg weight, and 400-hour service interval verified directly on Swaraj official website; max torque and oil capacity kept null."
+  }
+}

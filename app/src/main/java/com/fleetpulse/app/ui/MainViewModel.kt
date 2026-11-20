@@ -18,6 +18,7 @@ import com.fleetpulse.app.data.db.UsageEntry
 import com.fleetpulse.app.data.db.Vehicle
 import com.fleetpulse.app.data.prefs.AppPreferencesState
 import com.fleetpulse.app.data.repo.FleetRepository
+import com.fleetpulse.app.data.repo.VehicleReferenceRepository
 import com.fleetpulse.app.domain.CalcEngine
 import com.fleetpulse.app.domain.EngineState
 import com.fleetpulse.app.domain.EvalOptions
@@ -55,6 +56,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val app = application as FleetPulseApp
     private val repo: FleetRepository = app.repository
+    val vehicleReference = VehicleReferenceRepository(application)
 
     val preferences: StateFlow<AppPreferencesState> = app.preferences.state
         .stateIn(viewModelScope, SharingStarted.Eagerly, AppPreferencesState())

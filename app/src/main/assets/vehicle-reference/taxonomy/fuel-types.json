@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "fuel_types": [
+    {
+      "id": "petrol",
+      "name": "Petrol / Gasoline",
+      "default_unit": "liters"
+    },
+    {
+      "id": "diesel",
+      "name": "Diesel",
+      "default_unit": "liters"
+    },
+    {
+      "id": "cng",
+      "name": "Compressed Natural Gas (CNG)",
+      "default_unit": "kg"
+    },
+    {
+      "id": "cng_petrol_bi_fuel",
+      "name": "CNG + Petrol Bi-Fuel",
+      "default_unit": "kg"
+    },
+    {
+      "id": "lpg",
+      "name": "Liquefied Petroleum Gas (LPG)",
+      "default_unit": "liters"
+    },
+    {
+      "id": "lpg_petrol_bi_fuel",
+      "name": "LPG + Petrol Bi-Fuel",
+      "default_unit": "liters"
+    },
+    {
+      "id": "electric",
+      "name": "Electric (Grid / Battery)",
+      "default_unit": "kwh"
+    },
+    {
+      "id": "flex_fuel",
+      "name": "Flex-Fuel (Ethanol Blend)",
+      "default_unit": "liters"
+    },
+    {
+      "id": "hydrogen",
+      "name": "Hydrogen",
+      "default_unit": "kg"
+    },
+    {
+      "id": "none",
+      "name": "None (Towed / Non-Powered)",
+      "default_unit": "none"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "tata_intra_v30_gold_lx_2450_diesel_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "tata_motors_cv",
+    "name": "Tata Motors Limited",
+    "brand": "Tata"
+  },
+  "model": {
+    "id": "intra_v30_gold",
+    "name": "Intra V30 Gold",
+    "official_product_name": "Tata Intra V30 Gold LX",
+    "variant": "Intra V30 Gold LX (2450 WB CLB Deck)",
+    "generation": "Intra Gold Series (BS6 Phase 2)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "commercial_vehicle",
+    "subcategory": "pickup_truck",
+    "vehicle_class": "N1",
+    "vehicle_type": "Small Commercial Vehicle (Pickup)"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "Tata 4-Cylinder 1.5L DI Diesel",
+    "engine_code": null,
+    "engine_displacement_cc": 1497.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4 DI Diesel",
+    "power": 52.0,
+    "power_unit": "kW",
+    "power_alt": "70 hp",
+    "power_rpm": 4000,
+    "torque": 160.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 1750,
+    "torque_notes": "160 Nm @ 1750-2750 rpm (brochure)",
+    "transmission": "Manual Synchromesh (GBS 65), 5F + 1R",
+    "gear_count": 5,
+    "drive_type": "RWD (4x2)",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 35.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 1260.0,
+    "gross_weight_kg": 2760.0,
+    "payload_kg": 1500.0,
+    "seating_capacity": 2,
+    "seating_layout": "D+1",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": {
+      "length": 2690,
+      "width": 1620,
+      "height": 400
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2450,
+    "length_mm": 4460,
+    "width_mm": 1692,
+    "height_mm": 1945,
+    "ground_clearance_mm": 175,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS-VI)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 17.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "TrucksDekho & TruckJunction (TrucksBuses lists 13-15 km/L); OEM omits numeric km/L",
+        "source_url": "https://trucks.cardekho.com/en/trucks/tata/intra-v30-gold"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "185 R14 8PR Radial Tubeless",
+    "tire_size_rear": "185 R14 8PR Radial Tubeless",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "3 years / 1,00,000 km",
+    "handbook_url": "https://smalltrucks.tatamotors.com/assets/smalltrucks/files/2025-01/Intra%20V30%20Gold%20-%20Brochure%20-2.pdf?VersionId=fBCb_25AGB8M9amZyw5olX.iDFaCWjqi"
+  },
+  "aliases": [
+    "Intra V30 Gold",
+    "V30 Gold Pickup",
+    "Tata Intra V30"
+  ],
+  "sources": [
+    {
+      "publisher": "Tata Motors Small Trucks",
+      "title": "Intra V30 Gold Official Brochure PDF (Jan 2025)",
+      "url": "https://smalltrucks.tatamotors.com/assets/smalltrucks/files/2025-01/Intra%20V30%20Gold%20-%20Brochure%20-2.pdf?VersionId=fBCb_25AGB8M9amZyw5olX.iDFaCWjqi",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "kerb_weight_kg",
+        "gross_weight_kg",
+        "payload_kg",
+        "tire_size_front",
+        "warranty"
+      ],
+      "source_id": "src_0100"
+    },
+    {
+      "publisher": "Tata Motors Small Trucks",
+      "title": "Tata Intra V30 Gold Official Product Page",
+      "url": "https://smalltrucks.tatamotors.com/tata-intra-v30-gold",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0101"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Tata Intra V30 Gold Mileage & Specs",
+      "url": "https://trucks.cardekho.com/en/trucks/tata/intra-v30-gold",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "efficiency"
+      ],
+      "source_id": "src_0102"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.displacement_and_torque_rpm",
+      "adopted_value": "1,497 cc & 160 Nm @ 1,750-2,750 rpm (Jan 2025 Official Brochure PDF)",
+      "conflicting_value": "1,496 cc & 1,800-3,000 rpm (Tata Motors webpage table)",
+      "adopted_source_url": "https://smalltrucks.tatamotors.com/assets/smalltrucks/files/2025-01/Intra%20V30%20Gold%20-%20Brochure%20-2.pdf?VersionId=fBCb_25AGB8M9amZyw5olX.iDFaCWjqi",
+      "conflicting_source_url": "https://smalltrucks.tatamotors.com/tata-intra-v30-gold",
+      "resolution_status": "resolved_primary",
+      "notes": "Official PDF brochure governs; note VX trim is 1,275 kg kerb / 2,775 kg GVW vs LX 1,260 / 2,760 kg."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from Jan 2025 Tata Motors Intra V30 Gold brochure PDF; DEF tank, oil spec, and service interval kept null."
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "id": "mahindra_treo_sft_7_37_kwh_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "mahindra_mlmm",
+    "name": "Mahindra Last Mile Mobility Limited",
+    "brand": "Mahindra"
+  },
+  "model": {
+    "id": "treo",
+    "name": "Treo",
+    "official_product_name": "Mahindra Treo - SFT",
+    "variant": "Mahindra Treo - SFT (Soft Top, 7.37 kWh Li-ion)",
+    "generation": "48 V Li-ion Platform",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "SFT"
+  },
+  "classification": {
+    "category": "three_wheeler",
+    "subcategory": "electric_three_wheeler",
+    "vehicle_class": "L5M",
+    "vehicle_type": "Electric Passenger Auto-Rickshaw"
+  },
+  "powertrain": {
+    "propulsion": "bev",
+    "fuel_type": "electric",
+    "e20_compliant": null,
+    "engine_type": null,
+    "engine_code": null,
+    "engine_displacement_cc": null,
+    "cylinder_count": null,
+    "engine_configuration": null,
+    "power": 8.0,
+    "power_unit": "kW",
+    "power_alt": "8 kW peak",
+    "power_rpm": null,
+    "torque": 42.0,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Direct Drive (clutch-free; FNR selector + Economy & Boost modes)",
+    "gear_count": 1,
+    "drive_type": null,
+    "aftertreatment": null,
+    "motor": {
+      "type": "IP67 dust & waterproof electric motor",
+      "peak_power_kw": 8.0,
+      "continuous_power_kw": null,
+      "peak_torque_nm": 42.0
+    },
+    "hybrid_configuration": null,
+    "battery": {
+      "capacity_kwh": 7.37,
+      "usable_kwh": null,
+      "voltage_v": 48.0,
+      "capacity_ah": null,
+      "chemistry": "Lithium-ion"
+    },
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": null,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": 7.37,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": 48.0,
+    "battery_capacity_ah": null,
+    "battery_chemistry": "Lithium-ion"
+  },
+  "dimensions": {
+    "kerb_weight_kg": 377.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 4,
+    "seating_layout": "D+3",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 3,
+    "axle_configuration": "3-wheel",
+    "wheelbase_mm": 2073,
+    "length_mm": 2769,
+    "width_mm": 1350,
+    "height_mm": 1750,
+    "ground_clearance_mm": 142,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "Zero Tailpipe Emission",
+    "metrics": [
+      {
+        "metric_type": "electric_range",
+        "value": 139.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km",
+        "test_cycle": "ARAI",
+        "source_type": "certified",
+        "conditions": "2025/2026 MLMM website ARAI certified range",
+        "source_url": "https://mahindralastmilemobility.com/treo"
+      },
+      {
+        "metric_type": "electric_range",
+        "value": 110.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km",
+        "test_cycle": "OEM_RealWorld",
+        "source_type": "manufacturer_claimed",
+        "conditions": "2025/2026 MLMM website real-world claimed range",
+        "source_url": "https://mahindralastmilemobility.com/treo"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": "Not applicable (BEV)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "3.75-12 4PR 66E",
+    "tire_size_rear": "3.75-12 4PR 66E",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": null,
+    "service_interval_unit": null,
+    "service_interval_months": null,
+    "service_schedule_summary": null,
+    "warranty": "5 years / 1,20,000 km (MLMM 2025/2026 site)",
+    "handbook_url": "https://mahindralastmilemobility.com/assets/pdf/treo.pdf"
+  },
+  "aliases": [
+    "Mahindra Treo Soft Top",
+    "Mahindra Treo 2073/SFT",
+    "Mahindra Treo Auto"
+  ],
+  "sources": [
+    {
+      "publisher": "Mahindra Last Mile Mobility",
+      "title": "Official Mahindra Treo Product Page",
+      "url": "https://mahindralastmilemobility.com/treo",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "power",
+        "efficiency",
+        "warranty"
+      ],
+      "source_id": "src_0055"
+    },
+    {
+      "publisher": "Mahindra Last Mile Mobility",
+      "title": "Official Mahindra Treo Brochure PDF",
+      "url": "https://mahindralastmilemobility.com/assets/pdf/treo.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "vehicle_class",
+        "torque",
+        "battery_capacity_kwh",
+        "battery_voltage_v",
+        "kerb_weight_kg",
+        "dimensions"
+      ],
+      "source_id": "src_0056"
+    },
+    {
+      "publisher": "91Trucks",
+      "title": "Mahindra Treo 2073/SFT Specifications",
+      "url": "https://www.91trucks.com/auto-rickshaws/mahindra/treo/2073-sft",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "tire_size_front",
+        "tire_size_rear"
+      ],
+      "source_id": "src_0057"
+    },
+    {
+      "publisher": "BusesDekho",
+      "title": "Mahindra Treo 3-Seater/SFT Specifications",
+      "url": "https://buses.cardekho.com/buses/mahindra/treo/3-seater-sft",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0058"
+    },
+    {
+      "publisher": "Truck Junction",
+      "title": "Mahindra Treo 3-Seater/SFT GVW Comparison",
+      "url": "https://trucks.tractorjunction.com/en/compare/mahindra+treo-3-seatersft-vs-e-ashwa+e-auto",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0059"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "efficiency_and_warranty",
+      "adopted_value": "139 km ARAI / 110 km real-world; 5 yr / 1,20,000 km warranty (2025/2026 MLMM website)",
+      "conflicting_value": "141 km certified / 130 km typical; 3 yr / 80,000 km warranty (older downloadable brochure PDF)",
+      "adopted_source_url": "https://mahindralastmilemobility.com/treo",
+      "conflicting_source_url": "https://mahindralastmilemobility.com/assets/pdf/treo.pdf",
+      "resolution_status": "resolved_primary",
+      "notes": "Current 2025/2026 MLMM website supersedes older downloadable PDF brochure."
+    },
+    {
+      "field": "dimensions.gross_weight_kg",
+      "adopted_value": "null (omitted from official PDF)",
+      "conflicting_value": "698 kg (Truck Junction) vs 720 kg (BusesDekho)",
+      "adopted_source_url": "https://mahindralastmilemobility.com/assets/pdf/treo.pdf",
+      "conflicting_source_url": "https://buses.cardekho.com/buses/mahindra/treo/3-seater-sft",
+      "resolution_status": "unresolved",
+      "notes": "Kept null in database until verified against ARAI Type Approval certificate."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from MLMM official webpage and brochure PDF; GVW left null due to OEM omission and secondary portal conflict (698 vs 720 kg)."
+  }
+}

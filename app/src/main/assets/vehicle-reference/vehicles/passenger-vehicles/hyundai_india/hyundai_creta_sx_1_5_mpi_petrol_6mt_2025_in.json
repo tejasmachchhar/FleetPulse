@@ -1,0 +1,194 @@
+{
+  "id": "hyundai_creta_sx_1_5_mpi_petrol_6mt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "hyundai_india",
+    "name": "Hyundai Motor India Limited (HMIL)",
+    "brand": "Hyundai"
+  },
+  "model": {
+    "id": "creta",
+    "name": "Creta",
+    "official_product_name": "Hyundai CRETA SX 1.5l MPi Petrol 6MT",
+    "variant": "SX 1.5L MPi Petrol 6MT",
+    "generation": "2nd Generation Facelift (SU2i, 2024-present)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "SU2i"
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "compact_suv",
+    "vehicle_class": "M1 (C-Segment Monocoque SUV)",
+    "vehicle_type": "Mid-Size / Compact SUV"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "petrol",
+    "e20_compliant": null,
+    "engine_type": "1.5 l MPi Petrol (Smartstream G1.5)",
+    "engine_code": "G1.5 MPi",
+    "engine_displacement_cc": 1497.0,
+    "cylinder_count": 4,
+    "engine_configuration": "Inline-4, 16V DOHC",
+    "power": 84.4,
+    "power_unit": "kW",
+    "power_alt": "115 PS (~113.2 bhp)",
+    "power_rpm": 6300,
+    "torque": 143.8,
+    "torque_unit": "Nm",
+    "torque_rpm": 4500,
+    "transmission": "6-speed Manual (6MT)",
+    "gear_count": 6,
+    "drive_type": "FWD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 50.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": null,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 5,
+    "seating_layout": "5 seats",
+    "cargo_capacity_liters": 433.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2610,
+    "length_mm": 4330,
+    "width_mm": 1790,
+    "height_mm": 1635,
+    "ground_clearance_mm": 190,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS VI 2.0)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 17.4,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI",
+        "source_type": "certified",
+        "conditions": "1.5L MPi Petrol 6MT (Autocar India / CarDekho)",
+        "source_url": "https://www.autocarindia.com/cars/hyundai/creta/specifications"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "API SN Plus SAE 0W-20",
+    "engine_oil_capacity_liters": 3.8,
+    "engine_oil_capacity_notes": "Official Hyundai India Oils & Consumables Table",
+    "coolant_spec": "Hyundai OEM Coolant",
+    "coolant_capacity_liters": 6.4,
+    "filter_specs": null,
+    "tire_size_front": "215/60 R17 (Diamond-Cut Alloy; Spare: 205/65 R16 Steel)",
+    "tire_size_rear": "215/60 R17",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 10000,
+    "service_interval_unit": "km",
+    "service_interval_months": 12,
+    "service_schedule_summary": "10,000 km / 12 months (first inspection 1,500 km).",
+    "warranty": null,
+    "handbook_url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/creta.pdf"
+  },
+  "aliases": [
+    "Creta 1.5 Petrol",
+    "New Creta",
+    "Creta Facelift"
+  ],
+  "sources": [
+    {
+      "publisher": "Hyundai Motor India",
+      "title": "Official CRETA Digital Brochure PDF",
+      "url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/creta.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "dimensions",
+        "fuel_tank_liters",
+        "tire_size_front"
+      ],
+      "source_id": "src_0081"
+    },
+    {
+      "publisher": "Hyundai Motor India",
+      "title": "Official CRETA Technical Specifications",
+      "url": "https://www.hyundai.com/in/en/find-a-car/creta/specification",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "powertrain",
+        "dimensions"
+      ],
+      "source_id": "src_0082"
+    },
+    {
+      "publisher": "Hyundai Motor India",
+      "title": "Official Essential Fluids & Oil Consumables Table",
+      "url": "https://www.hyundai.com/in/en/connect-to-service/maintenance/oils-consumables",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "engine_oil_grade",
+        "engine_oil_capacity_liters",
+        "coolant_capacity_liters",
+        "service_interval"
+      ],
+      "source_id": "src_0083"
+    },
+    {
+      "publisher": "Autocar India",
+      "title": "Hyundai Creta Specifications (Nov 2026)",
+      "url": "https://www.autocarindia.com/cars/hyundai/creta/specifications",
+      "source_type": "automotive_publication",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "efficiency",
+        "ground_clearance_mm",
+        "cargo_capacity_liters"
+      ],
+      "source_id": "src_0084"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "dimensions.kerb_weight_kg",
+      "adopted_value": "null (omitted by Hyundai India)",
+      "conflicting_value": "Third-party portals diverge from 1175 kg to 1490 kg (Autocar cites 1282 kg for CVT)",
+      "adopted_source_url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/brochure/creta.pdf",
+      "conflicting_source_url": "https://www.autocarindia.com/cars/hyundai/creta/specifications",
+      "resolution_status": "unresolved",
+      "notes": "Kept null because Hyundai India does not publish kerb weight/GVW and secondary portals disagree widely."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from official Hyundai brochures and Hyundai India Oils & Consumables page; kerb/GVW kept null."
+  }
+}

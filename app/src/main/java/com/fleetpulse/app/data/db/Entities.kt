@@ -37,6 +37,16 @@ data class Vehicle(
     val name: String,
     val type: String,
     val energySource: String,
+    /** Universal vehicle taxonomy. Kept in the app database; future categories are additive. */
+    val category: String = "two_wheeler",
+    val subcategory: String = "",
+    val trackingBasis: String = "distance_km",
+    /** Reference-database identity for this vehicle, when populated. */
+    val referenceRecordId: String? = null,
+    val referenceDatabaseVersion: String? = null,
+    val referenceRawJson: String? = null,
+    /** User-authored specification overrides keyed by reference field path. */
+    val referenceOverridesJson: String? = null,
     val regNo: String = "",
     val purchaseDate: String = "",
     val initialOdometer: Double = 0.0,
@@ -47,13 +57,28 @@ data class Vehicle(
     val ratedKmPerCharge: Double? = null,
     val dailyKmPlan: Double? = null,
     val tankCapacity: Double? = null,
+    val tankCapacityLiters: Double? = null,
+    val cargoCapacityLiters: Double? = null,
+    val seatingCapacity: Int? = null,
+    val wheelCount: Int? = null,
+    val axleConfiguration: String? = null,
+    val powerKw: Double? = null,
+    val engineDisplacementCc: Double? = null,
+    val torqueNm: Double? = null,
+    val engineOilGrade: String? = null,
     val color: String = "#2563EB",
     val notes: String = "",
     val archived: Boolean = false,
     val isSample: Boolean = false,
 ) {
     val isElectric: Boolean get() = energySource == SOURCE_ELECTRICITY
+    val isOperatingHoursBasis: Boolean get() = trackingBasis == TRACKING_BASIS_OPERATING_HOURS
+    val isDistanceBasis: Boolean get() = trackingBasis == TRACKING_BASIS_DISTANCE_KM || trackingBasis == TRACKING_BASIS_BOTH
 }
+
+const val TRACKING_BASIS_DISTANCE_KM = "distance_km"
+const val TRACKING_BASIS_OPERATING_HOURS = "operating_hours"
+const val TRACKING_BASIS_BOTH = "both"
 
 @Entity(
     tableName = "usage_entries",
@@ -90,6 +115,14 @@ data class UsageEntry(
      */
     @ColumnInfo(defaultValue = "1")
     val includeInMileage: Boolean = true,
+    /**
+     * Distance used for distance-tracking vehicles. Kept separate from [odometer]
+     * so agricultural machinery can report operation in hours while road vehicles
+     * use km distances.
+     */
+    val distanceKm: Double? = null,
+    /** Operating hours reported for hour-tracking vehicles (tractors, machinery). */
+    val hoursUsed: Double? = null,
 )
 
 @Entity(

@@ -1,0 +1,209 @@
+{
+  "id": "ashok_leyland_bada_dost_i4_lnt_fsd_ls_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "ashok_leyland",
+    "name": "Ashok Leyland Limited",
+    "brand": "Ashok Leyland"
+  },
+  "model": {
+    "id": "bada_dost_i4_lnt",
+    "name": "Bada Dost i4 with LNT",
+    "official_product_name": "Ashok Leyland Bada Dost i4 with LNT (FSD LS)",
+    "variant": "FSD LS (2590 WB Fixed Side Deck, LNT)",
+    "generation": "Bada Dost LNT Series (BS6 Phase 2)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "commercial_vehicle",
+    "subcategory": "pickup_truck",
+    "vehicle_class": "N1",
+    "vehicle_type": "Small Commercial Vehicle (Pickup)"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "1.5 L, 3-Cylinder Turbocharged Intercooled Diesel with LNT",
+    "engine_code": null,
+    "engine_displacement_cc": 1478.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3 TCIC Diesel",
+    "power": 59.0,
+    "power_unit": "kW",
+    "power_alt": "80 hp",
+    "power_rpm": 3300,
+    "torque": 190.0,
+    "torque_unit": "Nm",
+    "torque_rpm": 1600,
+    "torque_notes": "190 Nm @ 1600-2400 rpm",
+    "transmission": "Manual Fully Synchronized (5F + 1R)",
+    "gear_count": 5,
+    "drive_type": "RWD (4x2)",
+    "aftertreatment": "Lean NOx Trap (LNT) — DEF-Free",
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 50.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": 0.0,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 1640.0,
+    "gross_weight_kg": 3490.0,
+    "payload_kg": 1850.0,
+    "seating_capacity": 3,
+    "seating_layout": "D+2 (1+2)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": {
+      "length": 2951,
+      "width": 1750,
+      "height": 490
+    },
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2590,
+    "length_mm": 5025,
+    "width_mm": 1842,
+    "height_mm": 2061,
+    "ground_clearance_mm": 206,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS-VI)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": null,
+        "value_min": 13.0,
+        "value_max": 15.0,
+        "unit": "km_per_liter",
+        "test_cycle": null,
+        "source_type": "secondary_source",
+        "conditions": "TruckJunction 13-15 km/L; TrucksDekho 13 km/L; OEM omits numeric km/L",
+        "source_url": "https://trucks.tractorjunction.com/en/ashok-leyland-truck/bada-dost-i4-with-lnt/specifications"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": null,
+    "engine_oil_capacity_liters": null,
+    "engine_oil_capacity_notes": null,
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "7.00 R15 LT 12PR (Tube-type)",
+    "tire_size_rear": "7.00 R15 LT 12PR (Tube-type)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 20000,
+    "service_interval_unit": "km",
+    "service_interval_months": null,
+    "service_schedule_summary": "20,000 km (portal-reported via TrucksBuses; unconfirmed on OEM webpage).",
+    "warranty": null,
+    "handbook_url": "https://www.ashokleyland.com/backend/wp-content/uploads/2024/05/15-BADA-DOST-LNT-BROCHURE-Job-No_8094.pdf"
+  },
+  "aliases": [
+    "Bada Dost i4 LNT",
+    "Bada Dost i4 DEF-Free",
+    "Ashok Leyland Bada Dost"
+  ],
+  "sources": [
+    {
+      "publisher": "Ashok Leyland",
+      "title": "Bada Dost i4 with LNT Official Specifications",
+      "url": "https://www.ashokleyland.com/in/lightvehicles/smallcommercialvechicles/bada-dost-i4-with-lnt/specification",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "def_capacity_liters",
+        "gross_weight_kg",
+        "payload_kg",
+        "seating_capacity",
+        "dimensions"
+      ],
+      "source_id": "src_0108"
+    },
+    {
+      "publisher": "Ashok Leyland",
+      "title": "Bada Dost LNT Official Brochure PDF",
+      "url": "https://www.ashokleyland.com/backend/wp-content/uploads/2024/05/15-BADA-DOST-LNT-BROCHURE-Job-No_8094.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "handbook_url"
+      ],
+      "source_id": "src_0109"
+    },
+    {
+      "publisher": "TrucksDekho",
+      "title": "Ashok Leyland Bada Dost i4 with LNT Specs",
+      "url": "https://trucks.cardekho.com/en/trucks/ashok-leyland/bada-dost-i4-with-lnt",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "fuel_tank_liters",
+        "kerb_weight_kg"
+      ],
+      "source_id": "src_0110"
+    },
+    {
+      "publisher": "TruckJunction",
+      "title": "Ashok Leyland Bada Dost i4 with LNT Specs",
+      "url": "https://trucks.tractorjunction.com/en/ashok-leyland-truck/bada-dost-i4-with-lnt/specifications",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "ground_clearance_mm",
+        "tire_size_front",
+        "efficiency"
+      ],
+      "source_id": "src_0111"
+    },
+    {
+      "publisher": "TrucksBuses",
+      "title": "Ashok Leyland Bada Dost i4 LNT LS Service Interval",
+      "url": "https://www.trucksbuses.com/scv/pickups-and-mini-trucks/ashok-leyland-bada-dost-i4-lnt-ls",
+      "source_type": "commercial_portal",
+      "covers_fields": [
+        "service_interval"
+      ],
+      "source_id": "src_0112"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "dimensions.payload_kg_and_seating",
+      "adopted_value": "1,850 kg payload & D+2 (3 seats) per Ashok Leyland official spec table",
+      "conflicting_value": "1,400 kg in OEM meta description; '1 seat' in TrucksDekho header",
+      "adopted_source_url": "https://www.ashokleyland.com/in/lightvehicles/smallcommercialvechicles/bada-dost-i4-with-lnt/specification",
+      "conflicting_source_url": "https://trucks.cardekho.com/en/trucks/ashok-leyland/bada-dost-i4-with-lnt",
+      "resolution_status": "resolved_primary",
+      "notes": "Official spec table and hero card confirm 1,850 kg FSD LS payload and 1+2 seating."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "DEF-free via LNT (def_capacity_liters = 0.0); engine oil grade/capacity omitted on OEM page and kept null."
+  }
+}

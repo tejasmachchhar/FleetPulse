@@ -13,6 +13,13 @@ import java.net.URLEncoder
 object SupportConfig {
 
     const val REPOSITORY_URL = "https://github.com/tejasmachchhar/FleetPulse"
+
+    /**
+     * Centralized versioned reference-database base URL. Manifest and indexes
+     * are fetched with normal HTTPS GETs; no auth tokens or credentials are used.
+     */
+    const val VEHICLE_REFERENCE_BASE_URL =
+        "https://raw.githubusercontent.com/tejasmachchhar/FleetPulse/main/vehicle-reference/"
     const val RELEASES_URL = "$REPOSITORY_URL/releases"
     const val ISSUES_URL = "$REPOSITORY_URL/issues"
     const val NEW_ISSUE_URL = "$REPOSITORY_URL/issues/new"

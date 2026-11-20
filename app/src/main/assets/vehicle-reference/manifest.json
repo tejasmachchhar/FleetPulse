@@ -1,0 +1,78 @@
+{
+  "database_name": "FleetPulse Universal Vehicle Reference Database",
+  "database_version": "1.0.0-batch1",
+  "schema_version": "1.0.0",
+  "generated_at": "2026-11-20",
+  "phase": "Phase 1 — Batch 1 (India High-Frequency Vehicles)",
+  "total_records": 30,
+  "total_manufacturers": 23,
+  "total_sources": 133,
+  "category_counts": {
+    "two-wheelers": 8,
+    "three-wheelers": 5,
+    "passenger-vehicles": 7,
+    "commercial-vehicles": 5,
+    "agricultural": 5,
+    "construction": 0,
+    "public-transport": 0,
+    "other": 0
+  },
+  "files": {
+    "schema/vehicle.schema.json": {
+      "bytes": 17139,
+      "sha256": "2ca45fb61d4d743adfd13df939727e4d98572868a456069b570c1b8ba53c9951"
+    },
+    "taxonomy/categories.json": {
+      "bytes": 3253,
+      "sha256": "a3c069a021be78e163aa54ddcc0d3333c5db5de589ec6282563d49365f8e0465"
+    },
+    "taxonomy/propulsion-types.json": {
+      "bytes": 652,
+      "sha256": "01b59db0d93330278fd956e7a27e986e67ad16090ac3be7673da79e2942650d9"
+    },
+    "taxonomy/fuel-types.json": {
+      "bytes": 1104,
+      "sha256": "aad9eabf162d8e329b872a78c9c23b5e5c1eccb3b0aac2af818ae2208058f70b"
+    },
+    "manufacturers/index.json": {
+      "bytes": 7721,
+      "sha256": "2dd845ace99b6be98ee50a4dd7ab03392d64054c43fdbf3c4ca99e6051802060"
+    },
+    "sources/source-index.json": {
+      "bytes": 59335,
+      "sha256": "38f9396d5c7db241cf6439cd39937a14e446799752a5c2519e17f77191c190f0"
+    },
+    "indexes/two-wheelers.json": {
+      "bytes": 8020,
+      "sha256": "2d2e615e3bc7827b17cde1cea870565f99868c4b11be7a66ba00e7a3ee0b62c0"
+    },
+    "indexes/three-wheelers.json": {
+      "bytes": 5400,
+      "sha256": "9c0eb3881f9f830056c3fd422ee1321730ba564900b0f63daa18e5d587052fc8"
+    },
+    "indexes/passenger-vehicles.json": {
+      "bytes": 7549,
+      "sha256": "4f0639fe80878c3745b936f550b8960ed59f8c1c7b0b5c1bf8a497d054e9f41d"
+    },
+    "indexes/commercial-vehicles.json": {
+      "bytes": 5680,
+      "sha256": "0cf6eb90bde1c304023244b5d36d9cfbb1f8393270ed7b3152684b7a748c6db3"
+    },
+    "indexes/agricultural.json": {
+      "bytes": 5264,
+      "sha256": "ee54c09120fe321a9f9008493da932303031c34042a8db3587fa62e469e80afa"
+    },
+    "indexes/construction.json": {
+      "bytes": 143,
+      "sha256": "1003833d0b62cf7c2e8dd3be3e1e7b522ac4252e22fd2bf80359afa6077f613c"
+    },
+    "indexes/public-transport.json": {
+      "bytes": 147,
+      "sha256": "0e26f8fb19a98065d98877a0a51729dce8527e9480258701f1eccfd0bab5e978"
+    },
+    "indexes/other.json": {
+      "bytes": 136,
+      "sha256": "e619e2c80381b5fbc2322dd2dfddab590bf46515c618effe776809754ae0aa1d"
+    }
+  }
+}

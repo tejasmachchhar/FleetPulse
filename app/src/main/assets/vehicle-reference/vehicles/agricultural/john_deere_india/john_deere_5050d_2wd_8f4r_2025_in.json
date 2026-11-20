@@ -1,0 +1,228 @@
+{
+  "id": "john_deere_5050d_2wd_8f4r_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "john_deere_india",
+    "name": "John Deere India Pvt. Ltd.",
+    "brand": "John Deere"
+  },
+  "model": {
+    "id": "5050d",
+    "name": "5050D",
+    "official_product_name": "John Deere 5050D Tractor",
+    "variant": "John Deere 5050D (2WD, 8F+4R Collarshift)",
+    "generation": "5D Series (2025/2026 Update)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": "5050D"
+  },
+  "classification": {
+    "category": "agricultural",
+    "subcategory": "utility_tractor",
+    "vehicle_class": "Agricultural Utility Tractor (50 HP)",
+    "vehicle_type": "2WD Utility Tractor"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "diesel",
+    "e20_compliant": null,
+    "engine_type": "John Deere 3029D, Naturally Aspirated, Wet Liner, Coolant-Cooled",
+    "engine_code": "3029D",
+    "engine_displacement_cc": 2900.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3 Diesel",
+    "power": 36.0,
+    "power_unit": "kW",
+    "power_alt": "50.0 HP",
+    "power_rpm": 2100,
+    "torque": null,
+    "torque_unit": "Nm",
+    "torque_rpm": null,
+    "transmission": "Collarshift (Side Shift, 8F + 4R)",
+    "gear_count": 8,
+    "drive_type": "2WD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": {
+      "power_hp": 42.5,
+      "power_kw": null,
+      "rpm_modes": "Independent 6-spline 540 @ 2100 ERPM / 540E @ 1600 ERPM"
+    }
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 60.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 1880.0,
+    "gross_weight_kg": null,
+    "payload_kg": null,
+    "seating_capacity": 1,
+    "seating_layout": "Operator Seat (1)",
+    "cargo_capacity_liters": null,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": 1800.0,
+    "wheel_count": 4,
+    "axle_configuration": "4x2 (2WD)",
+    "wheelbase_mm": 1970,
+    "length_mm": 3430,
+    "width_mm": 1830,
+    "height_mm": null,
+    "ground_clearance_mm": 430,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "Bharat TREM IIIA",
+    "metrics": [
+      {
+        "metric_type": "specific_fuel_consumption",
+        "value": 270.0,
+        "value_min": null,
+        "value_max": null,
+        "unit": "g_per_kwh",
+        "test_cycle": "CFMTTI_Budni",
+        "source_type": "secondary_source",
+        "conditions": "CFMTTI Budni SFC reported via TractorKarvan/TractorGuru",
+        "source_url": "https://tractorkarvan.com/tractor/john-deere-5050-d"
+      },
+      {
+        "metric_type": "operating_hours_per_tank",
+        "value": null,
+        "value_min": null,
+        "value_max": null,
+        "unit": "hours",
+        "test_cycle": null,
+        "source_type": "unknown",
+        "conditions": "Not documented by OEM",
+        "source_url": "https://www.deere.co.in/en-in/products-and-solutions/tractors/mid-size-tractors/5050d-tractor-nta1meq"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 15W-40 API CH-4 (secondary oil chart)",
+    "engine_oil_capacity_liters": 6.5,
+    "engine_oil_capacity_notes": "6.5 L via regional tractor engine oil chart",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "6.0 x 16 8PR (opt 7.5 x 16)",
+    "tire_size_rear": "14.9 x 28 12PR (opt 16.9 x 28)",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 500,
+    "service_interval_unit": "hours",
+    "service_interval_months": null,
+    "service_schedule_summary": "500 operating hours (secondary via TractorForEveryone).",
+    "warranty": "5 years / 5,000 hours (OEM Leaflet)",
+    "handbook_url": "https://www.deere.co.in/assets/pdfs/region-1/products/tractors/d-series/New-5050D-50HP-Single-Page-Leaflet_English-V.pdf"
+  },
+  "aliases": [
+    "JD 5050D",
+    "5050 D 2WD",
+    "5050D 5D Series"
+  ],
+  "sources": [
+    {
+      "publisher": "John Deere India",
+      "title": "Official 5050D Tractor Specifications (2026)",
+      "url": "https://www.deere.co.in/en-in/products-and-solutions/tractors/mid-size-tractors/5050d-tractor-nta1meq",
+      "source_type": "official_manufacturer",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "kerb_weight_kg",
+        "hydraulic_lift_capacity_kg"
+      ],
+      "source_id": "src_0124"
+    },
+    {
+      "publisher": "John Deere India",
+      "title": "Official 5050D Single Page Leaflet PDF",
+      "url": "https://www.deere.co.in/assets/pdfs/region-1/products/tractors/d-series/New-5050D-50HP-Single-Page-Leaflet_English-V.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "fuel_tank_liters",
+        "dimensions",
+        "tire_size_front",
+        "warranty"
+      ],
+      "source_id": "src_0125"
+    },
+    {
+      "publisher": "Ministry of Agriculture (Farmech)",
+      "title": "Updated List of Tested Tractors at CFMTTI Budni PDF",
+      "url": "https://farmech.dac.gov.in/Content/revised/2023/Updated-List-of-Tractors061022.pdf",
+      "source_type": "government_certification",
+      "covers_fields": [
+        "certification_standard"
+      ],
+      "source_id": "src_0126"
+    },
+    {
+      "publisher": "TractorKarvan",
+      "title": "John Deere 5050D Specs & CFMTTI SFC",
+      "url": "https://tractorkarvan.com/tractor/john-deere-5050-d",
+      "source_type": "agricultural_portal",
+      "covers_fields": [
+        "engine_displacement_cc",
+        "pto",
+        "efficiency"
+      ],
+      "source_id": "src_0127"
+    },
+    {
+      "publisher": "TractorForEveryone",
+      "title": "John Deere 5050D Maintenance & 500-Hour Service Interval",
+      "url": "https://www.tractorforeveryone.com/knowledge-center/john-deere-5050d-price-2025-latest-gearpro-variants-features-on-road-costs",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "service_interval"
+      ],
+      "source_id": "src_0128"
+    },
+    {
+      "publisher": "Regional Tractor Oil Chart (Archive)",
+      "title": "Tractor Engine Oil Specifications Chart",
+      "url": "https://www.scribd.com/document/962291647/Bangladesh-Tractor-Engine-Oil-Chart",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_grade",
+        "engine_oil_capacity_liters"
+      ],
+      "source_id": "src_0129"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "dimensions.hydraulic_lift_and_weight",
+      "adopted_value": "1,800 kg lift & 1,880 kg weight (2026 John Deere India page)",
+      "conflicting_value": "1,600 kgf lift & 1,870 kg weight (older 2018 PDF leaflet); 1,975 kg (4WD weight on KhetiGaadi)",
+      "adopted_source_url": "https://www.deere.co.in/en-in/products-and-solutions/tractors/mid-size-tractors/5050d-tractor-nta1meq",
+      "conflicting_source_url": "https://www.deere.co.in/assets/pdfs/region-1/products/tractors/d-series/New-5050D-50HP-Single-Page-Leaflet_English-V.pdf",
+      "resolution_status": "resolved_primary",
+      "notes": "2026 John Deere India product page supersedes 2018 leaflet."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified from 2026 John Deere India page and official leaflet PDF; max torque and coolant capacity kept null."
+  }
+}

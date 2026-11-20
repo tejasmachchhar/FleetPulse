@@ -185,7 +185,7 @@ interface MetaDao {
         SettingsEntity::class,
         MetaEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 abstract class FleetDatabase : RoomDatabase() {
@@ -199,6 +199,33 @@ abstract class FleetDatabase : RoomDatabase() {
 
     companion object {
         const val NAME = "fleetpulse.db"
+
+        /**
+         * Universal vehicle support. Existing EV/bike data is preserved; new
+         * columns default to the legacy two-wheeler/petrol assumptions.
+         */
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN category TEXT NOT NULL DEFAULT 'two_wheeler'")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN subcategory TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN trackingBasis TEXT NOT NULL DEFAULT 'distance_km'")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN referenceRecordId TEXT")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN referenceDatabaseVersion TEXT")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN referenceRawJson TEXT")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN referenceOverridesJson TEXT")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN tankCapacityLiters REAL")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN cargoCapacityLiters REAL")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN seatingCapacity INTEGER")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN wheelCount INTEGER")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN axleConfiguration TEXT")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN powerKw REAL")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN engineDisplacementCc REAL")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN torqueNm REAL")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN engineOilGrade TEXT")
+                db.execSQL("ALTER TABLE usage_entries ADD COLUMN distanceKm REAL")
+                db.execSQL("ALTER TABLE usage_entries ADD COLUMN hoursUsed REAL")
+            }
+        }
 
         /**
          * Adds the per-entry mileage-eligibility flag. Existing records are

@@ -68,6 +68,7 @@ import com.fleetpulse.app.ui.components.FormSection
 import com.fleetpulse.app.ui.components.LabelValueRow
 import com.fleetpulse.app.ui.components.ScreenHeader
 import com.fleetpulse.app.ui.components.SectionCard
+import com.fleetpulse.app.ui.MainViewModel
 import com.fleetpulse.app.ui.components.VehicleDot
 import com.fleetpulse.app.ui.components.formatDate
 import com.fleetpulse.app.ui.components.formatINR
@@ -83,6 +84,7 @@ import java.time.LocalDate
 
 @Composable
 fun VehiclesScreen(
+    vm: MainViewModel,
     vehicles: List<Vehicle>,
     evaluation: EvalResult,
     nextId: () -> String,
@@ -171,7 +173,14 @@ fun VehiclesScreen(
         }
     }
 
-    if (creating || editing != null) {
+    if (creating) {
+        VehicleSetupWizard(
+            vm = vm,
+            onComplete = { creating = false },
+        )
+    }
+
+    if (!creating && editing != null) {
         val target = editing
         VehicleEditorDialog(
             existing = target,

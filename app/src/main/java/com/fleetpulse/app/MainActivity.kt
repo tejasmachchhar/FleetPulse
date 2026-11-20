@@ -442,6 +442,7 @@ private fun MainScaffold(
             }
             composable("vehicles") {
                 VehiclesScreen(
+                    vm = vm,
                     vehicles = state.vehicles,
                     evaluation = snapshot.evaluation,
                     nextId = vm::nextVehicleId,

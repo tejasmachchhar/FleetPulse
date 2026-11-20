@@ -246,3 +246,11 @@ Km-based reminders compare `nextDueKm` with the latest odometer in a non-error u
 - No OBD-II integration.
 - No Play Store billing or subscription.
 - No claim that estimated battery wear is an actual replacement invoice.
+
+## Universal vehicle support
+
+- Vehicle data is category-driven. `Vehicle.category`/`subcategory` come from the Vehicle Reference Database taxonomy and are additive for future batches.
+- Road vehicles track distance (`distance_km`); agricultural/construction vehicles track operating hours (`operating_hours`); others can use both.
+- Remote reference retrieval is implemented in `VehicleReferenceRepository`: manifest → category index → vehicle record. Downloads are HTTPS GETs with DataStore/Room caching, stale-cache fallback, and asset-based offline fallback.
+- Vehicle setup is the 7-step `VehicleSetupWizard` in `VehiclesScreen.kt`; it uses searchable manufacturer/model lists from the reference DB and allows specification edits and overrides.
+- `CalcEngine` uses `Vehicle.trackingBasis` and `UsageEntry.distanceKm`/`hoursUsed` so calculators do not assume a two-wheeler scope.

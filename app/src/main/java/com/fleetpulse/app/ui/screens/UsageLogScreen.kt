@@ -232,7 +232,11 @@ private fun UsageCard(row: EvaluatedUsage, onEdit: () -> Unit, onDelete: () -> U
             }
 
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                InfoBlock("Odometer", "${formatNum(row.entry.odometer, 0)} km", Modifier.weight(1f))
+                if (row.entry.hoursUsed != null) {
+                    InfoBlock("Operating hours", "${formatNum(row.entry.hoursUsed, 1)} h", Modifier.weight(1f))
+                } else {
+                    InfoBlock("Odometer", "${formatNum(row.entry.odometer, 0)} km", Modifier.weight(1f))
+                }
                 InfoBlock("Distance", "${formatNum(row.distance, 0)} km", Modifier.weight(1f))
                 InfoBlock("Energy", "${formatNum(row.energyUsed, 2)} ${if (isEv) "kWh" else "L"}", Modifier.weight(1f))
                 InfoBlock("Cost", formatINR(row.totalCost, 0), Modifier.weight(1f))

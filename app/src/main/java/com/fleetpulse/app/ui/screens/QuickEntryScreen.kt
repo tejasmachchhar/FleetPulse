@@ -153,6 +153,9 @@ fun QuickEntryScreen(
     var odometer by rememberSaveable(isEdit) {
         mutableStateOf(existing?.odometer?.let { NumberText.plain(it) } ?: "")
     }
+    var hoursUsed by rememberSaveable(isEdit) {
+        mutableStateOf(existing?.hoursUsed?.let { NumberText.plain(it) } ?: "")
+    }
     var energyMode by rememberSaveable(isEdit, vehicleId) {
         mutableStateOf(
             if (existing?.energyAdded != null && existing.voltsBefore == null) "meter" else "voltage",
@@ -272,6 +275,7 @@ fun QuickEntryScreen(
     val activeFillType = fillType.takeIf { it in fillOptions } ?: fillOptions.first()
 
     val isEv = vehicle.energySource == SOURCE_ELECTRICITY
+    val vehicleUsesHours = vehicle.isOperatingHoursBasis
     val isRideOnly = activeFillType == FILL_RIDE_ONLY
     val isFull = activeFillType == FILL_FULL_CHARGE || activeFillType == FILL_FULL_TANK
 
@@ -307,6 +311,7 @@ fun QuickEntryScreen(
             date = date,
             vehicleId = vehicleId,
             odometer = NumberText.parse(odometer),
+            hoursUsed = NumberText.parse(hoursUsed),
             fillType = activeFillType,
             energyAdded = when {
                 isRideOnly -> null
@@ -345,7 +350,8 @@ fun QuickEntryScreen(
     val petrolValuesValid = isEv || isRideOnly ||
         (unitPrice.isBlank() || (NumberText.parse(unitPrice) ?: 0.0) > 0.0) &&
         (petrolAmount.isBlank() || (NumberText.parse(petrolAmount) ?: 0.0) > 0.0)
-    val canSave = !saving && odoValue != null && !duplicateOdo && petrolValuesValid &&
+    val hoursValue = NumberText.parse(hoursUsed)
+    val canSave = !saving && (odoValue != null || (vehicleUsesHours && hoursValue != null)) && !duplicateOdo && petrolValuesValid &&
         (isRideOnly || (if (isEv && energyMode == "meter") NumberText.parse(energyAdded)?.let { it > 0 } == true
         else if (isEv) NumberText.parse(voltsBefore) != null
         else NumberText.parse(energyAdded)?.let { it > 0 } == true)) &&
@@ -502,6 +508,15 @@ fun QuickEntryScreen(
                         suffix = "km",
                         placeholder = previousOdo?.let { formatNum(it, 0) } ?: "e.g. 15122",
                     )
+                    if (vehicleUsesHours) {
+                        DecimalField(
+                            label = "Operating hours",
+                            value = hoursUsed,
+                            onValueChange = { hoursUsed = it },
+                            suffix = "h",
+                            placeholder = "e.g. 4.5",
+                        )
+                    }
                     when {
                         odoValue == null -> Unit
                         previousOdo != null && odoValue < previousOdo -> Text(
@@ -738,6 +753,7 @@ fun QuickEntryScreen(
                         val entry = draft.copy(
                             id = existing?.id ?: UUID.randomUUID().toString(),
                             odometer = odoValue,
+                            hoursUsed = if (vehicleUsesHours) NumberText.parse(hoursUsed) else null,
                             createdAt = existing?.createdAt ?: System.currentTimeMillis(),
                         )
                         val ok = vm.saveUsage(entry, existing == null)

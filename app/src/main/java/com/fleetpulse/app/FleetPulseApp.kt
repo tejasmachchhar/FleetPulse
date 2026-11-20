@@ -25,7 +25,7 @@ class FleetPulseApp : Application() {
         super.onCreate()
         DiagnosticsLogger.install(this)
         database = Room.databaseBuilder(this, FleetDatabase::class.java, FleetDatabase.NAME)
-            .addMigrations(FleetDatabase.MIGRATION_1_2)
+            .addMigrations(FleetDatabase.MIGRATION_1_2, FleetDatabase.MIGRATION_2_3)
             .fallbackToDestructiveMigrationOnDowngrade()
             .build()
         repository = FleetRepository(database)

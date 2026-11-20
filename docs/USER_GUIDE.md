@@ -466,3 +466,9 @@ Do not publish it. Use the synthetic demo dataset or redact the image before sha
 **Can I use miles or gallons?** The current UI uses kilometres, litres, kWh, and ₹. Unit conversion is not implemented.
 
 **Can I delete all sample data?** Yes, from Data Management. Genuine records are preserved.
+
+## Universal vehicle categories
+
+FleetPulse supports two-wheelers, three-wheelers, passenger vehicles, commercial vehicles, agricultural machinery, construction equipment, and other vehicle types. New categories are added through the Vehicle Reference Database; the app does not hardcode them.
+
+Agricultural and construction vehicles are tracked in operating hours, while road vehicles use distance in km. Both are displayed on Dashboard, Usage Log, and the Quick Entry form as appropriate.

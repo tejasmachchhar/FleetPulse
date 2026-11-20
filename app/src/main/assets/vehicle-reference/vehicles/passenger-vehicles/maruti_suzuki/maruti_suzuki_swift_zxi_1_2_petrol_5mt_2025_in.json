@@ -1,0 +1,186 @@
+{
+  "id": "maruti_suzuki_swift_zxi_1_2_petrol_5mt_2025_in",
+  "schema_version": "1.0.0",
+  "manufacturer": {
+    "id": "maruti_suzuki",
+    "name": "Maruti Suzuki India Limited",
+    "brand": "Maruti Suzuki"
+  },
+  "model": {
+    "id": "swift",
+    "name": "Swift",
+    "official_product_name": "The Epic New Swift (ZXi 5MT)",
+    "variant": "ZXi 1.2L Z12E Petrol 5MT",
+    "generation": "4th Generation (2024-present)",
+    "year": 2025,
+    "model_years": [
+      2025,
+      2026
+    ],
+    "market": "IN",
+    "market_name": "India",
+    "manufacturer_model_code": null
+  },
+  "classification": {
+    "category": "passenger_vehicle",
+    "subcategory": "hatchback",
+    "vehicle_class": "M1 (B-Segment Sub-4m)",
+    "vehicle_type": "Hatchback"
+  },
+  "powertrain": {
+    "propulsion": "ice",
+    "fuel_type": "petrol",
+    "e20_compliant": true,
+    "engine_type": "Z12E with Idle Start Stop (ISS)",
+    "engine_code": "Z12E",
+    "engine_displacement_cc": 1197.0,
+    "cylinder_count": 3,
+    "engine_configuration": "Inline-3, 12V DOHC",
+    "power": 60.0,
+    "power_unit": "kW",
+    "power_alt": "81.58 PS (~80.5 bhp)",
+    "power_rpm": 5700,
+    "torque": 111.7,
+    "torque_unit": "Nm",
+    "torque_rpm": 4300,
+    "transmission": "5-speed Manual (5MT)",
+    "gear_count": 5,
+    "drive_type": "FWD",
+    "aftertreatment": null,
+    "motor": null,
+    "hybrid_configuration": null,
+    "battery": null,
+    "pto": null
+  },
+  "energy_storage": {
+    "fuel_tank_liters": 37.0,
+    "fuel_reserve_liters": null,
+    "cng_capacity_liters_water_eq": null,
+    "cng_capacity_kg_approx": null,
+    "lpg_capacity_liters": null,
+    "def_capacity_liters": null,
+    "battery_capacity_kwh": null,
+    "battery_usable_kwh": null,
+    "battery_voltage_v": null,
+    "battery_capacity_ah": null,
+    "battery_chemistry": null
+  },
+  "dimensions": {
+    "kerb_weight_kg": 920.0,
+    "gross_weight_kg": 1355.0,
+    "payload_kg": null,
+    "seating_capacity": 5,
+    "seating_layout": "5 seats",
+    "cargo_capacity_liters": 265.0,
+    "cargo_deck_mm": null,
+    "hydraulic_lift_capacity_kg": null,
+    "wheel_count": 4,
+    "axle_configuration": "4x2",
+    "wheelbase_mm": 2450,
+    "length_mm": 3860,
+    "width_mm": 1735,
+    "height_mm": 1520,
+    "ground_clearance_mm": 163,
+    "seat_height_mm": null
+  },
+  "efficiency": {
+    "certification_standard": "BS6 Phase 2 (BS VI, E20)",
+    "metrics": [
+      {
+        "metric_type": "fuel_economy",
+        "value": 24.8,
+        "value_min": null,
+        "value_max": null,
+        "unit": "km_per_liter",
+        "test_cycle": "ARAI_CMVR_115",
+        "source_type": "certified",
+        "conditions": "Official Maruti Suzuki brochure PDF (5MT)",
+        "source_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/swift/document/Swift_SCNG_VerticalBrochure.pdf"
+      }
+    ]
+  },
+  "maintenance": {
+    "engine_oil_grade": "SAE 0W-16 (API SN/SP or ILSAC GF-6)",
+    "engine_oil_capacity_liters": 3.1,
+    "engine_oil_capacity_notes": "~3.1 L with filter (MotorBabu referencing Z12E Owner's Manual)",
+    "coolant_spec": null,
+    "coolant_capacity_liters": null,
+    "filter_specs": null,
+    "tire_size_front": "185/65 R15 (Alloy; Spare: 165/80 R14 Steel)",
+    "tire_size_rear": "185/65 R15",
+    "tire_pressure_front_psi": null,
+    "tire_pressure_rear_psi": null,
+    "service_interval_value": 10000,
+    "service_interval_unit": "km",
+    "service_interval_months": 12,
+    "service_schedule_summary": "10,000 km / 12 months (free checks at 1,000, 5,000, 10,000 km).",
+    "warranty": null,
+    "handbook_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/swift/document/Swift_SCNG_VerticalBrochure.pdf"
+  },
+  "aliases": [
+    "Maruti Swift",
+    "Swift 4th Gen",
+    "Swift Z12E",
+    "New Swift"
+  ],
+  "sources": [
+    {
+      "publisher": "Maruti Suzuki India",
+      "title": "Official Swift Petrol & S-CNG Brochure PDF",
+      "url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/swift/document/Swift_SCNG_VerticalBrochure.pdf",
+      "source_type": "official_brochure",
+      "covers_fields": [
+        "identity",
+        "powertrain",
+        "fuel_tank_liters",
+        "dimensions",
+        "kerb_weight_kg",
+        "gross_weight_kg",
+        "efficiency",
+        "tire_size_front"
+      ],
+      "source_id": "src_0068"
+    },
+    {
+      "publisher": "CarDekho",
+      "title": "Maruti Suzuki Swift ZXi Specifications",
+      "url": "https://www.cardekho.com/overview/Maruti_Swift/Maruti_Swift_ZXi.htm",
+      "source_type": "automotive_portal",
+      "covers_fields": [
+        "drive_type",
+        "engine_configuration",
+        "discrepancy_reference"
+      ],
+      "source_id": "src_0069"
+    },
+    {
+      "publisher": "MotorBabu",
+      "title": "Maruti Swift Z12E Service Schedule & Oil Spec",
+      "url": "https://motorbabu.com/service-schedule/maruti-suzuki-swift",
+      "source_type": "secondary_service_guide",
+      "covers_fields": [
+        "engine_oil_grade",
+        "engine_oil_capacity_liters",
+        "service_interval"
+      ],
+      "source_id": "src_0070"
+    }
+  ],
+  "discrepancies": [
+    {
+      "field": "powertrain.torque",
+      "adopted_value": "111.7 Nm @ 4300 rpm (Official Maruti Z12E brochure)",
+      "conflicting_value": "112.4 Nm @ 4300 rpm (CarDekho & CarWale)",
+      "adopted_source_url": "https://www.marutisuzuki.com/content/dam/msil/arena/in/en/assets/cars/swift/document/Swift_SCNG_VerticalBrochure.pdf",
+      "conflicting_source_url": "https://www.cardekho.com/overview/Maruti_Swift/Maruti_Swift_ZXi.htm",
+      "resolution_status": "resolved_primary",
+      "notes": "Adopted official Maruti Suzuki brochure torque figure."
+    }
+  ],
+  "verification": {
+    "status": "officially_verified",
+    "confidence": "high",
+    "last_verified": "2026-11-20",
+    "notes": "Verified directly from official Maruti Suzuki Swift Brochure PDF; kerb weight 920 kg is max MT kerb weight."
+  }
+}

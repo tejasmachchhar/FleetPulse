@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.0.0",
+  "database_version": "1.0.0-batch1",
+  "category_slug": "agricultural",
+  "record_count": 5,
+  "records": [
+    {
+      "id": "john_deere_5050d_2wd_8f4r_2025_in",
+      "manufacturer_id": "john_deere_india",
+      "manufacturer_name": "John Deere India Pvt. Ltd.",
+      "brand": "John Deere",
+      "model": "5050D",
+      "variant": "John Deere 5050D (2WD, 8F+4R Collarshift)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "agricultural",
+      "subcategory": "utility_tractor",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "JD 5050D",
+        "5050 D 2WD",
+        "5050D 5D Series"
+      ],
+      "search_tokens": [
+        "2025",
+        "2wd",
+        "4r",
+        "5050",
+        "5050d",
+        "5d",
+        "8f",
+        "collarshift",
+        "deere",
+        "diesel",
+        "jd",
+        "john",
+        "series",
+        "tractor",
+        "utility"
+      ],
+      "record_path": "vehicles/agricultural/john_deere_india/john_deere_5050d_2wd_8f4r_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "mahindra_575_di_xp_plus_2wd_2025_in",
+      "manufacturer_id": "mahindra_tractors",
+      "manufacturer_name": "Mahindra & Mahindra Ltd. (Farm Equipment Sector)",
+      "brand": "Mahindra Tractors",
+      "model": "575 DI XP Plus",
+      "variant": "Mahindra 575 DI XP Plus (2WD)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "agricultural",
+      "subcategory": "agricultural_tractor",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "575 XP Plus",
+        "575 DI XP+",
+        "575 XP+ 2WD"
+      ],
+      "search_tokens": [
+        "2025",
+        "2wd",
+        "575",
+        "agricultural",
+        "di",
+        "diesel",
+        "mahindra",
+        "plus",
+        "tractor",
+        "tractors",
+        "xp"
+      ],
+      "record_path": "vehicles/agricultural/mahindra_tractors/mahindra_575_di_xp_plus_2wd_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "massey_ferguson_241_di_dynatrack_2wd_2025_in",
+      "manufacturer_id": "tafe_massey_ferguson",
+      "manufacturer_name": "Tractors and Farm Equipment Ltd. (TAFE)",
+      "brand": "Massey Ferguson",
+      "model": "241 DI",
+      "variant": "MF 241 DI DynaTrack (2WD)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "agricultural",
+      "subcategory": "agricultural_tractor",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "MF 241 DynaTrack",
+        "Massey 241 DynaTrack",
+        "Massey Ferguson 241 DI"
+      ],
+      "search_tokens": [
+        "2025",
+        "241",
+        "2wd",
+        "agricultural",
+        "di",
+        "diesel",
+        "dynatrack",
+        "ferguson",
+        "massey",
+        "mf",
+        "tractor"
+      ],
+      "record_path": "vehicles/agricultural/tafe_massey_ferguson/massey_ferguson_241_di_dynatrack_2wd_2025_in.json",
+      "verification_status": "officially_verified"
+    },
+    {
+      "id": "sonalika_di_745_iii_sikander_dlx_2wd_2025_in",
+      "manufacturer_id": "sonalika_itl",
+      "manufacturer_name": "International Tractors Limited (ITL)",
+      "brand": "Sonalika Tractors",
+      "model": "DI 745 III",
+      "variant": "Sonalika DI 745 III Sikander DLX (2WD)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "agricultural",
+      "subcategory": "agricultural_tractor",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Sonalika 745 Sikander",
+        "DI-745 III HDM",
+        "745 DLX"
+      ],
+      "search_tokens": [
+        "2025",
+        "2wd",
+        "745",
+        "agricultural",
+        "di",
+        "diesel",
+        "dlx",
+        "hdm",
+        "iii",
+        "sikander",
+        "sonalika",
+        "tractor",
+        "tractors"
+      ],
+      "record_path": "vehicles/agricultural/sonalika_itl/sonalika_di_745_iii_sikander_dlx_2wd_2025_in.json",
+      "verification_status": "cross_verified"
+    },
+    {
+      "id": "swaraj_744_fe_2wd_2025_in",
+      "manufacturer_id": "swaraj_tractors",
+      "manufacturer_name": "Mahindra & Mahindra Ltd. (Swaraj Division)",
+      "brand": "Swaraj Tractors",
+      "model": "744 FE",
+      "variant": "Swaraj 744 FE (2WD)",
+      "year": 2025,
+      "model_years": [
+        2025,
+        2026
+      ],
+      "market": "IN",
+      "category": "agricultural",
+      "subcategory": "agricultural_tractor",
+      "propulsion": "ice",
+      "fuel_type": "diesel",
+      "aliases": [
+        "Swaraj 744",
+        "744 FE 2WD",
+        "744 FE 5-Star"
+      ],
+      "search_tokens": [
+        "2025",
+        "2wd",
+        "744",
+        "agricultural",
+        "diesel",
+        "fe",
+        "star",
+        "swaraj",
+        "tractor",
+        "tractors"
+      ],
+      "record_path": "vehicles/agricultural/swaraj_tractors/swaraj_744_fe_2wd_2025_in.json",
+      "verification_status": "officially_verified"
+    }
+  ]
+}

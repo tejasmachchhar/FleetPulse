@@ -721,17 +721,31 @@ private fun SpotlightCard(
             }
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 Column(Modifier.weight(1f)) {
-                    Text("Distance in period", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text(
-                        "${formatNum(stats?.distance ?: 0.0, 0)} km",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontFamily = FontFamily.Monospace,
-                    )
-                    Text(
-                        "Odo ${formatNum(allTime?.currentOdometer, 0)} km",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                    if (vehicle.isOperatingHoursBasis) {
+                        Text("Operating hours in period", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(
+                            "${formatNum(stats?.trackingHours ?: 0.0, 1)} h",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontFamily = FontFamily.Monospace,
+                        )
+                        Text(
+                            stats?.energySpend?.let { spend -> "Cost per hour: ${formatINR(spend / maxOf(1.0, stats?.trackingHours ?: 0.0), 2)}" } ?: "No cost basis yet",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    } else {
+                        Text("Distance in period", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(
+                            "${formatNum(stats?.distance ?: 0.0, 0)} km",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontFamily = FontFamily.Monospace,
+                        )
+                        Text(
+                            "Odo ${formatNum(allTime?.currentOdometer, 0)} km",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
                 Column(Modifier.weight(1f)) {
                     Text("Running cost", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-11-20",
+  "phase": "Phase 1 — Batch 1 (India High-Frequency Vehicles)",
+  "total_verified_records": 30,
+  "total_manufacturers": 23,
+  "total_unique_sources": 133,
+  "by_category": {
+    "two_wheeler": 8,
+    "three_wheeler": 5,
+    "passenger_vehicle": 7,
+    "commercial_vehicle": 5,
+    "agricultural": 5
+  },
+  "by_subcategory": {
+    "petrol_scooter": 3,
+    "commuter_motorcycle": 2,
+    "touring_motorcycle": 1,
+    "electric_scooter": 2,
+    "passenger_auto_rickshaw": 1,
+    "cargo_auto_rickshaw": 1,
+    "electric_three_wheeler": 1,
+    "e_cargo": 1,
+    "e_rickshaw": 1,
+    "hatchback": 2,
+    "mpv": 2,
+    "compact_suv": 2,
+    "suv": 1,
+    "mini_truck": 2,
+    "pickup_truck": 3,
+    "agricultural_tractor": 4,
+    "utility_tractor": 1
+  },
+  "by_fuel_type": {
+    "petrol": 10,
+    "electric": 6,
+    "cng_petrol_bi_fuel": 3,
+    "diesel": 11
+  },
+  "by_propulsion": {
+    "ice": 21,
+    "mild_hybrid": 2,
+    "bev": 6,
+    "strong_hybrid": 1
+  },
+  "phase_2_3_scaffolds_ready": [
+    "construction",
+    "public_transport",
+    "other"
+  ]
+}
