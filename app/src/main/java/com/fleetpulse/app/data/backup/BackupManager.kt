@@ -50,7 +50,7 @@ data class BackupBuildInput(
 object BackupManager {
 
     const val FORMAT = "fleetpulse-backup"
-    const val VERSION = 2
+    const val VERSION = 3
 
     fun buildJson(input: BackupBuildInput): String {
         val root = JSONObject()
@@ -90,7 +90,7 @@ object BackupManager {
         val vehicles = (0 until vehiclesJson.length()).map { i ->
             val o = vehiclesJson.getJSONObject(i)
             val id = o.optString("id").ifBlank { throw IllegalArgumentException("Vehicle #${i + 1} has no ID") }
-            require(o.optString("energySource") in setOf("Electricity", "Petrol")) {
+            require(o.optString("energySource").isNotBlank()) {
                 "Vehicle $id has an unknown energy source"
             }
             Vehicle(
@@ -101,6 +101,7 @@ object BackupManager {
                 regNo = o.optString("regNo", ""),
                 purchaseDate = o.optString("purchaseDate", ""),
                 initialOdometer = o.optDouble("initialOdometer", 0.0).takeIf { !it.isNaN() } ?: 0.0,
+                initialOperatingHours = o.nullableDouble("initialOperatingHours"),
                 batteryCapacity = o.nullableDouble("batteryCapacity"),
                 batteryRate = o.nullableDouble("batteryRate"),
                 batteryLifeYears = o.nullableDouble("batteryLifeYears"),
@@ -108,6 +109,22 @@ object BackupManager {
                 ratedKmPerCharge = o.nullableDouble("ratedKmPerCharge"),
                 dailyKmPlan = o.nullableDouble("dailyKmPlan"),
                 tankCapacity = o.nullableDouble("tankCapacity"),
+                tankCapacityLiters = o.nullableDouble("tankCapacityLiters"),
+                cargoCapacityLiters = o.nullableDouble("cargoCapacityLiters"),
+                seatingCapacity = o.nullableInt("seatingCapacity"),
+                wheelCount = o.nullableInt("wheelCount"),
+                axleConfiguration = o.optString("axleConfiguration").takeIf { it.isNotBlank() },
+                powerKw = o.nullableDouble("powerKw"),
+                engineDisplacementCc = o.nullableDouble("engineDisplacementCc"),
+                torqueNm = o.nullableDouble("torqueNm"),
+                engineOilGrade = o.optString("engineOilGrade").takeIf { it.isNotBlank() },
+                category = o.optString("category", "two_wheeler"),
+                subcategory = o.optString("subcategory", ""),
+                trackingBasis = o.optString("trackingBasis", "distance_km"),
+                referenceRecordId = o.optString("referenceRecordId").takeIf { it.isNotBlank() },
+                referenceDatabaseVersion = o.optString("referenceDatabaseVersion").takeIf { it.isNotBlank() },
+                referenceRawJson = o.optString("referenceRawJson").takeIf { it.isNotBlank() },
+                referenceOverridesJson = o.optString("referenceOverridesJson").takeIf { it.isNotBlank() },
                 color = o.optString("color", "#2563EB"),
                 notes = o.optString("notes", ""),
                 archived = o.optBoolean("archived", false),
@@ -130,6 +147,8 @@ object BackupManager {
                 date = o.optString("date"),
                 vehicleId = vehicleId,
                 odometer = o.nullableDouble("odometer"),
+                distanceKm = o.nullableDouble("distanceKm") ?: 0.0,
+                hoursUsed = o.nullableDouble("hoursUsed") ?: 0.0,
                 fillType = o.optString("fillType", "Ride only"),
                 energyAdded = o.nullableDouble("energyAdded"),
                 voltsBefore = o.nullableDouble("voltsBefore"),
@@ -176,7 +195,7 @@ object BackupManager {
             val o = priceJson.optJSONObject(i)
                 ?: throw IllegalArgumentException("Tariff #${i + 1} is not an object")
             val source = o.optString("energySource")
-            require(source in setOf("Electricity", "Petrol")) { "Tariff #${i + 1} has an unknown energy source" }
+            require(source.isNotBlank()) { "Tariff #${i + 1} has an unknown energy source" }
             PriceEntry(
                 id = o.optString("id").ifBlank { "p_${System.nanoTime()}_$i" },
                 energySource = source,
@@ -318,6 +337,7 @@ object BackupManager {
         put("id", v.id); put("name", v.name); put("type", v.type)
         put("energySource", v.energySource); put("regNo", v.regNo)
         put("purchaseDate", v.purchaseDate); put("initialOdometer", v.initialOdometer)
+        put("initialOperatingHours", v.initialOperatingHours ?: JSONObject.NULL)
         put("batteryCapacity", v.batteryCapacity ?: JSONObject.NULL)
         put("batteryRate", v.batteryRate ?: JSONObject.NULL)
         put("batteryLifeYears", v.batteryLifeYears ?: JSONObject.NULL)
@@ -325,13 +345,30 @@ object BackupManager {
         put("ratedKmPerCharge", v.ratedKmPerCharge ?: JSONObject.NULL)
         put("dailyKmPlan", v.dailyKmPlan ?: JSONObject.NULL)
         put("tankCapacity", v.tankCapacity ?: JSONObject.NULL)
+        put("tankCapacityLiters", v.tankCapacityLiters ?: JSONObject.NULL)
+        put("cargoCapacityLiters", v.cargoCapacityLiters ?: JSONObject.NULL)
+        put("seatingCapacity", v.seatingCapacity ?: JSONObject.NULL)
+        put("wheelCount", v.wheelCount ?: JSONObject.NULL)
+        put("axleConfiguration", v.axleConfiguration ?: JSONObject.NULL)
+        put("powerKw", v.powerKw ?: JSONObject.NULL)
+        put("engineDisplacementCc", v.engineDisplacementCc ?: JSONObject.NULL)
+        put("torqueNm", v.torqueNm ?: JSONObject.NULL)
+        put("engineOilGrade", v.engineOilGrade ?: JSONObject.NULL)
+        put("category", v.category); put("subcategory", v.subcategory); put("trackingBasis", v.trackingBasis)
+        put("referenceRecordId", v.referenceRecordId ?: JSONObject.NULL)
+        put("referenceDatabaseVersion", v.referenceDatabaseVersion ?: JSONObject.NULL)
+        put("referenceRawJson", v.referenceRawJson ?: JSONObject.NULL)
+        put("referenceOverridesJson", v.referenceOverridesJson ?: JSONObject.NULL)
         put("color", v.color); put("notes", v.notes)
         put("archived", v.archived); put("isSample", v.isSample)
     }
 
     private fun usageJson(u: UsageEntry) = JSONObject().apply {
         put("id", u.id); put("date", u.date); put("vehicleId", u.vehicleId)
-        put("odometer", u.odometer ?: JSONObject.NULL); put("fillType", u.fillType)
+        put("odometer", u.odometer ?: JSONObject.NULL)
+        put("distanceKm", u.distanceKm ?: JSONObject.NULL)
+        put("hoursUsed", u.hoursUsed ?: JSONObject.NULL)
+        put("fillType", u.fillType)
         put("energyAdded", u.energyAdded ?: JSONObject.NULL)
         put("voltsBefore", u.voltsBefore ?: JSONObject.NULL)
         put("voltsAfter", u.voltsAfter ?: JSONObject.NULL)

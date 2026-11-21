@@ -55,6 +55,10 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.fleetpulse.app.data.db.SOURCE_ELECTRICITY
 import com.fleetpulse.app.data.db.SOURCE_PETROL
+import com.fleetpulse.app.data.db.SOURCE_DIESEL
+import com.fleetpulse.app.data.db.SOURCE_CNG
+import com.fleetpulse.app.data.db.SOURCE_LPG
+import com.fleetpulse.app.data.db.SOURCE_HYBRID
 import com.fleetpulse.app.data.db.UsageEntry
 import com.fleetpulse.app.data.db.Vehicle
 import com.fleetpulse.app.domain.EvalResult
@@ -86,6 +90,7 @@ import java.time.LocalDate
 fun VehiclesScreen(
     vm: MainViewModel,
     vehicles: List<Vehicle>,
+    onCreatingChange: (Boolean) -> Unit = {},
     evaluation: EvalResult,
     nextId: () -> String,
     onSave: (Vehicle, Boolean) -> Boolean,
@@ -114,7 +119,7 @@ fun VehiclesScreen(
                 title = "Vehicles",
                 subtitle = "${active.size} active · ${archived.size} archived",
                 actions = {
-                    Button(onClick = { creating = true }, shape = RoundedCornerShape(12.dp)) {
+                    Button(onClick = { creating = true; onCreatingChange(true) }, shape = RoundedCornerShape(12.dp)) {
                         Icon(Icons.Default.Add, null, modifier = Modifier.size(18.dp))
                         Spacer(Modifier.width(4.dp))
                         Text("Add")
@@ -176,7 +181,7 @@ fun VehiclesScreen(
     if (creating) {
         VehicleSetupWizard(
             vm = vm,
-            onComplete = { creating = false },
+            onComplete = { creating = false; onCreatingChange(false) },
         )
     }
 
@@ -427,6 +432,23 @@ fun VehicleEditorDialog(
     var notes by remember { mutableStateOf(existing?.notes ?: "") }
     var color by remember { mutableStateOf(existing?.color ?: "#2563EB") }
     var showDelete by remember { mutableStateOf(false) }
+    var category by remember { mutableStateOf(existing?.category ?: "two_wheeler") }
+    var subcategory by remember { mutableStateOf(existing?.subcategory ?: "") }
+    var trackingBasis by remember { mutableStateOf(existing?.trackingBasis ?: "distance_km") }
+    var referenceRecordId by remember { mutableStateOf(existing?.referenceRecordId ?: "") }
+    var referenceDatabaseVersion by remember { mutableStateOf(existing?.referenceDatabaseVersion ?: "") }
+    var referenceRawJson by remember { mutableStateOf(existing?.referenceRawJson ?: "") }
+    var referenceOverridesJson by remember { mutableStateOf(existing?.referenceOverridesJson ?: "") }
+    var tankCapacityLiters by remember { mutableStateOf(existing?.tankCapacityLiters?.let { NumberText.plain(it) } ?: "") }
+    var cargoCapacityLiters by remember { mutableStateOf(existing?.cargoCapacityLiters?.let { NumberText.plain(it) } ?: "") }
+    var seatingCapacity by remember { mutableStateOf(existing?.seatingCapacity?.toString() ?: "") }
+    var wheelCount by remember { mutableStateOf(existing?.wheelCount?.toString() ?: "") }
+    var axleConfiguration by remember { mutableStateOf(existing?.axleConfiguration ?: "") }
+    var powerKw by remember { mutableStateOf(existing?.powerKw?.let { NumberText.plain(it) } ?: "") }
+    var engineDisplacementCc by remember { mutableStateOf(existing?.engineDisplacementCc?.let { NumberText.plain(it) } ?: "") }
+    var torqueNm by remember { mutableStateOf(existing?.torqueNm?.let { NumberText.plain(it) } ?: "") }
+    var engineOilGrade by remember { mutableStateOf(existing?.engineOilGrade ?: "") }
+    var initialOperatingHours by remember { mutableStateOf(existing?.initialOperatingHours?.let { NumberText.plain(it) } ?: "") }
 
     Dialog(
         onDismissRequest = onDismiss,
@@ -449,11 +471,50 @@ fun VehicleEditorDialog(
                     actions = {
                         TextButton(
                             onClick = {
-                                val vehicle = Vehicle(
+                                val vehicle = existing?.copy(
                                     id = id.trim(),
                                     name = name.trim(),
                                     type = type.trim().ifBlank { "Vehicle" },
                                     energySource = source,
+                                    category = category,
+                                    subcategory = subcategory,
+                                    trackingBasis = trackingBasis,
+                                    referenceRecordId = referenceRecordId,
+                                    referenceDatabaseVersion = referenceDatabaseVersion,
+                                    referenceRawJson = referenceRawJson,
+                                    referenceOverridesJson = referenceOverridesJson,
+                                    regNo = regNo.trim(),
+                                    purchaseDate = purchaseDate,
+                                    initialOdometer = NumberText.parse(initialOdo) ?: 0.0,
+                                    batteryCapacity = if (source == SOURCE_ELECTRICITY) NumberText.parse(batteryCapacity) else existing?.batteryCapacity,
+                                    batteryRate = if (source == SOURCE_ELECTRICITY) NumberText.parse(batteryRate) else existing?.batteryRate,
+                                    batteryLifeYears = if (source == SOURCE_ELECTRICITY) NumberText.parse(batteryLife) else existing?.batteryLifeYears,
+                                    chargeCycles = if (source == SOURCE_ELECTRICITY) cycles.toIntOrNull() else existing?.chargeCycles,
+                                    ratedKmPerCharge = if (source == SOURCE_ELECTRICITY) NumberText.parse(ratedKm) else existing?.ratedKmPerCharge,
+                                    dailyKmPlan = if (source == SOURCE_ELECTRICITY) NumberText.parse(dailyKm) else existing?.dailyKmPlan,
+                                    tankCapacity = if (source == SOURCE_PETROL) NumberText.parse(tank) else existing?.tankCapacity,
+                                    tankCapacityLiters = NumberText.parse(tankCapacityLiters),
+                                    cargoCapacityLiters = NumberText.parse(cargoCapacityLiters),
+                                    seatingCapacity = seatingCapacity.toIntOrNull(),
+                                    wheelCount = wheelCount.toIntOrNull(),
+                                    axleConfiguration = axleConfiguration.takeIf { it.isNotBlank() },
+                                    powerKw = NumberText.parse(powerKw),
+                                    engineDisplacementCc = NumberText.parse(engineDisplacementCc),
+                                    torqueNm = NumberText.parse(torqueNm),
+                                    engineOilGrade = engineOilGrade.takeIf { it.isNotBlank() },
+                                    initialOperatingHours = NumberText.parse(initialOperatingHours),
+                                    color = color,
+                                    notes = notes.trim(),
+                                    archived = existing?.archived ?: false,
+                                    isSample = existing?.isSample ?: false,
+                                ) ?: Vehicle(
+                                    id = id.trim(),
+                                    name = name.trim(),
+                                    type = type.trim().ifBlank { "Vehicle" },
+                                    energySource = source,
+                                    category = category,
+                                    subcategory = subcategory,
+                                    trackingBasis = trackingBasis,
                                     regNo = regNo.trim(),
                                     purchaseDate = purchaseDate,
                                     initialOdometer = NumberText.parse(initialOdo) ?: 0.0,
@@ -464,10 +525,18 @@ fun VehicleEditorDialog(
                                     ratedKmPerCharge = if (source == SOURCE_ELECTRICITY) NumberText.parse(ratedKm) else null,
                                     dailyKmPlan = if (source == SOURCE_ELECTRICITY) NumberText.parse(dailyKm) else null,
                                     tankCapacity = if (source == SOURCE_PETROL) NumberText.parse(tank) else null,
+                                    tankCapacityLiters = NumberText.parse(tankCapacityLiters),
+                                    cargoCapacityLiters = NumberText.parse(cargoCapacityLiters),
+                                    seatingCapacity = seatingCapacity.toIntOrNull(),
+                                    wheelCount = wheelCount.toIntOrNull(),
+                                    axleConfiguration = axleConfiguration.takeIf { it.isNotBlank() },
+                                    powerKw = NumberText.parse(powerKw),
+                                    engineDisplacementCc = NumberText.parse(engineDisplacementCc),
+                                    torqueNm = NumberText.parse(torqueNm),
+                                    engineOilGrade = engineOilGrade.takeIf { it.isNotBlank() },
+                                    initialOperatingHours = NumberText.parse(initialOperatingHours),
                                     color = color,
                                     notes = notes.trim(),
-                                    archived = existing?.archived ?: false,
-                                    isSample = existing?.isSample ?: false,
                                 )
                                 onSave(vehicle, isNew)
                             },
@@ -507,7 +576,7 @@ fun VehicleEditorDialog(
                         OutlinedTextField(
                             value = type,
                             onValueChange = { type = it },
-                            label = { Text("Type (e.g. Electric Bike, Petrol Scooter)") },
+                            label = { Text("Type (e.g. Electric Bike, Diesel Tractor)") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .bringIntoViewOnIme(),
@@ -528,7 +597,7 @@ fun VehicleEditorDialog(
 
                     FormSection("Energy source") {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            listOf(SOURCE_ELECTRICITY, SOURCE_PETROL).forEach { option ->
+                            listOf(SOURCE_ELECTRICITY, SOURCE_PETROL, SOURCE_DIESEL, SOURCE_CNG, SOURCE_LPG, SOURCE_HYBRID).forEach { option ->
                                 if (option == source) {
                                     Button(onClick = { source = option }, shape = RoundedCornerShape(12.dp)) {
                                         Text(option)
@@ -542,7 +611,7 @@ fun VehicleEditorDialog(
                         }
                         Text(
                             "Electric vehicles use the voltage calibration curve and battery wear model. " +
-                                "Petrol vehicles use full-tank mileage and fuel prices.",
+                                "Non-electric vehicles use full-tank mileage and fuel prices.",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )

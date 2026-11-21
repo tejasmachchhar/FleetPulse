@@ -429,7 +429,7 @@ fun DashboardScreen(
                 DonutChart(
                     slices = listOf(
                         DonutSlice("Electricity", totals.electricitySpend, ElectricColor),
-                        DonutSlice("Petrol", totals.petrolSpend, PetrolColor),
+                        DonutSlice("Fuel", totals.petrolSpend, PetrolColor),
                         DonutSlice("Battery wear (est.)", totals.batteryWear, FleetViolet),
                     ),
                     centerLabel = "Total",
@@ -441,7 +441,7 @@ fun DashboardScreen(
         val petrolVehicles = targetVehicles.filter { it.energySource != SOURCE_ELECTRICITY }
         if (petrolVehicles.isNotEmpty()) {
             item {
-                SectionCard(title = "Petrol mileage", subtitle = "Verified km/L per month") {
+                SectionCard(title = "Fuel mileage", subtitle = "Verified km/L per month") {
                     LineChart(
                         labels = months.map { it.label },
                         series = petrolVehicles.map { v ->
@@ -628,7 +628,7 @@ private fun dashboardKpis(totals: CalcEngine.FleetTotals, vehicleCount: Int): Li
         "Energy + battery wear (est.)", "Cash + Wear", Color(0xFF2563EB),
     ),
     Kpi("Electricity expense", formatINR(totals.electricitySpend, 0), "Actual cash spent", null, Color(0xFF059669)),
-    Kpi("Petrol expense", formatINR(totals.petrolSpend, 0), "Actual cash spent", null, PetrolColor),
+    Kpi("Fuel expense", formatINR(totals.petrolSpend, 0), "Actual cash spent", null, PetrolColor),
     Kpi("Avg running cost", totals.runningCostPerKm?.let { formatINR(it, 2) + " /km" } ?: "—", "Distance-weighted", null, null),
     Kpi(
         "Most economical",

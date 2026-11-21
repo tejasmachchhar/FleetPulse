@@ -17,6 +17,10 @@ import androidx.room.PrimaryKey
 
 const val SOURCE_ELECTRICITY = "Electricity"
 const val SOURCE_PETROL = "Petrol"
+const val SOURCE_DIESEL = "Diesel"
+const val SOURCE_CNG = "CNG"
+const val SOURCE_LPG = "LPG"
+const val SOURCE_HYBRID = "Hybrid"
 
 const val FILL_FULL_CHARGE = "Full charge"
 const val FILL_PARTIAL_CHARGE = "Partial charge"
@@ -50,6 +54,7 @@ data class Vehicle(
     val regNo: String = "",
     val purchaseDate: String = "",
     val initialOdometer: Double = 0.0,
+    val initialOperatingHours: Double? = null,
     val batteryCapacity: Double? = null,
     val batteryRate: Double? = null,
     val batteryLifeYears: Double? = null,

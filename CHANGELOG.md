@@ -8,9 +8,26 @@ The public repository history begins with the 4.1.1 baseline. Earlier private it
 
 ## [Unreleased]
 
+### Fixed
+
+- Wizard is a real step-by-step flow: current step, progress, Back/Continue/Create, manual fallback, full-screen overlay, and system-back handling.
+- EV creation validates available reference data instead of requiring a missing fuel rate.
+- Reference loading is offline-first and cannot crash on save.
+- Wizard state uses primitive IDs/strings for `rememberSaveable`.
+- Editing wizard-created vehicles preserves universal fields, reference data, and user overrides.
+- Backup format v3 preserves universal vehicle and usage fields; v1/v2 imports default new fields.
+- Diesel/CNG/LPG/Hybrid are first-class fuel types in setup, pricing, labels, and calculations.
+- Reference specification overrides are stored and used by CalcEngine/Vehicles.
+- Operating-hours baseline is persisted and used by hours-only vehicles.
+- CalcEngine validates distance-only, hours-only, both-basis, and explicit-distance vehicles correctly.
+- Hours vehicles use hours/cost-per-hour instead of km/L in setup, quick entry, usage log, dashboard, and analysis.
+- Reference repository parsing handles the manifest object format, caches assets/remote, filters manufacturers by category, and returns null instead of throwing.
+- Reference asset copies are checked by `scripts/check-reference-assets.sh`.
+
 ### Planned
 
 - Genuine device screenshots and a full device acceptance pass.
+- Instrumented UI tests for the wizard.
 - Migration tests for future Room schema versions.
 - A signed release pipeline when signing credentials are available.
 - A deliberate Android Gradle Plugin 9 / `compileSdk 37` migration before adopting AndroidX releases that require it.

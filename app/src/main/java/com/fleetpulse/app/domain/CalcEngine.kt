@@ -11,6 +11,7 @@ import com.fleetpulse.app.data.db.MaintenanceEntry
 import com.fleetpulse.app.data.db.PriceEntry
 import com.fleetpulse.app.data.db.SOURCE_ELECTRICITY
 import com.fleetpulse.app.data.db.SOURCE_PETROL
+import com.fleetpulse.app.data.db.TRACKING_BASIS_BOTH
 import com.fleetpulse.app.data.db.SettingsEntity
 import com.fleetpulse.app.data.db.STATUS_CHECK
 import com.fleetpulse.app.data.db.STATUS_ERROR
@@ -286,6 +287,7 @@ object CalcEngine {
         for ((vehicleId, list) in byVehicle.entries) {
             val vehicle = vehicleMap[vehicleId]
             val usesHours = vehicle != null && vehicle.isOperatingHoursBasis
+            val usesBoth = vehicle != null && vehicle.trackingBasis == TRACKING_BASIS_BOTH
             val usesDistance = vehicle != null && vehicle.isDistanceBasis
             list.sortWith(compareBy({ it.first.date }, { it.second }))
 
@@ -309,27 +311,29 @@ object CalcEngine {
 
                 if (e.date.isBlank() || vehicle == null) {
                     errors.add("Missing mandatory fields (Date or Vehicle)")
-                } else if (usesHours && usesDistance.not() && (explicitDistance == null && hoursUsed == null)) {
-                    errors.add("Missing mandatory fields (Odometer or Operating Hours)")
+                } else if (usesHours) {
+                    if (hoursUsed == null || hoursUsed < 0) {
+                        errors.add("Missing operating hours for this vehicle.")
+                    }
+                } else if (usesBoth) {
+                    if (hoursUsed == null || hoursUsed < 0) {
+                        errors.add("Missing operating hours for this vehicle.")
+                    } else if (explicitDistance == null && odoNum == null) {
+                        errors.add("Both-basis vehicles need operating hours and at least one distance reading.")
+                    }
                 } else if (explicitDistance != null && usesDistance) {
                     distance = explicitDistance
-                    if (i == 0 && distance > settings.maxPlausibleDistance) {
-                        checks.add(
-                            "First distance entry is far above the initial odometer - used as the starting reading (0 km).",
-                        )
-                        distance = 0.0
-                    }
                     if (distance < 0) errors.add("Distance is negative.")
+                    if (i == 0 && distance > settings.maxPlausibleDistance) {
+                        checks.add("First explicit distance entry exceeds the configured maximum plausible distance.")
+                    }
                 } else if (odoNum != null && !odoNum.isNaN() && usesDistance) {
                     if (i == 0) {
-                        val diff = odoNum - (vehicle.initialOdometer)
+                        val diff = odoNum - vehicle.initialOdometer
                         if (diff < 0) {
                             errors.add("Odometer (${fmt1(odoNum)}) is below Initial Odometer (${fmt(vehicle.initialOdometer)})")
                         } else if (diff > settings.maxPlausibleDistance) {
-                            checks.add(
-                                "First entry is far above the Initial Odometer - used as the starting reading (0 km). " +
-                                    "Set Initial Odometer in Vehicle Setup to the reading when tracking began",
-                            )
+                            checks.add("First entry is far above the Initial Odometer; used as 0 km.")
                             distance = 0.0
                         } else {
                             distance = diff
@@ -342,18 +346,16 @@ object CalcEngine {
                             distance = diff
                             if (diff == 0.0) checks.add("Duplicate odometer reading (0 km since previous entry)")
                             if (diff > settings.maxPlausibleDistance) {
-                                checks.add(
-                                    "Distance gap (${fmt1(diff)} km) exceeds max plausible distance " +
-                                        "(${fmt(settings.maxPlausibleDistance)} km)",
-                                )
+                                checks.add("Distance gap (${fmt1(diff)} km) exceeds max plausible distance (${fmt(settings.maxPlausibleDistance)} km)")
                             }
                         }
                     }
-                } else if (odoNum == null && !usesHours && !usesDistance) {
+                } else if (!usesDistance && (odoNum == null || odoNum.isNaN())) {
                     errors.add("Missing mandatory fields (Odometer)")
                 }
 
                 if (hoursUsed != null && hoursUsed >= 0) trackingHours = hoursUsed
+                if (usesHours && hoursUsed != null && hoursUsed < 0) errors.add("Operating hours cannot be negative.")
 
                 if (errors.isEmpty() && odoNum != null && !odoNum.isNaN() && usesDistance) {
                     prevOdo = odoNum

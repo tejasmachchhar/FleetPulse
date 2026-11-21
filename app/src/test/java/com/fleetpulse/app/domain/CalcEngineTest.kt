@@ -7,6 +7,10 @@ import com.fleetpulse.app.data.db.FILL_PARTIAL_REFILL
 import com.fleetpulse.app.data.db.FILL_RIDE_ONLY
 import com.fleetpulse.app.data.db.MaintenanceEntry
 import com.fleetpulse.app.data.db.SOURCE_ELECTRICITY
+import com.fleetpulse.app.data.db.SOURCE_PETROL
+import com.fleetpulse.app.data.db.STATUS_CHECK
+import com.fleetpulse.app.data.db.STATUS_ERROR
+import com.fleetpulse.app.data.db.STATUS_OK
 import com.fleetpulse.app.data.db.SettingsEntity
 import com.fleetpulse.app.data.db.UsageEntry
 import com.fleetpulse.app.data.db.Vehicle
@@ -553,5 +557,63 @@ class CalcEngineTest {
         assertEquals("2026-10", months.first().ym)
         assertEquals("Oct 26", months.first().label)
         assertEquals("2027-09", months.last().ym)
+    }
+
+    @Test
+    fun `hours-only vehicle requires hours and counts operating hours`() {
+        val state = EngineState(
+            vehicles = listOf(Vehicle(id = "A1", name = "Tractor", type = "Tractor", energySource = SOURCE_PETROL, trackingBasis = "operating_hours")),
+            usageEntries = listOf(UsageEntry("a", "2026-11-20", "A1", odometer = null, distanceKm = null, hoursUsed = 4.5, fillType = FILL_RIDE_ONLY)),
+            maintenanceEntries = emptyList(),
+            priceHistory = emptyList(),
+            calibration = emptyList(),
+            settings = SettingsEntity(),
+        )
+        val row = CalcEngine.evaluate(state, EvalOptions(referenceDate = ref)).evaluatedUsage.single()
+        assertEquals(STATUS_OK, row.status)
+        assertEquals(4.5, row.trackingHours, 1e-9)
+    }
+
+    @Test
+    fun `hours-only vehicle without hours is invalid`() {
+        val state = EngineState(
+            vehicles = listOf(Vehicle(id = "A2", name = "Tractor", type = "Tractor", energySource = SOURCE_PETROL, trackingBasis = "operating_hours")),
+            usageEntries = listOf(UsageEntry("a", "2026-11-20", "A2", odometer = null, distanceKm = null, hoursUsed = null, fillType = FILL_FULL_TANK, unitPrice = 100.0)),
+            maintenanceEntries = emptyList(),
+            priceHistory = emptyList(),
+            calibration = emptyList(),
+            settings = SettingsEntity(),
+        )
+        val row = CalcEngine.evaluate(state, EvalOptions(referenceDate = ref)).evaluatedUsage.single()
+        assertEquals(STATUS_ERROR, row.status)
+    }
+
+    @Test
+    fun `distance vehicle without odometer or explicit distance is invalid`() {
+        val state = EngineState(
+            vehicles = listOf(Vehicle(id = "A3", name = "Car", type = "Car", energySource = SOURCE_PETROL, trackingBasis = "distance_km")),
+            usageEntries = listOf(UsageEntry("a", "2026-11-20", "A3", odometer = null, distanceKm = null, fillType = FILL_FULL_TANK, unitPrice = 100.0)),
+            maintenanceEntries = emptyList(),
+            priceHistory = emptyList(),
+            calibration = emptyList(),
+            settings = SettingsEntity(),
+        )
+        val row = CalcEngine.evaluate(state, EvalOptions(referenceDate = ref)).evaluatedUsage.single()
+        assertEquals(STATUS_ERROR, row.status)
+    }
+
+    @Test
+    fun `explicit first distance is preserved`() {
+        val state = EngineState(
+            vehicles = listOf(Vehicle(id = "A4", name = "Truck", type = "Truck", energySource = SOURCE_PETROL, trackingBasis = "distance_km", initialOdometer = 0.0)),
+            usageEntries = listOf(UsageEntry("a", "2026-11-20", "A4", odometer = null, distanceKm = 500.0, fillType = FILL_RIDE_ONLY)),
+            maintenanceEntries = emptyList(),
+            priceHistory = emptyList(),
+            calibration = emptyList(),
+            settings = SettingsEntity(),
+        )
+        val row = CalcEngine.evaluate(state, EvalOptions(referenceDate = ref)).evaluatedUsage.single()
+        assertEquals(STATUS_CHECK, row.status)
+        assertEquals(500.0, row.distance, 1e-9)
     }
 }

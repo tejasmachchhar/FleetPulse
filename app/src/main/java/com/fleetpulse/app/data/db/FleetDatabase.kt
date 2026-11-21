@@ -185,7 +185,7 @@ interface MetaDao {
         SettingsEntity::class,
         MetaEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 abstract class FleetDatabase : RoomDatabase() {
@@ -219,6 +219,7 @@ abstract class FleetDatabase : RoomDatabase() {
                 db.execSQL("ALTER TABLE vehicles ADD COLUMN wheelCount INTEGER")
                 db.execSQL("ALTER TABLE vehicles ADD COLUMN axleConfiguration TEXT")
                 db.execSQL("ALTER TABLE vehicles ADD COLUMN powerKw REAL")
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN initialOperatingHours REAL")
                 db.execSQL("ALTER TABLE vehicles ADD COLUMN engineDisplacementCc REAL")
                 db.execSQL("ALTER TABLE vehicles ADD COLUMN torqueNm REAL")
                 db.execSQL("ALTER TABLE vehicles ADD COLUMN engineOilGrade TEXT")
@@ -232,6 +233,17 @@ abstract class FleetDatabase : RoomDatabase() {
          * preserved and default to included, exactly matching pre-upgrade
          * calculation behaviour.
          */
+        /**
+         * Persists the wizard-collected starting operating hours for agricultural
+         * and construction vehicles. Existing users default to null and continue
+         * to work without changing behaviour.
+         */
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE vehicles ADD COLUMN initialOperatingHours REAL")
+            }
+        }
+
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL(

@@ -201,7 +201,7 @@ fun AnalysisScreen(
             if (petrolVehicles.isNotEmpty()) {
                 item {
                     SectionCard(
-                        title = "Petrol mileage (km/L)",
+                        title = "Fuel mileage (km/L)",
                         subtitle = "Measured from eligible full-to-full refills; never mixed with EV efficiency",
                     ) {
                         petrolVehicles.forEach { v ->
@@ -340,7 +340,7 @@ fun AnalysisScreen(
             }
             if (petrolVehiclesForChart.isNotEmpty()) {
                 item {
-                    SectionCard(title = "Petrol mileage trend (km/L)", subtitle = "12-month window · eligible verified stretches only") {
+                    SectionCard(title = "Fuel mileage trend (km/L)", subtitle = "12-month window · eligible verified stretches only") {
                         LineChart(
                             labels = months.map { it.label },
                             series = petrolVehiclesForChart.map { v ->
@@ -434,7 +434,7 @@ fun AnalysisScreen(
                     DonutChart(
                         slices = listOf(
                             DonutSlice("Electricity", totals.electricitySpend, ElectricColor),
-                            DonutSlice("Petrol", totals.petrolSpend, PetrolColor),
+                            DonutSlice("Fuel", totals.petrolSpend, PetrolColor),
                             DonutSlice("Battery wear (est.)", totals.batteryWear, FleetViolet),
                         ),
                         centerLabel = "Running cost",
@@ -453,7 +453,7 @@ fun AnalysisScreen(
                         )
                     } else {
                         LabelValueRow("Electric cost", formatINR(totals.evCostPerKm, 2) + "/km")
-                        LabelValueRow("Petrol cost", formatINR(totals.petrolCostPerKm, 2) + "/km")
+                        LabelValueRow("Fuel cost", formatINR(totals.petrolCostPerKm, 2) + "/km")
                         LabelValueRow("Electric km", "${formatNum(totals.evDistance, 0)} km")
                         LabelValueRow(
                             "Estimated savings",
@@ -532,7 +532,7 @@ fun AnalysisScreen(
             item {
                 SectionCard(title = "Period energy totals", subtitle = eval.periodBounds.label) {
                     LabelValueRow("Electricity spend", formatINR(totals.electricitySpend, 2))
-                    LabelValueRow("Petrol spend", formatINR(totals.petrolSpend, 2))
+                    LabelValueRow("Fuel spend", formatINR(totals.petrolSpend, 2))
                     LabelValueRow("Battery wear allowance", formatINR(totals.batteryWear, 2))
                     LabelValueRow("Running cost", formatINR(totals.runningCost, 2))
                     LabelValueRow("Maintenance (separate)", formatINR(totals.maintenanceSpend, 2))

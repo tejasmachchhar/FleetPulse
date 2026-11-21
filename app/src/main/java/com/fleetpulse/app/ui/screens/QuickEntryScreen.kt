@@ -114,7 +114,7 @@ fun QuickEntryScreen(
             ScreenHeader(
                 title = when (mode) {
                     "ev_charge" -> "EV charge"
-                    "petrol_fill" -> "Petrol refill"
+                    "petrol_fill" -> "Fuel refill"
                     "ride_only" -> "Ride only"
                     else -> "Quick entry"
                 },
@@ -362,7 +362,7 @@ fun QuickEntryScreen(
             title = when {
                 isEdit -> "Edit usage entry"
                 mode == "ev_charge" -> "EV charge"
-                mode == "petrol_fill" -> "Petrol refill"
+                mode == "petrol_fill" -> "Fuel refill"
                 mode == "ride_only" -> "Ride only"
                 else -> "Quick usage entry"
             },
@@ -554,7 +554,7 @@ fun QuickEntryScreen(
 
                         if (!isEv) {
                             DecimalField(
-                                "Petrol quantity", energyAdded,
+                                "Fuel quantity", energyAdded,
                                 { updatePetrolField("quantity", it) }, suffix = "L",
                                 placeholder = "e.g. 8.5",
                             )

@@ -48,6 +48,10 @@ import androidx.core.content.ContextCompat
 import com.fleetpulse.app.data.db.PriceEntry
 import com.fleetpulse.app.data.db.SOURCE_ELECTRICITY
 import com.fleetpulse.app.data.db.SOURCE_PETROL
+import com.fleetpulse.app.data.db.SOURCE_DIESEL
+import com.fleetpulse.app.data.db.SOURCE_CNG
+import com.fleetpulse.app.data.db.SOURCE_LPG
+import com.fleetpulse.app.data.db.SOURCE_HYBRID
 import com.fleetpulse.app.data.db.SettingsEntity
 import com.fleetpulse.app.data.db.categoryList
 import com.fleetpulse.app.data.prefs.AppPreferencesState
@@ -434,7 +438,7 @@ private fun PriceDialog(existing: PriceEntry?, onDismiss: () -> Unit, onSave: (P
         confirmEnabled = NumberText.parse(price)?.let { it > 0 } == true,
     ) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            listOf(SOURCE_ELECTRICITY, SOURCE_PETROL).forEach { option ->
+            listOf(SOURCE_ELECTRICITY, SOURCE_PETROL, SOURCE_DIESEL, SOURCE_CNG, SOURCE_LPG, SOURCE_HYBRID).forEach { option ->
                 FilterChip(
                     selected = source == option,
                     onClick = { source = option },

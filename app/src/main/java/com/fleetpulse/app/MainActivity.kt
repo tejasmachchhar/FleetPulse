@@ -106,6 +106,7 @@ import com.fleetpulse.app.ui.screens.SupportFleetPulseScreen
 import com.fleetpulse.app.ui.screens.UsageLogScreen
 import com.fleetpulse.app.ui.screens.UserGuideScreen
 import com.fleetpulse.app.ui.screens.VehiclesScreen
+import com.fleetpulse.app.ui.screens.VehicleSetupWizard
 import com.fleetpulse.app.ui.screens.VerificationScreen
 import com.fleetpulse.app.ui.theme.FleetAmber
 import com.fleetpulse.app.ui.theme.FleetBlue
@@ -162,6 +163,7 @@ private fun AppRoot(
 ) {
     val prefs by vm.preferences.collectAsStateWithLifecycle()
     val snapshot by vm.snapshot.collectAsStateWithLifecycle()
+    val isCreating by vm.creating.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
@@ -197,6 +199,9 @@ private fun AppRoot(
 
     FleetPulseTheme(darkTheme = darkTheme) {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+            if (isCreating) {
+                VehicleSetupWizard(vm = vm, onComplete = { vm.setCreating(false) })
+            } else {
             when {
                 !prefs.loaded -> LoadingScreen()
                 !prefs.onboardingComplete -> {
@@ -268,8 +273,10 @@ private fun AppRoot(
                             onVehicleAdded = {
                                 onboardingState = onboardingState.copy(vehicleAdded = true)
                             },
+                            isCreating = isCreating,
                         )
                     }
+                }
                 }
             }
         }
@@ -311,6 +318,7 @@ private fun MainScaffold(
     pendingRoute: String?,
     onPendingRouteConsumed: () -> Unit,
     onVehicleAdded: () -> Unit = {},
+    isCreating: Boolean = false,
 ) {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -406,7 +414,7 @@ private fun MainScaffold(
             }
         },
         floatingActionButton = {
-            if (isTopLevel && currentRoute != "more") {
+            if (!isCreating && isTopLevel && currentRoute != "more") {
                 FloatingActionButton(
                     onClick = { showQuickSheet = true },
                     containerColor = MaterialTheme.colorScheme.primary,
@@ -443,6 +451,7 @@ private fun MainScaffold(
             composable("vehicles") {
                 VehiclesScreen(
                     vm = vm,
+                    onCreatingChange = vm::setCreating,
                     vehicles = state.vehicles,
                     evaluation = snapshot.evaluation,
                     nextId = vm::nextVehicleId,

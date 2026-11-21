@@ -1,6 +1,10 @@
 package com.fleetpulse.app.data.backup
 
 import com.fleetpulse.app.data.db.SettingsEntity
+import com.fleetpulse.app.data.db.Vehicle
+import com.fleetpulse.app.data.db.UsageEntry
+import com.fleetpulse.app.data.db.SOURCE_PETROL
+import com.fleetpulse.app.data.db.FILL_FULL_TANK
 import com.fleetpulse.app.domain.SampleData
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
@@ -118,9 +122,79 @@ class BackupManagerTest {
     }
 
     @Test
-    fun `unknown energy source is rejected`() {
+    fun `blank energy source is rejected`() {
         val data = dataOf(sampleNativeJson())
-        data.getJSONArray("vehicles").getJSONObject(0).put("energySource", "Hydrogen")
+        data.getJSONArray("vehicles").getJSONObject(0).put("energySource", "")
         assertFalse(BackupManager.parse(data.toString()).isSuccess)
+    }
+
+    @Test
+    fun `v3 backup preserves universal vehicle and hours fields`() {
+        val input = BackupBuildInput(
+            vehicles = listOf(
+                Vehicle(
+                    id = "v1",
+                    name = "Tractor",
+                    type = "Agricultural Tractor",
+                    energySource = SOURCE_PETROL,
+                    category = "agricultural",
+                    subcategory = "agricultural_tractor",
+                    trackingBasis = "operating_hours",
+                    initialOperatingHours = 12.0,
+                    referenceRecordId = "rec1",
+                    referenceDatabaseVersion = "1.0.0-batch1",
+                    referenceRawJson = "{\"id\":\"rec1\"}",
+                    referenceOverridesJson = "{\"powertrain.power\": 42.0}",
+                    powerKw = 42.0,
+                    engineDisplacementCc = 2979.0,
+                    torqueNm = 207.0,
+                    engineOilGrade = "SAE 15W-40",
+                ),
+            ),
+            usage = listOf(
+                UsageEntry(
+                    id = "u1",
+                    date = "2026-11-20",
+                    vehicleId = "v1",
+                    odometer = 0.0,
+                    hoursUsed = 3.5,
+                    fillType = FILL_FULL_TANK,
+                    unitPrice = 100.0,
+                    distanceKm = 0.0,
+                ),
+            ),
+            maintenance = emptyList(),
+            prices = emptyList(),
+            calibration = emptyList(),
+            settings = SettingsEntity(),
+        )
+        val parsed = BackupManager.parse(BackupManager.buildJson(input)).getOrThrow()
+        val v = parsed.vehicles.single()
+        assertEquals("agricultural", v.category)
+        assertEquals("operating_hours", v.trackingBasis)
+        assertEquals(12.0, v.initialOperatingHours)
+        assertEquals("rec1", v.referenceRecordId)
+        assertEquals("1.0.0-batch1", v.referenceDatabaseVersion)
+        assertEquals(42.0, v.powerKw)
+        val u = parsed.usage.single()
+        assertEquals(3.5, u.hoursUsed)
+        assertEquals(0.0, u.distanceKm)
+    }
+
+    @Test
+    fun `legacy v2 backup imports with defaults`() {
+        val data = dataOf(sampleNativeJson())
+        data.put("version", 2)
+        val parsed = BackupManager.parse(data.toString()).getOrThrow()
+        assertTrue(parsed.vehicles.isNotEmpty())
+        val v = parsed.vehicles.first()
+        assertEquals("two_wheeler", v.category)
+        assertEquals("distance_km", v.trackingBasis)
+        assertTrue(parsed.usage.isNotEmpty())
+        val u = parsed.usage.first()
+        assertEquals(0.0, u.distanceKm)
+        assertEquals(0.0, u.hoursUsed)
+        assertTrue(parsed.vehicles.all { it.category.isNotBlank() })
+        assertTrue(parsed.usage.all { it.hoursUsed != null && it.distanceKm != null })
     }
 }

@@ -13,6 +13,7 @@ import org.json.JSONObject
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
+import java.net.URLEncoder
 import kotlin.io.readBytes
 import kotlin.io.use
 
@@ -29,6 +30,7 @@ data class VehicleReferenceCatalogEntry(
     val fuelType: String,
     val aliases: List<String>,
     val recordPath: String,
+    val sourceUrls: List<String> = emptyList(),
 )
 
 data class VehicleReferenceVehicleRecord(
@@ -61,6 +63,7 @@ data class VehicleReferenceVehicleRecord(
     val engineOilGrade: String?,
     val sources: List<VehicleReferenceSource>,
     val verificationStatus: String?,
+    val sourceUrls: List<String>,
 )
 
 data class VehicleReferenceSource(
@@ -71,6 +74,16 @@ data class VehicleReferenceSource(
     val sourceId: String?,
 )
 
+data class VehicleReferenceManufacturer(
+    val id: String,
+    val name: String,
+    val brand: String,
+    val countryOfOrigin: String?,
+    val indiaMarketActive: Boolean,
+    val officialWebsite: String?,
+    val categories: List<String>,
+)
+
 data class VehicleReferenceManifest(
     val databaseName: String,
     val databaseVersion: String,
@@ -78,8 +91,10 @@ data class VehicleReferenceManifest(
     val generatedAt: String,
     val phase: String,
     val totalRecords: Int,
-    val categorySlugs: List<String>,
-)
+    val categoryKeys: List<String>,
+) {
+    val categorySlugs: List<String> get() = categoryKeys
+}
 
 class VehicleReferenceRepository(private val context: Context) {
 
@@ -96,67 +111,163 @@ class VehicleReferenceRepository(private val context: Context) {
         dataStore.edit { it[keyFor(name)] = value }
     }
 
-    suspend fun loadManifest(): VehicleReferenceManifest {
-        val text = fetchJson("${SupportConfig.VEHICLE_REFERENCE_BASE_URL}manifest.json")
-        return parseManifest(text)
+    fun normalizeSlug(slug: String): String =
+        slug.trim().lowercase().replace(Regex("[^a-z0-9_-]"), "-").takeIf { it.isNotBlank() } ?: "other"
+
+    fun validateRecordPath(path: String): Boolean {
+        if (path.isBlank() || path.startsWith("/") || path.contains("..")) return false
+        if (!path.startsWith("vehicles/") && !path.startsWith("manufacturers/")) return false
+        if (!path.endsWith(".json")) return false
+        return path.split('/').all { it.isNotBlank() && !it.contains('\\') }
     }
 
-    suspend fun loadCatalogEntries(categorySlug: String): List<VehicleReferenceCatalogEntry> {
-        val assetPath = "vehicle-reference/indexes/$categorySlug.json"
-        val cached = cachedValue("vehicle_ref_index_$categorySlug")
-        val remote = runCatching { fetchJson("${SupportConfig.VEHICLE_REFERENCE_BASE_URL}indexes/$categorySlug.json") }.getOrNull()
-        val text = remote ?: cached ?: readAsset(assetPath)
-        if (remote != null) cacheValue("vehicle_ref_index_$categorySlug", remote)
-        return parseIndex(text).map { it.toEntry() }
-    }
+    /** Total access: never throws, never blocks composition for a network stall. */
+    suspend fun loadManifest(): VehicleReferenceManifest? = try {
+        cachedValue("vehicle_ref_manifest")?.let { VehicleReferenceParser.parseManifest(it) }
+            ?: readAsset("vehicle-reference/manifest.json")?.let { VehicleReferenceParser.parseManifest(it) }
+    } catch (_: Exception) { null }
+
+    suspend fun loadCatalogEntries(categorySlug: String): List<VehicleReferenceCatalogEntry> = try {
+        val slug = normalizeSlug(categorySlug)
+        val cached = cachedValue("vehicle_ref_index_$slug")
+        val text = cached
+            ?: readAsset("vehicle-reference/indexes/$slug.json")
+            ?: return emptyList()
+        VehicleReferenceParser.parseIndex(text)
+    } catch (_: Exception) { emptyList() }
+
+    suspend fun loadManufacturers(): List<VehicleReferenceManufacturer> = try {
+        cachedValue("vehicle_ref_manufacturer_index")
+            ?.let { VehicleReferenceParser.parseManufacturers(it) }
+            ?: readAsset("vehicle-reference/manufacturers/index.json")
+                ?.let { VehicleReferenceParser.parseManufacturers(it) }
+                ?: emptyList()
+    } catch (_: Exception) { emptyList() }
 
     suspend fun loadVehicleRecord(recordPath: String): VehicleReferenceVehicleRecord? {
-        val cached = cachedValue("vehicle_ref_record_$recordPath")
-        val remote = runCatching { fetchJson(SupportConfig.VEHICLE_REFERENCE_BASE_URL + recordPath) }.getOrNull()
-        val assetPath = "vehicle-reference/$recordPath"
-        val text = remote ?: cached ?: runCatching { readAsset(assetPath) }.getOrNull()
-        if (remote != null) cacheValue("vehicle_ref_record_$recordPath", remote)
-        return text?.let { parseVehicleRecord(it) }
+        if (!validateRecordPath(recordPath)) return null
+        return try {
+            cachedValue("vehicle_ref_record_$recordPath")
+                ?.let { VehicleReferenceParser.parseVehicleRecord(it) }
+                ?: readAsset("vehicle-reference/$recordPath")
+                    ?.let { VehicleReferenceParser.parseVehicleRecord(it) }
+        } catch (_: Exception) { null }
     }
 
-    suspend fun loadManufacturers(): List<VehicleReferenceCatalogEntry> {
-        val assetPath = "vehicle-reference/manufacturers/index.json"
-        val cached = cachedValue("vehicle_ref_manufacturer_index")
-        val remote = runCatching { fetchJson("${SupportConfig.VEHICLE_REFERENCE_BASE_URL}manufacturers/index.json") }.getOrNull()
-        val text = remote ?: cached ?: readAsset(assetPath)
-        if (remote != null) cacheValue("vehicle_ref_manufacturer_index", remote)
-        return parseManufacturerIndex(text)
+    /** Start a cached refresh in the background. Failures are ignored. */
+    suspend fun refreshRemoteIfStale(force: Boolean = false) = withContext(kotlinx.coroutines.Dispatchers.IO) {
+        val manifest = loadManifest()
+        val version = manifest?.databaseVersion ?: return@withContext
+        val cached = cachedValue("vehicle_ref_manifest")
+        if (!force && cached != null) return@withContext
+        val text = fetchJson(SupportConfig.VEHICLE_REFERENCE_BASE_URL + "manifest.json")
+            ?: return@withContext
+        val parsed = try { VehicleReferenceParser.parseManifest(text) } catch (_: Exception) { return@withContext }
+        if (parsed.schemaVersion != version) return@withContext
+        cacheValue("vehicle_ref_manifest", text)
+        cacheIndex(parsed.databaseVersion, text)
     }
 
-    private fun parseIndex(text: String): List<VehicleReferenceCatalogIndex> {
-        val obj = JSONObject(text)
-        val records = obj.optJSONArray("records") ?: JSONArray()
-        return (0 until records.length()).mapNotNull { records.optJSONObject(it)?.let { record -> record.toCatalogEntry(record) } }
-    }
-
-    private fun parseManufacturerIndex(text: String): List<VehicleReferenceCatalogEntry> {
-        val obj = JSONObject(text)
-        val manufacturers = obj.optJSONArray("manufacturers") ?: JSONArray()
-        return (0 until manufacturers.length()).mapNotNull { i ->
-            val m = manufacturers.optJSONObject(i) ?: return@mapNotNull null
-            VehicleReferenceCatalogEntry(
-                id = m.optString("id"),
-                manufacturer = m.optString("name"),
-                brand = m.optString("brand"),
-                model = m.optString("name"),
-                variant = m.optString("brand"),
-                year = 0,
-                category = "",
-                subcategory = "",
-                propulsion = "",
-                fuelType = "",
-                aliases = m.optJSONArray("categories")?.let { arr -> (0 until arr.length()).mapNotNull { arr.optString(it) } } ?: emptyList(),
-                recordPath = "",
-            )
+    private suspend fun cacheIndex(databaseVersion: String, manifestText: String) {
+        // Refresh indexes that are not cached. Do not overwrite user edits (there are none
+        // for reference data; this only caches the browsing catalogue).
+        val root = try { JSONObject(manifestText) } catch (_: Exception) { return }
+        val categoryObject = root.optJSONObject("category_counts")
+        val categoryArray = root.optJSONArray("category_counts") ?: JSONArray()
+        val slugs = mutableSetOf<String>()
+        if (categoryObject != null) {
+            val names = categoryObject.names() ?: categoryArray ?: categoryArray
+            for (i in 0 until names.length()) {
+                slugs.add(normalizeSlug(names.getString(i)))
+            }
+        } else {
+            for (i in 0 until categoryArray.length()) {
+                slugs.add(normalizeSlug(categoryArray.optString(i)))
+            }
+        }
+        slugs.forEach { slug ->
+            val key = "vehicle_ref_index_${databaseVersion}_$slug"
+            if (cachedValue(key) == null) {
+                fetchJson(SupportConfig.VEHICLE_REFERENCE_BASE_URL + "indexes/$slug.json")
+                    ?.let { text -> cacheValue(key, text) }
+            }
         }
     }
 
-    private fun parseVehicleRecord(text: String): VehicleReferenceVehicleRecord {
+    private suspend fun fetchJson(url: String): String? = withContext(kotlinx.coroutines.Dispatchers.IO) {
+        try {
+            val connection = URL(url).openConnection() as HttpURLConnection
+            try {
+                connection.requestMethod = "GET"
+                connection.connectTimeout = 4_000
+                connection.readTimeout = 5_000
+                connection.instanceFollowRedirects = true
+                connection.doInput = true
+                connection.doOutput = false
+                connection.setRequestProperty("Accept", "application/json")
+                connection.setRequestProperty("User-Agent", "FleetPulse-ReferenceDB/1")
+                if (connection.responseCode != HttpURLConnection.HTTP_OK) return@withContext null
+                connection.inputStream.readBytes().toString(Charsets.UTF_8)
+            } finally {
+                connection.disconnect()
+            }
+        } catch (_: Exception) { null }
+    }
+
+    private fun readAsset(path: String): String? = try {
+        context.assets.open(path).use { it.readBytes().toString(Charsets.UTF_8) }
+    } catch (_: Exception) { null }
+
+    private fun JSONObject?.optDoubleOrNull(name: String): Double? =
+        takeIf { this != null }?.optDouble(name)?.takeIf { !it.isNaN() }
+
+    private fun JSONObject?.optIntOrNull(name: String): Int? =
+        takeIf { this != null }?.optInt(name).takeIf { it != 0 }
+
+    private fun JSONObject?.optStringOrNull(name: String): String? =
+        takeIf { this != null }?.optString(name)?.takeIf { it.isNotBlank() }
+}
+
+object VehicleReferenceParser {
+
+    private const val SUPPORTED_SCHEMA_VERSION = "1.0.0"
+
+    fun parseManifest(text: String): VehicleReferenceManifest {
+        val root = JSONObject(text)
+        val categoryKeys = mutableListOf<String>()
+        val categoryObject = root.optJSONObject("category_counts")
+        val categoryArray = root.optJSONArray("category_counts") ?: JSONArray()
+        if (categoryObject != null) {
+            val names = categoryObject.names() ?: categoryArray ?: categoryArray
+            for (i in 0 until names.length()) {
+                val name = names.getString(i)
+                if (categoryObject.has(name)) categoryKeys.add(normalizeCategoryKey(name))
+            }
+        } else {
+            for (i in 0 until categoryArray.length()) {
+                categoryKeys.add(normalizeCategoryKey(categoryArray.optString(i)))
+            }
+        }
+        return VehicleReferenceManifest(
+            databaseName = root.optString("database_name").ifBlank { "Vehicle Reference Database" },
+            databaseVersion = root.optString("database_version"),
+            schemaVersion = root.optString("schema_version"),
+            generatedAt = root.optString("generated_at"),
+            phase = root.optString("phase"),
+            totalRecords = root.optInt("total_records"),
+            categoryKeys = categoryKeys.ifEmpty { listOf("other") },
+        )
+    }
+
+    fun parseIndex(text: String): List<VehicleReferenceCatalogEntry> {
+        val root = JSONObject(text)
+        val records = root.optJSONArray("records") ?: JSONArray()
+        return (0 until records.length()).mapNotNull { i ->
+            records.optJSONObject(i)?.let { record -> VehicleReferenceParser.toCatalogEntry(record) }
+        }
+    }
+
+    fun parseVehicleRecord(text: String): VehicleReferenceVehicleRecord {
         val root = JSONObject(text)
         val manufacturer = root.optJSONObject("manufacturer")
         val model = root.optJSONObject("model")
@@ -172,7 +283,7 @@ class VehicleReferenceRepository(private val context: Context) {
             manufacturerName = manufacturer?.optString("name") ?: "",
             manufacturerBrand = manufacturer?.optString("brand") ?: "",
             modelName = model?.optString("name") ?: "",
-            officialProductName = model?.optString("official_product_name") ?: "",
+            officialProductName = model?.optString("official_product_name") ?: model?.optString("name") ?: "",
             variant = model?.optString("variant") ?: "",
             modelYear = model?.optInt("year") ?: 0,
             market = model?.optString("market") ?: "",
@@ -180,17 +291,17 @@ class VehicleReferenceRepository(private val context: Context) {
             subcategory = root.optJSONObject("classification")?.optString("subcategory") ?: "",
             propulsion = powertrain?.optString("propulsion") ?: "",
             fuelType = powertrain?.optString("fuel_type") ?: "",
-            powerKw = powertrain.optDoubleOrNull("power"),
-            engineDisplacementCc = powertrain.optDoubleOrNull("engine_displacement_cc"),
-            torqueNm = powertrain.optDoubleOrNull("torque"),
-            fuelTankLiters = storage.optDoubleOrNull("fuel_tank_liters"),
-            batteryCapacityKwh = storage.optDoubleOrNull("battery_capacity_kwh"),
-            batteryUsableKwh = storage.optDoubleOrNull("battery_usable_kwh"),
-            batteryVoltageV = storage.optDoubleOrNull("battery_voltage_v"),
-            batteryCapacityAh = storage.optDoubleOrNull("battery_capacity_ah"),
-            seatingCapacity = dimensions.optIntOrNull("seating_capacity"),
-            cargoCapacityLiters = dimensions.optDoubleOrNull("cargo_capacity_liters"),
-            wheelCount = dimensions.optIntOrNull("wheel_count"),
+            powerKw = powertrain?.optDoubleOrNull("power"),
+            engineDisplacementCc = powertrain?.optDoubleOrNull("engine_displacement_cc"),
+            torqueNm = powertrain?.optDoubleOrNull("torque"),
+            fuelTankLiters = storage?.optDoubleOrNull("fuel_tank_liters"),
+            batteryCapacityKwh = storage?.optDoubleOrNull("battery_capacity_kwh"),
+            batteryUsableKwh = storage?.optDoubleOrNull("battery_usable_kwh"),
+            batteryVoltageV = storage?.optDoubleOrNull("battery_voltage_v"),
+            batteryCapacityAh = storage?.optDoubleOrNull("battery_capacity_ah"),
+            seatingCapacity = dimensions?.optIntOrNull("seating_capacity"),
+            cargoCapacityLiters = dimensions?.optDoubleOrNull("cargo_capacity_liters"),
+            wheelCount = dimensions?.optIntOrNull("wheel_count"),
             axleConfiguration = dimensions?.optStringOrNull("axle_configuration"),
             engineOilGrade = maintenance?.optStringOrNull("engine_oil_grade"),
             sources = (0 until sources.length()).mapNotNull { i ->
@@ -204,41 +315,30 @@ class VehicleReferenceRepository(private val context: Context) {
                 )
             },
             verificationStatus = root.optJSONObject("verification")?.optString("status"),
+            sourceUrls = sources.toStrings("url"),
         )
     }
 
-    private fun parseManifest(text: String): VehicleReferenceManifest {
+    fun parseManufacturers(text: String): List<VehicleReferenceManufacturer> {
         val root = JSONObject(text)
-        val categories = root.optJSONArray("category_counts") ?: JSONArray()
-        val categorySlugs = mutableListOf<String>()
-        for (i in 0 until categories.length()) {
-            categorySlugs.add(categories.optString(i).replace('_', '-'))
+        val manufacturers = root.optJSONArray("manufacturers") ?: JSONArray()
+        return (0 until manufacturers.length()).mapNotNull { i ->
+            manufacturers.optJSONObject(i)?.let { m ->
+                VehicleReferenceManufacturer(
+                    id = m.optString("id"),
+                    name = m.optString("name"),
+                    brand = m.optString("brand"),
+                    countryOfOrigin = m.optString("country_of_origin").takeIf { it.isNotBlank() },
+                    indiaMarketActive = m.optBoolean("india_market_active"),
+                    officialWebsite = m.optString("official_website").takeIf { it.isNotBlank() },
+                    categories = m.optJSONArray("categories")?.toStrings("") ?: emptyList(),
+                )
+            }
         }
-        return VehicleReferenceManifest(
-            databaseName = root.optString("database_name"),
-            databaseVersion = root.optString("database_version"),
-            schemaVersion = root.optString("schema_version"),
-            generatedAt = root.optString("generated_at"),
-            phase = root.optString("phase"),
-            totalRecords = root.optInt("total_records"),
-            categorySlugs = categorySlugs,
-        )
     }
 
-    private fun VehicleReferenceCatalogIndex.toEntry(): VehicleReferenceCatalogEntry = VehicleReferenceCatalogEntry(
-        id = id,
-        manufacturer = manufacturerName,
-        brand = brand,
-        model = model,
-        variant = variant,
-        year = year,
-        category = category,
-        subcategory = subcategory,
-        propulsion = propulsion,
-        fuelType = fuelType,
-        aliases = aliases,
-        recordPath = recordPath,
-    )
+    private fun normalizeCategoryKey(value: String): String =
+        value.trim().lowercase().replace(Regex("[^a-z0-9_-]"), "_")
 
     private data class VehicleReferenceCatalogIndex(
         val id: String,
@@ -253,12 +353,14 @@ class VehicleReferenceRepository(private val context: Context) {
         val fuelType: String,
         val aliases: List<String>,
         val recordPath: String,
+        val sourceUrls: List<String>,
     )
 
-    private fun JSONObject.toCatalogEntry(record: JSONObject): VehicleReferenceCatalogIndex =
-        VehicleReferenceCatalogIndex(
+    private fun toCatalogEntry(record: JSONObject): VehicleReferenceCatalogEntry {
+        val sources = record.optJSONArray("sources") ?: JSONArray()
+        return VehicleReferenceCatalogEntry(
             id = record.optString("id"),
-            manufacturerName = record.optString("manufacturer_name"),
+            manufacturer = record.optString("manufacturer_name"),
             brand = record.optString("brand"),
             model = record.optString("model"),
             variant = record.optString("variant"),
@@ -267,11 +369,14 @@ class VehicleReferenceRepository(private val context: Context) {
             subcategory = record.optString("subcategory"),
             propulsion = record.optString("propulsion"),
             fuelType = record.optString("fuel_type"),
-            aliases = record.optJSONArray("aliases")?.let { arr ->
-                (0 until arr.length()).mapNotNull { arr.optString(it) }
-            } ?: emptyList(),
+            aliases = record.optJSONArray("aliases")?.toStrings("") ?: emptyList(),
             recordPath = record.optString("record_path"),
+            sourceUrls = sources.toStrings("url"),
         )
+    }
+
+    private fun JSONArray?.toStrings(field: String): List<String> =
+        this?.let { arr -> (0 until arr.length()).mapNotNull { i -> arr.optString(i).takeIf { s -> s.isNotBlank() } } } ?: emptyList()
 
     private fun JSONObject?.optDoubleOrNull(name: String): Double? =
         takeIf { this != null }?.optDouble(name)?.takeIf { !it.isNaN() }
@@ -282,25 +387,7 @@ class VehicleReferenceRepository(private val context: Context) {
     private fun JSONObject?.optStringOrNull(name: String): String? =
         takeIf { this != null }?.optString(name)?.takeIf { it.isNotBlank() }
 
-    private fun readAsset(path: String): String =
-        context.assets.open(path).use { it.readBytes().toString(Charsets.UTF_8) }
-
-    private suspend fun fetchJson(url: String): String = withContext(kotlinx.coroutines.Dispatchers.IO) {
-        val connection = URL(url).openConnection() as HttpURLConnection
-        try {
-            connection.requestMethod = "GET"
-            connection.connectTimeout = 6_000
-            connection.readTimeout = 10_000
-            connection.instanceFollowRedirects = true
-            connection.doInput = true
-            connection.doOutput = false
-            connection.setRequestProperty("Accept", "application/json")
-            if (connection.responseCode != HttpURLConnection.HTTP_OK) {
-                throw IOException("HTTP ${connection.responseCode} fetching $url")
-            }
-            connection.inputStream.readBytes().toString(Charsets.UTF_8)
-        } finally {
-            connection.disconnect()
-        }
-    }
+    fun supportedSchemaVersion(): String = SUPPORTED_SCHEMA_VERSION
 }
+
+fun encodeUrlComponent(value: String): String = URLEncoder.encode(value, Charsets.UTF_8.name()).replace("+", "%20")

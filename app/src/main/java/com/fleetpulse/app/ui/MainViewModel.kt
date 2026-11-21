@@ -61,6 +61,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val preferences: StateFlow<AppPreferencesState> = app.preferences.state
         .stateIn(viewModelScope, SharingStarted.Eagerly, AppPreferencesState())
 
+    private val _creating = MutableStateFlow(false)
+    val creating: StateFlow<Boolean> = _creating
+    fun setCreating(value: Boolean) {
+        _creating.value = value
+    }
+
+    fun startCreateVehicle(
+        block: suspend () -> String?,
+        onComplete: () -> Unit,
+        onError: (String) -> Unit,
+    ) {
+        viewModelScope.launch {
+            val error = try {
+                block()
+            } catch (e: Exception) {
+                "Could not save vehicle: ${e.message ?: "unexpected error"}"
+            }
+            if (error == null) onComplete() else onError(error)
+        }
+    }
+
     val filter = MutableStateFlow(DashboardFilter())
 
     private val _messages = MutableSharedFlow<String>(extraBufferCapacity = 8)
